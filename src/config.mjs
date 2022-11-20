@@ -1,12 +1,12 @@
 export const SITE = {
 	name: 'Touble Trouble',
 
-	origin: 'https://astrowind.vercel.app',
+	origin: 'https://www.double-trouble.dev',
 	basePathname: '/',
 	trailingSlash: false,
 
 	title: 'Double Trouble',
-	description: '🚀 AstroWind is a free and ready to start template to make your website using Astro and Tailwind CSS.',
+	description: '🚀 Twice the fun, double the trouble.',
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
