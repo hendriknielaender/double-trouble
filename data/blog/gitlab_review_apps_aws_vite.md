@@ -1,5 +1,5 @@
 ---
-title: "Draft: How to configure Vite on AWS for Gitlab Review Apps"
+title: "How to configure Vite on AWS for Gitlab Review Apps"
 description: "A guide on how to make Merge Requests more awesome! "
 image: "https://pluspng.com/img-png/gitlab-logo-png-press-and-logos-gitlab-1750x1225.png"
 tags: [aws, vite, gitlab, reviews apps, code reviews]
