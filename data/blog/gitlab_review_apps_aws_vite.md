@@ -50,18 +50,15 @@ stop_review:
 
 Regarding code customization, there is not a whole lot to do.
 
-React Router needs to have the vite base_url added as an option:
+[React Router](https://reactrouter.com/en/6.4.5/router-components/router) needs to have the vite [BASE_URL](https://vitejs.dev/guide/env-and-mode.html#env-variables) added as an option:
 ```javascript
 <Router basename={import.meta.env.BASE_URL}>
 ```
 
-```javascript
-basename: The base URL for all locations.
+Set the [env var](https://vitejs.dev/guide/build.html#public-base-path) to your needs, e.g: `vite build --base=/my/public/path`
+
 If your app is served from a sub-directory on your server, you’ll want to set this to the sub-directory.
 A properly formatted basename should have a leading slash, but no trailing slash.
-
-vite = import.meta.env.BASE_URL
-```
 
 ## Cloudfront
 
@@ -71,7 +68,7 @@ Cloudfront natively only supports it for the root directory, which will leave yo
 "file not found" greeting for the review url.
 
 To support default indexes also in subdirectories, there is a work-around available using
-Cloudfront Functions. Instructions can be found in the AWS blog >here<. Once these are in place,
+Cloudfront Functions. Instructions can be found in the AWS blog [here](https://aws.amazon.com/blogs/networking-and-content-delivery/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-cloudfront-functions/). Once these are in place,
 the setup is complete.
 
 Now you should have a review app spun up for every MR, which gets automatically cleaned up on merge,
