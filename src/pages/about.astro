@@ -1,16 +1,19 @@
 ---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 
-const { meta } = Astro.props;
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
 ---
 
 <Layout {meta}>
-	<Header />
 	<main>
-		<slot />
                 Hello
 	</main>
-	<Footer />
 </Layout>
