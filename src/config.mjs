@@ -1,7 +1,7 @@
 export const SITE = {
 	name: 'Touble Trouble',
 
-	origin: 'https://www.double-trouble.dev',
+	origin: 'https://double-trouble.dev',
 	basePathname: '/',
 	trailingSlash: false,
 
