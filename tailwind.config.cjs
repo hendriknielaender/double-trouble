@@ -8,6 +8,10 @@ module.exports = {
 			colors: {
 				primary: colors.blue,
 				secondary: colors.pink,
+                slate: {
+                    900: '#0d1117',
+                    800: '#161b22',
+                }
 			},
 			fontFamily: {
 				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
@@ -18,10 +22,10 @@ module.exports = {
 	darkMode: 'class',
 };
 
-/* 
+/*
 
   Alternative tailwind.config.js
-  
+
   NOTE: Add this fonts to <head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" rel="stylesheet" />
 */
