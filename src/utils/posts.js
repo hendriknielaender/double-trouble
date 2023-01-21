@@ -14,6 +14,7 @@ const getNormalizedPost = async (post) => {
 		title: frontmatter.title,
 		description: frontmatter.description,
 		image: frontmatter.image,
+		imageCreditUrl: frontmatter.imageCreditUrl,
 
 		Content: Content,
 		// or 'body' in case you consume from API

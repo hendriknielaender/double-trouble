@@ -38,8 +38,11 @@ const { post, url } = Astro.props;
 								id="image-credit"
 							>
 								Image credit:
-								<a href={post.image} class="underline hover:text-blue-500">
-									{new URL(post.image).hostname}
+								<a
+									href={post.imageCreditUrl}
+									class="underline hover:text-blue-500"
+								>
+									{new URL(post.imageCreditUrl).hostname}
 								</a>
 							</div>
 						</div>
