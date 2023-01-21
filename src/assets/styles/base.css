@@ -40,3 +40,36 @@ code .line::before {
   text-align: right;
   color: rgba(115,138,148,.4)
 }
+
+/* Set the initial position of the fists to be offscreen */
+.right-fist {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    font-size: 10rem;
+}
+
+.left-fist {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    font-size: 10rem;
+}
+
+/* Animate the fists to move towards each other scroll */
+@keyframes fistBump {
+    0% {
+        right: -50px;
+        left: -50px;
+    }
+    100% {
+        right: 50%;
+        left: 50%
+    }
+}
+
+/* Apply the animation to the fist */
+.animate {
+    animation: fistBump 1s ease-in-out;
+    animation-fill-mode: forwards;
+}

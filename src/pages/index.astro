@@ -13,14 +13,26 @@ const meta = {
 ---
 
 <Layout {meta}>
-        <div style="text-align:center">
-<br>
-<br>
-Twice the fun, <i>double</i> the trouble.
-<br>
-🤜🤛
-<br><br><br>
-                            ⚠️This page is under construction. ⚠
-</div>
-	<HighlightedPosts />
-</Layout>
+     <div style="text-align:center">
+        <br><br>
+        Twice the fun, <i>double</i> the trouble.
+        <br><br><br><br>
+        ⚠️This page is under construction. ⚠
+    </div>
+
+    <div class="right-fist" data-scroll data-scroll-animation="animate">🤜</div>
+    <div class="left-fist" data-scroll data-scroll-animation="animate">🤛</div>
+
+    <script>
+        window.addEventListener("scroll", ()=> {
+            console.log("scrolling...");
+            const scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            if(scrollTop > 50){
+                document.querySelector(".right-fist").classList.add("animate");
+                document.querySelector(".left-fist").classList.add("animate");
+            }
+        });
+    </script>
+
+    <HighlightedPosts />
+ </Layout>
