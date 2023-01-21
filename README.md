@@ -5,6 +5,17 @@
 
 **AstroWind** is a free and open-source template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
 
+## Preview Images
+
+Preview images created with Dall e https://openai.com/dall-e-2/
+
+Queries:
+- a cute orange colored fox is riding into the sun on a cloud with an army of small clones of himself behind him on other clouds in a formation, digital art
+
+### Image Credit Approach
+
+Should attribute the original owner of the image and respect the license of the image.
+
 ## Features
 
 - ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)) supporting **Dark mode**.
