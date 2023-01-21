@@ -45,6 +45,13 @@ export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		extendDefaultPlugins: true,
+        shikiConfig: {
+          // Choose from Shiki's built-in themes (or add your own)
+          // https://github.com/shikijs/shiki/blob/main/docs/themes.md
+          theme: 'rose-pine',
+          // Enable word wrap to prevent horizontal scrolling
+          wrap: true,
+        },
 	},
 
 	vite: {
