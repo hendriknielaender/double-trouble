@@ -13,9 +13,28 @@ Here Gitlab `Review Apps` come to the rescue - an integrated way to deploy dynam
 branch-specific environments for individual reviews. Natively they come with support for
 kubernetes, but this is just the default, which can be easily customized.
 
+In this post we'll show the customizations needed to make review apps work in a typical aws
+website hosting setup: Cloudfront + S3.
+
+## Code
+
+Regarding code customization, it's mostly the routing that needs changing.
+
+The [React Router](https://reactrouter.com/en/6.4.5/router-components/router) needs to have the vite [BASE_URL](https://vitejs.dev/guide/env-and-mode.html#env-variables) added as an option:
+```javascript
+<Router basename={import.meta.env.BASE_URL}>
+```
+
+This [env var](https://vitejs.dev/guide/build.html#public-base-path) can then be changed at
+runtime via a cli parameter, which we'll make use of in the next section.
+
+```bash
+vite build --base=/my/public/path
+```
+
 ## CI/CD
 
-To enable these, you can extend your pipeline with these jobs below.
+In your pipeline you'll need two new jobs `deploy_review` and `stop_review`:
 
 ```yaml
 deploy_review:
@@ -47,30 +66,55 @@ stop_review:
     - merge_requests
 ```
 
-## Code
 
-Regarding code customization, there is not a whole lot to do.
-
-[React Router](https://reactrouter.com/en/6.4.5/router-components/router) needs to have the vite [BASE_URL](https://vitejs.dev/guide/env-and-mode.html#env-variables) added as an option:
-```javascript
-<Router basename={import.meta.env.BASE_URL}>
-```
-
-Set the [env var](https://vitejs.dev/guide/build.html#public-base-path) to your needs, e.g: `vite build --base=/my/public/path`
-
-If your app is served from a sub-directory on your server, you’ll want to set this to the sub-directory.
-A properly formatted basename should have a leading slash, but no trailing slash.
-
-## Cloudfront
+## Cloudfront Infrastructure
 
 Once these jobs are added the code is deployed into the subdirectory appropriately, but
 there is still a problem with the routing. The key issue being the default root object here.
 Cloudfront natively only supports it for the root directory, which will leave you with a
-"file not found" greeting for the review url.
+"file not found" greeting for the review URL.
 
-To support default indexes also in subdirectories, there is a work-around available using
+To support default indexes also in sub-directories, there is a work-around available using
 Cloudfront Functions. Instructions can be found in the AWS blog [here](https://aws.amazon.com/blogs/networking-and-content-delivery/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-cloudfront-functions/). Once these are in place,
 the setup is complete.
+
+Key components to have this work is the function code itself:
+
+```javascript
+function handler(event) {
+  var request = event.request;
+  // the uri equals to the request path
+  var uri = request.uri;
+
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  else if (!uri.includes('.')) {
+    request.uri += '/index.html';
+  }
+
+  return request;
+}
+```
+
+And the IaC code the configures it as a `VIEWER_REQUEST` type function. Below you can find an
+example for the CDK.
+
+```javascript
+import { Function, FunctionCode, FunctionEventType } from "aws-cdk-lib/aws-cloudfront";
+
+const subDirFunction = new Function(stack, 'SubDirectoryIndex', {
+  code: FunctionCode.fromFile({
+    filePath: path.join(__dirname, "subdirIndex.js")
+  }),
+})
+
+// this goes into your origin configuration:
+functionAssociations: stage != "prod" ? [{
+  function: subDirFunction,
+  eventType: FunctionEventType.VIEWER_REQUEST,
+}] : undefined
+```
 
 Now you should have a review app spun up for every MR, which gets automatically cleaned up on merge,
 which you can pass to your fellow reviewer.
@@ -83,4 +127,5 @@ longer do without them.
 Having a branch-based deployment even for simple things like a frontend change works great and
 enhances the workflow. Context switches required for performing a review are decreased.
 
-Still on the list are changes needed
+What we're yet to add are review environments for backend changes. Should we straightforward with
+API Gateway stages and could be another cool addition.
