@@ -27,6 +27,13 @@
 	@apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
+.astro-code {
+    font-size: 0.9rem;
+    line-height: 1.25;
+    padding: 0.8rem;
+    border: 1px solid #475569;
+}
+
 code {
   counter-reset: step;
   counter-increment: step 0;
@@ -39,4 +46,24 @@ code .line::before {
   display: inline-block;
   text-align: right;
   color: rgba(115,138,148,.4)
+}
+
+pre[class*="astro-code"] {
+  position: relative;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+pre[class*="astro-code"] button {
+  position: absolute;
+  right: 0.4rem;
+  top: 0.3rem;
+  padding: 5px;
+  border: 1px solid #475569;
+  border-radius: 0.375rem;
+}
+
+pre[class*="astro-code"] button:hover {
+  cursor: pointer;
+  background-color: rgb(55 65 81);
 }
