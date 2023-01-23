@@ -28,8 +28,8 @@
 }
 
 .astro-code {
-    font-size: 0.9rem;
-    line-height: 1.25;
+    font-size: 0.9rem !important;
+    line-height: 1.25 !important;
     padding: 0.8rem;
     border: 1px solid #475569;
 }
