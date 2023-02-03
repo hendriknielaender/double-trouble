@@ -10,6 +10,7 @@ if (typeof document !== "undefined") {
       if (navigator.clipboard) {
         let button = document.createElement("button");
 
+        button.classList.add("clipboard-copy");
         button.innerHTML = copyButtonIcon;
         block.appendChild(button);
 

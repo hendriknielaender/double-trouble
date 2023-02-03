@@ -27,11 +27,19 @@
 	@apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
+.clipboard-copy {
+    display: none;
+}
+
 .astro-code {
     font-size: 0.9rem !important;
     line-height: 1.25 !important;
     padding: 0.8rem;
     border: 1px solid #475569;
+}
+
+.astro-code:hover .clipboard-copy {
+    display: block;
 }
 
 code {
