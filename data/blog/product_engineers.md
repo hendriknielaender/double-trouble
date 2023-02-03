@@ -3,7 +3,7 @@ publishDate: "Dec 01 2022"
 title: "Draft: Product Engineers"
 description: "Product first: An engineers approach to feature obsession"
 image: "https://pyzoohandmade.com/werepstem/wp-content/uploads/sites/2/2019/07/Untitled-design-63.png"
-tags: [conf, node]
+tags: [feature, product, engineers, plannig, development]
 ---
 
 > In the end, it's not about the best code, its about a working product.
@@ -28,13 +28,27 @@ idea is needed for many companies.
 
 ## Thought Experiment: Why are we called Software Engineers, not Product Engineers?
 
-> Product Ownership vs Coding Monkey
+Software engineers play a crucial role in the development of modern technology and digital products.
+But what if they were called "Product Engineers" instead?
+This thought experiment ponders the question of why the software development industry has chosen to label
+its professionals as "Software Engineers," and what implications this has on their role in the development process.
 
-> The more engineers know about the product, the better decisions they will make for the company.
 
-> Shots @PMs: Engineers anyway plan their own sprints
+One key issue that arises is the distinction between "product ownership" and being a "coding monkey."
+As the role of software engineers continues to evolve, it's important that they have a clear understanding of the product
+they're working on and how it fits into the larger picture of the company.
+The more knowledge engineers have about the product, the better decisions they will make,
+leading to better results for the company.
 
-> Onboarded Software engineers need to turn into product engineers.
+Some may argue that product management is the responsibility of product managers (PMs),
+but in reality, engineers often plan their own sprints and have a significant impact on the product roadmap.
+This highlights the importance of engineers becoming more involved in the product development process and taking on a more
+"product-focused" mindset.
+
+In conclusion, it's important for onboarded software engineers to turn into product engineers.
+This shift in mindset can lead to better results for the company and a more fulfilling career for the engineer.
+By having a clear understanding of the product they're developing and how it fits into the larger picture,
+software engineers can make more informed decisions and drive the development process forward in a more effective and impactful way.
 
 ## Time To Market: Unit test, Integration Test, Market Test?
 
@@ -95,6 +109,7 @@ and you can safe the time of coming together again and iterating though everybod
 Idea: Shorten the boring ticket planning meeting. Introduce a voting system and have a ticket
 approved once a subset of engineers voted on it. Not everybody needs to listen for a frontend
 ticket grooming.
+
 TODO: find a tool to do that in jira.
 
 ## Innovation Time
@@ -109,4 +124,28 @@ lay his efforts in the same non-product direction.
 
 ## Motivation / Training
 
-blubb
+> Being productive and creative as a software engineer is crucial and motivation plays a big role in this.
+
+Here are some ways companies can keep their engineers motivated:
+
+- Giving credit where it's due for a job well done
+- Providing growth opportunities and room for career progression
+- Creating a positive and uplifting workplace atmosphere
+- Offering exciting and demanding projects to work on
+- Making sure each engineer feels like they're making a difference in the company and its products
+
+> Staying up-to-date with the latest tech and improving your skills is important for software engineers.
+
+Companies can support their engineers by offering:
+
+- Hands-on technical workshops and training sessions
+- Attending conferences and events
+- Access to online courses and certifications
+- Internal training programs and development opportunities
+- Mentorship and coaching programs
+
+It's not just about tech though, soft-skills training like project management, teamwork, and communication are also important.
+This helps improve the engineers' overall performance and teamwork abilities.
+
+
+By offering motivation and training, companies can build a work environment that drives productivity, creativity, and employee happiness.
