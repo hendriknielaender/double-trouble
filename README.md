@@ -23,7 +23,7 @@ Panelbear is used for analytics. It is GDPR conform, does not collect PII and st
 
 ### How can I exclude my own page visits?
 
-Visit double-trouble.dev/?disable_panelbear once to set the config to exclude your own visits
+Visit https://www.double-trouble.dev/?panelbear_disable once to set the config to exclude your own visits
 
 ### What about local page hits during development?
 
