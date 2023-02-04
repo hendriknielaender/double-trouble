@@ -16,6 +16,23 @@ Queries:
 
 Should attribute the original owner of the image and respect the license of the image.
 
+
+## Analytics
+
+Panelbear is used for analytics. It is GDPR conform, does not collect PII and stores data only in the EU.
+
+### How can I exclude my own page visits?
+
+Visit double-trouble.dev/?disable_panelbear once to set the config to exclude your own visits
+
+### What about local page hits during development?
+
+These are disabled automatically which is probably a good thing as it counts towards the free tier
+usage limit.
+
+https://panelbear.com/docs/local-development/?ref=console
+
+
 ## Features
 
 - ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)) supporting **Dark mode**.
