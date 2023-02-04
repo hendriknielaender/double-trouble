@@ -128,5 +128,5 @@ longer do without them.
 Having a branch-based deployment even for simple things like a frontend change works great and
 enhances the workflow. Context switches required for performing a review are decreased.
 
-What we're yet to add are review environments for backend changes. Should we straightforward with
+What we're yet to add are review environments for backend changes. Should be straightforward with
 API Gateway stages and could be another cool addition.
