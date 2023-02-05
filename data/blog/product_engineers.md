@@ -1,10 +1,29 @@
 ---
-publishDate: "Dec 01 2022"
+publishDate: "Feb 5 2023"
 title: "Draft: Product Engineers"
 description: "Product first: An engineers approach to feature obsession"
 image: "https://pyzoohandmade.com/werepstem/wp-content/uploads/sites/2/2019/07/Untitled-design-63.png"
+imageCreditUrl: "https://pyzoohandmade.com/"
 tags: [feature, product, engineers, plannig, development]
 ---
+
+## Introduction
+
+TODO Set the stage and add an introduction on product engineers and give an overview about this
+blog / blog series.
+
+Proposal for structure:
+- 1 huge blogpost and be done with it (will be hard to read I guess, plus we might want to extend
+  it in the future)
+- Product engineers:
+  - Part 1: Product Engineers, why being a software engineer is not enough
+    - Explain why we think product engineers are needed and our core ideas about it (unit test,
+      integration test, market test, etc.)
+  - Part 2: Product Engineering, a fresh take on agile
+    - Talk about our / your take on minimal agile
+  - Part 3: Product Engineers, stories from the war / a handbook for action
+
+## Find a name for this section
 
 > In the end, it's not about the best code, its about a working product.
 
