@@ -1,0 +1,32 @@
+name: publish-to-medium
+on: [push]
+
+# https://github.com/InfraWay/post-medium-action
+# https://andrew.red/posts/github-actions-ci-medium-post-action
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - id: posts
+        name: Detecting posts from the changes
+        run: |
+          i=0
+          for changed_file in ${{ steps.files.outputs.added_modified }}; do
+            echo "Do something with ${changed_file}."
+            if [[ "${changed_file}" == "data/blog"* ]];
+            then
+              echo "File ${changed_file} matched post."
+              echo "::set-output name=post${i}::${changed_file}"
+              ((i=i+1))
+            fi
+          done
+      - if: steps.posts.outputs.post0
+        name: Publish to medium
+        uses: infraway/post-medium-action@v1.6.0
+        with:
+          access_token: ${{ secrets.MEDIUM_ACCESS_TOKEN }}
+          markdown_file: ${{ steps.posts.outputs.post0 }}
+          base_url: https://double-trouble.dev
+          post_url: https://double-trouble.dev/blog
