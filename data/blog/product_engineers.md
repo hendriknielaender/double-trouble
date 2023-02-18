@@ -1,6 +1,6 @@
 ---
 publishDate: "Feb 5 2023"
-title: "Product Engineers: An approach for Change"
+title: "Product Engineering: How to become an Agent of Change"
 description: "How and why software engineers can make the difference"
 image: ~/assets/images/thumbnails/product_engineers_dalle.png
 imageCreditUrl: https://labs.openai.com/
@@ -202,11 +202,38 @@ something that needs practice. Similar to how the first pancake always sucks, we
 companies, when a team first does a MVP, it usually sucks at it. But this is your starting point,
 and where you and your team can learn valuable lessons.
 
+### Intrinsic Motivation
+
+TODO Make a point about the value of intrinsic motivation that is fostered by the product engineer
+mindset, and that can be the decididing differentiator between the average and the excellent
+employee.
+
 ### Innovation Time
 
 > Innovation time: Moonshots! Break out of the sprint!
 
-Without wiggle room and innovation time, there is no way to make change happen from the bottom up.
+Without wiggle room and innovation time, there is no way to make change happen from the bottom
+up. So to implement change while everybody is working an incremental, sleepy plan that leads
+nowhere, you may need to set some time aside to work on new ideas yourself.
+
+This can be called as innovation time and is sometimes even an official process in engineering
+companies.
+
+What can be done when there is no such time and there is no wiggle room to get anything done
+outside of the daily work? Well first you would be surprised what you can get done in little
+amount of time with the right tools and intrinsic motivation. When there is really a product
+engineer that is breathing down your neck it might be actually time to leave. But in many other
+situations,
+
+> You get wiggle room by making wiggle room.
+
+This might be a very bold move depending on the company and situation. In reality when you
+actually make stuff work people will soon forget about the actual ticket you were supposed to
+implement. But for the situation where this is not the case, maybe this take on innovation from
+Elon can give you a new perspective.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you punish people too much for failure then they will respond accordingly and the innovation you will get will be very incrementalist. Nobody is going to try anything bold for fear of getting fired. <a href="https://twitter.com/elonmusk?ref_src=twsrc%5Etfw">@elonmusk</a> <a href="https://t.co/RkopioBUtx">pic.twitter.com/RkopioBUtx</a></p>&mdash; Tesla Owners Silicon Valley (@teslaownersSV) <a href="https://twitter.com/teslaownersSV/status/1455056935158358019?ref_src=twsrc%5Etfw">November 1, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 ### How to get your MVP out the door?
 
