@@ -1,9 +1,9 @@
 ---
 publishDate: "Feb 5 2023"
-title: "Product First: An Engineering Guide to Feature Obsession"
-description: "Reasons for software engineers to become product engineers and tips how"
-image: "https://pyzoohandmade.com/werepstem/wp-content/uploads/sites/2/2019/07/Untitled-design-63.png"
-imageCreditUrl: "https://pyzoohandmade.com/"
+title: "Product Engineers: An approach for Change"
+description: "How and why software engineers can make the difference"
+image: ~/assets/images/thumbnails/product_engineers_dalle.png
+imageCreditUrl: https://labs.openai.com/
 tags: [feature, product, engineers, plannig, development]
 ---
 
