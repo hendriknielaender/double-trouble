@@ -1,17 +1,23 @@
 ---
-import { Icon } from 'astro-icon';
-import Logo from '~/components/atoms/Logo.astro';
-import ToggleTheme from '~/components/core/ToggleTheme.astro';
-import ToggleMenu from '~/components/core/ToggleMenu.astro';
+import { Icon } from "astro-icon";
+import Logo from "~/components/atoms/Logo.astro";
+import ToggleTheme from "~/components/core/ToggleTheme.astro";
+import ToggleMenu from "~/components/core/ToggleMenu.astro";
 
-import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
+import {
+	getPermalink,
+	getBlogPermalink,
+	getHomePermalink,
+} from "~/utils/permalinks";
 ---
 
 <header
-	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-800 dark:md:bg-slate-800 md:backdrop-blur-sm border-b dark:border-b-0"
+	class="sticky top-0 z-40 flex-none mx-auto w-full bg-slate-100 md:bg-white/90 dark:bg-slate-800 dark:md:bg-slate-800 md:backdrop-blur-sm border-b dark:border-b-0"
 	id="header"
 >
-	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
+	<div
+		class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"
+	>
 		<div class="flex justify-between">
 			<a class="flex items-center" href={getHomePermalink()}>
 				<Logo />
@@ -25,7 +31,9 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 			class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-screen md:h-auto"
 			aria-label="Main navigation"
 		>
-			<ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
+			<ul
+				class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base"
+			>
 				<li>
 					<a
 						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
