@@ -8,37 +8,37 @@ const { meta = {} } = Astro.props;
 
 // https://stackoverflow.com/questions/66120513/property-does-not-exist-on-type-window-typeof-globalthis
 declare global {
-	interface Window {
-		panelbear?: any;
-	}
+  interface Window {
+    panelbear?: any;
+  }
 }
 ---
 
 <!DOCTYPE html>
 <html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
-	<head>
-		<MetaTags {...meta} />
-		<script async src="https://cdn.panelbear.com/analytics.js?site=ImWVdVf7MvN"
-		></script>
-		<script>
-			window.panelbear =
-				window.panelbear ||
-				function () {
-					(window.panelbear.q = window.panelbear.q || []).push(arguments);
-				};
-			window.panelbear("config", { site: "ImWVdVf7MvN" });
-		</script>
-	</head>
+  <head>
+    <MetaTags {...meta} />
+    <script async src="https://cdn.panelbear.com/analytics.js?site=ImWVdVf7MvN"
+    ></script>
+    <script>
+      window.panelbear =
+        window.panelbear ||
+        function () {
+          (window.panelbear.q = window.panelbear.q || []).push(arguments);
+        };
+      window.panelbear("config", { site: "ImWVdVf7MvN" });
+    </script>
+  </head>
 
-	<body
-		class="antialiased text-gray-900 dark:text-slate-100 tracking-tight bg-white dark:bg-slate-900"
-	>
-		<slot />
-		<BasicScripts />
-		<style is:global>
-			img {
-				content-visibility: auto;
-			}
-		</style>
-	</body>
+  <body
+    class="antialiased text-gray-900 dark:text-slate-100 tracking-tight bg-white dark:bg-slate-900"
+  >
+    <slot />
+    <BasicScripts />
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
 </html>

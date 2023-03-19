@@ -6,26 +6,26 @@ import Layout from "~/layouts/PageLayout.astro";
 import HighlightedPosts from "~/components/blog/HighlightedPosts.astro";
 
 const meta = {
-	title: SITE.title,
-	description: SITE.description,
-	canonical: getCanonical(getHomePermalink()),
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
 };
 ---
 
 <Layout {meta}>
-	<div style="text-align:center">
-		<br />
-		<br />
-		<h2
-			class="mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading"
-		>
-			Twice the fun, <div
-				class="bg-clip-text text-transparent bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-yellow-600 to-yellow-100"
-			>
-				<i>double</i>
-			</div> the trouble.
-		</h2>
-		<div class="-mt-6 text-9xl">🤜🤛</div>
-	</div>
-	<HighlightedPosts />
+  <div style="text-align:center">
+    <br />
+    <br />
+    <h2
+      class="mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading"
+    >
+      Twice the fun, <div
+        class="bg-clip-text text-transparent bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-yellow-600 to-yellow-100"
+      >
+        <i>double</i>
+      </div> the trouble.
+    </h2>
+    <div class="-mt-6 text-9xl">🤜🤛</div>
+  </div>
+  <HighlightedPosts />
 </Layout>
