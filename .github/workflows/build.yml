@@ -1,0 +1,29 @@
+name: Build
+
+on:
+  pull_request:
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+          cache-dependency-path: "./yarn.lock"
+      - name: Install
+        shell: "bash"
+        run: |
+          yarn install
+      - name: Build
+        shell: "bash"
+        run: |
+          yarn run build
