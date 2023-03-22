@@ -1,7 +1,9 @@
 ---
-import { SITE } from '~/config.mjs';
+import { SITE } from "~/config.mjs";
 
-const base = `${SITE.basePathname}${SITE.basePathname.endsWith('/') ? "" : "/"}`
+const base = `${SITE.basePathname}${
+  SITE.basePathname.endsWith("/") ? "" : "/"
+}`;
 ---
 
 <link rel="shortcut icon" href={`${base}favicon.ico`} />

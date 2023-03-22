@@ -1,68 +1,101 @@
 ---
-import { SITE } from '~/config.mjs';
-import { getCanonical, getHomePermalink } from '~/utils/permalinks';
-import Layout from '~/layouts/PageLayout.astro';
+import { SITE } from "~/config.mjs";
+import { getCanonical, getHomePermalink } from "~/utils/permalinks";
+import Layout from "~/layouts/PageLayout.astro";
 
-import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
+import Header from "~/components/widgets/Header.astro";
+import Footer from "~/components/widgets/Footer.astro";
 
 const meta = {
-	title: SITE.title,
-	description: SITE.description,
-	canonical: getCanonical(getHomePermalink()),
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
 };
 
-import { Icon } from 'astro-icon';
-import Picture from '~/components/core/Picture.astro';
+import { Icon } from "astro-icon";
+import Picture from "~/components/core/Picture.astro";
 ---
 
 <Layout {meta}>
-<section>
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <h2
+  <section>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2
         class="mb-5 mt-5 text-2xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading"
-    >
-    Privacy Policy for double-trouble.dev
-    </h2>
+      >
+        Privacy Policy for double-trouble.dev
+      </h2>
 
-<p>At double-trouble, accessible from double-trouble.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by double-trouble and how we use it.</p>
-<br />
-<br />
-<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. Our Privacy Policy was generated with the help of <a href="https://www.gdprprivacypolicy.net/">GDPR Privacy Policy Generator</a></p>
-<br />
-<br />
-<h2 class="font-medium">General Data Protection Regulation (GDPR)</h2>
-<p>We are a Data Controller of your information.</p>
+      <p>
+        At double-trouble, accessible from double-trouble.dev, one of our main
+        priorities is the privacy of our visitors. This Privacy Policy document
+        contains types of information that is collected and recorded by
+        double-trouble and how we use it.
+      </p>
+      <br />
+      <br />
+      <p>
+        If you have additional questions or require more information about our
+        Privacy Policy, do not hesitate to contact us. Our Privacy Policy was
+        generated with the help of <a href="https://www.gdprprivacypolicy.net/"
+          >GDPR Privacy Policy Generator</a
+        >
+      </p>
+      <br />
+      <br />
+      <h2 class="font-medium">General Data Protection Regulation (GDPR)</h2>
+      <p>We are a Data Controller of your information.</p>
 
-<br />
-<p>double-trouble legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Information we collect and the specific context in which we collect the information:</p>
-<ul>
-    <li>double-trouble needs to perform a contract with you</li>
-    <li>You have given double-trouble permission to do so</li>
-    <li>Processing your personal information is in double-trouble legitimate interests</li>
-    <li>double-trouble needs to comply with the law</li>
-</ul>
+      <br />
+      <p>
+        double-trouble legal basis for collecting and using the personal
+        information described in this Privacy Policy depends on the Personal
+        Information we collect and the specific context in which we collect the
+        information:
+      </p>
+      <ul>
+        <li>double-trouble needs to perform a contract with you</li>
+        <li>You have given double-trouble permission to do so</li>
+        <li>
+          Processing your personal information is in double-trouble legitimate
+          interests
+        </li>
+        <li>double-trouble needs to comply with the law</li>
+      </ul>
 
-<br />
-<br />
-<p>double-trouble will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.</p>
+      <br />
+      <br />
+      <p>
+        double-trouble will retain your personal information only for as long as
+        is necessary for the purposes set out in this Privacy Policy. We will
+        retain and use your information to the extent necessary to comply with
+        our legal obligations, resolve disputes, and enforce our policies.
+      </p>
 
-<br />
-<br />
-<p>If you are a resident of the European Economic Area (EEA), you have certain data protection rights. If you wish to be informed what Personal Information we hold about you and if you want it to be removed from our systems, please contact us.</p>
+      <br />
+      <br />
+      <p>
+        If you are a resident of the European Economic Area (EEA), you have
+        certain data protection rights. If you wish to be informed what Personal
+        Information we hold about you and if you want it to be removed from our
+        systems, please contact us.
+      </p>
 
-<br />
-<br />
-<p>In certain circumstances, you have the following data protection rights:</p>
-<ul>
-    <li>The right to access, update or to delete the information we have on you.</li>
-    <li>The right of rectification.</li>
-    <li>The right to object.</li>
-    <li>The right of restriction.</li>
-    <li>The right to data portability</li>
-    <li>The right to withdraw consent</li>
-</ul>
-
+      <br />
+      <br />
+      <p>
+        In certain circumstances, you have the following data protection rights:
+      </p>
+      <ul>
+        <li>
+          The right to access, update or to delete the information we have on
+          you.
+        </li>
+        <li>The right of rectification.</li>
+        <li>The right to object.</li>
+        <li>The right of restriction.</li>
+        <li>The right to data portability</li>
+        <li>The right to withdraw consent</li>
+      </ul>
 <br />
 <br />
 <h2 class="font-medium">Analytics</h2>

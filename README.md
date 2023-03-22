@@ -1,9 +1,4 @@
-# 🚀 AstroWind
-
-<img src="lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
-
-**AstroWind** is a free and open-source template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
+# 🤜🤛 Double Trouble Blog
 
 ## Preview Images
 
@@ -23,7 +18,7 @@ Panelbear is used for analytics. It is GDPR conform, does not collect PII and st
 
 ### How can I exclude my own page visits?
 
-Visit double-trouble.dev/?disable_panelbear once to set the config to exclude your own visits
+Visit https://www.double-trouble.dev/?panelbear_disable once to set the config to exclude your own visits
 
 ### What about local page hits during development?
 
@@ -33,7 +28,9 @@ usage limit.
 https://panelbear.com/docs/local-development/?ref=console
 
 
-## Features
+## AstroWind Theme
+
+### Features
 
 - ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)) supporting **Dark mode**.
 - ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports.
@@ -44,8 +41,6 @@ https://panelbear.com/docs/local-development/?ref=console
 - ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
 
 <br>
-
-<img src="./screenshot.png" alt="AstroWind Theme Screenshot">
 
 [![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=eeeeee&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
 [![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
@@ -75,19 +70,19 @@ https://panelbear.com/docs/local-development/?ref=console
 
 <br>
 
-## Demo
+### Demo
 
 📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
 
 <br>
 
-## Getting started
+### Getting started
 
 **AstroWind** tries to give you quick access to creating a website using [Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focuses on simplicity, good practices and high performance.
 
 Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Angular, Vue, Svelte, Solid JS...) to use and how to approach their goals..
 
-### Project structure
+#### Project structure
 
 Inside AstroWind template, you'll see the following folders and files:
 
@@ -148,7 +143,7 @@ Any static assets, like images, can be placed in the `public/` directory if they
 
 <br>
 
-### Commands
+#### Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -164,7 +159,7 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-### Configuration
+#### Configuration
 
 Basic configuration file: `./src/config.mjs`
 
@@ -210,68 +205,3 @@ export const BLOG = {
 ```
 
 <br>
-
-### Deploy
-
-#### Deploy to production (manual)
-
-You can create an optimized production build with:
-
-```shell
-npm run build
-```
-
-Now, your website is ready to be deployed. All generated files are located at
-`dist` folder, which you can deploy the folder to any hosting service you
-prefer.
-
-#### Deploy to Netlify
-
-Clone this repository on own GitHub account and deploy to Netlify:
-
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/astrowind)
-
-#### Deploy to Vercel
-
-Clone this repository on own GitHub account and deploy to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Fastrowind)
-
-<br>
-
-## Roadmap
-
-- _Project_:
-  - Create simple and clear strategy to get template updates
-- _Blog_:
-  - Improve blog design
-  - Create component or utilities for related posts
-  - Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg video, tweet...)
-- _More widgets_:
-  - Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
-  - Create external library or place with useful Tailwind components
-- _More Examples_: Add commonly used example pages (Ex: About, Terms, Services...)
-- _Documentation_: Create detailed documentation with best practices and redesign tips
-
-<br>
-
-## Frequently Asked Questions
-
-- Why?
--
--
-
-<br>
-
-## Contributing
-
-If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
-That would be very useful for all of us and we would be happy to listen and take action.
-
-## Acknowledgements
-
-Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/astrowind/graphs/contributors).
-
-## License
-
-**AstroWind** is licensed under the Unlicense license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE.md) file for details.

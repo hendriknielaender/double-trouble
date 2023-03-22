@@ -1,62 +1,96 @@
 ---
-import { SITE } from '~/config.mjs';
-import { getCanonical, getHomePermalink } from '~/utils/permalinks';
-import Layout from '~/layouts/PageLayout.astro';
+import { SITE } from "~/config.mjs";
+import { getCanonical, getHomePermalink } from "~/utils/permalinks";
+import Layout from "~/layouts/PageLayout.astro";
 
-import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
+import Header from "~/components/widgets/Header.astro";
+import Footer from "~/components/widgets/Footer.astro";
 
 const meta = {
-	title: SITE.title,
-	description: SITE.description,
-	canonical: getCanonical(getHomePermalink()),
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
 };
 
-import { Icon } from 'astro-icon';
-import Picture from '~/components/core/Picture.astro';
+import { Icon } from "astro-icon";
+import Picture from "~/components/core/Picture.astro";
 ---
 
 <Layout {meta}>
-<section>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <h2
+  <section>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2
         class="mb-5 mt-5 text-2xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading"
-    >
-    Legal notice (Impressum)
-    </h2>
+      >
+        Legal notice (Impressum)
+      </h2>
 
-    <p class="font-semibold">The following information (Impressum)
-    is required under German law.</p>
-    <br/>
-    <p><em>double-trouble.dev</em>
-    <br />
-    Hendrik Nieländer &amp; Felix Brilej
-    <br />
-    c/o autorenglück.de
-    <br>Franz-Mehring-Str. 15<br>01237 Dresden</p>
-    <p>double-trouble@auksas.de</p>
-    <br />
-    <br />
-    <p>
-     <em>Verantwortlicher im Sinne des Presserechts
-     (V.i.S.d.P.):</em>
-     <br> Hendrik Nieländer &amp; Felix Brilej
-     <br />
-     c/o autorenglück.de
-    <br>Franz-Mehring-Str. 15<br>01237 Dresden</p>
-    <br />
-    <br />
-    <h3 id="-eu-commission" class="font-medium">Online Dispute Resolution website of the EU Commission</h3>
-    <p>In order for consumers and traders to resolve a dispute out-of-court, the European Commission developed the Online Dispute Resolution Website:  <a href="http://www.ec.europa.eu/consumers/odr">www.ec.europa.eu/consumers/odr</a></p>
-    <br />
-    <h3 id="legal-disclaimer" class="font-medium">Legal disclaimer</h3>
-    <p>The contents of these pages were prepared with utmost care. Nonetheless, we cannot assume liability for the timeless accuracy and completeness of the information.</p>
-    <p>Our website contains links to external websites.  As the contents of these third-party websites are beyond our control, we cannot accept liability for them. Responsibility for the contents of the linked pages is always held by the provider or operator of the pages.</p>
-    <br />
-    <h3 id="data-protection" class="font-medium">Data protection</h3>
-    <p>In general, when visiting the website of double-trouble.dev, no personal data are saved. However, these data can be given on a voluntary basis. No data will be passed on to third parties without your consent. We point out that in regard to unsecured data transmission in the internet (e.g. via email), security cannot be guaranteed. Such data could possibIy be accessed by third parties.</p>
-    <br /><br />
-    <p><em>English diclaimer by  <a href="https://language-boutique.de/" title="Translators in Germany">Language-Boutique.de</a></em></p>
-  </div>
-</section>
+      <p class="font-semibold">
+        The following information (Impressum) is required under German law.
+      </p>
+      <br />
+      <p>
+        <em>double-trouble.dev</em>
+        <br />
+        Hendrik Nieländer &amp; Felix Brilej
+        <br />
+        c/o autorenglück.de
+        <br />Franz-Mehring-Str. 15<br />01237 Dresden
+      </p>
+      <p>double-trouble@auksas.de</p>
+      <br />
+      <br />
+      <p>
+        <em>Verantwortlicher im Sinne des Presserechts (V.i.S.d.P.):</em>
+        <br /> Hendrik Nieländer &amp; Felix Brilej
+        <br />
+        c/o autorenglück.de
+        <br />Franz-Mehring-Str. 15<br />01237 Dresden
+      </p>
+      <br />
+      <br />
+      <h3 id="-eu-commission" class="font-medium">
+        Online Dispute Resolution website of the EU Commission
+      </h3>
+      <p>
+        In order for consumers and traders to resolve a dispute out-of-court,
+        the European Commission developed the Online Dispute Resolution Website: <a
+          href="http://www.ec.europa.eu/consumers/odr"
+          >www.ec.europa.eu/consumers/odr</a
+        >
+      </p>
+      <br />
+      <h3 id="legal-disclaimer" class="font-medium">Legal disclaimer</h3>
+      <p>
+        The contents of these pages were prepared with utmost care. Nonetheless,
+        we cannot assume liability for the timeless accuracy and completeness of
+        the information.
+      </p>
+      <p>
+        Our website contains links to external websites. As the contents of
+        these third-party websites are beyond our control, we cannot accept
+        liability for them. Responsibility for the contents of the linked pages
+        is always held by the provider or operator of the pages.
+      </p>
+      <br />
+      <h3 id="data-protection" class="font-medium">Data protection</h3>
+      <p>
+        In general, when visiting the website of double-trouble.dev, no personal
+        data are saved. However, these data can be given on a voluntary basis.
+        No data will be passed on to third parties without your consent. We
+        point out that in regard to unsecured data transmission in the internet
+        (e.g. via email), security cannot be guaranteed. Such data could
+        possibIy be accessed by third parties.
+      </p>
+      <br /><br />
+      <p>
+        <em
+          >English diclaimer by <a
+            href="https://language-boutique.de/"
+            title="Translators in Germany">Language-Boutique.de</a
+          ></em
+        >
+      </p>
+    </div>
+  </section>
 </Layout>
