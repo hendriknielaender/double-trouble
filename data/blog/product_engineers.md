@@ -4,7 +4,7 @@ title: "Product Engineering: How to become an Agent of Change"
 description: "How and why software engineers can make the difference"
 image: ~/assets/images/thumbnails/product_engineers_dalle.png
 imageCreditUrl: https://labs.openai.com/
-tags: [feature, product, engineers, plannig, development]
+tags: [feature, product, engineers, planning, development]
 ---
 
 ## Introduction
@@ -29,9 +29,9 @@ revenue is coming in, that might be fine. For a project that brings in revenue i
 investing in its quality.
 
 
-Plenty of companies that are outside of the initial startup struggle here. Companies like Amazon
-try to combat this with slogans like "it's always day one". Though it is just a sentiment, just a
-slogan, the idea is needed for many companies.
+Plenty of companies that are outside of the inital startup phase struggle here. Companies like
+Amazon try to combat this with slogans like "it's always day one". Though it is just a sentiment,
+just a slogan, the idea is needed for many companies.
 
 
 > The more problems we solve for the user, the more the flow of money into the company can increase.
@@ -181,7 +181,7 @@ companies.
 What can be done when there is no such time and there is no wiggle room to get anything done
 outside of the daily work? Well first you would be surprised what you can get done in little
 amount of time with the right tools and intrinsic motivation. When there is really a product
-engineer that is breathing down your neck it might be actually time to leave. But in many other
+manager that is breathing down your neck it might be actually time to leave. But in many other
 situations,
 
 > You get wiggle room by making wiggle room.
