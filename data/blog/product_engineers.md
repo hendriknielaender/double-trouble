@@ -196,11 +196,19 @@ Elon can give you a new perspective.
 
 ### How to get your MVP out the door?
 
-In a company that has decelerated, a weird thing happens. People are desperate for more
-customers. Layoffs are around the corner. But release this new feature that might now be perfect?
-A feature for which we dont have scientific proof that it will work? No way we will release
-that. Whole product departments like to die on this hill.
+Companies must continually innovate and adapt to stay competitive in the fast-paced world of technology.
+Nonetheless, introducing new and untested features might be a daunting task when faced with slow development. 
+In these circumstances, it's critical to balance risk and reward and carefully weigh the possible advantages of a new feature.
+Try to approach this challenge with a data-driven mindset, conducting thorough market research and user testing to inform their decisions.
+Companies should also place a high priority on agility and the capacity to make quick product revisions in response to customer input. 
+Companies may manage the difficulties of releasing new features and continue to foster growth and success by keeping these methods in mind.
 
 So when facing such a situation, it is important to know how to dribble 🤣
 
+### Conclusion: Why Product Engineering and MVPs Are Critical for Successful Product Development
 
+It's crucial to understand the product you're working on and how it fits into the bigger picture of the company in the field of product engineering. Engineers should challenge features on cost and feasibility, care more about data security, and be aware of corner cases in user workflow in addition to just carrying out the ticket plan. When engineers advance in a company, they naturally transition into product engineers, frequently providing the product manager with insightful feedback as well as developing and implementing full solutions on their own.
+
+Making small MVPs is one method to change the engineering mindset to one that is more product-focused. Although defining an MVP can be difficult, it's important to design the initial iteration of the product and stick to a testing and early product release strategy. Businesses like N26 have a reputation for providing basic features that are available for a while before disappearing once more. For the majority of IT businesses, who take long to implement things in close to perfect condition and never roll them back, this is practically unimaginable.
+
+Our recommendation is to give experiments 3 weeks for time to market. Anything beyond that is likely to become too big to fail and will never be rolled back. The best way to learn is to get product feedback as early as possible, be it direct or indirect feedback. By following this approach and adopting a product-focused mindset, engineers can make more informed decisions, drive the development process forward in an effective and impactful way, and create an MVP that delivers the most value for the users.
