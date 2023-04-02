@@ -9,81 +9,20 @@ tags: [feature, product, engineers, plannig, development]
 
 ## Introduction
 
-What do you do as an engineer when you feel your company stops innovating? How could a new idea be
-implemented when change itself becomes hard? How can an engineer with an idea for a new feature
-make the difference? Should engineers worry about the product at all?
+Has it been ages since the last meaningful feature was shipped? Do you have raging customers,
+excited about the project - or are they already researching for competitors?
 
 In this massive post we'll look at these questions and different aspect of the term we call as
 "product engineering". We will not also analyse the problem but also give hints for the solution
 and from our own real life experimentaton with this concept.
 
-## Deceleration, the common cold of grown startups
-
-As startups grow, management starts becoming more complicated and processes sprout like
-    weeds. Often at the same time, the bottom line, innovation that happens for the user, grows
-slimmer and slimmer.
-
-Not only from the top, but also from the bottom, the company is enduring growing pains. New
-engineers need to get onboarded which really dont know the product. Older engineers might be
-leaving as they're looking for better salaries or new challenges. But the product works and
-appears stable.
-
-> The new maxime in engineering: quality over everything. 
-
-And then a weird thing happens. The numbers down. Or at least they dont go up in the rate that is
-expected. Disappointment on the side of the investor and unease among the employees. At some point
-management announces "growing is our status quo" - indicating that if we the business doesnt scale
-together with the new employees, that's a problem.
-
-And then weirdly, again and again across different startups, the big scale up of new features
-doesn't happen. This can be called the common cold of startups. Not every startup might suffer
-from it, but it is quite common and the consequences more often than not, are deadly.
-
-
-## When being a Software Engineer is not enough
-
-A few years back we have already observed this same discussion at one company which happened to
-really stop innovating. It was in a kind of slow down phase where layoffs were knocking at the
-door. The kind of phase in a grown startup where there is no more free fruit in the kitchen and
-management would really like people to pay for their own coffee.
-
-Already then among engineers there was the same discussion for weeks: Should engineers be
-responcible to come up with product ideas?
-
-As a software engineer, what is really your job? Isn't your job just to code and leave the feature
-ideation to the product department? Shouldnt everybody do only what he is good at, and not worry
-about anything else? The question was essentially:
-
-> Should engineers leave the engine room and come up to the cockpit?
-
-The answer boils down to this: When the ship sinks, all the crew will sink together. As an
-engineer you will again and again join startups which stop innovating on the product, and
-eventually you get layed off together with your friends. At that point, the question how you could
-have helped naturally starts happening.
-
-
 ## A Common Pitfall: Upgrading useless things
 
-Behind the maxime of quality stands the idea of scalabity. A high quality technical product is
-obviously more extensible, and more maintainable. The customer will be happier and prices can be
-justified and raised.
-
-When this maxime reaches engineering, it often puts even experienced engineers in some sort of
-waking state of sleep. From feverish bugfixing and hacking of the earliest days, engineering
-becomes a matter of ideology.
-
-It is no longer a matter of creating a business, but it now becomes about upgrading every project
-in the company to a high engineering standard. Best practice is the song playing in every
-development meeting, and everybody is joining in on the dance.
-
-Doing this dance is great and it's needed. But who wants to slightly improve the efficience of a
-20 year old engine, when the ship is going to crash? This is when its time to combine quality in
-one area with space for innovation in another.
-
-> In the end, it's not about the best code, its about a working product.
+> In the end, it's not about the perfect product, its about a working product.
 
 This is the difference between a strategy vs plan: Is the task just a plan to extend and improve a
 codebase, or is it part of a strategy to increase the market fit?
+
 
 A lot of teams plan for minor increases, for reworks of, this, this, that and the other. While the
 revenue is coming in, that might be fine. For a project that brings in revenue it is worth
@@ -141,12 +80,10 @@ This was a personal learning that one of our founding CEOs felt strongly about a
 shared in company meetings. If we take this seriously and dont disregard this as a general
 sentiment, this has meaningful impact on our day-to-day work.
 
-But when even MVPs take endless quarters, are we even putting ourselves in a position to follow
-this advice? Agile is supposed to help us here and it urges us to think in terms of incremental
-releases over big deadlines. Actual MVPs over 100% completion. In the reality, even agile planning
-often looks quite different.
-
-> When you leave an MVP to product, you can count on the engineers to take years
+This advices motivates to create small MVPs. If MVPs take ages, we are no longer in a position to
+follow this advice. Agile is supposed to help us here and it urges us to think in terms of
+incremental releases over big deadlines. Actual MVPs over 100% completion. In the reality, even
+agile planning often looks quite different.
 
 Defining an MVP is a true struggle. Really we are just _planning_(!) the first version of the
 product, but not following the strategy to test and rollout products early.
@@ -204,9 +141,31 @@ and where you and your team can learn valuable lessons.
 
 ### Intrinsic Motivation
 
-TODO Make a point about the value of intrinsic motivation that is fostered by the product engineer
-mindset, and that can be the decididing differentiator between the average and the excellent
-employee.
+> Being productive and creative as a software engineer is crucial and motivation plays a big role in this.
+
+Here are some ways companies can keep their engineers motivated:
+
+- Giving credit where it's due for a job well done
+- Providing growth opportunities and room for career progression
+- Creating a positive and uplifting workplace atmosphere
+- Offering exciting and demanding projects to work on
+- Making sure each engineer feels like they're making a difference in the company and its products
+
+> Staying up-to-date with the latest tech and improving your skills is important for software engineers.
+
+Companies can support their engineers by offering:
+
+- Hands-on technical workshops and training sessions
+- Attending conferences and events
+- Access to online courses and certifications
+- Internal training programs and development opportunities
+- Mentorship and coaching programs
+
+It's not just about tech though, soft-skills training like project management, teamwork, and communication are also important.
+This helps improve the engineers' overall performance and teamwork abilities.
+
+
+By offering motivation and training, companies can build a work environment that drives productivity, creativity, and employee happiness.
 
 ### Innovation Time
 
@@ -243,4 +202,5 @@ A feature for which we dont have scientific proof that it will work? No way we w
 that. Whole product departments like to die on this hill.
 
 So when facing such a situation, it is important to know how to dribble 🤣
+
 
