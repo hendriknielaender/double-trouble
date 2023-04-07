@@ -14,7 +14,7 @@ excited about the project - or are they already researching for competitors?
 
 It is this setting which got us thinking on the topic we call as "product engineering". In this
 massive post, we will not only analyse the problem, but also give hints for the solution and from
-our own real life experimentaton.
+our own real life experimentation.
 
 ## A Common Pitfall: Upgrading useless things
 
@@ -29,7 +29,7 @@ the revenue is coming in, that might be fine. For a project that brings in reven
 investing in its quality.
 
 
-Many companies that are outside of the inital startup phase struggle here. Amazon tries to combat
+Many companies that are outside of the initial startup phase struggle here. Amazon tries to combat
 this with slogans like "it's always day one". Though it is just a sentiment, just a slogan, the
 idea is needed for many companies.
 
@@ -60,7 +60,7 @@ corner cases in the user workflow.
 > As engineers mature in a company they naturally turn into product engineers, while they might 
 > have started out just as a coder that was unfamiliar with the business.
 
-Seasoned engineers often not only give valueable feedback to the PM, but also come up
+Seasoned engineers often not only give valuable feedback to the PM, but also come up
 with entire product ideas **and** implementation plan on their own.
 
 Some might argue that product management really is only the responsibility of product managers
@@ -79,21 +79,21 @@ forward in a more effective and impactful way.
 > CEO: Test your hypothesis as early as possible
 
 This was a personal learning that one of our founding CEOs felt strongly about and which he often
-shared in company meetings. If we take this seriously and dont disregard this as a general
+shared in company meetings. If we take this seriously and don't disregard this as a general
 sentiment, this has meaningful impact on our day-to-day work.
 
-This advices motivates the creation of small MVPs. If MVPs take ages, we are no longer in a
+This advice motivates the creation of small MVPs. If MVPs take ages, we are no longer in a
 position to follow this advice. Agile is supposed to help us here and it urges us to think in
 terms of incremental releases over big deadlines. Actual MVPs over 100% completion. In the
 reality, even agile planning often looks quite different.
 
 Defining an MVP is a true struggle. Really, we are just _planning_(!) the first version of the
-product, but not following the strategy to test and rollout products early.
+product, but not following the strategy to test and roll-out products early.
 
 Companies like N26 have been known to dish out minimal features, which were available for some
 time, but then disappeared again.  This is almost unimaginable for most IT companies. Features
 take forever to be implemented in near perfection, and are almost never rolled back, since having
-wasted all that time is an impossibility for the responcible product owners.  Expensive features
+wasted all that time is an impossibility for the responsible product owners.  Expensive features
 often turn from experiments to a huge gamble to a long-lasting commitments.  In most cases these
 products then go into maintenance mode, and people get eager to _plan_(!)  to extend these again
 with minor advancements. Now you have a team of business people and engineers talking and planning
@@ -124,7 +124,7 @@ engineer and help the organization as a whole?
 
 ### Time
 
-Understanding the product takes time. Dont be that overmotivated new joiner that wants to change
+Understanding the product takes time. Don't be that over-motivated new joiner that wants to change
 everything during the probation time. It's not going to work, and it is more than likely that
 you're going to work on the wrong things.
 
@@ -161,7 +161,7 @@ Companies can support their engineers by offering:
 - Attending conferences and events
 - Access to online courses and certifications
 - Internal training programs and development opportunities
-- Mentorship and coaching programs
+- Mentor-ship and coaching programs
 
 It's not just about tech though, soft-skills training like networking, teamwork, and communication
 are also important. This helps improve the engineers' overall performance and teamwork abilities.
