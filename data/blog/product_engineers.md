@@ -9,29 +9,29 @@ tags: [feature, product, engineers, planning, development]
 
 ## Introduction
 
-Has it been ages since the last meaningful feature was shipped? Do you have raging customers,
+Has it been ages since the last meaningful feature has been shipped? Do you have raging customers,
 excited about the project - or are they already researching for competitors?
 
-In this massive post we'll look at these questions and different aspect of the term we call as
-"product engineering". We will not also analyse the problem but also give hints for the solution
-and from our own real life experimentaton with this concept.
+It is this setting which got us thinking on the topic we call as "product engineering". In this
+massive post, we will not only analyse the problem, but also give hints for the solution and from
+our own real life experimentaton.
 
 ## A Common Pitfall: Upgrading useless things
 
-> In the end, it's not about the perfect product, its about a working product.
+> Plenty of companies stop innovating, while everybody is very busy.
 
 This is the difference between a strategy vs plan: Is the task just a plan to extend and improve a
 codebase, or is it part of a strategy to increase the market fit?
 
 
-A lot of teams plan for minor increases, for reworks of, this, this, that and the other. While the
-revenue is coming in, that might be fine. For a project that brings in revenue it is worth
+A lot of teams plan for minor improvements, for reworks of, this, this, that and the other. While
+the revenue is coming in, that might be fine. For a project that brings in revenue it is worth
 investing in its quality.
 
 
-Plenty of companies that are outside of the inital startup phase struggle here. Companies like
-Amazon try to combat this with slogans like "it's always day one". Though it is just a sentiment,
-just a slogan, the idea is needed for many companies.
+Many companies that are outside of the inital startup phase struggle here. Amazon tries to combat
+this with slogans like "it's always day one". Though it is just a sentiment, just a slogan, the
+idea is needed for many companies.
 
 
 > The more problems we solve for the user, the more the flow of money into the company can increase.
@@ -44,27 +44,29 @@ products. But...
 
 > What if we were called "Product Engineers" instead? 
 
-This thought experiment ponders over the question why the software development industry has chosen
-to label its professionals as "Software Engineers," and what implications this has on their role
-in the development process.
+Why has the software development industry chosen to label their professionals as "Software
+Engineers,"? What implications has this on the role in the development process?
 
 One key issue that arises is the distinction between "product ownership" and being a "coding
-monkey."  As the role of software engineers continues to evolve, it's important that they have a
+monkey." As the role of software engineers continues to evolve, it's important that they have a
 clear understanding of the product they're working on and how it fits into the larger picture of
 the company. The more knowledge engineers have about the product, the better decisions they will
 make, which will yield better results for the company.
 
 In maybe every company engineers really do more than just executing the ticket plan. Features get
 challenged on feasibility and cost. Engineers often care more about data security and know about
-corner cases in the user workflow. As engineers mature in a company they naturally turn into
-product engineers, while they might have started out just as a coder that was unfamiliar with the
-business. Seasoned engineers often not only give valueable feedback to the PM, but also come up
-with entire product ideas **and** implementations on their own.
+corner cases in the user workflow. 
+
+> As engineers mature in a company they naturally turn into product engineers, while they might 
+> have started out just as a coder that was unfamiliar with the business.
+
+Seasoned engineers often not only give valueable feedback to the PM, but also come up
+with entire product ideas **and** implementation plan on their own.
 
 Some might argue that product management really is only the responsibility of product managers
 (PMs), but in reality, engineers often plan their own sprints and have a significant impact on the
 product roadmap. This highlights the importance of engineers becoming more involved in the
-product development process and taking on a more "product-focused" mindset.
+product development process and taking on a more "product-focused" approach.
 
 It seems important for onboarded software engineers to turn into product engineers.  This shift in
 mindset can lead to better results for the company and a more fulfilling career for the engineer.
@@ -80,12 +82,12 @@ This was a personal learning that one of our founding CEOs felt strongly about a
 shared in company meetings. If we take this seriously and dont disregard this as a general
 sentiment, this has meaningful impact on our day-to-day work.
 
-This advices motivates to create small MVPs. If MVPs take ages, we are no longer in a position to
-follow this advice. Agile is supposed to help us here and it urges us to think in terms of
-incremental releases over big deadlines. Actual MVPs over 100% completion. In the reality, even
-agile planning often looks quite different.
+This advices motivates the creation of small MVPs. If MVPs take ages, we are no longer in a
+position to follow this advice. Agile is supposed to help us here and it urges us to think in
+terms of incremental releases over big deadlines. Actual MVPs over 100% completion. In the
+reality, even agile planning often looks quite different.
 
-Defining an MVP is a true struggle. Really we are just _planning_(!) the first version of the
+Defining an MVP is a true struggle. Really, we are just _planning_(!) the first version of the
 product, but not following the strategy to test and rollout products early.
 
 Companies like N26 have been known to dish out minimal features, which were available for some
@@ -112,7 +114,7 @@ In the end the customer decides:
 - Customers are using the feature
 - Bookings / Sales increase
 - Other more fine-grained data
-  - Is the usage time decreased, by making the app more user-friendly?
+  - Has the usage time decreased, as the app got easier to use?
 
 
 ## The way out
@@ -123,11 +125,11 @@ engineer and help the organization as a whole?
 ### Time
 
 Understanding the product takes time. Dont be that overmotivated new joiner that wants to change
-the company during the probation time. It's not going to work, and it is more than likely that
+everything during the probation time. It's not going to work, and it is more than likely that
 you're going to work on the wrong things.
 
 Take time to really understand the company and the product. After 1-2 years in a grown startup you
-should have seen and understood enough to come up with reasonable solution.
+should have seen and understood enough to come up with reasonable solutions.
 
 ### Failure, your best friend
 
@@ -161,11 +163,12 @@ Companies can support their engineers by offering:
 - Internal training programs and development opportunities
 - Mentorship and coaching programs
 
-It's not just about tech though, soft-skills training like project management, teamwork, and communication are also important.
-This helps improve the engineers' overall performance and teamwork abilities.
+It's not just about tech though, soft-skills training like networking, teamwork, and communication
+are also important. This helps improve the engineers' overall performance and teamwork abilities.
 
 
-By offering motivation and training, companies can build a work environment that drives productivity, creativity, and employee happiness.
+By offering motivation and training, companies can build a work environment that drives
+productivity, creativity, and employee happiness.
 
 ### Innovation Time
 
@@ -184,10 +187,10 @@ amount of time with the right tools and intrinsic motivation. When there is real
 manager that is breathing down your neck it might be actually time to leave. But in many other
 situations,
 
-> You get wiggle room by making wiggle room.
+> You sometimes get wiggle room, by making wiggle room.
 
 This might be a very bold move depending on the company and situation. In reality when you
-actually make stuff work people will soon forget about the actual ticket you were supposed to
+actually make stuff work, people will soon forget about the actual ticket you were supposed to
 implement. But for the situation where this is not the case, maybe this take on innovation from
 Elon can give you a new perspective.
 
@@ -203,9 +206,7 @@ Try to approach this challenge with a data-driven mindset, conducting thorough m
 Companies should also place a high priority on agility and the capacity to make quick product revisions in response to customer input. 
 Companies may manage the difficulties of releasing new features and continue to foster growth and success by keeping these methods in mind.
 
-So when facing such a situation, it is important to know how to dribble 🤣
-
-### Conclusion: Why Product Engineering and MVPs Are Critical for Successful Product Development
+## Conclusion: Why Product Engineering and MVPs Are Critical for Successful Product Development
 
 It's crucial to understand the product you're working on and how it fits into the bigger picture of the company in the field of product engineering. Engineers should challenge features on cost and feasibility, care more about data security, and be aware of corner cases in user workflow in addition to just carrying out the ticket plan. When engineers advance in a company, they naturally transition into product engineers, frequently providing the product manager with insightful feedback as well as developing and implementing full solutions on their own.
 
