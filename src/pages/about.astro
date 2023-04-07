@@ -1,39 +1,42 @@
 ---
-import { SITE } from '~/config.mjs';
-import { getCanonical, getHomePermalink } from '~/utils/permalinks';
-import Layout from '~/layouts/PageLayout.astro';
+import { SITE } from "~/config.mjs";
+import { getCanonical, getHomePermalink } from "~/utils/permalinks";
+import Layout from "~/layouts/PageLayout.astro";
 
-import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
+import Header from "~/components/widgets/Header.astro";
+import Footer from "~/components/widgets/Footer.astro";
 
 const meta = {
-	title: SITE.title,
-	description: SITE.description,
-	canonical: getCanonical(getHomePermalink()),
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
 };
 
-import { Icon } from 'astro-icon';
-import Picture from '~/components/core/Picture.astro';
+import { Icon } from "astro-icon";
+import Picture from "~/components/core/Picture.astro";
 ---
 
 <Layout {meta}>
-<section>
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-12 md:py-20">
-			<div>
-                          <div style="text-align:center">
-                            <h1>What is double trouble?</h1>
-                            <br>
-                            Double trouble is a shared blog between us two engineers, Hendrik & Felix.
-                            <br>
-                            We use this blog to share our technical oppinions and findings with a greater audience.
-                            <br><br><br>
+  <section>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="py-12 md:py-20">
+        <div>
+          <div style="text-align:center">
+            <h1>What is double trouble?</h1>
+            <br />
+            Double trouble is a shared blog between us two engineers, Hendrik & Felix.
+            <br />
+            We use this blog to share our technical oppinions and findings with a
+            greater audience.
+            <br /><br /><br />
 
-                            Hello from Hendrik.
-                            <br>
-                            Hello from Felix.
-                            <br>
-		</div>
-	</div>
-</section>
+            Hello from Hendrik.
+            <br />
+            Hello from Felix.
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

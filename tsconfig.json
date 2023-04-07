@@ -2,6 +2,7 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "types": ["@astrojs/image/client"],
+    "skipLibCheck": true,
     "allowJs": true,
     "baseUrl": ".",
     "paths": {

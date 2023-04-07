@@ -8,6 +8,7 @@ const ids = [
 	"gitlab_review_apps_aws_vite",
 	"product_engineers",
 ];
+
 const posts = await findPostsByIds(ids);
 ---
 
@@ -19,6 +20,5 @@ const posts = await findPostsByIds(ids);
 			<span class="inline-block mb-1 sm:mb-4">Highlighted Blogposts:</span>
 		</h2>
 	</div>
-
 	<Grid posts={posts} />
 </section>
