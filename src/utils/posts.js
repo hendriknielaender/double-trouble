@@ -24,10 +24,11 @@ const getNormalizedPost = async (post) => {
     category: frontmatter.category,
     tags: frontmatter.tags,
     readingTime: frontmatter.readingTime,
+    tweet: frontmatter.tweet,
   };
 };
 
-const load = async function () {
+const load = async function() {
   const posts = import.meta.glob(
     ["~/../data/blog/**/*.md", "~/../data/blog/**/*.mdx"],
     {

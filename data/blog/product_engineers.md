@@ -5,6 +5,7 @@ description: "How and why software engineers can make the difference"
 image: ~/assets/images/thumbnails/product_engineers_dalle.png
 imageCreditUrl: https://labs.openai.com/
 tags: [feature, product, engineers, planning, development]
+tweet: "https://twitter.com/doubletrblblogs/status/1644383540262338587"
 ---
 
 ## Introduction
