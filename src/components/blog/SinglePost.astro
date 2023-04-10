@@ -71,7 +71,6 @@ const { post, url } = Astro.props;
         class="mt-5 sm:mt-1 align-middle text-gray-400 dark:text-slate-600"
       />
     </div>
-      {post.tweet ? <TwitterComments url={post.tweet}/> : undefined}
-    </div>
+    {post.tweet ? <TwitterComments url={post.tweet}/> : undefined}
   </article>
 </section>
