@@ -39,6 +39,20 @@
       localStorage.theme = document.documentElement.classList.contains("dark")
         ? "dark"
         : "light";
+
+      // toggle embedded twitter iFrames centrally
+      const frames = document.getElementsByTagName("iframe");
+      for (i = 0; i < frames.length; ++i)
+      {
+         if (frames[i].id.indexOf("twitter-widget") >= 0) {
+           if (localStorage.theme == "dark") {
+             frames[i].src = frames[i].src.replace("theme=light", "theme=dark")
+           }
+           if (localStorage.theme == "light") {
+             frames[i].src = frames[i].src.replace("theme=dark", "theme=light")
+           }
+         }
+       }
     });
 
     attachEvent("[data-aw-social-share]", "click", function (elem) {
