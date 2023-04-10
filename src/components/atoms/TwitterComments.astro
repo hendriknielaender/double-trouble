@@ -1,12 +1,12 @@
 ---
-const { url, class: className = "inline-block" } = Astro.props;
+const { url } = Astro.props;
 
 const response = await fetch("https://publish.twitter.com/oembed?url=" + url);
 const embeddedTweet = await response.json();
 
 // Inspired by https://pakstech.com/blog/switching-to-twitter-comments/
 ---
-<p class="px-4 sm:px-6 max-w-3xl mx-auto">
+<div class="mt-4 container mx-auto px-6 sm:px-6 max-w-3xl prose prose-m lg:prose-l dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8">
       <h2 class="title is-4">Any Comments? Join the Discussion on Twitter:</h2>
       <p class="align:center" set:html={embeddedTweet.html}></p>
-</p>
+<div>
