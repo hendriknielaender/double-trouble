@@ -195,7 +195,7 @@ actually make stuff work, people will soon forget about the actual ticket you we
 implement. But for the situation where this is not the case, maybe this take on innovation from
 Elon can give you a new perspective.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you punish people too much for failure then they will respond accordingly and the innovation you will get will be very incrementalist. Nobody is going to try anything bold for fear of getting fired. <a href="https://twitter.com/elonmusk?ref_src=twsrc%5Etfw">@elonmusk</a> <a href="https://t.co/RkopioBUtx">pic.twitter.com/RkopioBUtx</a></p>&mdash; Tesla Owners Silicon Valley (@teslaownersSV) <a href="https://twitter.com/teslaownersSV/status/1455056935158358019?ref_src=twsrc%5Etfw">November 1, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">If you punish people too much for failure then they will respond accordingly and the innovation you will get will be very incrementalist. Nobody is going to try anything bold for fear of getting fired. <a href="https://twitter.com/elonmusk?ref_src=twsrc%5Etfw">@elonmusk</a> <a href="https://t.co/RkopioBUtx">pic.twitter.com/RkopioBUtx</a></p>&mdash; Tesla Owners Silicon Valley (@teslaownersSV) <a href="https://twitter.com/teslaownersSV/status/1455056935158358019?ref_src=twsrc%5Etfw">November 1, 2021</a></blockquote> 
 
 
 ### How to get your MVP out the door?

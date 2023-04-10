@@ -8,5 +8,7 @@ const embeddedTweet = await response.json();
 ---
 <div class="mt-4 container mx-auto px-6 sm:px-6 max-w-3xl prose prose-m lg:prose-l dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8">
       <h2 class="title is-4">Any Comments? Join the Discussion on Twitter:</h2>
-      <p class="align:center" set:html={embeddedTweet.html}></p>
+      <blockquote class="twitter-tweet" data-theme="dark">
+        <div set:html={embeddedTweet.html}></div>
+      </blockquote>
 <div>
