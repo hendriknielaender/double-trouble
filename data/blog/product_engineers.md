@@ -10,7 +10,7 @@ tags: [feature, product, engineers, planning, development]
 ## Introduction
 
 Has it been ages since the last meaningful feature has been shipped? Do you have raging customers,
-excited about the project - or are they already researching for competitors?
+excited about the project - or are they already looking for competitors?
 
 It is this setting which got us thinking on the topic we call as "product engineering". In this
 massive post, we will not only analyse the problem, but also give hints for the solution and from
@@ -20,8 +20,8 @@ our own real life experimentation.
 
 > Plenty of companies stop innovating, while everybody is very busy.
 
-This is the difference between a strategy vs plan: Is the task just a plan to extend and improve a
-codebase, or is it part of a strategy to increase the market fit?
+This is the difference between a strategy vs plan: do we simply plan to extend and improve a
+codebase, or do we have a strategy for increase the market fit?
 
 
 A lot of teams plan for minor improvements, for reworks of, this, this, that and the other. While
@@ -44,8 +44,8 @@ products. But...
 
 > What if we were called "Product Engineers" instead? 
 
-Why has the software development industry chosen to label their professionals as "Software
-Engineers,"? What implications has this on the role in the development process?
+Why has the software industry chosen to label their professionals as "Software Engineers,"? What
+implications has this on the role in the development process?
 
 One key issue that arises is the distinction between "product ownership" and being a "coding
 monkey." As the role of software engineers continues to evolve, it's important that they have a
@@ -63,10 +63,10 @@ corner cases in the user workflow.
 Seasoned engineers often not only give valuable feedback to the PM, but also come up
 with entire product ideas **and** implementation plan on their own.
 
-Some might argue that product management really is only the responsibility of product managers
-(PMs), but in reality, engineers often plan their own sprints and have a significant impact on the
-product roadmap. This highlights the importance of engineers becoming more involved in the
-product development process and taking on a more "product-focused" approach.
+Some might argue that product management really is only the responsibility of product managers,
+but in reality, engineers often plan their own sprints and have a significant impact on the
+product roadmap. This highlights the importance of engineers becoming more involved in the product
+development process and taking on a more "product-focused" approach.
 
 It seems important for onboarded software engineers to turn into product engineers.  This shift in
 mindset can lead to better results for the company and a more fulfilling career for the engineer.
@@ -78,31 +78,32 @@ forward in a more effective and impactful way.
 
 > CEO: Test your hypothesis as early as possible
 
-This was a personal learning that one of our founding CEOs felt strongly about and which he often
-shared in company meetings. If we take this seriously and don't disregard this as a general
-sentiment, this has meaningful impact on our day-to-day work.
+This was a personal learning that one of our founding CEOs felt strongly about. A key learning
+which he often shared in company meetings. If we take this seriously and don't disregard this as a
+general sentiment, this has meaningful impact on our day-to-day work.
 
-This advice motivates the creation of small MVPs. If MVPs take ages, we are no longer in a
-position to follow this advice. Agile is supposed to help us here and it urges us to think in
-terms of incremental releases over big deadlines. Actual MVPs over 100% completion. In the
-reality, even agile planning often looks quite different.
+This advice motivates the creation of small MVPs. If MVP creation takes ages, we are no longer in
+a position to follow this advice. Agile is supposed to help us here and it urges us to think in
+terms of incremental, 2 week releases, over big deadlines. Actual MVPs over 100% completion. In
+the reality, even agile planning often looks quite different.
 
-Defining an MVP is a true struggle. Really, we are just _planning_(!) the first version of the
+Defining an MVP is a true struggle. Really, we are just _planning_ the first version of the
 product, but not following the strategy to test and roll-out products early.
 
 Companies like N26 have been known to dish out minimal features, which were available for some
 time, but then disappeared again.  This is almost unimaginable for most IT companies. Features
 take forever to be implemented in near perfection, and are almost never rolled back, since having
-wasted all that time is an impossibility for the responsible product owners.  Expensive features
-often turn from experiments to a huge gamble to a long-lasting commitments.  In most cases these
-products then go into maintenance mode, and people get eager to _plan_(!)  to extend these again
-with minor advancements. Now you have a team of business people and engineers talking and planning
-about a product, which is actually not bringing you anywhere.
+wasted all that time is an impossibility for the responsible product owners.  
+
+Expensive features often turn from experiments to a huge gamble to a long-lasting commitments.  In
+most cases these products then go into maintenance mode, and people get eager to _plan_(!)  to
+extend these again with minor advancements. Now you have a team of business people and engineers
+talking and planning about a product, which is actually not bringing you anywhere.
 
 > Features that become too big turn from experiments into large scale gambles, and are likely
 > to turn into dead maintenance products.
 
-Our recommendation is to give experiments 3 weeks for time to market. Anything after that is
+Our recommendation is to give experiments 3 weeks for the `market test`. Anything after that is
 likely to become too big to fail, and will never be rolled back.
 
 The best way to learn is to get product feedback as early as possible, be it direct or indirect feedback.
