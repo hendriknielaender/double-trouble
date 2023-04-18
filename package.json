@@ -25,6 +25,7 @@
     "@fontsource/inter": "^4.5.14",
     "@tailwindcss/typography": "^0.5.8",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "astro": "^2.3.0",
     "@typescript-eslint/parser": "^5.58.0",
     "astro": "^2.2.1",
     "astro-icon": "^0.8.0",
