@@ -22,7 +22,7 @@ our own real life experimentation.
 > Plenty of companies stop innovating, while everybody is very busy.
 
 This is the difference between a strategy vs plan: do we simply plan to extend and improve a
-codebase, or do we have a strategy for increase the market fit?
+codebase, or do we have a strategy for increasing the market fit?
 
 
 A lot of teams plan for minor improvements, for reworks of, this, this, that and the other. While
