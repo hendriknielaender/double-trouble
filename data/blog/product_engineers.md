@@ -1,5 +1,5 @@
 ---
-publishDate: "Feb 5 2023"
+publishDate: "Apr 7 2023"
 title: "Product Engineering: How to become an Agent of Change"
 description: "How and why software engineers can make the difference"
 image: ~/assets/images/thumbnails/product_engineers_dalle.png
