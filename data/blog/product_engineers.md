@@ -44,7 +44,7 @@ products. But...
 
 > What if we were called "Product Engineers" instead? 
 
-Why has the software industry chosen to label their professionals as "Software Engineers,"? What
+Why has the software industry chosen to label their professionals as "Software Engineers"? What
 implications has this on the role in the development process?
 
 One key issue that arises is the distinction between "product ownership" and being a "coding
@@ -93,10 +93,10 @@ product, but not following the strategy to test and roll-out products early.
 Companies like N26 have been known to dish out minimal features, which were available for some
 time, but then disappeared again.  This is almost unimaginable for most IT companies. Features
 take forever to be implemented in near perfection, and are almost never rolled back, since having
-wasted all that time is an impossibility for the responsible product owners.  
+wasted all that time is an impossibility for the responsible product owners.
 
 Expensive features often turn from experiments to a huge gamble to a long-lasting commitments.  In
-most cases these products then go into maintenance mode, and people get eager to _plan_(!)  to
+most cases these products then go into maintenance mode, and people get eager to _plan_ to
 extend these again with minor advancements. Now you have a team of business people and engineers
 talking and planning about a product, which is actually not bringing you anywhere.
 
