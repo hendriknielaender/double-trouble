@@ -26,6 +26,43 @@
     }
   }
 
+  function adjustTweetsToTheme() {
+    // toggle tweets that are still blockquotes (only shortly after pageload)
+    const blockquotes = document.getElementsByTagName("blockquote");
+    for (i = 0; i < blockquotes.length; ++i)
+    {
+       if (blockquotes[i].className != undefined && blockquotes[i].className=="twitter-tweet") {
+         if (localStorage.theme == "dark") {
+           blockquotes[i].dataset.theme = "dark"
+         }
+         else if (localStorage.theme == "light") {
+           blockquotes[i].dataset.theme = "light"
+         } else {
+           console.warning("unknown theme: " + localStorage.theme)
+         }
+       }
+    }
+
+    // toggle also tweets that are already converted into iframes by the twitter javascript
+    // useful when the theme is changed after pageload
+    const frames = document.getElementsByTagName("iframe");
+    for (i = 0; i < frames.length; ++i)
+    {
+       if (frames[i].id.indexOf("twitter-widget") >= 0) {
+         console.log("adjusting tweet")
+         if (localStorage.theme == "dark") {
+           frames[i].src = frames[i].src.replace("theme=light", "theme=dark")
+         }
+         else if (localStorage.theme == "light") {
+           frames[i].src = frames[i].src.replace("theme=dark", "theme=light")
+           console.log(frames[i].src)
+         } else {
+           console.log("unknown theme: " + localStorage.theme)
+         }
+       }
+    }
+  }
+
   window.onload = function () {
     attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
       elem.classList.toggle("expanded");
@@ -40,19 +77,7 @@
         ? "dark"
         : "light";
 
-      // toggle embedded twitter iFrames centrally
-      const frames = document.getElementsByTagName("iframe");
-      for (i = 0; i < frames.length; ++i)
-      {
-         if (frames[i].id.indexOf("twitter-widget") >= 0) {
-           if (localStorage.theme == "dark") {
-             frames[i].src = frames[i].src.replace("theme=light", "theme=dark")
-           }
-           if (localStorage.theme == "light") {
-             frames[i].src = frames[i].src.replace("theme=dark", "theme=light")
-           }
-         }
-       }
+      adjustTweetsToTheme()
     });
 
     attachEvent("[data-aw-social-share]", "click", function (elem) {
@@ -96,5 +121,7 @@
     document.body.classList.remove("overflow-hidden");
     document.getElementById("header")?.classList.remove("h-screen");
     document.querySelector("#header nav")?.classList.add("hidden");
+
+    adjustTweetsToTheme()
   };
 </script>
