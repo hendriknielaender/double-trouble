@@ -55,7 +55,7 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^2.1.1", "@astrojs/markdown-remark@^2.1.4":
+"@astrojs/markdown-remark@^2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.1.4.tgz#7f23cf2f967d5040fe74b04df25d4e37bea7311c"
   integrity sha512-z5diCcFo2xkBAJ11KySAIKpZZkULZmzUvWsZ2VWIOrR6QrEgEfVl5jTpgPSedx4m+xUPuemlUviOotGB7ItNsQ==
@@ -74,12 +74,12 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.18.2":
-  version "0.18.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.18.2.tgz#1d1a2c30736c66169baabc635d7ab557fc446b0e"
-  integrity sha512-eSR6R62I5cwM6AH8r4UhyBwcV/KKLaZ2siXDA9QR9O4uzUBRnT4gwvoGOvaqpjZCvdNJ2ThaVjePH4DFvxFhaQ==
+"@astrojs/mdx@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.0.tgz#cce7c4d110fa49005fa5e386d304d4485df07401"
+  integrity sha512-McFpMV+npinIEKnY5t9hsdzLd76g78GgIRUPxem2OeXPNB8xr2pNS28GeU0+6Pn5STnB+sgcyyeqXLgzauOlMQ==
   dependencies:
-    "@astrojs/markdown-remark" "^2.1.1"
+    "@astrojs/markdown-remark" "^2.1.4"
     "@astrojs/prism" "^2.1.1"
     "@mdx-js/mdx" "^2.3.0"
     "@mdx-js/rollup" "^2.3.0"
@@ -94,6 +94,7 @@
     remark-gfm "^3.0.1"
     remark-smartypants "^2.0.0"
     shiki "^0.11.1"
+    source-map "^0.7.4"
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
@@ -1382,7 +1383,7 @@ astro-icon@^0.8.0:
     resolve-pkg "^2.0.0"
     svgo "^2.8.0"
 
-astro@^2.3.0:
+astro@^2.2.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/astro/-/astro-2.3.0.tgz#5ab82fbb402d89c46c114a834caaef2a59081d03"
   integrity sha512-1t8U6vDHQLT0gw0IXZLtJKDIShCcJwOuh0K1JyPgFwu1famb/ggyvsqp9nxBZIbNV8BcAWDHrJA+Z7hh1oEiWA==
@@ -6277,7 +6278,7 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-source-map@^0.7.0, source-map@^0.7.3:
+source-map@^0.7.0, source-map@^0.7.3, source-map@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.4.tgz#a9bbe705c9d8846f4e08ff6765acf0f1b0898656"
   integrity sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==
