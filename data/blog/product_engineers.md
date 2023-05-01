@@ -43,22 +43,22 @@ idea is needed for many companies.
 Software engineers play a crucial role in the development of modern technology and digital
 products. But...
 
-> What if we were called "Product Engineers" instead? 
+> What if we were called "Product Engineers" instead?
 
 Why has the software industry chosen to label their professionals as "Software Engineers"? What
 implications has this on the role in the development process?
 
 One key issue that arises is the distinction between "product ownership" and being a "coding
-monkey." As the role of software engineers continues to evolve, it's important that they have a
-clear understanding of the product they're working on and how it fits into the larger picture of
-the company. The more knowledge engineers have about the product, the better decisions they will
-make, which will yield better results for the company.
+monkey." As the role of software engineers continues to evolve, it's important that as
+professionals we have a clear understanding of the product we're working on and how it fits into
+the larger picture of the company. The more knowledge we engineers have about the product, the
+better decisions we will make, and the better results this will yield for our company.
 
-In maybe every company engineers really do more than just executing the ticket plan. Features get
+In maybe every company, engineers really do more than just executing the ticket plan. Features get
 challenged on feasibility and cost. Engineers often care more about data security and know about
-corner cases in the user workflow. 
+corner cases in the user workflow.
 
-> As engineers mature in a company they naturally turn into product engineers, while they might 
+> As engineers mature in a company they naturally turn into product engineers, while they might
 > have started out just as a coder that was unfamiliar with the business.
 
 Seasoned engineers often not only give valuable feedback to the PM, but also come up
