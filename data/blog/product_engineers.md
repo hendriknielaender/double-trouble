@@ -25,9 +25,8 @@ This is the difference between a strategy vs plan: do we simply plan to extend a
 codebase, or do we have a strategy for increasing the market fit?
 
 
-A lot of teams plan for minor improvements, for reworks of, this, this, that and the other. While
-the revenue is coming in, that might be fine. For a project that brings in revenue it is worth
-investing in its quality.
+A lot of teams plan for minor improvements of all the little things. While the revenue is coming
+in, that might be fine. For a project that brings in revenue it is worth investing in its quality.
 
 
 Many companies that are outside of the initial startup phase struggle here. Amazon tries to combat
