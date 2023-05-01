@@ -14,7 +14,7 @@ Has it been ages since the last meaningful feature has been shipped? Do you have
 excited about the project - or are they already looking for competitors?
 
 It is this setting which got us thinking on the topic we call as "product engineering". In this
-massive post, we will not only analyse the problem, but also give hints for the solution and from
+massive post, we will not only analyse the problem, but also give hints for the solution based on
 our own real life experimentation.
 
 ## A Common Pitfall: Upgrading useless things
