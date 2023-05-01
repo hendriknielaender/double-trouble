@@ -30,8 +30,8 @@ in, that might be fine. For a project that brings in revenue it is worth investi
 
 
 Many companies that are outside of the initial startup phase struggle here. Amazon tries to combat
-this with slogans like "it's always day one". Though it is just a sentiment, just a slogan, the
-idea is needed for many companies.
+this with slogans like "it's always day one". Though it is just a sentiment, just a slogan, it
+adresses an issue faced by many companies.
 
 
 > The more problems we solve for the user, the more the flow of money into the company can increase.
