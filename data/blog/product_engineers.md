@@ -14,7 +14,7 @@ Has it been ages since the last meaningful feature has been shipped? Do you have
 excited about the project - or are they already looking for competitors?
 
 It is this setting which got us thinking on the topic we call as "product engineering". In this
-massive post, we will not only analyse the problem, but also give hints for the solution and from
+massive post, we will not only analyse the problem, but also give hints for the solution based on
 our own real life experimentation.
 
 ## A Common Pitfall: Upgrading useless things
@@ -25,14 +25,13 @@ This is the difference between a strategy vs plan: do we simply plan to extend a
 codebase, or do we have a strategy for increasing the market fit?
 
 
-A lot of teams plan for minor improvements, for reworks of, this, this, that and the other. While
-the revenue is coming in, that might be fine. For a project that brings in revenue it is worth
-investing in its quality.
+A lot of teams plan for minor improvements of all the little things. While the revenue is coming
+in, that might be fine. For a project that brings in revenue it is worth investing in its quality.
 
 
 Many companies that are outside of the initial startup phase struggle here. Amazon tries to combat
-this with slogans like "it's always day one". Though it is just a sentiment, just a slogan, the
-idea is needed for many companies.
+this with slogans like "it's always day one". Though it is just a sentiment, just a slogan, it
+adresses an issue faced by many companies.
 
 
 > The more problems we solve for the user, the more the flow of money into the company can increase.
@@ -43,22 +42,22 @@ idea is needed for many companies.
 Software engineers play a crucial role in the development of modern technology and digital
 products. But...
 
-> What if we were called "Product Engineers" instead? 
+> What if we were called "Product Engineers" instead?
 
 Why has the software industry chosen to label their professionals as "Software Engineers"? What
 implications has this on the role in the development process?
 
 One key issue that arises is the distinction between "product ownership" and being a "coding
-monkey." As the role of software engineers continues to evolve, it's important that they have a
-clear understanding of the product they're working on and how it fits into the larger picture of
-the company. The more knowledge engineers have about the product, the better decisions they will
-make, which will yield better results for the company.
+monkey." As the role of software engineers continues to evolve, it's important that as
+professionals we have a clear understanding of the product we're working on and how it fits into
+the larger picture of the company. The more knowledge we engineers have about the product, the
+better decisions we will make, and the better results this will yield for our company.
 
-In maybe every company engineers really do more than just executing the ticket plan. Features get
+In maybe every company, engineers really do more than just executing the ticket plan. Features get
 challenged on feasibility and cost. Engineers often care more about data security and know about
-corner cases in the user workflow. 
+corner cases in the user workflow.
 
-> As engineers mature in a company they naturally turn into product engineers, while they might 
+> As engineers mature in a company they naturally turn into product engineers, while they might
 > have started out just as a coder that was unfamiliar with the business.
 
 Seasoned engineers often not only give valuable feedback to the PM, but also come up
@@ -77,19 +76,20 @@ forward in a more effective and impactful way.
 
 ## Time To Market: Unit test, Integration Test, Market Test?
 
-> CEO: Test your hypothesis as early as possible
+> Test your hypothesis as early as possible
 
-This was a personal learning that one of our founding CEOs felt strongly about. A key learning
-which he often shared in company meetings. If we take this seriously and don't disregard this as a
-general sentiment, this has meaningful impact on our day-to-day work.
+This was a personal learning that one founding CEO we both knew felt strongly about. A key
+learning which he often shared in company meetings. If we take this seriously and don't disregard
+this as a general sentiment, this has meaningful impact on our day-to-day work.
 
 This advice motivates the creation of small MVPs. If MVP creation takes ages, we are no longer in
 a position to follow this advice. Agile is supposed to help us here and it urges us to think in
 terms of incremental, 2 week releases, over big deadlines. Actual MVPs over 100% completion. In
 the reality, even agile planning often looks quite different.
 
-Defining an MVP is a true struggle. Really, we are just _planning_ the first version of the
-product, but not following the strategy to test and roll-out products early.
+Defining an MVP is a true struggle. It is easy to fall into the trap of getting lost in _planning_
+the first perfect version of the product, instead of following the strategy to test and roll-out
+products early.
 
 Companies like N26 have been known to dish out minimal features, which were available for some
 time, but then disappeared again.  This is almost unimaginable for most IT companies. Features
@@ -202,10 +202,10 @@ Elon can give you a new perspective.
 ### How to get your MVP out the door?
 
 Companies must continually innovate and adapt to stay competitive in the fast-paced world of technology.
-Nonetheless, introducing new and untested features might be a daunting task when faced with slow development. 
+Nonetheless, introducing new and untested features might be a daunting task when faced with slow development.
 In these circumstances, it's critical to balance risk and reward and carefully weigh the possible advantages of a new feature.
 Try to approach this challenge with a data-driven mindset, conducting thorough market research and user testing to inform their decisions.
-Companies should also place a high priority on agility and the capacity to make quick product revisions in response to customer input. 
+Companies should also place a high priority on agility and the capacity to make quick product revisions in response to customer input.
 Companies may manage the difficulties of releasing new features and continue to foster growth and success by keeping these methods in mind.
 
 ## Conclusion: Why Product Engineering and MVPs Are Critical for Successful Product Development
