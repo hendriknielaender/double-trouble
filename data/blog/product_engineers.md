@@ -76,11 +76,11 @@ forward in a more effective and impactful way.
 
 ## Time To Market: Unit test, Integration Test, Market Test?
 
-> CEO: Test your hypothesis as early as possible
+> Test your hypothesis as early as possible
 
-This was a personal learning that one of our founding CEOs felt strongly about. A key learning
-which he often shared in company meetings. If we take this seriously and don't disregard this as a
-general sentiment, this has meaningful impact on our day-to-day work.
+This was a personal learning that one founding CEO we both knew felt strongly about. A key
+learning which he often shared in company meetings. If we take this seriously and don't disregard
+this as a general sentiment, this has meaningful impact on our day-to-day work.
 
 This advice motivates the creation of small MVPs. If MVP creation takes ages, we are no longer in
 a position to follow this advice. Agile is supposed to help us here and it urges us to think in
