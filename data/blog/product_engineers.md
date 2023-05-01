@@ -87,8 +87,9 @@ a position to follow this advice. Agile is supposed to help us here and it urges
 terms of incremental, 2 week releases, over big deadlines. Actual MVPs over 100% completion. In
 the reality, even agile planning often looks quite different.
 
-Defining an MVP is a true struggle. Really, we are just _planning_ the first version of the
-product, but not following the strategy to test and roll-out products early.
+Defining an MVP is a true struggle. It is easy to fall into the trap of getting lost in _planning_
+the first perfect version of the product, instead of following the strategy to test and roll-out
+products early.
 
 Companies like N26 have been known to dish out minimal features, which were available for some
 time, but then disappeared again.  This is almost unimaginable for most IT companies. Features
