@@ -26,7 +26,7 @@ more. The Four In A Row was interesting, as the metrics were published through A
 Grafana dashboard. Nice to see that for small datasets and optimized queries, load times can be as
 fast as 0.5 seconds.
 
-<img src="../../src/assets/images/thumbnails/berlin_summit_4_in_a_row.jpg">
+<img src="../../src/assets/images/berlin_summit_2023_review/berlin_summit_4_in_a_row.jpg">
 
 But off to the talks! AWS divides its talks into skill levels: 200, 300 and 400. These talks are
 not livestreamed, and they are not uploaded to youtube. With the occasional exception of the
@@ -58,11 +58,50 @@ ideas.
 Ideas from the talks I saw:
 - Data Visibility in the company is key.
 - Consider the impact a customized experience could have on your customers and revenue.
+- When building an AI, look at existing use-cases over here https://aiexplorer.aws.amazon.com/
 
 Highlights and Learnings:
-- The talk by XYZ on silos.
-- A "Zero ETL" AWS solution is coming up later this year, using Aurora and Redshit. A solution
-  that aims at simpler, on-demand data pipelines.
+- Quite possibly my favorite talk was ANT301 (Frictionless Compliant Data & Analytics Environments
+  at Merck). Kudos to [John Mousa](https://www.linkedin.com/in/johnmousa/) for making this
+  presentaiton exceptionally kind, enjoyable and insightful. Truly a talk of its own league.
+  <img src="../../src/assets/images/berlin_summit_2023_review/ant301_people.jpg">
+  - You make change happen by identifying innovators and empowering them
+  - It is useful to have different shapes of datasets stored for different people, so people can
+    iterate over them together. Storing only the final result of a data analysis will result in a
+    mess and many people stirring their own pot.
+    <img src="../../src/assets/images/berlin_summit_2023_review/ant301_layers.jpg">
+- [Jonathan Weiss'](https://www.linkedin.com/in/jonathan-weiss-26938622/) MAD202 (The Amazon
+  Development Process) must have been a close second. Keeping feedback loops short is key. Amazon
+  calls it the ECT loop (edit-compile-test), I term it "the feedback loop of doom".
+  - Ops Meetings can be a good way to increase dashboard and monitoring practices in the company
+    <img src="../../src/assets/images/berlin_summit_2023_review/mad202_ops_meetings.jpg">
+  - Change happens by treating service teams as independent startups. They are empowered to make
+    their own decisions. They can decide, which feature they believe will serve the customer
+    best. As a trade-off for more autonomy, they get held accountable only through KPIs, looking
+    at the end results.
+  - Following Werner Vogels approach of [working
+    backwards](https://www.allthingsdistributed.com/2006/11/working_backwards.html) from customer
+    needs is one of the hardest and most important things to put into practice.
+- MAD303 (Unlocking Busines Agility with Event-Driven Architectures), a great architecture talk,
+  really hammered home the point of puttung queues behind event receivers. Allowing any subscriber
+  to receive your messages, while the receiver takes care of first putting these events into a
+  queue, makes for a resilient event-driven architecture.
+  <img src="../../src/assets/images/berlin_summit_2023_review/mad303_pattern.jpg">
+- ANT203 (Streamlining Manufacturing Reports at Volkswagen Group) told a great story about data
+  migration.
+  - Sometimes you'll have to provide people with a sense of control. On request they implemented
+    "kill-switch" for local database operators to possibly stop cloud migrations, in case of
+    "emergency". Along the same lines in another talk, execute leadership was given control over a
+    confidence percentage slider, for an AI model.
+  - Two great quotes I took with me, that I couldn't even spot on the slides:
+    - > Redshift is not a typical db. It is a data warehouse, that happens to have an SQL interface
+      infront of it.
+    - > Use Redshift for its intended purpose: Transforming huge chunks of data from one format to another.
+
+- Last but not least, a "Zero ETL" AWS solution got teasiered in one of the talks. It is said to
+  be coming up later this year, using Aurora and Redshit. A solution that aims at simpler,
+  on-demand data pipelines.
+
 
 # Recommendations
 
@@ -78,9 +117,15 @@ When visiting the summit:
 - Getting a cool coffee at Serverlesspresso is a must. It is the way to get to know new tech
   people in the industry, and to hear their stories. There's nothing easier than staring at a step
   function brewing your coffe, and chatting up the next one in queue, who is doing the same.
-  <img src="../../src/assets/images/thumbnails/berlin_summit_23_serverlesspresso.jpg">
+  <img src="../../src/assets/images/berlin_summit_2023_review/berlin_summit_23_serverlesspresso.jpg">
 - To navigate around the summit, get a paper map outside of the keynote hall, and get the AWS
   Events app for your phone.
+
+
+Personal take-aways for my next attendance:
+- Dont bring your laptop, there is absolutely no need.
+- Bring a small metal-box to protect smaller stickers during travel.
+- Have topics in mind you want to evangelize.
 
 
 # Rounding Up
