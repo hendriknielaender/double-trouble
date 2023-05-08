@@ -63,7 +63,7 @@ Ideas from the talks I saw:
 Highlights and Learnings:
 - Quite possibly my favorite talk was ANT301 (Frictionless Compliant Data & Analytics Environments
   at Merck). Kudos to [John Mousa](https://www.linkedin.com/in/johnmousa/) for making this
-  presentaiton exceptionally kind, enjoyable and insightful. Truly a talk of its own league.
+  presentation exceptionally kind, enjoyable and insightful. Truly a talk in a league of its own.
   ![](/src/assets/berlin_summit_2023_review/ant301_people.jpg)
   - You make change happen by identifying innovators and empowering them
   - It is useful to have different shapes of datasets stored for different users, so people can
