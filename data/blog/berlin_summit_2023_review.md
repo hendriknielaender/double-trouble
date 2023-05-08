@@ -40,7 +40,7 @@ Volkswagen, Mercedes-Benz & more, share learnings from some of their biggest clo
 endeavors. While some of them keep it light, or shy away from technical details, in others a
 leading engineer will bluntly tell you what worked and what didnt. Besides that, there are also
 those expert talks by AWS, that focus only on a given architecture or pattern. Independent of
-your skill level, this can give you a *feel* for aws - something that cannot be found in the docs,
+your skill level, this can give you a *feel* for AWS - something that cannot be found in the documentation,
 the product video or in tutorials.
 
 While I thought the keynote was underwhelming due to its overly heroic focus on the situation in
