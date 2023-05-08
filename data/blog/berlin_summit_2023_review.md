@@ -16,7 +16,7 @@ previous years, so only I went. And it was worth it!
 
 # First Impressions
 
-Heading straight into the "AWS World" area, waiting there was a difficult and fast-paced AWS quiz,
+Heading straight into the "AWS World" area, waiting there was a challenging and fast-paced AWS quiz,
 along with AWS socks and stickers. The quiz was exceptional, and I really wish they would bring it
 out as an app for training.
 
