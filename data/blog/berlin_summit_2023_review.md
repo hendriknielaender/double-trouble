@@ -67,7 +67,7 @@ Highlights and Learnings:
   ![](/src/assets/berlin_summit_2023_review/ant301_people.jpg)
   - You make change happen by identifying innovators and empowering them
   - It is useful to have different shapes of datasets stored for different people, so people can
-    iterate over them together. Storing only the final result of a data analysis will result in a
+    iterate over them together. Storing only the final results of a data analysis will result in a
     mess and many people stirring their own pot.
     ![](/src/assets/berlin_summit_2023_review/ant301_layers.jpg)
 - [Jonathan Weiss'](https://www.linkedin.com/in/jonathan-weiss-26938622/) MAD202 (The Amazon
