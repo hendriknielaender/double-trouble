@@ -36,12 +36,12 @@ keynote, you have to be there to see them.
 As the Summit is traditionally not a release-fest like re:Invent, and also many of the talks are
 held by AWS customers, picking a talk is not as easy as searching for an AWS service. Instead of
 pure technical deep dives, many of the Summit talks consist of stories. Big AWS customers like
-Volkswagen, Mercedes-Benz & more, share learnings from some of their biggest cloud
-endeavors. While some of them keep it light, or shy away from technical details, in others a
-leading engineer will bluntly tell you what worked and what didnt. Besides that, there are also
-those expert talks by AWS, that focus only on a given architecture or pattern. Independent of
-your skill level, this can give you a *feel* for AWS - something that cannot be found in the documentation,
-the product video or in tutorials.
+Volkswagen, Mercedes-Benz & more, share learnings from their biggest recent cloud endeavors. While
+some of them keep it light, or shy away from technical details, in others a leading engineer will
+bluntly tell you what worked and what didnt. Besides that, there are also those expert talks by
+AWS, that focus only on a given architecture or pattern. Independent of your skill level, this can
+give you a *feel* for AWS - something that cannot be found in the documentation, the product video
+or in tutorials.
 
 While I thought the keynote was underwhelming due to its overly heroic focus on the situation in
 Ukraine, and the boring talk from Siemens, what followed was much better. After past years of swag
