@@ -75,7 +75,7 @@ Highlights and Learnings:
   calls it the ECT Loop (edit-compile-test), I term it "the feedback loop of doom".
   - Ops meetings can be a good way to increase dashboard and monitoring practices in your company
     ![](/src/assets/berlin_summit_2023_review/mad202_ops_meetings.jpg)
-  - Change happens by treating service teams as independent startups. They are empowered to make
+  - Change happens by treating Service teams as independent startups. They are empowered to make
     their own decisions. They can decide, which feature they believe will serve the customer
     best. As a trade-off for more autonomy, they get held accountable only through KPIs, looking
     at the end results.
