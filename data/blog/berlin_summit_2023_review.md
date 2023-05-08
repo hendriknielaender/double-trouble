@@ -82,7 +82,7 @@ Highlights and Learnings:
   - Following Werner Vogels approach of [working
     backwards](https://www.allthingsdistributed.com/2006/11/working_backwards.html) from customer
     needs is one of the hardest and most important things to put into practice.
-- MAD303 (Unlocking Busines Agility with Event-Driven Architectures), a great architecture talk,
+- MAD303 (Unlocking Business Agility with Event-Driven Architectures), a great architecture talk,
   really hammered home the point of puttung queues behind event receivers. Allowing any subscriber
   to receive your messages, while the receiver takes care of first putting these events into a
   queue, makes for a resilient event-driven architecture.
