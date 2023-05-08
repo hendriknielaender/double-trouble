@@ -7,7 +7,7 @@ imageCreditUrl: https://double-trouble.dev
 tags: [conf, aws]
 ---
 
-This years Berlin Summit showed why it needs to be taken seriously. The usual two day format got
+This year's Berlin Summit showed why it needs to be taken seriously. The usual two day format was
 compressed into one, which made it feel that much more exciting. Polished booths, a diverse crowd,
 plenty of snacks, exciting challenges and good talks.
 
