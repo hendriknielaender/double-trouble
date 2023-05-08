@@ -58,7 +58,7 @@ ideas.
 Ideas from the talks I saw:
 - Data Visibility in the company is key.
 - Consider the impact a customized experience could have on your customers and revenue.
-- When building an AI, look at existing use-cases over here https://aiexplorer.aws.amazon.com/
+- When building an AI, look at existing use cases over here https://aiexplorer.aws.amazon.com/
 
 Highlights and Learnings:
 - Quite possibly my favorite talk was ANT301 (Frictionless Compliant Data & Analytics Environments
