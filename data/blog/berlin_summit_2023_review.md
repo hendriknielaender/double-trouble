@@ -33,7 +33,7 @@ not livestreamed, and they are not uploaded to youtube. With the occasional exce
 keynote, you have to be there to see them.
 
 
-As the Summit is traditionally not a release-fest like Reinvent, and also many of the talks are
+As the Summit is traditionally not a release-fest like re:Invent, and also many of the talks are
 held by AWS customers, picking a talk is not as easy as searching for an AWS service. Instead of
 pure technical deep dives, many of the Summit talks consist of stories. Big AWS customers like
 Volkswagen, Mercedes-Benz & more, share learnings from some of their biggest cloud
