@@ -72,7 +72,7 @@ Highlights and Learnings:
     ![](/src/assets/berlin_summit_2023_review/ant301_layers.jpg)
 - [Jonathan Weiss'](https://www.linkedin.com/in/jonathan-weiss-26938622/) MAD202 (The Amazon
   Development Process) must have been a close second. Keeping feedback loops short is key. Amazon
-  calls it the ECT loop (edit-compile-test), I term it "the feedback loop of doom".
+  calls it the ECT Loop (edit-compile-test), I term it "the feedback loop of doom".
   - Ops Meetings can be a good way to increase dashboard and monitoring practices in the company
     ![](/src/assets/berlin_summit_2023_review/mad202_ops_meetings.jpg)
   - Change happens by treating service teams as independent startups. They are empowered to make
