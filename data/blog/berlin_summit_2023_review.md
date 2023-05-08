@@ -37,7 +37,7 @@ As the Summit is traditionally not a release-fest like Reinvent, and also many o
 held by aws customers, picking a talk is not as easy as searching for an AWS service. Instead of
 pure technical deep dives, many of the Summit talks consist of stories. Big AWS customers like
 Volkswagen, Mercedes-Benz & more, share learnings from some of their biggest cloud
-endeavours. While some of them keep it light, or shy away from technical details, in others a
+endeavors. While some of them keep it light, or shy away from technical details, in others a
 leading engineer will bluntly tell you what worked and what didnt. Besides that, there are also
 those expert talks by AWS, that focus only on a given architecture or pattern. Independent of
 your skill level, this can give you a *feel* for aws - something that cannot be found in the docs,
