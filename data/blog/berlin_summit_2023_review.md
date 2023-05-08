@@ -29,7 +29,7 @@ to see that for small datasets and optimized queries, load times can be as fast 
 ![4 In A Row Dashboard](/src/assets/images/berlin_summit_2023_review/berlin_summit_4_in_a_row.jpg)
 
 But off to the talks! AWS divides its talks into skill levels: 200, 300 and 400. These talks are
-not livestreamed, and they are not uploaded to youtube. With the occasional exception of the
+not live-streamed, and they are not uploaded to YouTube. With the occasional exception of the
 keynote, you have to be there to see them.
 
 
