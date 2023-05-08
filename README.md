@@ -14,19 +14,10 @@ Should attribute the original owner of the image and respect the license of the 
 
 ## Analytics
 
-Panelbear is used for analytics. It is GDPR conform, does not collect PII and stores data only in the EU.
+[Usermaven](https://usermaven.com/) is used for analytics. It is GDPR conform, does not collect
+PII and stores data only in the EU.
 
-### How can I exclude my own page visits?
-
-Visit https://www.double-trouble.dev/?panelbear_disable once to set the config to exclude your own visits
-
-### What about local page hits during development?
-
-These are disabled automatically which is probably a good thing as it counts towards the free tier
-usage limit.
-
-https://panelbear.com/docs/local-development/?ref=console
-
+We use it in a configuration that follows a strict data policy by not using [cookies](https://usermaven.com/docs/getting-started/installing-usermaven#what-is-cookieless-tracking-and-how-to-enable-it).
 
 ## AstroWind Theme
 
