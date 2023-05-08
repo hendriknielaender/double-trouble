@@ -21,7 +21,7 @@ along with AWS socks and stickers. The quiz was exceptional, and I really wish t
 out as an app for training.
 
 A cloud style escape room, a Four In A Row (Connect Four) against AI, and AWS principal cloud
-architects Architects already waiting on the sidelines, made me eager to come back later and
+architects already waiting on the sidelines, made me eager to come back later and
 explore more. The Four In A Row was interesting, as the metrics were published through
 [Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) into a Grafana dashboard. Nice
 to see that for small datasets and optimized queries, load times can be as fast as 0.5 seconds.
