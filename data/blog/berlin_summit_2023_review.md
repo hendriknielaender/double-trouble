@@ -1,6 +1,6 @@
 ---
 publishDate: "May 8 2023"
-title: "Berlin Summit 2023 Writeup"
+title: "Highlights and Insights from AWS Berlin Summit 2023"
 description: "Highlights, tips, recommendations from this years summit."
 image: ~/assets/images/thumbnails/berlin_summit_keynote.jpg
 imageCreditUrl: https://double-trouble.dev
