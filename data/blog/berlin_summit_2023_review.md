@@ -66,7 +66,7 @@ Highlights and Learnings:
   presentaiton exceptionally kind, enjoyable and insightful. Truly a talk of its own league.
   ![](/src/assets/berlin_summit_2023_review/ant301_people.jpg)
   - You make change happen by identifying innovators and empowering them
-  - It is useful to have different shapes of datasets stored for different people, so people can
+  - It is useful to have different shapes of datasets stored for different users, so people can
     iterate over them together. Storing only the final results of a data analysis will result in a
     mess and many people stirring their own pot.
     ![](/src/assets/berlin_summit_2023_review/ant301_layers.jpg)
