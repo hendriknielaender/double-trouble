@@ -24,6 +24,9 @@ export default defineConfig({
 
 	output: 'static',
 
+        experimental: {
+                assets: true
+        },
 	integrations: [
 		tailwind({
 			config: {
@@ -31,9 +34,6 @@ export default defineConfig({
 			},
 		}),
 		sitemap(),
-		image({
-			serviceEntryPoint: '@astrojs/image/sharp',
-		}),
 		mdx(),
 
 		/* Disable this integration if you don't use Google Analytics (or other external script). */
