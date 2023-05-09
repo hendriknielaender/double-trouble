@@ -5,6 +5,7 @@ description: "Highlights, tips, recommendations from this years summit."
 image: ~/assets/images/thumbnails/berlin_summit_keynote.jpg
 imageCreditUrl: https://double-trouble.dev
 tags: [conf, aws]
+tweet: "https://twitter.com/doubletrblblogs/status/1655882804540977154"
 ---
 
 This year's Berlin Summit showed why it needs to be taken seriously. The usual two day format was
