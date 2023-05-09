@@ -9,7 +9,8 @@ const { meta = {} } = Astro.props;
 // https://stackoverflow.com/questions/66120513/property-does-not-exist-on-type-window-typeof-globalthis
 declare global {
   interface Window {
-    panelbear?: any;
+    usermaven?: any;
+    usermavenQ?: any;
   }
 }
 ---
@@ -18,16 +19,14 @@ declare global {
 <html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
   <head>
     <MetaTags {...meta} />
-    <script async src="https://cdn.panelbear.com/analytics.js?site=ImWVdVf7MvN"
-    ></script>
-    <script>
-      window.panelbear =
-        window.panelbear ||
-        function () {
-          (window.panelbear.q = window.panelbear.q || []).push(arguments);
-        };
-      window.panelbear("config", { site: "ImWVdVf7MvN" });
+    <script async src="https://t.usermaven.com/lib.js"
+        data-key="UMGyRPpZdu"
+        data-tracking-host="https://events.usermaven.com"
+
+        data-privacy-policy="strict"
+        defer>
     </script>
+    <script>window.usermaven = window.usermaven || (function(){(window.usermavenQ = window.usermavenQ || []).push(arguments);})</script>
   </head>
 
   <body
