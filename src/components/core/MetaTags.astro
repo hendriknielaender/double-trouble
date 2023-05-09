@@ -12,7 +12,7 @@ import ExtraMetaTags from "../atoms/ExtraMetaTags.astro";
 import SplitbeeAnalytics from "./SplitbeeAnalytics.astro";
 
 const { src: defaultImage } = await getImage({
-  src: defaultImageSrc,
+  src: defaultImageSrc.src,
   width: 1200,
   height: 628,
 });

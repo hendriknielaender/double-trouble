@@ -1,6 +1,4 @@
 ---
-import Picture from "~/components/core/Picture.astro";
-
 import { findImage } from "~/utils/images";
 import { getPermalink } from "~/utils/permalinks";
 
@@ -17,13 +15,12 @@ const image = await findImage(post.image);
       href={getPermalink(post.slug, "post")}
       class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
     >
-      <Picture
-        src={image}
+      <img
+        src={image.src}
         class="object-cover w-full lg:h-64 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-        widths={[400, 900]}
         sizes="(max-width: 900px) 400px, 900px"
         alt={post.title}
-      />
+      >
     </a>
   </div>
   <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
