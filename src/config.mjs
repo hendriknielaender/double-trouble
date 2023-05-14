@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "Touble Trouble",
+  name: "Double Trouble",
 
   origin: "https://double-trouble.dev",
   basePathname: "/",
@@ -23,7 +23,7 @@ export const BLOG = {
 
   post: {
     disabled: false,
-    pathname: "/post", // empty for /some-post, value for /pathname/some-post
+    pathname: "post", // empty for /some-post, value for /pathname/some-post
   },
 
   category: {
