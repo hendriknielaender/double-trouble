@@ -9,12 +9,16 @@ import {
   getBlogPermalink,
   getHomePermalink,
 } from "~/utils/permalinks";
+const { isBlog  } = Astro.props;
 ---
 
 <header
   class="sticky top-0 z-40 flex-none mx-auto w-full bg-slate-100 md:bg-white/90 dark:bg-slate-800 dark:md:bg-slate-800 md:backdrop-blur-sm border-b dark:border-b-0"
   id="header"
 >
+  {isBlog && (
+    <div id="progress"></div>
+  )}
   <div
     class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"
   >
