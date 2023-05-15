@@ -1346,10 +1346,10 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.4.tgz#6d4c5d8de7be2ead9e4a3cc0e2efb8d759378904"
   integrity sha512-97a+l2LBU3Op3bBQEff79i/E4jMD2ZLFD8rHx9B6mXyB2uQwhJQYfiDqUwtfjF4QA1F2qs//N6Cw8LetMbQjcw==
 
-astro-eslint-parser@^0.13.1:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-0.13.3.tgz#162c50661cb0d35882cef1dc40146c5d40a05990"
-  integrity sha512-n+fb6O40SM6sD36lGwgVIE3zeVQUMdl6ZHaHEjRI4zdaBu658XaAV1YDztF7Iga5kmeOxJYB87mcQ+lUnQs0Nw==
+astro-eslint-parser@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-0.14.0.tgz#a8ce2f62ce683def4b975acbf9388be99c732680"
+  integrity sha512-3F8l1h7+5MNxzDg1cSQxEloalG7fj64K6vOERChUVG7RLnAzSoafADnPQlU8DpMM3WRNfRHSC4NwUCORk/aPrA==
   dependencies:
     "@astrojs/compiler" "^1.0.0"
     "@typescript-eslint/scope-manager" "^5.48.2"
@@ -2582,15 +2582,15 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-plugin-astro@^0.26.2:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.26.2.tgz#3e3324274a2eb8b1d24782fbd908916e565dd31a"
-  integrity sha512-unST3JZO+W8Beoxfyu6Gpgbx9KAZJ3QBBT7SLzeB5kUbuSrJ40uzYbdsE4wgkZWyiAHkvjAAvQzDP9vH6Dk2eg==
+eslint-plugin-astro@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.27.0.tgz#fb9fd4769caa4d74052f8ec9183a9942da7e7799"
+  integrity sha512-r3PizFY+xwQMRWcEvRKCWQkfHNl2Q+7ANN1ZIpnvJZP97KUX8F2WUnTvPuk2jJGqnRa+zQ5NgoJ9aenFKcGP9A==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
     "@typescript-eslint/types" "^5.25.0"
-    astro-eslint-parser "^0.13.1"
+    astro-eslint-parser "^0.14.0"
     postcss "^8.4.14"
     postcss-selector-parser "^6.0.10"
 
