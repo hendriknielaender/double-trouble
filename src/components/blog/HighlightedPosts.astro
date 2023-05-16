@@ -4,10 +4,10 @@ import Grid from "~/components/blog/Grid.astro";
 import { findPostsByIds } from "~/utils/posts";
 
 const ids = [
+	"bun-release",
 	"berlin_summit_2023_review",
 	"product_engineers",
 	"gitlab_review_apps_aws_vite",
-    "nodeconf_eu_2022_review"
 ];
 
 const posts = await findPostsByIds(ids);
