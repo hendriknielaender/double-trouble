@@ -22,6 +22,7 @@ jobs:
               ((i=i+1))
             fi
           done
+      - uses: actions/checkout@v3
       - if: steps.posts.outputs.post0
         name: Publish to medium
         uses: infraway/post-medium-action@v1.6.0
