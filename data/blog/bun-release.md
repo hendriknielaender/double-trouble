@@ -104,6 +104,41 @@ Bun's testing framework will run your tests, provide detailed feedback on their 
 
 As you become more comfortable with Bun, explore its advanced features and options. From customizing the bundling process to leveraging import attributes and optimizing performance, Bun offers a wealth of possibilities to enhance your Node.js development.
 
+### AWS Lambda support
+
+Bun offers support for running AWS Lambda functions using a (custom layer)[https://github.com/oven-sh/bun/tree/main/packages/bun-lambda#bun-lambda]. With this feature, you can test your Lambda functions locally without making any code changes.
+
+When an event is an HTTP request, the custom layer automatically detects it and transforms it into a standard `Request` object. This enables us to leverage the familiar and powerful fetch method within our Lambda functions. Let's explore an example of how you can handle an HTTP request in a Bun Lambda function:
+
+```javascript
+export default {
+  async fetch(request) {
+    console.log(request.headers.get("x-amzn-function-arn"));
+    // ...
+    return new Response("Hello from Lambda!", {
+      status: 200,
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    });
+  },
+};
+```
+
+For events that are not HTTP requests, such as `S3` or `SQS` triggers, the event will be available in the body of the Request object. You can access it by parsing the JSON data. Here's an example of how you can handle a non-HTTP event:
+
+```javascript
+export default {
+  async fetch(request) {
+    const event = await request.json();
+    // ...
+    return new Response();
+  },
+};
+```
+
+This AWS Lambda support in Bun makes it incredibly convenient to develop and test your Lambda functions locally. You can leverage the power of Bun's development server (`bun run`) without worrying about modifying your code to accommodate the local environment. It streamlines the development process and allows you to iterate quickly on your Lambda functions.
+
 ## Conclusion: Elevate Your development with Bun
 
 Bun v0.6.0 is a game-changer for developers, providing a streamlined development experience, advanced features, and improved performance. With Bun's built-in bundler, testing framework, TypeScript support, and bug fixes, you can focus on writing exceptional code and building robust applications.
