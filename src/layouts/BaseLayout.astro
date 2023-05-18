@@ -19,6 +19,7 @@ declare global {
 <html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
   <head>
     <MetaTags {...meta} />
+    <meta name="view-transition" content="same-origin" />
     <script async src="https://t.usermaven.com/lib.js"
         data-key="UMGyRPpZdu"
         data-tracking-host="https://events.usermaven.com"
@@ -27,12 +28,19 @@ declare global {
         defer>
     </script>
     <script>window.usermaven = window.usermaven || (function(){(window.usermavenQ = window.usermavenQ || []).push(arguments);})</script>
+    <script>
+      import '../utils/transition.js'
+    </script>
   </head>
 
   <body
     class="antialiased text-gray-900 dark:text-slate-100 tracking-tight bg-white dark:bg-slate-900"
   >
-    <slot />
+    <div id="container">
+      <div id="content">
+        <slot />
+      </div>
+    </div>
     <BasicScripts />
     <style is:global>
       img {
