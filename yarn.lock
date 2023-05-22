@@ -5681,10 +5681,20 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==
 
-prettier-plugin-astro@^0.8.0, prettier-plugin-astro@^0.8.1:
+prettier-plugin-astro@^0.8.0:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.8.1.tgz#83fc7fe769092e77d06ce2b6c8a6708e79b4c468"
   integrity sha512-lJ/mG/Lz/ccSwNtwqpFS126mtMVzFVyYv0ddTF9wqwrEG4seECjKDAyw/oGv915rAcJi8jr89990nqfpmG+qdg==
+  dependencies:
+    "@astrojs/compiler" "^1.0.1"
+    prettier "^2.8.3"
+    sass-formatter "^0.7.5"
+    synckit "^0.8.4"
+
+prettier-plugin-astro@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.9.0.tgz#7ea3c75a7e885c0f9cdce63c1076932d0f3c7c8a"
+  integrity sha512-LZ47EzCz0RvJBzC2GhtP5MI4ygEci/N5z73MMWAZFIOfSrn53sWCz0pN2HDwDGI7tvGg5Q5dnaX4EBrzkdb2Hg==
   dependencies:
     "@astrojs/compiler" "^1.0.1"
     prettier "^2.8.3"
