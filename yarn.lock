@@ -25,10 +25,10 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-1.4.1.tgz#9cf6d011a1dbdc9ff81923ec02b45043c1c71924"
   integrity sha512-aXAxapNWZwGN41P+Am/ma/2kAzKOhMNaY6YuvLkUHFv+UZkmDHD6F0fE1sQA2Up0bLjgPQa1VQzoAaii5tZWaA==
 
-"@astrojs/image@^0.16.8":
-  version "0.16.8"
-  resolved "https://registry.yarnpkg.com/@astrojs/image/-/image-0.16.8.tgz#8c906866b1d847c90c342eee7726ca88ae56a027"
-  integrity sha512-ka18Y8HXllitE4TN66tmxqc1j+pgfqfq5i/D3I0QmmH2hFd7olFNVDrd15S4ZM1U5jxZORUv+PuJU0g8dZEjqQ==
+"@astrojs/image@^0.16.9":
+  version "0.16.9"
+  resolved "https://registry.yarnpkg.com/@astrojs/image/-/image-0.16.9.tgz#4981a518943fb6fa4672f4a35b714f29fdc8313c"
+  integrity sha512-8RfGGd1MAIQ6xCHgmu+xXBKWE14gvWYcIv61PxWlToEBgMUbmFdN5ICBQ1bea24rx6o5WvsvRjfOnkjPpf2eew==
   dependencies:
     "@altano/tiny-async-pool" "^1.0.2"
     http-cache-semantics "^4.1.0"
@@ -56,7 +56,7 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^2.2.0", "@astrojs/markdown-remark@^2.2.1":
+"@astrojs/markdown-remark@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.2.1.tgz#ab063b8ae7ee526e1c3fe65b407b44fb4dee860c"
   integrity sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==
@@ -106,14 +106,6 @@
   dependencies:
     "@builder.io/partytown" "^0.7.4"
     mrmime "^1.0.0"
-
-
-"@astrojs/prism@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-2.1.2.tgz#7486cb886ba3354e38ef4e58cbbe72f31337689e"
-  integrity sha512-3antim1gb34689GHRQFJ88JEo93HuZKQBnmxDT5W/nxiNz1p/iRxnCTEhIbJhqMOTRbbo5h2ldm5qSxx+TMFQA==
-  dependencies:
-    prismjs "^1.28.0"
 
 "@astrojs/prism@^2.1.2":
   version "2.1.2"
