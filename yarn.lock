@@ -80,10 +80,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.19.6":
-  version "0.19.6"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.6.tgz#45c6a8ceac8bbae0b902e64adb64ab0cdee516d5"
-  integrity sha512-P9CU+l/GveJPG3OOOdlZtIK5NWcJuEnXPtxwfjJUaoIPHDByp6okT/yN/WwLAA4TfnluFnULNG4bDsEnwcpYvw==
+"@astrojs/mdx@^0.19.7":
+  version "0.19.7"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.7.tgz#8a2ff3dc2613ef6aaff86ea039dfa76f864ecdd6"
+  integrity sha512-mfEbBD7oi8yBHhcJucEjnrquREkJ3os+jioURP8BR2B8tOV2rV2j8trvmLUgfS+P/+HevGObxCTjcRYxn6T7eg==
   dependencies:
     "@astrojs/markdown-remark" "^2.2.1"
     "@astrojs/prism" "^2.1.2"
