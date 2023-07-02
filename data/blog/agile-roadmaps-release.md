@@ -100,3 +100,19 @@ What truly matters to C-Level, which is to gather insights about the customers a
 they're in, can be brought from C to Z, all the way to the bottom. Instead of talking about
 deadlines and epics, we can focus the brains of the entire organization on what matters in the
 end - not whether an epic got stretched or not - but if a good idea was right.
+
+## Introducing Agile Roadmaps
+
+The frustration with the dusty planning surrounding current roadmaps, combined with the key quote
+from one of our leaders let us to creating a new type of roadmap. We dub this as "agile roadmaps",
+as it moves away the focus from mechanical epic deadline chasing, to honest and scientific
+hypothesis validation.
+
+A more agile roadmap in our eyes needs to be one that itself looks more iterative, more cyclical,
+instead of an assortment from long bars from the nineties.
+
+Feel free to give the demo a try here, and let us know what you think!
+
+With this MVP we are looking to validate our own hypotheses on this matter, and we'd like to see
+the results. If given enough interest we would be happy to pursue this approach and build it out
+further.
