@@ -24,7 +24,7 @@ and large work agile, with roadmaps, but on a high level, things need to be orde
 be predictable, plannable, and ultimately deadlineable.
 
 What is true for the micro-cosmos of teams that live & work in iterations called as sprints is not true
-for the company on a larger scale. Here we need "some real planning". It seems agile ends,
+for the company on a larger scale. Here we need "some real planning". In reality agile ends,
 somewhere near where C-Level begins.
 
 Close to the C-Level live the project managers. The PMs and POs. Here the transformation happens
@@ -32,12 +32,69 @@ of turning "a thing" with a start date and an end date, into something iterative
 the people in the micro-cosmos. Usually this involves moving the deadline more and more until
 finally - success, the epic is done.
 
-Epics today represent something that we thought we were done with. A predetermined path, planned
-from beginning to end. After it starts, what becomes more and more the single focus of the PMs is:
-Will we meet the deadline? Endless deadline sync meeting and status reports shows the effort that
-goes into keeping these two worlds together: The waterfall-like planning at the top, and the
-sprints in the microcosmos.
+In practice this transformation is somewhat of a smear, a blur. The iterative people in the
+micro-cosmos learn about the expected deadline hovering over them, while the executive people
+learn bits about the mess happening during execution. At it's core, storytelling.
+
+If looked at closely, Epics today represent something that we in the micro-cosmos thought we were
+already done with. A predetermined path, planned from beginning to end. After it starts, what
+becomes more and more the single focus of the PMs is: Will we meet the deadline? Endless deadline
+sync meeting and status reports show the effort that goes into keeping these two worlds together:
+The waterfall-like planning at the top, and the sprints in the microcosmos.
+
+Roadmaps today, a collection of epics and deadlines, are also visually not too far away from the
+well-known waterfall processes of the 90s.
 
 < Insert Picture of waterfall >
 
 ## Hypotheses over Epics
+
+> Validate your hypothesis as early as possible.
+
+This is what one valued CEO we both knew, had always preached. In order to validate a hypothesis,
+first you need to define one. A clearly defined hypothesis, maybe with a PM assigned to it, to go
+after it. A hypothesis maybe backed by data, maybe not. A hypothesis might be the grounds to
+collect data, or to run feature experiments which bring in this data.
+
+But on todays agile roadmaps, where do we find those hypotheses? What we do have are these
+*things*, these bundles of work. Of course a hypothesis stands behind them, maybe its written down
+somewhere in *some* shape or form, or maybe it lives in somebodies head. But what is communicated
+to the company is not this hypothesis, it is the epic, together with its start and its deadline.
+
+What we think is great about hypothesis, is that they are at the heart of what C-Level wants, and
+they are more aligned with agile.
+
+> How could we improve on the madness of deadline syncing, and history book planning in an
+> otherwise agile world?
+
+It could be that this hangover of an older world could be helped with hypothesis.
+
+## Hypotheses and Deadlines
+
+What's great about hypothesis is that their deadline - or lets say validation / invalidation
+target according to the quote is already clear: it should be as soon as possible.
+
+Not in a way to say everything should be asap, as maybe in a perfect every feature would be, but
+in the way that we would really like to find out. You wouldnt want to stay wondering, not for too
+long. We assume real wisdom in this quote. If you have a hypothesis, don't sit around, don't
+assume, stop guessing. Validate it as soon as you can. It is this type of "as soon as you can",
+that we feel stands quite close to the idea of agile iterations. Delivering *some* result as soon
+as is possible.
+
+It is our assumption that this take on hypothesis from the C-Level is quite close to what we in
+the micro-cosmos call an iteration. We see it is something that could potentially bridge the gap
+between micro and macro, and which could bring agile all the way to the top level.
+
+What validates or invalidates a hypothesis could be many things. It could be customer feedback,
+market research, better monitoring, or the implementation of a new feature.
+
+## Implications of a Hypothesis Roadmap
+
+In a world where instead of epics we focus on hypothesis in the roadmap one thing is first better
+set: the focus and intend of the company. Chasing self-set deadlines, PMs trying to get hands on
+big epics for that promotion or raise, that's not quite it.
+
+What truly matters to C-Level, which is to gather insights about the customers and the business
+they're in, can be brought from C to Z, all the way to the bottom. Instead of talking about
+deadlines and epics, we can focus the brains of the entire organization on what matters in the
+end - not whether an epic got stretched or not - but if a C-Level idea was right.
