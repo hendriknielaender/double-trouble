@@ -33,8 +33,8 @@ the people in the micro-cosmos. Usually this involves moving the deadline more a
 finally - success, the epic is done.
 
 In practice this transformation is somewhat of a smear, a blur. The iterative people in the
-micro-cosmos learn about the expected deadline hovering over them, while the executive people
-learn bits about the mess happening during execution. At it's core, storytelling.
+micro-cosmos learn about the expected deadline hovering above them, while the executive people
+learn bits about the mess happening underground. At it's core, storytelling.
 
 If looked at closely, Epics today represent something that we in the micro-cosmos thought we were
 already done with. A predetermined path, planned from beginning to end. After it starts, what
