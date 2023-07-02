@@ -15,7 +15,7 @@ every product managers dream.
 
 Between the deadlines live the epics. Behind the grand word "EPIC" usually stands a feature - or
 multiple. A considerable amount of planned work, needed for a delieverable, or clustered around a
-topic. They are "a thing".
+topic. They are "a thing". They are epic. Epics.
 
 ## The flaw with Epics
 
