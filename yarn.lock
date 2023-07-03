@@ -30,13 +30,13 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-1.5.0.tgz#e84afaf624c9b8c00df3a00e1fbcdf926dc4ade0"
   integrity sha512-k04X/7nlMklU0HQUScxbCTf5n8/Vr+0U0bawb9QWulWxd6qJf3FmBrNATgTYiltjB4pc5HBqmmttAfFi7m4lLg==
 
-"@astrojs/image@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/image/-/image-0.17.0.tgz#3158cae6d0981dc373b261819970bbb129173db5"
-  integrity sha512-YSolAMFtABhmgLH5BCeGX5e7QKApgSI1XcxO+HLqHFayQKVQ9r6fwslodTjzQkqxgcWEcQKF4nFR4Sq3hAq6YQ==
+"@astrojs/image@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/image/-/image-0.17.1.tgz#c98d7ee9162351298af1dae18fc9a61e5a5e4cb2"
+  integrity sha512-+kb99ZTvl4BpbY6BeIAwJq08aGF/H4V9S6351I2GwIddQYilEQfHQ9b6EVfxoHIE6eSo8bRfUeKFkOmWVppWwA==
   dependencies:
     "@altano/tiny-async-pool" "^1.0.2"
-    http-cache-semantics "^4.1.0"
+    http-cache-semantics "^4.1.1"
     image-size "^1.0.2"
     kleur "^4.1.5"
     magic-string "^0.27.0"
@@ -3406,7 +3406,7 @@ html-void-elements@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-void-elements/-/html-void-elements-2.0.1.tgz#29459b8b05c200b6c5ee98743c41b979d577549f"
   integrity sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==
 
-http-cache-semantics@^4.1.0:
+http-cache-semantics@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.1.tgz#abe02fcb2985460bf0323be664436ec3476a6d5a"
   integrity sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==
