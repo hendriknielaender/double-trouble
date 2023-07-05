@@ -24,6 +24,13 @@ export default defineConfig({
 
 	output: 'static',
 
+        experimental: {
+                redirects: true
+        },
+        redirects: {
+                // redirect since it was shared via linkedin under an this old address which cannot be updated
+                'post/berlin_summit_2023_review': 'berlin-summit-2023-review'
+        },
 	integrations: [
 		tailwind({
 			config: {
@@ -45,13 +52,13 @@ export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		extendDefaultPlugins: true,
-        shikiConfig: {
-          // Choose from Shiki's built-in themes (or add your own)
-          // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-          theme: 'rose-pine',
-          // Enable word wrap to prevent horizontal scrolling
-          wrap: true,
-        },
+                shikiConfig: {
+                  // Choose from Shiki's built-in themes (or add your own)
+                  // https://github.com/shikijs/shiki/blob/main/docs/themes.md
+                  theme: 'rose-pine',
+                  // Enable word wrap to prevent horizontal scrolling
+                  wrap: true,
+                },
 	},
 
 	vite: {
@@ -60,10 +67,10 @@ export default defineConfig({
 				'~': path.resolve(__dirname, './src'),
 			},
 		},
-        optimizeDeps: {
-            exclude: [
-                'limax',
-            ],
-        },
+                optimizeDeps: {
+                        exclude: [
+                                'limax',
+                        ],
+                },
 	},
 });
