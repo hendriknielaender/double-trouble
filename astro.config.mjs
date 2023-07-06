@@ -29,7 +29,7 @@ export default defineConfig({
         },
         redirects: {
                 // redirect since it was shared via linkedin under an this old address which cannot be updated
-                'post/berlin_summit_2023_review': 'berlin-summit-2023-review'
+                '/post/berlin_summit_2023_review': '/post/berlin-summit-2023-review'
         },
 	integrations: [
 		tailwind({
