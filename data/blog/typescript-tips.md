@@ -26,25 +26,61 @@ const Page = (props: { params: { id?: string }}) => {
 };
 ```
 
-Shout-out to the TS Wizard Matt Pocock and @HeyImMapleLeaf for this amazing tip.
+Shout-out to the TypeScript Wizard himself [Matt Pocock](https://www.twitter.com/mattpocockuk) and [@HeyImMapleLeaf](https://twitter.com/heyImMapleLeaf) (originally posted) for this amazing tip.
 
-2\. Safe Object Property Access with Optional Chaining
+2\. Utilizing Mapped Types
 ------------------------------------------------------
 
-Navigating through nested objects in TypeScript can sometimes lead to runtime errors if a particular path is undefined. To handle this, TypeScript introduces the optional chaining operator (?).
+Mapped Types is a powerful TypeScript feature that allows you to create new types based on existing ones. They can help you to keep your types DRY, reducing duplication and improving maintainability.
+
+### Readonly
+
+A common example of a Mapped Type is `Readonly<T>`. This makes all properties of `T` read-only:
 
 ```ts
-const getNestedProperty = (obj: any, path: string) =>
-  path.split('.').reduce((o, p) => o?.[p], obj);
+interface IUser {
+  name: string;
+  age: number;
+}
+
+type ReadonlyUser = Readonly<IUser>;
 ```
 
-Here, if any part of the path is undefined, it will short-circuit and return `undefined`.
+Now, all properties of `ReadonlyUser` are read-only.
+
+### Partial
+
+Another handy Mapped Type is `Partial<T>`, which makes all properties of `T` optional:
+
+typescriptCopy code
 
 ```ts
-const user = { info: { name: 'John' }};
-const name = getNestedProperty(user, 'info.name'); // John
-const age = getNestedProperty(user, 'info.age'); // undefined
+type PartialUser = Partial<IUser>;
 ```
+
+`PartialUser` is now `{ name?: string, age?: number }`.
+
+### Record
+
+The `Record<K,T>` Mapped Type can be used to create an object type where the property keys are `K` and the property values are `T`:
+
+```ts
+type UserRecord = Record<string, IUser>;
+```
+
+`UserRecord` is now an object type that will accept any string as a key, and any value must be of type `IUser`.
+
+### Creating Your Own Mapped Types
+
+You're not just limited to the Mapped Types that TypeScript provides. You can also create your own:
+
+```ts
+type Nullable<T> = { [P in keyof T]: T[P] | null };
+```
+
+This `Nullable<T>` type takes an existing type `T`, and produces a new type where every property is nullable.
+
+Mapped types help you to create complex types based on your existing ones, reducing code duplication and enhancing type safety.
 
 3\. Type Guarding
 -----------------
