@@ -52,8 +52,6 @@ Now, all properties of `ReadonlyUser` are read-only.
 
 Another handy Mapped Type is `Partial<T>`, which makes all properties of `T` optional:
 
-typescriptCopy code
-
 ```ts
 type PartialUser = Partial<IUser>;
 ```
@@ -162,4 +160,4 @@ config.apiUrl = "https://anotherapi.com"; // Error!
 
 In this example, any attempts to change the `apiUrl` or `defaultTimeout` will result in a TypeScript error.
 
-These are just a few examples of the features and techniques TypeScript offers to enhance your development process. With these tips and helper functions, your code will be cleaner, safer, and easier to maintain. Happy TypeScripting!
+These are just a few examples of the features and techniques TypeScript offers to enhance your development process. With these tips and helper functions, your code will be cleaner, safer, and easier to maintain.
