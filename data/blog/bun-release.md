@@ -5,6 +5,7 @@ description: "Streamlined JavaScript Development with Advanced Features."
 image: ~/assets/images/thumbnails/bun.png
 imageCreditUrl: https://labs.openai.com/
 tags: [gptpost, nodejs, bun, typescript, javascript, release]
+tweet: "https://twitter.com/doubletrblblogs/status/1680501484037844992"
 ---
 
 Are you a Node.js developer looking to level up your development workflow and harness the power of cutting-edge tools? Look no further than [Bun v0.6.0](https://bun.sh/blog/bun-v0.6.0), the latest release that revolutionizes Node.js projects. With a range of groundbreaking features, Bun simplifies JavaScript bundling, enhances testing capabilities, seamlessly integrates with TypeScript, and improves performance. In this article, we'll explore why Bun v0.6.0 is a game-changer for developers and how it empowers you to write exceptional code and build robust applications.
@@ -106,7 +107,9 @@ As you become more comfortable with Bun, explore its advanced features and optio
 
 ### AWS Lambda support
 
-Bun offers support for running AWS Lambda functions using a (custom layer)[https://github.com/oven-sh/bun/tree/main/packages/bun-lambda#bun-lambda]. With this feature, you can test your Lambda functions locally without making any code changes.
+Bun offers support for running AWS Lambda functions using a [custom layer](https://github.com/oven-sh/bun/tree/main/packages/bun-lambda#bun-lambda). With this feature, you can test your Lambda functions locally without making any code changes.
+
+❕ For Mac users, there is at the moment an open [issue](https://github.com/oven-sh/bun/issues/2712) here, but gladly there is a work-around over [there](https://github.com/oven-sh/bun/issues/2081#issuecomment-1432226125). Once published, you can create a new lambda function, by chosing `Custom runtime on Amazon Linux 2`. Make sure to select the CPU architecture to fit the one of your published layer. Also this layer will not need a stand-alone bun executable with the new `--compile` flag. A normal `bun build` and a zip will do, which also keeps its size nice and small. Once the bun runtime is loaded in by attaching that layer, you are ready to go.
 
 When an event is an HTTP request, the custom layer automatically detects it and transforms it into a standard `Request` object. This enables us to leverage the familiar and powerful fetch method within our Lambda functions. Let's explore an example of how you can handle an HTTP request in a Bun Lambda function:
 
