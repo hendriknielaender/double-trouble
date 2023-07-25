@@ -1,16 +1,16 @@
 ---
-publishDate: "July 08 2023"
+publishDate: "July 26 2023"
 title: "Zig Programming Landscape: Creating a Benchmarking Library"
-description: "Explore the process of creating a benchmarking library in Zig."
+description: "Taking off with Zig: Putting the Z in Benchmark"
 image: ~/assets/images/thumbnails/lizard.png
 imageCreditUrl: https://labs.openai.com/
-tags: [gptpost, zig, rust, benchmark,]
+tags: [gptpost, zig, rust, benchmark, release]
 ---
 
 My Journey in Creating My First Zig Library
 ===========================================
 
-As a software developer, I'm always exploring new languages and tools that might transform the way we create and manage code. That's when I came across Zig, an open-source programming language designed to compete with C/C++ in terms of speed and simplicity. This inspired me to create my first library in Zig, a journey that taught me about the language's current status and potential, as well as its limitations.
+I've been on the hunt for fresh ideas in coding when I discovered Zig, a free and new programming language. It tries to match up to popular ones like C/C++, both in speed and simplicity. Intrigued, I decided to take a swing at building a benchmark library using Zig. This experience taught me about what Zig can do today, its future possibilities, and its weak spots. So, let's jump into the story of "Creating My First Zig Library!"
 
 Starting with zBench
 --------------------
