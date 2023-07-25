@@ -25,7 +25,7 @@ export default defineConfig({
 	output: 'static',
 
         experimental: {
-                redirects: true
+                //redirects: true
         },
         redirects: {
                 // redirect since it was shared via linkedin under an this old address which cannot be updated
