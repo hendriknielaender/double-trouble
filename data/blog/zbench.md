@@ -1,9 +1,9 @@
 ---
-publishDate: "July 26 2023"
-title: "Zig Programming Landscape: Creating a Benchmarking Library"
-description: "Taking off with Zig: Putting the Z in Benchmark"
+publishDate: "July 28 2023"
+title: "Taking off with Zig: Putting the Z in Benchmark"
+description: "Zig Programming Landscape: Creating a Benchmarking Library"
 image: ~/assets/images/thumbnails/lizard.png
-imageCreditUrl: https://labs.openai.com/
+imageCreditUrl: https://www.midjourney.com/
 tags: [gptpost, zig, rust, benchmark, release]
 ---
 
