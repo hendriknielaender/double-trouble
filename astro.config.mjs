@@ -24,13 +24,12 @@ export default defineConfig({
 
 	output: 'static',
 
-        redirects: {
-                // redirect since it was shared via linkedin under an this old address which cannot be updated
-                '/post/berlin_summit_2023_review': '/post/berlin-summit-2023-review',
-                // redirect since the associated tweet points at the old adress
-                '/post/product_engineers': '/post/product-engineers'
-
-        },
+	redirects: {
+		// redirect since it was shared via linkedin under an this old address which cannot be updated
+		'/post/berlin_summit_2023_review': '/post/berlin-summit-2023-review',
+		// redirect since the associated tweet points at the old adress
+		'/post/product_engineers': '/post/product-engineers'
+	},
 	integrations: [
 		tailwind({
 			config: {
