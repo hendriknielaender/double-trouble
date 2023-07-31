@@ -34,7 +34,7 @@
     "limax": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "prettier": "^3.0.0",
-    "prettier-plugin-astro": "^0.10.0",
+    "prettier-plugin-astro": "^0.11.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.32.4",
     "subfont": "^7.1.1",
