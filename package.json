@@ -18,7 +18,7 @@
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/partytown": "^1.2.3",
     "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^1.4.0",
+    "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@astrolib/analytics": "^0.3.0",
     "@astrolib/seo": "^0.4.0",
