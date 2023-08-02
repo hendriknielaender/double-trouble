@@ -1,6 +1,8 @@
 ---
 import "~/assets/styles/base.css";
 
+import { ViewTransitions } from "astro:transitions";
+
 import MetaTags from "~/components/core/MetaTags.astro";
 import BasicScripts from "~/components/core/BasicScripts.astro";
 
@@ -32,6 +34,8 @@ declare global {
       import '../utils/transition.js'
     </script>*/}
   </head>
+
+  <ViewTransitions />
 
   <body
     class="antialiased text-gray-900 dark:text-slate-100 tracking-tight bg-white dark:bg-slate-900"
