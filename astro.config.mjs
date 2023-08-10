@@ -24,6 +24,9 @@ export default defineConfig({
 
 	output: 'static',
 
+    experimental: {
+        viewTransitions: true,
+    },
 	redirects: {
 		// redirect since it was shared via linkedin under an this old address which cannot be updated
 		'/post/berlin_summit_2023_review': '/post/berlin-summit-2023-review',

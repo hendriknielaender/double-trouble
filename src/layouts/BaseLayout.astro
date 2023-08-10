@@ -1,6 +1,8 @@
 ---
 import "~/assets/styles/base.css";
 
+import { ViewTransitions } from "astro:transitions";
+
 import MetaTags from "~/components/core/MetaTags.astro";
 import BasicScripts from "~/components/core/BasicScripts.astro";
 
@@ -28,10 +30,9 @@ declare global {
         defer>
     </script>
     <script>window.usermaven = window.usermaven || (function(){(window.usermavenQ = window.usermavenQ || []).push(arguments);})</script>
-    {/** <script> // disabled as long as they break the theme toggle & hamburger menu on mobile after navigation
-      import '../utils/transition.js'
-    </script>*/}
   </head>
+
+  <ViewTransitions />
 
   <body
     class="antialiased text-gray-900 dark:text-slate-100 tracking-tight bg-white dark:bg-slate-900"

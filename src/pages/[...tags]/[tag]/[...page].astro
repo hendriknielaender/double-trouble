@@ -54,7 +54,7 @@ const meta = {
 
 <Layout meta={meta}>
   <Fragment slot="title">
-    {tag} 🏷
+    <div transition:name="tag">{tag} 🏷</div>
   </Fragment>
   <BlogList posts={page.data} />
   <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
