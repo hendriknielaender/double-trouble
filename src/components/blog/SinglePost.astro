@@ -18,7 +18,7 @@ const { post, url } = Astro.props;
           >{getFormattedDate(post.publishDate)}</time
         > ~ {Math.ceil(post.readingTime)} min read
       </p>
-      <h1 transition:name="title"
+      <h1 transition:name={"title"+post.id}
         class="px-4 sm:px-6 max-w-3xl mx-auto text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-8 font-heading"
       >
         {post.title}
@@ -26,7 +26,7 @@ const { post, url } = Astro.props;
       {
         post.image ? (
           <>
-            <div transition:name="picture">
+            <div transition:name={"picture"+post.id}>
               <Picture
                 src={post.image}
                 class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
