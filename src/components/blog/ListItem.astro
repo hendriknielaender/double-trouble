@@ -18,7 +18,7 @@ const image = await findImage(post.image);
 >
   {
     image && (
-      <a transition:name="picture" class="relative block group" href={getPermalink(post.slug, "post")}>
+      <a transition:name={"picture"+post.id} class="relative block group" href={getPermalink(post.slug, "post")}>
         <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-80 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
           <Picture
             src={image}
@@ -34,7 +34,7 @@ const image = await findImage(post.image);
   }
   <div>
     <header>
-      <h2 transition:name="title" class="text-xl sm:text-2xl font-bold leading-snug mb-2 font-heading">
+      <h2 transition:name={"title"+post.id} class="text-xl sm:text-2xl font-bold leading-snug mb-2 font-heading">
         <a
           class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
           href={getPermalink(post.slug, "post")}
