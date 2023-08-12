@@ -7,10 +7,10 @@ imageCreditUrl: https://www.midjourney.com/
 tags: [trpc, prisma, code, release, aws]
 ---
 
-We have had the pleasure of launching a microfrontend using trpc, prisma and the cdk. While
-official documentation exists, putting that into practice we encountered a few pitfalls. If you
-are also looking to leverage the power of trpc and prisma on your next app ontop of AWS, this post
-is for you!
+We have had the pleasure of launching a microfrontend feature using trpc, prisma and the
+cdk. While official documentation exists, putting that into practice we encountered a few
+pitfalls. If you are also looking to leverage the power of trpc and prisma on your next app ontop
+of AWS, this post is for you!
 
 We will first go through a primer on trpc and prisma. Knowing the why we will go through the how,
 and notable obstacles you might also face. Of course the whole code supporting this post is also
@@ -23,12 +23,12 @@ TODO
 ## Frontend to Backend Connection
 
 AWS usually has tons of options for any given requirement. Hosting a website is the exception. AWS
-has only one service for content distribution (AWS Cloudfront). The AWS S3 storage service can
-also do basic webhosting, but it is only regional and it can only do http. A simple fact that
+has only one service for content distribution: AWS Cloudfront. The AWS S3 storage service can
+also do basic webhosting, but it is only regional and does not support https. A simple fact that
 sends many innocent cloud engineers down the rabbit hole of configuring cloudfront correctly.
 
 To mimic the local setup, the cloudfront distribution will serve as the entry point and it will
-proxy all requests matchin `/api/*` to the api gateway. To do this, you will arlready need a
+proxy all requests matching `/api/*` to the api gateway. To do this, you will already need a
 special forwarding policy, otherwise you will get a `Bad Request` error:
 
 ```typescript
@@ -50,7 +50,7 @@ To ensure we have the same api structure locally as in the cloud, this proxy con
 best. Misconfiguration here can be hard to debug, especially in combination with Cloudfront acting
 as the api proxy.
 
-Api Route config (`/api/trpc/{proxy}`):
+The Api Route config (`/api/trpc/{proxy}`):
 ```typescript
     const trpcResource = api.root.addResource("api")
     const trpcApiResource = trpcResource.addResource("trpc")
@@ -85,11 +85,11 @@ Into a cloudfront origin forwarding anything below `/api/*` to that nice record:
 
 ## Building and bundling
 
-Naturally building on AWS, the most favorite deployment tool is the CDK. While after a long time
-of undifferentiated hype, and the CDK is finally met with some honesty (see blogs from [Alex
-DeBrie](https://www.alexdebrie.com/posts/serverless-framework-vs-cdk/) and [Yan
+Naturally, when building on AWS, the most favorite deployment tool is the CDK. After a very long
+period of undifferentiated hype, the CDK is finally met with some sober honesty (see voices from
+[Alex DeBrie](https://www.alexdebrie.com/posts/serverless-framework-vs-cdk/) and [Yan
 Cui](https://theburningmonk.com/2023/04/are-you-ready-for-this-top-5-earth-shattering-pros-and-cons-of-aws-cdk/)),
-it still remains the tool of choice for many companies today.
+while it still remains the tool of choice for many companies today.
 
 To build the api with the trpc, you will need the correct bundling steps. Point your `entry` at
 the file exporting the lambda handler:
@@ -153,10 +153,10 @@ export const handler = awsLambdaRequestHandler({
 
 ## Connecting to the DB
 
-Naturally as you're running on AWS you will have your relational database running in RDS. To get
-the database credentials which are usually stored in a `AWS Secretsmanager` Secret, we'll have to
-move the prisma client into something async. That's because we will need sure to first fetch the
-credentials before instantiating our trpc client.
+Typically, as you're building on AWS, you will have your relational database running in RDS. To
+get the database credentials which are usually stored in a `AWS Secretsmanager` Secret, we'll have
+to move the prisma client into something async. That's because we will need to make sure to first
+fetch the credentials before instantiating our trpc client.
 
 To fetch it, you can make sure of this very crappy helper function. But hey, it works and its
 cached!
