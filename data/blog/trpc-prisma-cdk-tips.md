@@ -252,7 +252,7 @@ again here.
 
 ## Rounding up
 
-All in all working with trpc and prisma has been great fun, and as always, your first app will
+All in all working with tRPC and Prisma has been great fun, and as always, your first app will
 always be the hardest.
 
 We hope with this post we can help others on their journey and save maybe somebody some very late
