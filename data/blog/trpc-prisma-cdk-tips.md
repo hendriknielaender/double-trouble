@@ -221,7 +221,7 @@ each tRPC route, you need to then add:
       await initPrisma()
 ```
 
-Which calls this helper function to prefent extra calls:
+Which calls this helper function to prevent extra calls:
 
 ```typescript
 async function initPrisma() {
