@@ -94,7 +94,7 @@ period of undifferentiated hype, the CDK is finally met with some sober honesty 
 Cui](https://theburningmonk.com/2023/04/are-you-ready-for-this-top-5-earth-shattering-pros-and-cons-of-aws-cdk/)),
 while it still remains the tool of choice for many companies today.
 
-To build the api with the trpc, you will need the correct bundling steps. Point your `entry` at
+To build the api with the tRPC, you will need the correct bundling steps. Point your `entry` at
 the file exporting the lambda handler:
 ```typescript
       trpcLambda = new NodejsFunction(this, 'trpcApiFunction', {
