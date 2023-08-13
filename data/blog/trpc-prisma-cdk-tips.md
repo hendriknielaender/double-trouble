@@ -91,7 +91,7 @@ Into a Cloudfront origin forwarding anything below `/api/*` to that nice record:
       },
 ```
 
-## Building and bundling
+## Building and Bundling
 
 Naturally, when building on AWS, the most favorite deployment tool is the CDK. After a very long
 period of undifferentiated hype, the CDK is finally met with some sober honesty (see voices from
