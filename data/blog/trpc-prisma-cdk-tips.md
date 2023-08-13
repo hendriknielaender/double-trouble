@@ -46,7 +46,7 @@ special forwarding policy, otherwise you will get a `Bad Request` error:
 
 ## The API Path
 
-To ensure we have the same api structure locally as in the cloud, this proxy confiugration works
+To ensure we have the same api structure locally as in the cloud, this proxy configuration works
 best. Misconfiguration here can be hard to debug, especially in combination with Cloudfront acting
 as the api proxy.
 
