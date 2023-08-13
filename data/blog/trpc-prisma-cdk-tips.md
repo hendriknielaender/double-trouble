@@ -23,6 +23,8 @@ Prisma simplifies database access by auto-generating a type-safe query builder f
 
 ## Frontend to Backend Connection
 
+Here's how you can set up a seamless frontend-to-backend connection with AWS, tRPC, and Prisma.
+
 AWS usually has tons of options for any given requirement. Hosting a website is the exception. AWS
 has only one service for content distribution: AWS Cloudfront. The AWS S3 storage service can
 also do basic webhosting, but it is only regional and does not support https. A simple fact that
