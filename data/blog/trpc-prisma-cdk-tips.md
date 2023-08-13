@@ -155,7 +155,7 @@ export const handler = awsLambdaRequestHandler({
 
 Typically, as you're building on AWS, you will have your relational database running in RDS. To
 get the database credentials which are usually stored in a `AWS Secretsmanager` Secret, we'll have
-to move the prisma client into something async. That's because we will need to make sure to first
+to move the Prisma client into something async. That's because we will need to make sure to first
 fetch the credentials before instantiating our tRPC client.
 
 To fetch it, you can make sure of this very crappy helper function. But hey, it works and its
