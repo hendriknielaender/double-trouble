@@ -212,7 +212,7 @@ The nice thing is that it will work with your Dockerfile local setup and in your
 without adding any extra build flags.
 
 You can then remove your static instantiation of the prisma client, as it will be async. Within
-each trpc route, you need to then add:
+each tRPC route, you need to then add:
 
 ```typescript
       await initPrisma()
