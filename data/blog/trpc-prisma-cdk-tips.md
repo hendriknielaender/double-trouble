@@ -7,10 +7,11 @@ imageCreditUrl: https://www.midjourney.com/
 tags: [trpc, prisma, code, release, aws]
 ---
 
-We have had the pleasure of launching a microfrontend feature using [tRPC](https://trpc.io/), [Prisma](https://www.prisma.io/) and the
-[AWS CDK](https://aws.amazon.com/de/cdk/). While official documentation exists, putting that into practice we encountered a few
-pitfalls. If you are also looking to leverage the power of tRPC and Prisma on your next app on top
-of AWS, this post on leveraging tRPC, Prisma, and AWS CDK is for you!
+We have had the pleasure of launching a microfrontend feature using [tRPC](https://trpc.io/),
+[Prisma](https://www.prisma.io/) and the [AWS CDK](https://aws.amazon.com/de/cdk/). While official
+documentation exists, putting that into practice we encountered a few pitfalls. If you are also
+looking to leverage the power of tRPC and Prisma on your next app on top of AWS, this post on
+leveraging tRPC, Prisma, and AWS CDK is for you!
 
 We will first go through a primer on tRPC and Prisma. Knowing the why, we will go through the how,
 and notable obstacles you might also face. Of course the whole code supporting this post is also
@@ -18,20 +19,23 @@ available as a working [template](https://github.com/flyck/trpc-prisma-cdk-examp
 
 ## Why Choose Prisma and tRPC?
 
-Our journey with Prisma and tRPC emerged as a game-changer in boosting our application's efficiency and scalability.
-Prisma simplifies database access by auto-generating a type-safe query builder for TypeScript and Node.js. No more wrestling with raw SQL or settling for the limitations of traditional ORMs. On the other hand, tRPC stands out by offering end-to-end type safety for your API routes, bridging the gap between your data and the frontend seamlessly.
+Our journey with Prisma and tRPC emerged as a game-changer in boosting our application's
+efficiency and scalability.  Prisma simplifies database access by auto-generating a type-safe
+query builder for TypeScript and Node.js. No more wrestling with raw SQL or settling for the
+limitations of traditional ORMs. On the other hand, tRPC stands out by offering end-to-end type
+safety for your API routes, bridging the gap between your data and the frontend seamlessly.
 
 ## Frontend to Backend Connection
 
 Here's how you can set up a seamless frontend-to-backend connection with AWS, tRPC, and Prisma.
 
 AWS usually has tons of options for any given requirement. Hosting a website is the exception. AWS
-has only one service for content distribution: AWS Cloudfront. The AWS S3 storage service can
-also do basic webhosting, but it is only regional and does not support https. A simple fact that
-sends many innocent cloud engineers down the rabbit hole of configuring cloudfront correctly.
+has only one service for content distribution: AWS Cloudfront. The AWS S3 storage service can also
+do basic webhosting, but it is only regional and does not support https. A simple fact that sends
+many innocent cloud engineers down the rabbit hole of configuring Cloudfront correctly.
 
-To mimic the local setup, the cloudfront distribution will serve as the entry point and it will
-proxy all requests matching `/api/*` to the api gateway. To do this, you will already need a
+To mimic the local setup, the Cloudfront distribution will serve as the entry point and it will
+proxy all requests matching `/api/*` to the Api Gateway. To do this, you will already need a
 special forwarding policy, otherwise you will get a `Bad Request` error:
 
 ```typescript
@@ -73,7 +77,7 @@ Into a friendly api name which hides also the Api Gateway Stage (`/prod` prefix 
     });
 ```
 
-Into a cloudfront origin forwarding anything below `/api/*` to that nice record:
+Into a Cloudfront origin forwarding anything below `/api/*` to that nice record:
 ```typescript
       additionalBehaviors: {
         "/api/*": {
@@ -130,7 +134,7 @@ And you'll be able to bundle it with this config:
 ```
 
 Notably this also requires adding the query engine required by the lambda runtime to your
-`primsa.schema`:
+`prisma.schema`:
 ```conf
 generator client {
   provider = "prisma-client-js"
