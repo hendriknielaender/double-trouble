@@ -211,7 +211,7 @@ export let secretUrl: string;
 The nice thing is that it will work with your Dockerfile local setup and in your cloud environment
 without adding any extra build flags.
 
-You can then remove your static instantiation of the prisma client, as it will be async. Within
+You can then remove your static instantiation of the Prisma client, as it will be async. Within
 each tRPC route, you need to then add:
 
 ```typescript
