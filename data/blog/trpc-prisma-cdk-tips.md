@@ -161,7 +161,7 @@ get the database credentials which are usually stored in a `AWS Secretsmanager` 
 to move the Prisma client into something async. That's because we will need to make sure to first
 fetch the credentials before instantiating our tRPC client.
 
-To fetch it, you can make sure of this very crappy helper function. But hey, it works and its
+To fetch it, you can make use of this very crappy helper function. But hey, it works and its
 cached!
 ```typescript
 import { SecretsManager } from 'aws-sdk';
