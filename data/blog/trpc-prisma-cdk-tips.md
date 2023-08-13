@@ -140,7 +140,7 @@ generator client {
 
 ## The Lambda Handler
 
-This brings us to the handler itself. To expose the trpc router as a lambda handler, trpc offers a
+This brings us to the handler itself. To expose the tRPC router as a lambda handler, tRPC offers a
 nice [lamdba adapter](https://trpc.io/docs/server/adapters/aws-lambda):
 ```typescript
 // src/server/router/index.ts
