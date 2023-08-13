@@ -1,9 +1,10 @@
 ---
-publishDate: "Aug 12 2023"
+publishDate: "Aug 13 2023"
 title: "How to run tRPC and Prisma on AWS with the CDK"
 description: "Pitfalls, Tips and Tricks to get your tRPC / Prisma Combo into the cloud."
 image: ~/assets/images/thumbnails/trpc_prisma_cdk_template.png
 imageCreditUrl: https://www.midjourney.com/
+tweetUrl: https://twitter.com/doubletrblblogs/status/1690631705311195136
 tags: [trpc, prisma, code, release, aws]
 ---
 
@@ -20,7 +21,7 @@ available as a working [template](https://github.com/flyck/trpc-prisma-cdk-examp
 ## Why Choose Prisma and tRPC?
 
 Our journey with Prisma and tRPC emerged as a game-changer in boosting our application's
-efficiency and scalability.  Prisma simplifies database access by auto-generating a type-safe
+efficiency and scalability. Prisma simplifies database access by auto-generating a type-safe
 query builder for TypeScript and Node.js. No more wrestling with raw SQL or settling for the
 limitations of traditional ORMs. On the other hand, tRPC stands out by offering end-to-end type
 safety for your API routes, bridging the gap between your data and the frontend seamlessly.
