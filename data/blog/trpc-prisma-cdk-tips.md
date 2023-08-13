@@ -10,7 +10,7 @@ tags: [trpc, prisma, code, release, aws]
 We have had the pleasure of launching a microfrontend feature using [tRPC](https://trpc.io/), [Prisma](https://www.prisma.io/) and the
 cdk. While official documentation exists, putting that into practice we encountered a few
 pitfalls. If you are also looking to leverage the power of tRPC and Prisma on your next app on top
-of AWS, this post is for you!
+of AWS, this post on leveraging tRPC, Prisma, and AWS CDK is for you!
 
 We will first go through a primer on tRPC and Prisma. Knowing the why, we will go through the how,
 and notable obstacles you might also face. Of course the whole code supporting this post is also
