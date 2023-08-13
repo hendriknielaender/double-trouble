@@ -18,7 +18,8 @@ available as a working [template](https://github.com/flyck/trpc-prisma-cdk-examp
 
 ## Prisma and TRPC, Why?
 
-TODO
+Our journey with Prisma and tRPC emerged as a game-changer in boosting our application's efficiency and scalability.
+Prisma simplifies database access by auto-generating a type-safe query builder for TypeScript and Node.js. No more wrestling with raw SQL or settling for the limitations of traditional ORMs. On the other hand, tRPC stands out by offering end-to-end type safety for your API routes, bridging the gap between your data and the frontend seamlessly.
 
 ## Frontend to Backend Connection
 
