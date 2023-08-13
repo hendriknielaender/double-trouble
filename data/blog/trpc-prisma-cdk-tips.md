@@ -126,7 +126,7 @@ And you'll be able to bundle it with this config:
         },
 ```
 
-Notably this also requires adding the query enginer required by the lambda runtime to your
+Notably this also requires adding the query engine required by the lambda runtime to your
 `primsa.schema`:
 ```conf
 generator client {
