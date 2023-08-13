@@ -7,7 +7,7 @@ imageCreditUrl: https://www.midjourney.com/
 tags: [trpc, prisma, code, release, aws]
 ---
 
-We have had the pleasure of launching a microfrontend feature using trpc, prisma and the
+We have had the pleasure of launching a microfrontend feature using [tRPC](https://trpc.io/), [Prisma](https://www.prisma.io/) and the
 cdk. While official documentation exists, putting that into practice we encountered a few
 pitfalls. If you are also looking to leverage the power of tRPC and Prisma on your next app on top
 of AWS, this post is for you!
