@@ -1,7 +1,7 @@
 ---
 publishDate: "Aug 12 2023"
 title: "How to run trpc and prisma on AWS with the CDK"
-description: "Pitfals, Tips and Tricks to get your TRPC / Prisma Combo into the cloud."
+description: "Pitfalls, Tips and Tricks to get your tRPC / Prisma Combo into the cloud."
 image: ~/assets/images/thumbnails/trpc_prisma_cdk_template.png
 imageCreditUrl: https://www.midjourney.com/
 tags: [trpc, prisma, code, release, aws]
