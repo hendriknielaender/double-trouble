@@ -12,7 +12,7 @@ cdk. While official documentation exists, putting that into practice we encounte
 pitfalls. If you are also looking to leverage the power of trpc and prisma on your next app ontop
 of AWS, this post is for you!
 
-We will first go through a primer on trpc and prisma. Knowing the why we will go through the how,
+We will first go through a primer on tRPC and Prisma. Knowing the why, we will go through the how,
 and notable obstacles you might also face. Of course the whole code supporting this post is also
 available as a working [template](https://github.com/flyck/trpc-prisma-cdk-example).
 
