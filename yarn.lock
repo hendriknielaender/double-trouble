@@ -180,10 +180,10 @@
   resolved "https://registry.yarnpkg.com/@astrolib/analytics/-/analytics-0.4.2.tgz#7ba573ddddbf831c4f872b4e0686db3acbb10327"
   integrity sha512-YAL1ubEKpN+IFNuM0SGGvN1jUX00ZmFtL2QuKDDCqq8nZzgREhl6IKSGyPOZ3haTbXVO71Rp/rjG9mmEt+RV4g==
 
-"@astrolib/seo@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@astrolib/seo/-/seo-0.4.0.tgz#f77d465190ec8f0fe4fb388118650f996b5bff39"
-  integrity sha512-pLErJ8X0+MbC36D5ZPX39rOrSk8Dx8wV4ssaNceNgavVEn70C2udupn5Jsw4bSOrEaxU8ovdciEvb9wMKV+BEQ==
+"@astrolib/seo@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@astrolib/seo/-/seo-0.6.0.tgz#a07dc00b0bd40cf62b4d8b306e4c2ce671b7eceb"
+  integrity sha512-mJzvW2ApVVpoB3mVNB+I3wrloorkcypoA7kXQWl1F9vu6X9LRTP2sLdCrn8qkPnKdwgGfmqe/S4vqiW/eemaDg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.22.5":
   version "7.22.5"
