@@ -13,12 +13,12 @@ const ids = [
 const posts = await findPostsByIds(ids);
 ---
 
-<section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
-	<div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
+<section class="px-4 py-4 mx-auto max-w-5xl">
+	<div class="flex flex-col lg:justify-between lg:flex-row md:mb-2">
 		<h2
-			class="max-w-lg mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading"
+			class="max-w-lg text-xl font-bold tracking-tight sm:text-xl sm:leading-none group font-heading"
 		>
-			<span class="inline-block mb-1 sm:mb-4">Highlighted Blogposts:</span>
+			<span class="inline-block mb-1 sm:mb-1">Highlighted Posts:</span>
 		</h2>
 	</div>
 	<Grid posts={posts} />
