@@ -16,9 +16,7 @@ import { findImage } from "~/utils/images";
 export async function getStaticPaths() {
   if (BLOG?.disabled || BLOG?.post?.disabled) return [];
 
-  const posts = await fetchPosts();
-
-  return posts.map((post) => ({
+  return (await fetchPosts()).flatMap((post) => ({
     params: {
       slug: cleanSlug(post.slug),
       blog: POST_BASE || undefined,

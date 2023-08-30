@@ -14,26 +14,25 @@
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.17.3",
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/partytown": "^1.2.3",
-    "@astrojs/rss": "^2.4.4",
-    "@astrojs/sitemap": "^2.0.2",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/mdx": "^1.0.0",
+    "@astrojs/partytown": "^2.0.0",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
     "@astrolib/analytics": "^0.4.2",
     "@astrolib/seo": "^0.6.0",
     "@fontsource/inter": "^5.0.8",
     "@tailwindcss/typography": "^0.5.8",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.4.1",
-    "astro": "2.10.7",
+    "@typescript-eslint/parser": "^6.5.0",
+    "astro": "3.0.3",
     "astro-icon": "^0.8.1",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "eslint-plugin-astro": "^0.29.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "limax": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.32.5",
@@ -43,5 +42,8 @@
   },
   "engines": {
     "node": "^14.15.0 || >=16.0.0"
+  },
+  "dependencies": {
+    "unpic": "^3.10.0"
   }
 }

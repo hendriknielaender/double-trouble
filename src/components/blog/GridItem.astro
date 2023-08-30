@@ -1,5 +1,5 @@
 ---
-import Picture from "~/components/core/Picture.astro";
+import Image from "~/components/core/Image.astro";
 
 import { findImage } from "~/utils/images";
 import { getPermalink } from "~/utils/permalinks";
@@ -17,7 +17,7 @@ const image = await findImage(post.image);
       href={getPermalink(post.slug, "post")}
       class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
     >
-      <Picture
+      <Image
         src={image}
         class="object-cover w-full lg:h-52 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
         widths={[400, 900]}
