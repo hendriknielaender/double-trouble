@@ -27,7 +27,7 @@ explore more. The Four In A Row was interesting, as the metrics were published t
 [Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) into a Grafana dashboard. Nice
 to see that for small data-sets and optimized queries, load times can be as fast as 0.5 seconds.
 
-![4 In A Row Dashboard](/berlin_summit_2023_review/berlin_summit_4_in_a_row.jpg)
+![4 In A Row Dashboard](./../../src/assets/images/posts/berlin_summit_2023_review/berlin_summit_4_in_a_row.jpg)
 
 But off to the talks! AWS divides its talks into skill levels: 200, 300 and 400. These talks are
 not live-streamed, and they are not uploaded to YouTube. With the occasional exception of the
@@ -65,17 +65,17 @@ Highlights and Learnings:
 - Quite possibly my favorite talk was ANT301 (Friction-less Compliant Data & Analytics Environments
   at Merck). Kudos to [John Mousa](https://www.linkedin.com/in/johnmousa/) for making this
   presentation exceptionally kind, enjoyable and insightful. Truly a talk in a league of its own.
-  ![](/berlin_summit_2023_review/ant301_people.jpg)
+  ![](./../../src/assets/images/posts/berlin_summit_2023_review/ant301_people.jpg)
   - You make change happen by identifying innovators and empowering them
   - It is useful to have different shapes of data-sets stored for different users, so people can
     iterate over them together. Storing only the final results of a data analysis will result in a
     mess and many people stirring their own pot.
-    ![](/berlin_summit_2023_review/ant301_layers.jpg)
+    ![](./../../src/assets/images/posts/berlin_summit_2023_review/ant301_layers.jpg)
 - [Jonathan Weiss'](https://www.linkedin.com/in/jonathan-weiss-26938622/) MAD202 (The Amazon
   Development Process) must have been a close second. Keeping feedback loops short is key. Amazon
   calls it the ECT Loop (edit-compile-test), I term it "the feedback loop of doom".
   - Ops meetings can be a good way to increase dashboard and monitoring practices in your company
-    ![](/berlin_summit_2023_review/mad202_ops_meetings.jpg)
+    ![](./../../src/assets/images/posts/berlin_summit_2023_review/mad202_ops_meetings.jpg)
   - Change happens by treating Service teams as independent startups. They are empowered to make
     their own decisions. They can decide, which feature they believe will serve the customer
     best. As a trade-off for more autonomy, they get held accountable only through KPIs, looking
@@ -87,7 +87,7 @@ Highlights and Learnings:
   really hammered home the point of putting queues behind event receivers. Allowing any subscribers
   to receive your messages, while the receiver takes care of first putting these events into a
   queue, makes for a resilient event-driven architecture.
-  ![](/berlin_summit_2023_review/mad303_pattern.jpg)
+  ![](./../../src/assets/images/posts/berlin_summit_2023_review/mad303_pattern.jpg)
 - ANT203 (Streamlining Manufacturing Reports at Volkswagen Group) told a great story about data
   migration.
   - Sometimes you'll have to provide people with a sense of control. On request they implemented
@@ -118,7 +118,7 @@ When visiting the summit:
 - Getting a cool coffee at Serverlesspresso is a must. It is the way to get to know new tech
   people in the industry, and to hear their stories. There's nothing easier than staring at a step
   function brewing your coffee, and chatting up the next one in queue, who is doing the same.
-  ![Serverlesspresso](/berlin_summit_2023_review/berlin_summit_23_serverlesspresso.jpg)
+  ![Serverlesspresso](./../../src/assets/images/posts/berlin_summit_2023_review/berlin_summit_23_serverlesspresso.jpg)
 - To navigate around the summit, get a paper map outside of the keynote hall, and get the AWS
   Events app for your phone.
 

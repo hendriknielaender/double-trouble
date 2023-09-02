@@ -1,5 +1,5 @@
 ---
-import Picture from "~/components/core/Picture.astro";
+import Image from "~/components/core/Image.astro";
 import PostTags from "~/components/atoms/Tags.astro";
 import SocialShare from "~/components/atoms/SocialShare.astro";
 import TwitterComments from "~/components/atoms/TwitterComments.astro";
@@ -27,7 +27,7 @@ const { post, url } = Astro.props;
         post.image ? (
           <>
             <div transition:name={"picture"+post.id}>
-              <Picture
+              <Image
                 src={post.image}
                 class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
                 widths={[400, 900]}

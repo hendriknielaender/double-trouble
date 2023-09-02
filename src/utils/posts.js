@@ -54,9 +54,11 @@ let _posts;
 
 /** */
 export const fetchPosts = async () => {
-  _posts = _posts || load();
+  if (!_posts) {
+    _posts = await load();
+  }
 
-  return await _posts;
+  return _posts;
 };
 
 /** */
@@ -65,8 +67,8 @@ export const findPostsByIds = async (ids) => {
 
   const posts = await fetchPosts();
 
-  return ids.reduce(function (r, id) {
-    posts.some(function (post) {
+  return ids.reduce(function(r, id) {
+    posts.some(function(post) {
       return id === post.id && r.push(post);
     });
     return r;
