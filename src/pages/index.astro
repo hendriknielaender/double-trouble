@@ -33,16 +33,21 @@ const meta = {
     <script>
         const leftFist = document.getElementById('leftFist');
         const rightFist = document.getElementById('rightFist');
-        const maxGap = 170; // Maximum gap between fists
+        const maxGap = 240; // Maximum gap between fists
         const minGap = 120;   // Minimum gap when fully scrolled
+        const minGapBigScreen = 153;   // Minimum gap when fully scrolled on big screens
 
         // Event listener for scroll
         window.addEventListener('scroll', function() {
             let scrollY = window.scrollY;
             let gap = maxGap - scrollY;
+            var w = window.innerWidth;
 
-            if (gap < minGap) {
-                gap = minGap;
+            // have a better gap on big screens
+            let flexibleMinGap = w < 1920 ? minGap : minGapBigScreen
+
+            if (gap < flexibleMinGap) {
+                gap = flexibleMinGap;
             }
 
             leftFist.style.transform = `translateY(-50%) translateX(calc(-50% - ${gap / 2}px))`;
