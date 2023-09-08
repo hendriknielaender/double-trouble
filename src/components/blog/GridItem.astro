@@ -11,7 +11,7 @@ const image = await findImage(post.image);
 
 <article class="mb-6 transition">
   <div transition:name={"picture"+post.id}
-    class="relative h-0 pb-[56.25%] lg:h-52 overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-2"
+    class="relative h-0 pb-[56.25%] lg:h-52 overflow-hidden light:bg-gray-400 bg-slate-700 rounded shadow-lg mb-2"
   >
     <a
       href={getPermalink(post.slug, "post")}
@@ -19,7 +19,7 @@ const image = await findImage(post.image);
     >
       <Image
         src={image}
-        class="object-cover w-full lg:h-52 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+        class="object-cover w-full lg:h-52 rounded shadow-lg light:bg-gray-400 bg-slate-700"
         widths={[400, 900]}
         sizes="(max-width: 900px) 400px, 900px"
         alt={post.title}
@@ -34,7 +34,7 @@ const image = await findImage(post.image);
       {post.title}
     </a>
   </h3>
-  <p class="text-gray-700 dark:text-gray-400 text-m sm:text-xs">
+  <p class="light:text-gray-700 text-gray-400 text-m sm:text-xs">
     {post.excerpt || post.description}
   </p>
 </article>
