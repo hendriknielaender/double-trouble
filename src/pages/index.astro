@@ -23,9 +23,9 @@ const meta = {
         <i>double</i>
       </div> the trouble.
     </h2>
-    <div class="mb-12 mt-12">
-    <div id="leftFist" class="absolute left-1/2 transform -translate-y-1/2 -translate-x-40 text-9xl">🤜</div>
-    <div id="rightFist" class="absolute left-1/2 transform -translate-y-1/2 translate-x-8 text-9xl">🤛</div>
+    <div class="sm:mb-12 mt-4 sm:mt-12 flex justify-center">
+    <div id="leftFist" class="sm:absolute sm:left-1/2 sm:transform sm:-translate-y-1/2 sm:-translate-x-40 text-4xl sm:text-9xl">🤜</div>
+    <div id="rightFist" class="sm:absolute sm:left-1/2 sm:transform sm:-translate-y-1/2 sm:translate-x-8 text-4xl sm:text-9xl">🤛</div>
     </div>
   </div>
   <HighlightedPosts />
@@ -42,6 +42,7 @@ const meta = {
             let scrollY = window.scrollY;
             let gap = maxGap - scrollY;
             var w = window.innerWidth;
+            if (w < 640) return
 
             // have a better gap on big screens
             let flexibleMinGap = w < 1920 ? minGap : minGapBigScreen
