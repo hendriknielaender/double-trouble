@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const { themeVariants } = require("tailwindcss-theme-variants");
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
@@ -18,8 +19,19 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
-	darkMode: 'class',
+	plugins: [
+                require('@tailwindcss/typography'),
+                themeVariants({
+                    themes: {
+                        light: {
+                            selector: ".light",
+                        },
+                        dark: {
+                            selector: ".dark",
+                        },
+                    },
+                }),
+        ],
 };
 
 /*

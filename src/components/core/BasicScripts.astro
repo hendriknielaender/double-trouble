@@ -1,29 +1,25 @@
 ---
+import { SITE } from '~/config.mjs';
 ---
 
-<script is:inline>
-  // Set "dark" theme as default
-  if (!localStorage.theme) {
-    localStorage.theme = "dark";
-  }
-
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-
-  function attachEvent(selector, event, fn) {
-    const matches = document.querySelectorAll(selector);
-    if (matches && matches.length) {
-      matches.forEach((elem) => {
-        elem.addEventListener(event, () => fn(elem), false);
-      });
+<script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
     }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    applyTheme(defaultTheme.replace(':only', ''));
+  } else if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
   }
 
   function adjustTweetsToTheme() {
@@ -50,16 +46,25 @@
     {
        if (frames[i].id.indexOf("twitter-widget") >= 0) {
          console.log("adjusting tweet")
-         if (localStorage.theme == "dark") {
+         if (localStorage.theme == "light") {
            frames[i].src = frames[i].src.replace("theme=light", "theme=dark")
          }
-         else if (localStorage.theme == "light") {
+         else if (localStorage.theme == "dark") {
            frames[i].src = frames[i].src.replace("theme=dark", "theme=light")
            console.log(frames[i].src)
          } else {
            console.log("unknown theme: " + localStorage.theme)
          }
        }
+    }
+  }
+
+  function attachEvent(selector, event, fn) {
+    const matches = document.querySelectorAll(selector);
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, () => fn(elem), false);
+      });
     }
   }
 
@@ -72,8 +77,8 @@
     });
 
     attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
-      document.documentElement.classList.toggle("dark");
-      localStorage.theme = document.documentElement.classList.contains("dark")
+      document.documentElement.classList.toggle("light");
+      localStorage.theme = document.documentElement.classList.contains("light")
         ? "dark"
         : "light";
 

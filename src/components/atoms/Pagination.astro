@@ -15,7 +15,7 @@ const {
       <div class="flex flex-row mx-auto container justify-between">
         <a
           href={getPermalink(prevUrl, "raw")}
-          class={`btn px-2 font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none mr-2
+          class={`btn px-2 font-medium light:text-gray-600 light:hover:text-gray-900 text-gray-400 hover:text-white shadow-none mr-2
       ${!prevUrl ? "invisible" : ""}`}
         >
           <div class="flex flex-row align-middle">
@@ -25,7 +25,7 @@ const {
         </a>
         <a
           href={getPermalink(nextUrl, "raw")}
-          class={`btn px-2 font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none ${
+          class={`btn px-2 font-medium light:text-gray-600 light:hover:text-gray-900 text-gray-400 hover:text-white shadow-none ${
             !nextUrl ? "invisible" : ""
           }`}
         >
