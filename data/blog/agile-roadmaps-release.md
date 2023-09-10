@@ -1,16 +1,16 @@
 ---
 publishDate: "Sep 11 2023"
-title: "Agile Roadmaps - How and Why Roadmaps can be better"
+title: "Agile Roadmaps - Why and How Roadmaps can be better"
 description: "A new approach for roadmapping and why we need it."
 image: "~/assets/images/thumbnails/agile-roadmaps-1.png"
 imageCreditUrl: https://midjourney.com
 tags: [agile, roadmap, concept, mvp, launch]
 ---
 
-If you're working in tech, chances are you've already been working agile. If you've been working
-in agile, then you have been working on roadmaps. We find that this area in tech today needs a
-big overhaul and a fresh approach. This post is drawing a sketch for such an approach, and will
-cover theory, practice and an MVP.
+If you're working in tech, chances are you're working in agile. If you've been working
+in agile, then you have been working on roadmaps. Talking to people and experiencing it ourselves,
+we find that this area in tech today needs a big overhaul and a fresh approach. In this post we'll
+be drawi a sketch for such an approach, and cover theory, practice and our own implementation.
 
 
 ## Project Planning Sucks
@@ -21,38 +21,43 @@ similar. While a new approach will be more than likely highly discussed, challen
 talking to friends and colleagues before this launch, we can all agree: There is a
 problem. Project planning sucks, today.
 
+<img width="60%" src="./../../src/assets/images/posts/agile_roadmaps_release/planning_fallacy.jpg" />
+
 Where fellow engineers but also professionals from other domains can agree is this: Planning
 software projects has gone bad. Sketching a software project in detail, estimating all the
 tickets, setting a start and end date. On a high level, many companies try to plan the whole year
-ahead. What looks agile in sprints, is often enough the slow chipping away at a crushing Epic,
+ahead. What looks agile in sprints, is often enough the slow chipping away at a monstrous Epic,
 which got created, estimated, planned and deadlined a long time ago.
 
-![4 In A Row Dashboard](./../../src/assets/images/posts/agile_roadmaps_release/planning_fallacy.jpg)
-
 And we can ask ourselves as a generation, does this work? Are we happy with the way we plan on a
-high level? As engineers, in our work we strive to create systems that work like a well-oiled
-machine, which work to a maximum level of efficiency for everybody involved and with a minimal
-level of friction. Yet we do it within a systems, which feels totally different. It very much
-feels like something that has a lot of room for improvement. It is time to take a step back, and
-to evolve again.
+high level? As engineers, in our work we strive to create systems that work effortlessly, like a
+well-oiled machine, which works to a maximum level of efficiency for everybody involved, and with a
+minimal level of friction. Meticulously we do it within a larger system, which feels totally
+different. It very much feels like something that has a lot of room for improvement. It is time to
+take a step back, and to evolve again.
 
 ## What's wrong with Roadmaps?
 
 Roadmaps today are primarily a tool for communication. Roadmaps are generally presented to the
 whole company in quarterly meetings. Where epics lie on the roadmap, what needs to be prioritized
-and most importantly, what can be marked as done keeps project managers busy for the entire year.
+and most importantly, what can be marked as done keeps project managers busy for most of the year.
 
 Over time, what seems to have happened is that the visuals and the mechanics of the roadmap tools
 like jira have shaped our culture. Instead of using roadmaps consciously to clarify dependencies
-and priorities, in reality roadmaps are often turn into a game of deadlines.
+and priorities, in reality roadmaps are often turn into a timeline poker.
 
 3 Pictures of roadmaps (jira, clickup and linear)
 
+<img width="50%" src="./../../src/assets/images/posts/agile_roadmaps_release/basic-roadmap-2.png"
+alt="source: www.atlassian.com" />
+<img width="50%" src="./../../src/assets/images/posts/agile_roadmaps_release/linear-app-roadmap.png"
+alt="source: www.atlassian.com" />
+
 > Once an Epic is started, suddenly the only thing that matters is this: Will it finish on time?
 
-A seemingly endless series of deadline syncs and alignment meetings starts in the background,
-sometimes more subtle. This is exactly our point of departure. This is were the old ways of
-waterfall planning have not left us, and we start chasing deadlines all over again.
+A seemingly endless series of timeline syncs and alignment meetings starts in the background,
+sometimes more subtle, sometimes less. This is exactly our point of departure. This is were the
+old ways of waterfall planning have not left us, and we start chasing deadlines all over again.
 
 After an Epic starts, or let's say after the Kickoff, we say these questions should rather be on
 our minds:
@@ -92,7 +97,7 @@ As engineers living and thinking in iterations and releases, this statement is m
 hearts. Not only was it a key learning from our CEO, which he wanted everyone to know, but it also
 aligns more with agile. Validating a hypothesis iteratively and as soon as possible, that is
 something that can be done! Pinning epics on roadmaps for the year ahead, this has hardly anthing
-iterative left.
+iterative left. So lets focus on hypotheses!
 
 ## From Epics to Hypotheses
 
@@ -108,6 +113,7 @@ based on the previous paragraphs, let's sketch how they should look like.
 - central kpis as part of the roadmap visual
 - high-level hypothesis instead of packed epics
   - project managers should pursue hypothesis
+- as software engineering is cyclical, agile roadmaps should include circles, not long bars
 
 Show the initial sketch of agile roadmaps
 
@@ -116,6 +122,11 @@ Show the initial sketch of agile roadmaps
 Based on all these thoughts, double trouble has created an initial agile roadmaps implementation.
 
 It focuses on all the mentioned concepts and can be seen here: https://flyck.gitlab.io/agile-roadmaps/
+
+## New Roadmaps, new mechanisms
+
+Demonstrate the line of command which is enabled through kpis, hypothesis and iterations all on
+one board.
 
 ## Is a new roadmap really needed?
 
@@ -132,7 +143,7 @@ on. If this would work well, we could leave it at that.
   the customer feedback as you go.
 - Dont sync on epic progress, sync on iterations. an iteration is a customer feedback or learning
   based on a release.
-- Celebrate PMs on the amount of iterations they did, not on the size of the Epic they closed.
+- Celebrate PMs on the amount of iterations they did, not on the amount of the Epics they closed.
 
 ## Rounding up
 
