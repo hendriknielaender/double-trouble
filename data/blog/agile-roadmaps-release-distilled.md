@@ -169,7 +169,9 @@ If you would like to see this prototype further build out, please let us know ei
 the repository or by reaching out in some other way. We will base our future actions on this
 project purely on the feedback we receive for this blogpost.
 
-### The Line of Control
+## FAQs
+
+### What is the Line of Control?
 
 Condensing the epics into their hypothesis and ligning it up next to KPIs, releases and
 iterations, also gives a new finer level of delegating control. Before with Epics, everything is
@@ -177,12 +179,11 @@ one unit, from the individual tasks to timing to dependencies and scope. Epics g
 packed bundle somewhere near or by C-Level.
 
 With a hypothesis-led roadmap, leadership gets more options where they want to draw the line. Do
-they want to only determine the KPIs? KPIs and Hypothesis? KPIs, hypothesis and sprint goals?
+they want to only set the KPIs? KPIs and hypothesis? KPIs, hypothesis and sprint goals?
 Kpis, hypothesis, sprint goals and iterations? The answer to this question will vary from leader
 to leader. More delegation could in the end lead to more empowerement, more drive by the
 employees, and more time freed up from all of that.
 
-## FAQs
 
 ### Why Reinvent Roadmaps?
 
