@@ -95,3 +95,50 @@ something that can be done! Pinning epics on roadmaps for the year ahead, this h
 iterative left.
 
 ## From Epics to Hypotheses
+
+ideas:
+- difference between epic and hypothesis
+- how epics are part of the planning paralysis problem
+- what can be the status of a hypothesis: open, confirmed, disconfirmed, dropped, inactive
+
+## How the next generation of roadmaps needs to look like
+
+based on the previous paragraphs, let's sketch how they should look like.
+
+- central kpis as part of the roadmap visual
+- high-level hypothesis instead of packed epics
+  - project managers should pursue hypothesis
+
+Show the initial sketch of agile roadmaps
+
+## Introducing the Agile Roadmaps MVP
+
+Based on all these thoughts, double trouble has created an initial agile roadmaps implementation.
+
+It focuses on all the mentioned concepts and can be seen here: https://flyck.gitlab.io/agile-roadmaps/
+
+## Is a new roadmap really needed?
+
+A new roadmap tool is not a key requirement to plan things better. It is only supposed to be a
+tool that fosters a new view on planning, and a fresh approach.
+
+We have observed that jira and other tools have influenced how people think, and what people focus
+on. If this would work well, we could leave it at that.
+
+## How can roadmaps be more agile today?
+
+- Make epics thinner. Distill epics to their underlying hypothesis to reduce planning paralysis
+- Re-introduce true kickoffs after fixing the hypothesis. Planning ahead for months < learning for
+  the customer feedback as you go.
+- Dont sync on epic progress, sync on iterations. an iteration is a customer feedback or learning
+  based on a release.
+- Celebrate PMs on the amount of iterations they did, not on the size of the Epic they closed.
+
+## Rounding up
+
+In the end we see that every initial idea is not perfect. This is the whole motivator behind this
+approach. Where we can agree is that software project planning can be improved, but how exactly
+this will go remains the question. If you would be interested in the agile roadmaps demo to be
+build out further, feel free to join us with a contribution or make sure to mark the
+repository. This would let us know that people are interested in this approach and we should build
+it our further.
