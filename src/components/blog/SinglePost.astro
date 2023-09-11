@@ -57,7 +57,7 @@ const { post, url } = Astro.props;
       }
     </header>
     <div
-      class="container mx-auto px-6 sm:px-6 max-w-3xl prose prose-m lg:prose-l dark:prose-invert light:text-slate-800 text-slate-300 light:prose-headings:text-slate-800 prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold light:prose-a:text-primary-600 prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
+      class="container mx-auto px-6 sm:px-6 max-w-3xl prose prose-m lg:prose-l light:text-slate-800 text-slate-300 light:prose-blockquote:text-slate-900 prose-blockquote:text-slate-100 light:prose-code:text-slate-800 prose-code:text-slate-200 light:prose-headings:text-slate-800 prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold light:prose-a:text-primary-600 prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
     >
       {post.Content ? <post.Content /> : <Fragment set:html={post.body} />}
     </div>
