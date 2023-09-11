@@ -8,39 +8,39 @@ tags: [agile, roadmap, concept, mvp, launch]
 ---
 
 We feel that roadmapping today can be better. While over the years we as an industry have gotten
-better at jira and agile, at times it seems we've become enslaved by our tools. Particularly the
-way roadmaps are created and visualized is something that seems to create tendencies that work
-against the iterative approach. This post is about discussing better tools, why we need them, and
-what they might look like.
+better at Jira and agile, at times it seems we've become enslaved by our tools. Particularly the
+way roadmaps are created and visualized often seems to create tendencies that work against the
+iterative approach. This post is about discussing better tools, why we need them, and what they
+might look like.
 
 ## Challenges with Roadmapping Today
 
 ### The Cost of Meetings
 
 When aligning priorities and estimating items, it is easy to get lost in this process. The cost of
-these planning meetings is a blind spot for many companies. Instead of going for the quickwin and
+these planning meetings is a blind spot for many companies. Instead of going for the quick-win and
 getting insights, things tend to be planned 10x over, before the first move is made. What we need
-is more `bias for action`.
+is more [bias for action](https://www.aboutamazon.com/about-us/leadership-principles).
 
 ### Planning Paralysis
 
 It is hard to say when a plan is finished. For roadmaps, epics are created. Individual tickets are
 created and groomed. The estimated size of the Epic becomes clear and gets approved somewhere in
-the area around C-Level. To get approval for an idea, all the details need to be mapped out, and
+the area around C-level. To get approval for an idea, all the details need to be mapped out, and
 you might find as many reasons to do a thing, as there are to not do that thing.
 
 ### Planning Software
 
-The industry has evolved significantly over the years. Collectively, we have learned that making a long plan for a
-thing doesn't really work in software. That's why we've turned from Waterfall to Scrum or
-Agile. Working in iterations, we're supposed to aim at *some* result at the end of each
+The industry has significantly evolved over the years. Collectively, we have learned that making a
+long plan for a thing doesn't really work in software. That's why we've turned from Waterfall to
+Scrum or Agile. Working in iterations, we're supposed to aim at *some* result at the end of each
 sprint. From this result we can learn, reflect and adapt, in order to stay on course. Thinking up
 a huge plan ahead of time and following it 1:1 does generally not work in software development.
 
 ### The Concept of Epics
 
 Epics are one big chunk of work on the roadmap. They can represent a feature, an effort or an
-initiative. They are timebound and generally have a concrete goal. Epics are generally prefilled
+initiative. They are time-bound and generally have a concrete goal. Epics are generally prefilled
 with all necessary tickets, and estimated before the Epic is started. This is to get the approval
 for the idea given the complexity, effort, dependencies and projected result, while also fixing
 the start and finish. Because Epic configurations are approved by leadership, changing the epic
@@ -50,7 +50,7 @@ is how Epics tend to stand opposite to the iterative approach.
 ### Tool Blindness
 
 Today, almost every software company has adopted agile methodologies. There is hardly any place that doesn't
-use a tool like jira, clickUp or trello to manage their plans. While we have gotten pretty used
+use a tool like Jira, ClickUp or Linear to manage their plans. While we have gotten pretty used
 to a planning `status quo`, and putting things in their right places in our tool of choice, hardly
 anything ever goes according to plan. We use modern tools and fill out all the colorful boxes, but
 we get disappointed every time as the deadline has to be moved, as that Epic has to be extended
@@ -73,7 +73,7 @@ One CEO we both knew always used to say:
 
 It seemed to be a core learning of his after many hard years in the startup world. We decided to
 take this quote as the foundation to a new way of planning. What C-Level cares about at its core
-is not that colorful bubbles stay exactly where they were originally created in jira. What C-Level
+is not that colorful bubbles stay exactly where they were originally created in Jira. What C-Level
 cares about is to validate hypotheses. To learn critical information about the customer and the
 future of the business.
 
@@ -122,7 +122,7 @@ At the same time it addresses all mentioned problems from earlier:
     software development in the place where it can work. Delivering iteratively is the way to go
     in software, while trying to hit the target a bit closer every time.
 - The Concept of Epics
-  - Focussing on hypotheses changes roadmapping fundamentally. Instead of pre-planning everything,
+  - Focusing on hypotheses changes roadmapping fundamentally. Instead of pre-planning everything,
     we expose the core ideas of our plans to the brain hive of the entire company. We focus closer
     on what truly matters to leadership: To confirm or to disconfirm an open hypothesis.
 - Tool Blindness
@@ -131,7 +131,7 @@ At the same time it addresses all mentioned problems from earlier:
     the KPI didn't move, the real impact of the work is clearly visible.
 - Visual Bias
   - Agile roadmaps create a bias towards sprint-based releases and towards true iterations towards
-    a measured goal. Todays roadmaps reward product managers for finishing an epic. Roadmaps of
+    a measured goal. Today's roadmaps reward product managers for finishing an epic. Roadmaps of
     the future will reward product managers for iterating.
 
 ### The Components
@@ -140,7 +140,7 @@ At the same time it addresses all mentioned problems from earlier:
 - Iterations: While originally every sprint was supposed to be an iteration, in reality this often
   does not lign up. Iterations in agile roadmaps require three things:
   - Customer data / feedback
-  - A release this feedback releates to
+  - A release this feedback relates to
   - An insight, decision or learning
 
 A real brain teaser will be the fact that we have to stop thinking exclusively in deadlines. Yes,
@@ -181,18 +181,18 @@ packed bundle somewhere near or by C-Level.
 With a hypothesis-led roadmap, leadership gets more options where they want to draw the line. Do
 they want to only set the KPIs? KPIs and hypothesis? KPIs, hypothesis and sprint goals?
 Kpis, hypothesis, sprint goals and iterations? The answer to this question will vary from leader
-to leader. More delegation could in the end lead to more empowerement, more drive by the
+to leader. More delegation could in the end lead to more empowerment, more drive by the
 employees, and more time freed up from all of that.
 
 
 ### Why Reinvent Roadmaps?
 
 Isn't it the case that iterations already exists today in the form of sprints? Epics and
-hypotheses are also not too far apart. Releases can be displayed on a jira roadmap, etc. All this
+hypotheses are also not too far apart. Releases can be displayed on a Jira roadmap, etc. All this
 is true, but still we believe a new way to create roadmaps is needed.
 
-> With the right mindset and with aligned priorities, you can work truly agile today, even in
-> tools like jira.
+With the right mindset and with aligned priorities, you can work truly agile today, even in tools
+like Jira.
 
 The issue is that current roadmap tools create a certain tendency away from what we know to be
 best for software engineering: The iterative approach. That's why we need a new way to look at
@@ -204,13 +204,13 @@ change. Software project planning needs to be better.
 
 Given that a few of the ideas in this post convinced you to try and start moving closer to a
 hypothesis-led agile roadmap, what could be done? These are the steps you could take if you're not
-doign so already:
-- Clearly write down the hypotheses behind your epics
-- Talk to your users and use this feedback as input for your next sprint planning
-- Make sure you have a live dashboard somewhere of your KPIs
-- Avoid 'big bang' releases at the end of epics. Instead, focus on rolling out partial solutions iteratively to end-users.
-  iteratively to end customers
-- At the end of an epic, take the time to analyse the numbers and the real impact
+doing so already:
+- Clearly write down the hypotheses behind your epics.
+- Talk to your users and use this feedback as input for your next sprint planning.
+- Make sure you have a live dashboard somewhere with your KPIs.
+- Avoid 'big bang' releases at the end of epics. Instead, focus on rolling out partial solutions
+  iteratively to end-users.
+- At the end of an epic, take the time to analyze the numbers and the real impact.
 
 
 ## Rounding Up
