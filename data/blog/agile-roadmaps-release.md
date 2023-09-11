@@ -8,10 +8,10 @@ tags: [agile, roadmap, concept, mvp, launch]
 ---
 
 We feel that roadmapping today can be better. While over the years we as an industry have gotten
-better at Jira and agile, at times it seems we've become enslaved by our tools. Particularly the
-way roadmaps are created and visualized often seems to create tendencies that work against the
-iterative approach. This post is about discussing better tools, why we need them, and what they
-might look like.
+very much used to Jira and agile, at times it seems we've become enslaved by our
+tools. Particularly the way roadmaps are created and visualized often seems to create tendencies
+that work against the iterative approach. This post is about discussing better tools, why we need
+them, and what they might look like.
 
 ## Challenges with Roadmapping Today
 
