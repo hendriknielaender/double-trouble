@@ -25,7 +25,7 @@ is more [bias for action](https://www.aboutamazon.com/about-us/leadership-princi
 ### Planning Paralysis
 
 It is hard to say when a plan is finished. For roadmaps, epics are created. Individual tickets are
-created and groomed. The estimated size of the Epic becomes clear and gets approved somewhere in
+created and groomed. The estimated size of the epic becomes clear and gets approved somewhere in
 the area around C-level. To get approval for an idea, all the details need to be mapped out, and
 you might find as many reasons to do a thing, as there are to not do that thing.
 
@@ -41,11 +41,11 @@ a huge plan ahead of time and following it 1:1 does generally not work in softwa
 
 Epics are one big chunk of work on the roadmap. They can represent a feature, an effort or an
 initiative. They are time-bound and generally have a concrete goal. Epics are generally prefilled
-with all necessary tickets, and estimated before the Epic is started. This is to get the approval
+with all necessary tickets, and estimated before the epic is started. This is to get the approval
 for the idea given the complexity, effort, dependencies and projected result, while also fixing
-the start and finish. Because Epic configurations are approved by leadership, changing the epic
+the start and finish. Because epic configurations are approved by leadership, changing the epic
 after it is started is problematic, even by iterative findings that came up in the sprints. This
-is how Epics tend to stand opposite to the iterative approach.
+is how epics tend to stand opposite to the iterative approach.
 
 ### Tool Blindness
 
@@ -54,14 +54,14 @@ that doesn't use a tool like Jira, ClickUp or Linear to facilitate project plann
 gotten pretty used to a planning `status quo`, and putting things in their right places in our
 tool of choice, hardly anything ever goes according to plan. We use modern tools and fill out all
 the colorful boxes, but we get disappointed every time as the deadline has to be moved, as that
-Epic has to be extended that little bit.
+epic has to be extended that little bit.
 
 ### Visual Bias
 
 The way that roadmaps are visualized creates a certain bias for something that we know not to be
 true in software: Long-term plans don't work out as expected. Yet looking at the roadmap tools, we
 set start and end-dates for everything. You can have a team of product managers raging in
-excitement, because each of them marked an Epic as done on the roadmap. Meanwhile none of them
+excitement, because each of them marked an epic as done on the roadmap. Meanwhile none of them
 have talked to the customer or looked at the numbers. Tools today create a bias to execute things
 perfectly just as planned, not to learn, reflect and iterate.
 
@@ -77,12 +77,12 @@ is not that colorful bubbles stay exactly where they were originally created in 
 cares about is to validate hypotheses. To learn critical information about the customer and the
 future of the business.
 
-While it is true that probably behind every Epic are one or more core ideas, Epics itself are not
-hypotheses. Epics are planned items of work on a high level, but including all individual tasks as
-well, bundled up with a start and estimated end. Following a huge plan in software development is
-something that historically must end in disappointment, and which lacks the iterative
-components. In contrast, trying to verify a hypothesis as early as possible seems to be close to
-the heart of the iterative approach.
+While it is true that probably behind every epic are one or more core ideas, epics themselves are
+not hypotheses. Epics are planned items of work on a high level, but including all individual
+tasks as well, bundled up with a start and estimated end. Following a huge plan in software
+development is something that historically must end in disappointment, and which lacks the
+iterative components. In contrast, trying to verify a hypothesis as early as possible seems to be
+close to the heart of the iterative approach.
 
 ### Hypothesis-led Roadmaps
 
@@ -163,7 +163,8 @@ We decided only having it as a sketch was not enough, and we created an initial 
 idea. The plan is to integrate this with all major Agile planning systems. A new
 visualization in our mind can make the real difference in the daily lifes of many people.
 
-Experience the future of agile roadmapping firsthand. Explore our demo now: [Agile Roadmaps Prototype](https://flyck.gitlab.io/agile-roadmaps/)
+Experience the future of agile roadmapping firsthand. Explore our demo now: [Agile Roadmaps
+Prototype](https://flyck.gitlab.io/agile-roadmaps/)
 
 If you would like to see this prototype further build out, please let us know either by starring
 the repository or by reaching out in some other way. We will base our future actions on this
@@ -174,7 +175,7 @@ project purely on the feedback we receive for this blogpost.
 ### What is the Line of Control?
 
 Condensing the epics into their hypothesis and ligning it up next to KPIs, releases and
-iterations, also gives a new finer level of delegating control. Before with Epics, everything is
+iterations, also gives a new finer level of delegating control. Before with epics, everything is
 one unit, from the individual tasks to timing to dependencies and scope. Epics get approved as one
 packed bundle somewhere near or by C-Level.
 
