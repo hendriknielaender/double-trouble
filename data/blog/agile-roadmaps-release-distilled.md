@@ -8,10 +8,10 @@ tags: [agile, roadmap, concept, mvp, launch]
 ---
 
 We feel that roadmapping today can be better. While over the years we as an industry have gotten
-better at jira and agile, at times it seem's we've become enslaved by our tools. Particularly the
+better at jira and agile, at times it seems we've become enslaved by our tools. Particularly the
 way roadmaps are created and visualized is something that seems to create tendencies that work
 against the iterative approach. This post is about discussing better tools, why we need them, and
-how they can look like.
+what they might look like.
 
 ## Challenges with Roadmapping Today
 
@@ -31,7 +31,7 @@ you might find as many reasons to do a thing, as there are to not do that thing.
 
 ### Planning Software
 
-We've come a long way in the industry. Collectively, we have learned that making a long plan for a
+The industry has evolved significantly over the years. Collectively, we have learned that making a long plan for a
 thing doesn't really work in software. That's why we've turned from Waterfall to Scrum or
 Agile. Working in iterations, we're supposed to aim at *some* result at the end of each
 sprint. From this result we can learn, reflect and adapt, in order to stay on course. Thinking up
@@ -49,7 +49,7 @@ is how Epics tend to stand opposite to the iterative approach.
 
 ### Tool Blindness
 
-Today, agile has spread almost into every software company. There is hardly any place that doesnt
+Today, almost every software company has adopted agile methodologies. There is hardly any place that doesn't
 use a tool like jira, clickUp or trello to manage their plans. While we have gotten pretty used
 to a planning `status quo`, and putting things in their right places in our tool of choice, hardly
 anything ever goes according to plan. We use modern tools and fill out all the colorful boxes, but
@@ -103,7 +103,7 @@ information to help out here. This is what we need from a truly iterative roadma
 
 ![Sketch of the proposed agile roadmap layout.](../../src/assets/images/posts/agile_roadmaps_release/dashboard_sketch.png)
 
-Such a roadmap is one that would be truly iterative. That's why we dub this concept as "agile
+Imagine a roadmap that evolves and adapts, mirroring the dynamic nature of agile workflows. That's the essence of a truly iterative roadmap. That's why we dub this concept as "agile
 roadmaps". It is more in line with what we as engineers know to be true in software engineering,
 while it also caters to the most important need of C-Level: Validating hypotheses.
 
@@ -163,7 +163,7 @@ We decided only having it as a sketch was not enough, and we created an initial 
 idea. The plan is to at one point integrate it will all major agile planning systems. A new
 visualization in our mind can make the real difference in the daily lifes of many people.
 
-You can check out the demo here: https://flyck.gitlab.io/agile-roadmaps/
+Experience the future of agile roadmapping firsthand. Explore our demo now: [Agile Roadmaps Prototype](https://flyck.gitlab.io/agile-roadmaps/)
 
 If you would like to see this prototype further build out, please let us know either by starring
 the repository or by reaching out in some other way. We will base our future actions on this
@@ -208,7 +208,7 @@ doign so already:
 - Clearly write down the hypotheses behind your epics
 - Talk to your users and use this feedback as input for your next sprint planning
 - Make sure you have a live dashboard somewhere of your KPIs
-- Avoid big bang releases at the end of epics and figure out how roll out partial solutions
+- Avoid 'big bang' releases at the end of epics. Instead, focus on rolling out partial solutions iteratively to end-users.
   iteratively to end customers
 - At the end of an epic, take the time to analyse the numbers and the real impact
 
