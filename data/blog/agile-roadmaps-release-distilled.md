@@ -160,7 +160,7 @@ are gained from iterations.
 ### More than a Sketch
 
 We decided only having it as a sketch was not enough, and we created an initial prototype for this
-idea. The plan is to at one point integrate it will all major agile planning systems. A new
+idea. The plan is to integrate this with all major Agile planning systems. A new
 visualization in our mind can make the real difference in the daily lifes of many people.
 
 Experience the future of agile roadmapping firsthand. Explore our demo now: [Agile Roadmaps Prototype](https://flyck.gitlab.io/agile-roadmaps/)
