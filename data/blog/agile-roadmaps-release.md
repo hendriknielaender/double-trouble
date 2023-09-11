@@ -49,12 +49,12 @@ is how Epics tend to stand opposite to the iterative approach.
 
 ### Tool Blindness
 
-Today, almost every software company has adopted agile methodologies. There is hardly any place that doesn't
-use a tool like Jira, ClickUp or Linear to manage their plans. While we have gotten pretty used
-to a planning `status quo`, and putting things in their right places in our tool of choice, hardly
-anything ever goes according to plan. We use modern tools and fill out all the colorful boxes, but
-we get disappointed every time as the deadline has to be moved, as that Epic has to be extended
-that little bit.
+Today, almost every software company has adopted agile methodologies. There is hardly any place
+that doesn't use a tool like Jira, ClickUp or Linear to facilitate project planning. While we have
+gotten pretty used to a planning `status quo`, and putting things in their right places in our
+tool of choice, hardly anything ever goes according to plan. We use modern tools and fill out all
+the colorful boxes, but we get disappointed every time as the deadline has to be moved, as that
+Epic has to be extended that little bit.
 
 ### Visual Bias
 
