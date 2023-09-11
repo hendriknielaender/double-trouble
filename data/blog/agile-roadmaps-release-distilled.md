@@ -1,7 +1,7 @@
 ---
 publishDate: "Sep 11 2023"
 title: "Agile Roadmaps - Why and How Roadmaps can be better"
-description: "A new approach for roadmapping and why we need it."
+description: "Explore the need for change in agile roadmapping and discover how hypothesis-led roadmaps can transform the agile process."
 image: "~/assets/images/thumbnails/agile-roadmaps-1.png"
 imageCreditUrl: https://midjourney.com
 tags: [agile, roadmap, concept, mvp, launch]
