@@ -4,6 +4,7 @@ title: "Agile Roadmaps - Why and How Roadmaps can be better"
 description: "Explore the need for change in agile roadmapping and discover how hypothesis-led roadmaps can transform the agile process."
 image: "~/assets/images/thumbnails/agile-roadmaps-1.png"
 imageCreditUrl: https://midjourney.com
+tweet: "https://twitter.com/doubletrblblogs/status/1701277298098311379"
 tags: [agile, roadmap, concept, mvp, launch]
 ---
 
