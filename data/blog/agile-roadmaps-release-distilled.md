@@ -24,9 +24,9 @@ is more `bias for action`.
 
 ### Planning Paralysis
 
-It is hard to say when a plan is finished. For roadmaps epics are created. Individual tickets are
+It is hard to say when a plan is finished. For roadmaps, epics are created. Individual tickets are
 created and groomed. The estimated size of the Epic becomes clear and gets approved somewhere in
-thea area around C-Level. To get approval for an idea, all the details need to be mapped out, and
+the area around C-Level. To get approval for an idea, all the details need to be mapped out, and
 you might find as many reasons to do a thing, as there are to not do that thing.
 
 ### Planning Software
@@ -101,7 +101,7 @@ information to help out here. This is what we need from a truly iterative roadma
 - `Sprints` near the bottom to again highlight the visual nature. A sprint is a planned iteration
   and thereby connected to the releases.
 
-![](../../src/assets/images/posts/agile_roadmaps_release/dashboard_sketch.png)
+![Sketch of the proposed agile roadmap layout.](../../src/assets/images/posts/agile_roadmaps_release/dashboard_sketch.png)
 
 Such a roadmap is one that would be truly iterative. That's why we dub this concept as "agile
 roadmaps". It is more in line with what we as engineers know to be true in software engineering,
