@@ -86,18 +86,18 @@ close to the heart of the iterative approach.
 
 ### Hypothesis-led Roadmaps
 
-If we can reduce roadmaps to their essence which are the hypotheses, we can start thinking of a
-new way of roadmapping, and new tools.
+If we can reduce roadmaps and their epics to their essence, which are the hypotheses, we can start
+thinking of a new way of roadmapping, and new tools.
 
-When roadmaps were just a set huge plan for people to execute, not a lot of additional information
-was needed. As hypotheses are thinner than epics, as they are more condensed, we need additional
-information to help out here. This is what we need from a truly iterative roadmap:
+When roadmaps are just a set huge plan for people to execute, not a lot of additional visual
+information is needed. As hypotheses are thinner than epics, as they are more condensed, we need
+additional information to help us out here. This is what we need from a truly iterative roadmap:
 - `Central KPIs` with their start and end date visually in the roadmap
 - `Hypotheses` as the center piece
 - `Big releases` featured (ideally they affect the KPIs)
 - `Iterations` as visual features. Based on a release you may receive customer data or feedback and
-  make a decision. This needs to be on the roadmap to create a new bias. Circles over circles
-  instead long bars!
+  make a decision. This needs to be on the roadmap to create a new bias. An iterative roadmap
+  needs to be full of circles, instead long bars!
 - `Sprints` near the bottom to again highlight the visual nature. A sprint is a planned iteration
   and thereby connected to the releases.
 
@@ -169,6 +169,10 @@ Prototype](https://flyck.gitlab.io/agile-roadmaps/)
 If you would like to see this prototype further build out, please let us know either by starring
 the repository or by reaching out in some other way. We will base our future actions on this
 project purely on the feedback we receive for this blogpost.
+
+This prototype shows hypotheses and iterations as the center pieces. Tickets can still be
+connected to epics if needed, and in the demo you can toggle them on in the settings on the top
+right.
 
 ## FAQs
 
