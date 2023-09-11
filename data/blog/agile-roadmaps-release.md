@@ -60,10 +60,10 @@ Epic has to be extended that little bit.
 
 The way that roadmaps are visualized creates a certain bias for something that we know not to be
 true in software: Long-term plans don't work out as expected. Yet looking at the roadmap tools, we
-set start and end-dates for everything. You can have a team of product managers raging because
-each of them marked an Epic as done on the roadmap, meanwhile none of them have talked to the
-customer. Tools today create a bias to execute things perfectly just as planned, not to learn,
-reflect and iterate.
+set start and end-dates for everything. You can have a team of product managers raging in
+excitement, because each of them marked an Epic as done on the roadmap. Meanwhile none of them
+have talked to the customer or looked at the numbers. Tools today create a bias to execute things
+perfectly just as planned, not to learn, reflect and iterate.
 
 ## A new idea
 
