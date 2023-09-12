@@ -98,7 +98,7 @@ additional information to help us out here. This is what we need from a truly it
 - `Big releases` featured (ideally they affect the KPIs)
 - `Iterations` as visual features. Based on a release you may receive customer data or feedback and
   make a decision. This needs to be on the roadmap to create a new bias. An iterative roadmap
-  needs to be full of circles, instead long bars!
+  needs to be full of circles, instead of long bars!
 - `Sprints` near the bottom to again highlight the visual nature. A sprint is a planned iteration
   and thereby connected to the releases.
 
@@ -115,9 +115,9 @@ At the same time it addresses all mentioned problems from earlier:
     as possible. Weekly status meetings on selfmade deadlines can be skipped, and we can instead
     focus on the metrics and the next iteration.
 - Planning Paralysis
-  - Reducing the amount of planning that goes into approval of a hypothesis to be worked on
-    reduces the amount of planning needed. The only thing that's needed is an idea for the first
-    sprint, and from there we can go iteratively.
+  - Reducing the amount of planning that goes into approval of a hypothesis, reduces the amount of
+    planning needed. The only thing that's needed is an idea for the first sprint, and from there
+    we can go iteratively.
 - Planning Software
   - Moving software planning closer to the iterations and learnings based on user data puts
     software development in the place where it can work. Delivering iteratively is the way to go
@@ -127,13 +127,13 @@ At the same time it addresses all mentioned problems from earlier:
     we expose the core ideas of our plans to the brain hive of the entire company. We focus closer
     on what truly matters to leadership: To confirm or to disconfirm an open hypothesis.
 - Tool Blindness
-  - Instead of celebrating "marking something off the list", without talking to the customer or
-    looking at the KPIs is hardly possible with such a visualization. If no iteration was done or
-    the KPI didn't move, the real impact of the work is clearly visible.
+  - Celebrating "marking something off the list", without talking to the customer or looking at
+    the KPIs, is hardly possible with such a visualization. If no iteration was done or the KPI
+    didn't move, the real impact of the work clearly shows.
 - Visual Bias
-  - Agile roadmaps create a bias towards sprint-based releases and towards true iterations towards
-    a measured goal. Today's roadmaps reward product managers for finishing an epic. Roadmaps of
-    the future will reward product managers for iterating.
+  - Agile roadmaps create a bias towards sprint-based releases, and reminders to create true
+    iterations chasing a measured goal. Today's roadmaps reward product managers for finishing an
+    epic. Roadmaps of the future will reward product managers for iterating.
 
 ### The Components
 
@@ -202,7 +202,7 @@ like Jira.
 
 The issue is that current roadmap tools create a certain tendency away from what we know to be
 best for software engineering: The iterative approach. That's why we need a new way to look at
-roadmaps and a new tooling. Whether this is our current approach or somebody creates a smart
+roadmaps and a new tooling. Whether this is our current approach or somebody else creates a smart
 plugin within these tools remains to be seen. But in our minds, something needs to
 change. Software project planning needs to be better.
 
