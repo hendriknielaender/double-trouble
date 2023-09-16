@@ -33,8 +33,8 @@
 
 .astro-code {
   font-size: 0.9rem !important;
-  line-height: 1.25 !important;
-  padding: 0.8rem;
+  line-height: 1.1 !important;
+  padding: 0.4rem;
   border: 1px solid #475569;
 }
 
@@ -50,7 +50,7 @@ code {
 code .line::before {
   content: counter(step);
   counter-increment: step;
-  margin-right: 1.5rem;
+  margin-right: 0.8rem;
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
@@ -64,7 +64,7 @@ pre[class*="astro-code"] {
 
 pre[class*="astro-code"] button {
   position: absolute;
-  right: 0.4rem;
+  right: 0.6rem;
   top: 0.3rem;
   padding: 5px;
   border: 1px solid #475569;
