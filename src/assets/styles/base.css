@@ -64,7 +64,7 @@ pre[class*="astro-code"] {
 
 pre[class*="astro-code"] button {
   position: absolute;
-  right: 0.4rem;
+  right: 0.6rem;
   top: 0.3rem;
   padding: 5px;
   border: 1px solid #475569;
