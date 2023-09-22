@@ -1,7 +1,7 @@
 ---
 publishDate: "September 23 2023"
 title: "Managing Zig Versions with zvm: A Technical Dive"
-description: "Explore the intricacies of building CLI applications in Zig, using zvm for version management, and the challenges of JSON parsing."
+description: "Building CLI applications in Zig, using zvm for version management, and the challenges of JSON parsing."
 image: ~/assets/images/thumbnails/zvm.webp
 imageCreditUrl: https://www.labs.openai.com
 tags: [gptpost, zig, zvm, release, version, cli, compiler]
@@ -190,9 +190,6 @@ While Zig provides flexibility and performance, it does lean on the developer to
 
 
 ## Wrap up
----
 
 To sum it up, I hope this article helped you understand Zig development better, especially when creating CLI applications in Zig. With tools like zvm, handling different Zig versions becomes much easier. Sure, there might be some tricky parts like JSON parsing in Zig, but that's part of the fun and learning. Interested in more? Feel free to dive in, help out, share this, or read more about Zig. Here is another article [Taking off with Zig: Putting the Z in Benchmark](/zbench)
-
----
 
