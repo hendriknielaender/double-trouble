@@ -7,7 +7,7 @@ imageCreditUrl: https://www.labs.openai.com
 tags: [gptpost, zig, zvm, release, version, cli, compiler]
 ---
 
-With Zig's increasing popularity due to its focus on simplicity and performance, managing multiple Zig versions becomes a necessity. Enter `zvm`, the Zig Version Manager, your go-to tool for a hassle-free Zig development experience.
+With Zig's increasing popularity due to its focus on simplicity and performance, managing multiple Zig versions becomes a necessity. Enter `zvm`, the [Zig Version Manager](https://github.com/hendriknielaender/zvm), your go-to tool for a hassle-free Zig development experience.
 
 Introduction to zvm: Simplifying Zig Version Management
 -------------------------------------------------------
@@ -16,6 +16,12 @@ zvm is a version management tool for Zig. It allows developers to:
 
 - Install different versions of the Zig compiler
 - Switch between different versions seamlessly
+
+
+
+You can find the tool [here](https://github.com/hendriknielaender/zvm), feel free to add comments or contribute.
+
+
 
 ### Behind the Scenes: Building zvm's Core Features
 
