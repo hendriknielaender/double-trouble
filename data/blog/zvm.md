@@ -1,10 +1,10 @@
 ---
-publishDate: "September 22 2023"
+publishDate: "September 23 2023"
 title: "Managing Zig Versions with zvm: A Technical Dive"
 description: "Explore the intricacies of building CLI applications in Zig, using zvm for version management, and the challenges of JSON parsing."
-image: ~/assets/images/thumbnails/zvm.png
-imageCreditUrl: https://www.midjourney.com/
-tags: [gptpost, zig, rust, benchmark, release]
+image: ~/assets/images/thumbnails/zvm.webp
+imageCreditUrl: https://www.labs.openai.com
+tags: [gptpost, zig, zvm, release, version, cli, compiler]
 ---
 
 With Zig's increasing popularity due to its focus on simplicity and performance, managing multiple Zig versions becomes a necessity. Enter `zvm`, the Zig Version Manager, your go-to tool for a hassle-free Zig development experience.
