@@ -35,25 +35,6 @@
   resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.2.0.tgz#3b6fabd28fba86aa44e26f9fbb238ac6b4962b71"
   integrity sha512-NQ4ppp1CM0HNkKbJNM4saVSfmUYzGlRalF6wx7F6T/MYHYSWGuojY89/oFTy4t8VlOGUCUijlsVNNeziWaUo5g==
 
-"@astrojs/markdown-remark@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-3.1.0.tgz#5ae8ecb06ca941dd29b7945cec911afa11764782"
-  integrity sha512-5UwamK0iFxN0n1Nw44vUk8AkQr4psKS63hM3D1/4bhhjs4ZFRyrYmg5NjScaMEXZcrd2KgGPsd+PEwNs4mlBOw==
-  dependencies:
-    "@astrojs/prism" "^3.0.0"
-    github-slugger "^2.0.0"
-    import-meta-resolve "^3.0.0"
-    rehype-raw "^6.1.1"
-    rehype-stringify "^9.0.4"
-    remark-gfm "^3.0.1"
-    remark-parse "^10.0.2"
-    remark-rehype "^10.1.0"
-    remark-smartypants "^2.0.0"
-    shiki "^0.14.3"
-    unified "^10.1.2"
-    unist-util-visit "^4.1.2"
-    vfile "^5.3.7"
-
 "@astrojs/markdown-remark@3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-3.2.0.tgz#c7099c732959fabecec029ac9844e792a5089a8c"
@@ -74,12 +55,12 @@
     unist-util-visit "^4.1.2"
     vfile "^5.3.7"
 
-"@astrojs/mdx@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-1.0.3.tgz#d7b3cb3e7e21785b8191738f87a11f95fbff1cbc"
-  integrity sha512-T+WnbBltX4COO3SZYPHLoRC8XrXSajgiKmXNtFWP5cCjIiofv86gkdSwsjqfLMCaLyGUEmd+vspoaCU0joSrOg==
+"@astrojs/mdx@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-1.1.0.tgz#aa709c137f2789d770581ea5bf70eeba82ec6e69"
+  integrity sha512-rmLZBw3CUCkp+5blBJloV2EqJGRaJTraJygWMfCvrLcCA3vzhwzACnVQKdUDlts8EEr6V6+HXYVqi46AVEfobg==
   dependencies:
-    "@astrojs/markdown-remark" "3.1.0"
+    "@astrojs/markdown-remark" "3.2.0"
     "@mdx-js/mdx" "^2.3.0"
     acorn "^8.10.0"
     es-module-lexer "^1.3.0"
