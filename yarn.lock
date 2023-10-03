@@ -1343,10 +1343,10 @@ astro-icon@^0.8.1:
     resolve-pkg "^2.0.0"
     svgo "^2.8.0"
 
-astro@3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-3.1.3.tgz#498a93207907ad7bba50d7aacb107f4821fdd525"
-  integrity sha512-l76kWE0MJKzUZE8TzhIWafvJ+3nYwFfSiG9c6edNLZ3ZtVsuuuatATmg+gaAXY1zN6bh3WSwJgmAWTsWlZNFtw==
+astro@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-3.2.0.tgz#699fca50f3c424ed562bae660d78d0813821e528"
+  integrity sha512-sDQnSFV46ZzNkVU6co5f8wilZFmGiWsqnIVoMhd5/XPU76iZdA40WqFyBOhGaji7hGuqbcjN8MGobMg53lsoUg==
   dependencies:
     "@astrojs/compiler" "^2.1.0"
     "@astrojs/internal-helpers" "0.2.0"
