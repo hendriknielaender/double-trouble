@@ -629,10 +629,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.50.0.tgz#9e93b850f0f3fa35f5fa59adfd03adae8488e484"
   integrity sha512-NCC3zz2+nvYd+Ckfh87rA47zfu2QsQpvc6k1yzTk+b9KzRj0wkGa8LSoGOXN6Zv4lRf/EIoZ80biDh9HOI+RNQ==
 
-"@fontsource/inter@^5.0.8":
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.8.tgz#61b50cb0eb72b14ae1938d47c4a9a91546d2a50c"
-  integrity sha512-28knWH1BfOiRalfLs90U4sge5mpQ8ZH6FS0PTT+IZMKrZ7wNHDHRuKa1kQJg+uHcc6axBppnxll+HXM4c7zo/Q==
+"@fontsource/inter@^5.0.13":
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.13.tgz#b106fdc43b8eea8d6f5c0ce55941b1ae577c49e5"
+  integrity sha512-FVIBhP9X/x02blF2VQl2Pji/c3jUjkWEQ9bom4vIrGwO1MlHRDXhXx9iA1hhjpcCIfH3oX68ihIBdYcFnOXhsg==
 
 "@gustavnikolaj/async-main-wrap@^3.0.1":
   version "3.0.1"
