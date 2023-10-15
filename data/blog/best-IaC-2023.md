@@ -35,7 +35,8 @@ All the code related to this comparison can be found in this repository: [flyck/
 
 ### Non-Contenders
 
-Among the plethora of tools available today,  can be used to provision infrastructure today, there are , but which we didnt consider:
+Among the plethora of tools available today which can be used to provision infrastructure, there
+are some we dont consider:
 - Pulumi: Low popularity, pre-cursor to terraform (?)
 - AWS Cloudformation & Co.: Too low level
 - AWS Copilot [🐙](https://github.com/aws/copilot-cli/): Limited to containers
