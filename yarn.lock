@@ -127,10 +127,10 @@
     sitemap "^7.1.1"
     zod "3.21.1"
 
-"@astrojs/tailwind@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-5.0.0.tgz#4efcbbbd1206eb15b3624d93f1930164ab193720"
-  integrity sha512-bMZZNNm/SW+ijUKMQDhdiuNWDdR3CubEKUHb2Ran4Arx1ikWn/kKIkFDXUV+MUnsLa7s19x9VMRlARRyKbqMkQ==
+"@astrojs/tailwind@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-5.0.1.tgz#f55f27c4bd58d9b53c0d2a7d8e81b2219fb5bba3"
+  integrity sha512-HzguDH+q1v8NhZIu245UtXfz5tuy4IAd/TND92z5vyftYtGdjDLdBeHhMH4Wd91/0sIPPNRz9NUfToprI636YQ==
   dependencies:
     autoprefixer "^10.4.15"
     postcss "^8.4.28"
