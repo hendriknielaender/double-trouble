@@ -7,11 +7,12 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
+                                ...colors,
 				primary: colors.blue,
 				secondary: colors.pink,
-                slate: {
-                    900: '#0d1117',
-                    800: '#161b22',
+                        slate: {
+                                 900: '#0d1117',
+                                 800: '#161b22',
                 }
 			},
 			fontFamily: {
