@@ -7289,10 +7289,10 @@ universalify@^0.2.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.2.0.tgz#6451760566fa857534745ab1dde952d1b1761be0"
   integrity sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==
 
-unpic@^3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/unpic/-/unpic-3.10.1.tgz#f467735549c0e73a4b218324af6e7982d784b9e9"
-  integrity sha512-7mmLrd6RWdt2Sp015Fgf80oKBmHIEwIDXBQJIImJ/Mj/XaDrOlzX/CWmiRoXOXYj9bLNq0MryOxosMmNXrBOGA==
+unpic@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/unpic/-/unpic-3.11.0.tgz#1c4c1c3ad582df42939d767376a39b73b3886c7b"
+  integrity sha512-CY6Q9DiOaJhGYsVitLy0NlpTcEI0elXEzstyE2ek7UtRRAqifmFPzf14CVsIRWFTFHNFyYTqF9lKF6CCtfmsyQ==
 
 untildify@^4.0.0:
   version "4.0.0"
