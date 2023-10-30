@@ -5,7 +5,7 @@ description: "Pitfalls, Tips and Tricks to get your tRPC / Prisma Combo into the
 image: ~/assets/images/thumbnails/trpc_prisma_cdk_template.png
 imageCreditUrl: https://www.midjourney.com/
 tweet: https://twitter.com/doubletrblblogs/status/1690631705311195136
-tags: [trpc, prisma, code, release, aws]
+tags: [trpc, prisma, code, release, aws, infrastructure, cdk]
 ---
 
 We have had the pleasure of launching a microfrontend feature using [tRPC](https://trpc.io/),
