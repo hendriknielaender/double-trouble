@@ -4,14 +4,19 @@ title: "The best IaC tool in 2023"
 description: "A fresh look at infrastructure provisioning tools in 2023 and their performance across different categories."
 image: "~/assets/images/thumbnails/iac_best_2023.jpg"
 imageCreditUrl: https://labs.openai.com/
-tags: [terraform, cloud, infrastructure, IaC, ranking]
+tags: [terraform, cloud, infrastructure, IaC, ranking, aws, serverless, bun, cdk]
 ---
 import GithubRepoTag from "~/components/atoms/GithubRepoTag.astro";
+import InfoText from "~/components/atoms/InfoText.astro";
+
+The recent release of bun 1.0 still has us all hyped up. The unseen speed of bun, together with a
+completely overhauled dev experience by unifying the plethora of tools into one is amazing. This
+new sense of speed and convenience got us thinking also about other tools - what about IaC?
 
 At the workplace, the choice of IaC tooling is largely determined by company policy, by what is
 generally already used and works reasonably well. Through years of evolution and growing maturity,
 a hand ful of projects have gained the most popularity: CDK and terraform (data?). But taking a fresh
-look today, what could be the best tool today in the context of AWS?
+look today, what could be the best tool today in the context of serverless AWS?
 
 Let's find out and take a look at the best infrastructure tools of the year. We'll evaluate
 currently available infrastructure as code (IaC) tools, and look at them within certain
@@ -51,7 +56,7 @@ adaption, while it also exposed its limits and shortcomings.
 While the CDK uses AWS CloudFormation under the hood, <GithubRepoTag text="CDKTF"
 repoSlug="hashicorp/terraform-cdk" stargazers="4.6k" issues="296"/> uses terraform. This allows to
 break the boundaries which exist in certain cases in the hashicorp configuration syntax, and use
-"real code". It is an attempt of combining the benefits of
+"real code". It attempts to combine the benefits of terraform with the flexibility offered by the CDK.
 
 ### SST
 
@@ -87,18 +92,20 @@ Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify.
 
 
 ## Evaluation
-
 |Category|Terraform|Open Tofu|CDK|CDKTF|SAM|SST|Serverless Framework|
 |-|-|-|-|-|-|-|-|
-|Github Issues|
-|Bootstrap Time|?|?|?|?|?|?|?|
-|First deployment time|
-|Code deployment time|
-|Local Execution|
-|Cloud Execution|
-|Overall DX|2|2|1-2|1|1|2|3|
-|Versatility Rating|2|2|3|1|?|?|1|
-
+|Github Stars|39.1k|15.3k|10.7k|4.6k|6.4k|18.1k|45.3k|
+|Github Issues|1.7k|119|1.9k|296|383|660|1k|
+|Bootstrap Time|18s|18s|?|?|47s|?|?|
+|First deployment time|25s|35s (why?)|?|?|49s|?|?|
+|Code deployment time|15s|15s|?|?|31s|?|?|
+|Dirty deployment time|15s|15s|?|?|10s|?|?|
+|Local Execution|0|0|0.5 <InfoText text="Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)" />|0|0.5 <InfoText text="Does work in general but not for the bun lambda layer. Bun runtime wont start because sam local won't pass a traceId." />|?|?|
+|Local Debugging|0|0|?|0|?|?|?|
+|Streamed Cloud Execution|0|0|0|0|0|1|0|
+|Overall DX        |2|2|1-2|1|1-2|2|3|
+|Versatility Rating|3|3|2-3|1|2|?|1|
+|Score|0|0|?|0|3.1|?|?|
 
 Bootstrap time: Some IaC frameworks use some kind of resources for state or access management,
 which is shared across IaC projects within the same account.
@@ -106,13 +113,36 @@ which is shared across IaC projects within the same account.
 Versatility Rating: The ability to add other infrastructure ontop of the lambda function and extend the
 given stack
 
+#### Evaluation Takeaways
+
+What we learned from the evaluation:
+
+
+- AWS has some variety in the time the api calls take, which we especially observed for
+the lambda updateFunction call. It can be as fast as 15s but a moment later it might be at
+35s. This makes a true obsession and optimization for speed a little bit difficult, and leaves the
+numbers in that code category more as a median than an exact value.
+- Debugger integration depends on the tool working together with the build utility. As bun is
+still in the early stages, bun is not yet supported by most of the tools. A generic node / bun
+approach outside of the IaC tool might come to the rescue here:
+[link](https://stackoverflow.com/questions/64689865/debugging-lambda-locally-using-cdk-not-sam).
+
 ## On the sidelines: Winglang
 
 <GithubRepoTag text="Winglang" repoSlug="winglang/wing" stargazers="2.6k"
-issues="671"/>  Winglang is an up-and-coming IaC tool. It got founded in 2022(?) by the original founder of the
+issues="671"/>  is an up-and-coming IaC tool. It got founded in 2022(?) by the original founder of the
 code that eventually became the CDK (link twitter for guy).
 
 ## Rounding up
+
+Looking at the range of tools that is available, it has become clear that some of them are more
+geared towards serverless development than others. At the same time within your own organization
+you may have teams which have a different areas of focus. Having these serverless-tuned tools for us made
+for a far better development experience, less frustrations and faster iterations. Depending on
+your flexibility, in the end it might not be a question of "the best tool", but choosing different
+tools depending on the purpose.
+
+For our purpose of serverless bun lambda functions, the ?.
 
 
 ### Footnotes
