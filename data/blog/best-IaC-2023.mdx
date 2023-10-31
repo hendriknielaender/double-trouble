@@ -97,10 +97,10 @@ Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify.
 |-|-|-|-|-|-|-|-|
 |Github Stars|39.1k|15.3k|10.7k|4.6k|6.4k|18.1k|45.3k|
 |Github Issues|1.7k|119|1.9k|296|383|660|1k|
-|Bootstrap Time|18s|18s|?|?|47s|?|?|
-|First deployment time|25s|35s (why?)|?|?|49s|?|?|
-|Code deployment time|15s|15s|?|?|31s|?|?|
-|Dirty deployment time|15s|15s|?|?|10s|?|?|
+|Bootstrap Time|18s|18s|61s|?|47s|?|?|
+|First deployment time|25s|35s (why?)|70s|?|49s|?|?|
+|Code deployment time|15s|15s|32s|?|31s|?|?|
+|Dirty deployment time|15s|15s|12s|?|10s|?|?|
 |Local Execution|0|0|0.5 <InfoText text="Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)" />|0|0.5 <InfoText text="Does work in general but not for the bun lambda layer. Bun runtime wont start because sam local won't pass a traceId." />|?|?|
 |Local Debugging|0|0|?|0|?|?|?|
 |Streamed Cloud Execution|0|0|0|0|0|1|0|
