@@ -104,9 +104,9 @@ Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify.
 |Local Execution|0|0|0.5 <InfoText text="Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)" />|0|0.5 <InfoText text="Does work in general but not for the bun lambda layer. Bun runtime wont start because sam local won't pass a traceId." />|?|?|
 |Local Debugging|0|0|?|0|?|?|?|
 |Streamed Cloud Execution|0|0|0|0|0|1|0|
-|Overall DX        |2|2|1-2|1|1-2|2|3|
+|Overall DX        |2 <InfoText text="It is simple and does what it's supposed to do. No local execution but also no surprises. Faster than all the other tools." />|2|1-2 <InfoText text="The amount of work-arounds and hacks needed to make the CDK work right is crazy. Local execution only by hooking in SAM." />|1 <InfoText text="Not a drop-in replacement to the normal CDK dependency at all as one might expect. Completely new packages that need to be seperately downloaded which are also not typed." />|1-2|?|3|
 |Versatility Rating|3|3|2-3|1|2|?|1|
-|Score|0|0|?|0|3.1|?|?|
+|Score|||||3.1|||
 
 Bootstrap time: Some IaC frameworks use some kind of resources for state or access management,
 which is shared across IaC projects within the same account.
@@ -174,7 +174,7 @@ queues, a bucket and a dynamoDB table (as the primitive form of a "counter").
 Let's see an example of this. The following snipped is just the example snippet from their
 website, and it creates a bucket, a lambda, an sqs queue and a dynamodb for the counter:
 
-```wing
+```typescript
 bring cloud;
 
 let queue = new cloud.Queue(timeout: 2m);
@@ -204,10 +204,10 @@ infrastructure related tools have so far attempted.
 
 Going into writing this post, we had a suspicion that terraform was simply going to be fastest, as
 it doesn't rely on CloudFormation under the hood. After years of being the reigning champion, the
-reputation of the CDK for us and others[^3] [^4] has crumbled. CDKs weird packaging, together with the v2/v3 migration
-efforts, the various work-arounds and helpers needed to work with the CDK, the disappointment of
-"awesome reusable contructs" remaining mostly a theory. Going into it we thought to find out that
-something like terraform was going to be the best after all.
+reputation of the CDK for us and others[^3],[^4] has weakened. CDKs weird packaging, together with
+the v2/v3 migration efforts, the various work-arounds and helpers needed to work with the CDK, the
+disappointment of "awesome reusable contructs" remaining mostly a theory. Going into it we thought
+to find out that something like terraform was going to be the best after all.
 
 Looking at the range of tools that is available, it has become again obvious that some of them are
 more geared towards serverless development than others. At the same time within your own
