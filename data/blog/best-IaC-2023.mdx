@@ -10,8 +10,9 @@ import GithubRepoTag from "~/components/atoms/GithubRepoTag.astro";
 import InfoText from "~/components/atoms/InfoText.astro";
 
 The recent release of bun 1.0 still has us all hyped up. The unseen speed of bun, together with a
-completely overhauled dev experience by unifying the wide range of tools into one is amazing. This
-new sense of speed and convenience got us thinking also about other tools - what about IaC?
+completely overhauled dev experience by unifying the wide range of tools into one is simply
+amazing. This new sense of speed and convenience got us thinking also about other tools - what
+about IaC?
 
 At the workplace, the choice of IaC tooling is largely determined by company policy, by what is
 generally already used and works reasonably well. Through years of evolution and growing maturity,
@@ -23,7 +24,7 @@ currently available infrastructure as code (IaC) tools, and look at them within 
 categories. This is in a specific context which we believe is relevant today: A lambda function
 within an AWS account, which runs ontop of bun.
 
-All the code related to this comparison can be found in this repository: <GithubRepoTag text="lambda-iac-2023" repoSlug="flyck/lambda-iac-2023" stargazers="0" issues="0"/>.
+*All the code related to this comparison can be found in this repository:* <GithubRepoTag text="lambda-iac-2023" repoSlug="flyck/lambda-iac-2023" stargazers="0" issues="0"/>.
 
 ## Contenders
 
@@ -115,7 +116,7 @@ given stack
 
 #### Evaluation Takeaways
 
-What we learned from the evaluation:
+What we immediately learned from the evaluation:
 
 
 - AWS has some variety in the time the api calls take, which we especially observed for
@@ -129,18 +130,55 @@ approach outside of the IaC tool might come to the rescue here:
 
 ## On the sidelines: Winglang
 
-<GithubRepoTag text="Winglang" repoSlug="winglang/wing" stargazers="2.6k"
-issues="671"/>  is an up-and-coming IaC tool. It got founded in 2022(?) by the original founder of the
-code that eventually became the CDK (link twitter for guy).
+<GithubRepoTag text="Winglang" repoSlug="winglang/wing" stargazers="2.6k" issues="671"/> is an
+up-and-coming IaC tool, but it is also more than that. It got founded in late 2022[^5] by the
+original creator of the code that eventually became the CDK, Elad Ben-Israel
+[@emeshbi](https://twitter.com/emeshbi). At its core it is a new programming language, which uses
+one piece of code to instruct both the infrastructure and the business logic together. It thereby obliterates the need for an IaC tool, by moving the infrastructure right into the code.
+
+The wing project itself is a combination of this new wing programming language, a local cloud
+simulater & dashboard, together with exports into different IaC tools, so they can provision the
+needed infrastructure under the hood. At the moment they are [not yet production
+ready](https://www.winglang.io/contributing/status), and only a few resources are supported. Yet,
+the most important serverless resources are already there: a lambda function, SQS queues, a bucket
+and a dynamoDB table (as the primitive form of a "counter").
+
+Let's see an example of this. The following snipped is just the example snippet from their
+website, and it creates a bucket, a lambda, an sqs queue and a dynamodb for the counter:
+
+```wing
+bring cloud;
+
+let queue = new cloud.Queue(timeout: 2m);
+let bucket = new cloud.Bucket();
+let counter = new cloud.Counter(initial: 100);
+
+queue.setConsumer(inflight (body: str): str => {
+  let next = counter.inc();
+  let key = "myfile-${next}.txt";
+  bucket.put(key, body);
+});
+```
+
+In our estimate Winglang is a huge leap forward from the current paradigms of IaC. If it can
+deliver on its promises, it might not be the solution that your whole company uses for every
+project, but it might be that awesome tool to get small things done with ease and pleasure.
 
 ## Rounding up
 
-Looking at the range of tools that is available, it has become clear that some of them are more
-geared towards serverless development than others. At the same time within your own organization
-you may have teams which have a different areas of focus. Having these serverless-tuned tools for us made
-for a far better development experience, less frustrations and faster iterations. Depending on
-your flexibility, in the end it might not be a question of "the best tool", but choosing different
-tools depending on the purpose.
+Going into writing this post, we had a suspicion that terraform was simply going to be fastest, as
+it doesn't rely on CloudFormation under the hood. After years of being the reigning champion, the
+reputation of the CDK for us and others[^3] [^4] has crumbled. CDKs weird packaging, together with the v2/v3 migration
+efforts, the various work-arounds and helpers needed to work with the CDK, the disappointment of
+"awesome reusable contructs" remaining mostly a theory. Going into it we thought to find out that
+something like terraform was going to be the best after all.
+
+Looking at the range of tools that is available, it has become again obvious that some of them are
+more geared towards serverless development than others. At the same time within your own
+organization you may have teams which have a different areas of focus. Having these
+serverless-tuned tools for us made for a far better development experience, less frustrations and
+faster iterations. Depending on your flexibility, in the end it might not be a question of "the
+best tool", but choosing different tools depending on the purpose.
 
 For our purpose of serverless bun lambda functions, the ?.
 
@@ -148,3 +186,6 @@ For our purpose of serverless bun lambda functions, the ?.
 ### Footnotes
 [^1]: https://twitter.com/Werner/status/1528384285924806657
 [^2]: https://www.youtube.com/watch?v=AYYTrDaEwLs
+[^3]: https://www.alexdebrie.com/posts/serverless-framework-vs-cdk/
+[^4]: https://theburningmonk.com/2023/04/are-you-ready-for-this-top-5-earth-shattering-pros-and-cons-of-aws-cdk/
+[^5]: https://twitter.com/winglangio account got created in Aug 2022
