@@ -147,6 +147,12 @@ dive into Cloudformation when needed, while wholistic tools that try to hide all
 failed (Amplify, Beanstalk). It will be interesting to seee if this sea of complexity can ever be
 bridged.
 
+#### AWS and speed
+
+Lay out the limits of spped of IaC tools to be anywhere near as fast as bun while dealing with
+AWS. Removing a role: 30s. Updating lambda function code: 15s (high variation). Creating a VPC
+adapter for a lambda: multiple minutes. Updating a cloudfront distribution: up to 20 minutes.
+
 #### Local Debugging outside of IaC Tools
 
 Give a generic way to start the debugger (with bun) despite of the IaC tool.
@@ -204,7 +210,7 @@ infrastructure related tools have so far attempted.
 
 Going into writing this post, we had a suspicion that terraform was simply going to be fastest, as
 it doesn't rely on CloudFormation under the hood. After years of being the reigning champion, the
-reputation of the CDK for us and others[^3],[^4] has weakened. CDKs weird packaging, together with
+reputation of the CDK for us and others[^3] [^4] has weakened. CDKs weird packaging, together with
 the v2/v3 migration efforts, the various work-arounds and helpers needed to work with the CDK, the
 disappointment of "awesome reusable contructs" remaining mostly a theory. Going into it we thought
 to find out that something like terraform was going to be the best after all.
