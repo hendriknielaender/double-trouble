@@ -32,9 +32,10 @@ within an AWS account, which runs ontop of bun.
 
 <GithubRepoTag text="Terraform" repoSlug="hashicorp/terraform" stargazers="39.1k" issues="1.7k"/> is
 an IaC tool that allows you to create both cloud and on-premise infrasture, with providers
-available for all major clouds. The code is comprised of the hashicorp language, a custom language
-for templating. It supports basic programming features like loops, modules and variables within
-certain limits(?).
+available for all major clouds (<GithubRepoTag text="Terraform AWS Provider" stargazers="9k"
+issues="3.8k"/>). The code is comprised of the hashicorp language, a custom language for
+templating. It supports basic programming features like loops, modules and variables within
+certain limits[^6] [^7] [^8] [^9] [^10].
 
 ### Open Tofu
 
@@ -231,3 +232,8 @@ For our purpose of serverless bun lambda functions, the ?.
 [^3]: https://www.alexdebrie.com/posts/serverless-framework-vs-cdk/
 [^4]: https://theburningmonk.com/2023/04/are-you-ready-for-this-top-5-earth-shattering-pros-and-cons-of-aws-cdk/
 [^5]: https://twitter.com/winglangio account got created in Aug 2022
+[^6]: https://github.com/hashicorp/terraform/issues/30135 dynamic variable names
+[^7]: https://github.com/hashicorp/terraform/issues/33272 templates within templates
+[^8]: https://github.com/hashicorp/terraform/issues/24476 multiple regions within same module
+[^9]: https://github.com/hashicorp/terraform/issues/24188 support for dynamic blocks and meta-arguments
+[^10]: https://github.com/hashicorp/terraform/issues/27365 ability to create custom types
