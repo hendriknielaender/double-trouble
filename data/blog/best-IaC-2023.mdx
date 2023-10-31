@@ -126,7 +126,7 @@ numbers in that code category more as a median than an exact value.
 - Debugger integration depends on the tool working together with the build utility. As bun is
 still in the early stages, bun is not yet supported by most of the tools.
 
-#### Cloudformation, A Dated Tool?
+#### Cloudformation and the Limits of Abstraction
 
 Most of the IaC tools we can chose from use Cloudformation under the hood. It's emphasis
 historically has been moving infrastructure from one sane state to the next. Changing
@@ -142,7 +142,10 @@ into the Cloudformation level.
 This begs the question if future AWS IaC tools will always depend on Cloudformation, requiring you
 as the user to dive into intricacies of that, or if a new methodology will arise. This additional
 layer of tooling under the hood is at least something that is already a minor inconvenience,
-dealing with serverless infrastructure today.
+dealing with serverless infrastructure today. Many infrastructure tools today still expect you to
+dive into Cloudformation when needed, while wholistic tools that try to hide all abstractions have
+failed (Amplify, Beanstalk). It will be interesting to seee if this sea of complexity can ever be
+bridged.
 
 #### Local Debugging outside of IaC Tools
 
