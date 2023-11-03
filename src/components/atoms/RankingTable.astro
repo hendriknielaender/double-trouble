@@ -1,0 +1,17 @@
+---
+// import GetData
+import GetData from "./getData.tsx"
+
+const url: string = `https://api.themoviedb.org/3/discover/movie?api_key=asd`
+const response = await fetch(url)
+const data = await response.json()
+console.log(data)
+---
+
+<html>
+    <body>
+        <div >
+           <GetData data={data} />
+        </div>
+    </body>
+</html>
