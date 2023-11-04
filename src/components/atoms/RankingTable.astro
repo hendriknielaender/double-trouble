@@ -2,16 +2,17 @@
 // import GetData
 import GetData from "./getData.tsx"
 
-const url: string = `https://api.themoviedb.org/3/discover/movie?api_key=asd`
+const url: string = `https://api.themoviedb.org/3/discover/movie?api_key=bcc343b2af83f9c04cbd061b52db8315`
 const response = await fetch(url)
 const data = await response.json()
 console.log(data)
+
 ---
 
 <html>
     <body>
         <div >
-           <GetData data={data} />
+           <GetData />
         </div>
     </body>
 </html>
