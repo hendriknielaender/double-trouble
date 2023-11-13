@@ -96,10 +96,10 @@
     unist-util-visit "^4.1.2"
     vfile "^5.3.7"
 
-"@astrojs/partytown@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/partytown/-/partytown-2.0.1.tgz#7589207d09da3830fe0e51ac4521c203d9cb024a"
-  integrity sha512-WQC5lR2XINGxvQ35KDu806AVKNsD4Qc6I/am+4JpW6CZb0ccqVt7TSCosTMmYSiuNTInsnV34RAeile88kTtbw==
+"@astrojs/partytown@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/partytown/-/partytown-2.0.2.tgz#beb3aa468e693a56b9ab6498b92af8a833198e51"
+  integrity sha512-7AnY0W8mXiog5S1gEGefCNcvJSjxn/mfhr+ou1QH7QwqxtnIsS7mQ+ci5wDRDDbM5ipnEdQGHIxz2DAP2DXnXQ==
   dependencies:
     "@builder.io/partytown" "^0.8.0"
     mrmime "^1.0.1"
