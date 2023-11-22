@@ -5,7 +5,6 @@ const InfoTextReact = (props: { text: string, title?: string }) => {
   // have the uuid shorter
   const uuid = v4().split('-')[0];
   const popoverId = 'popover-' + uuid;
-  const asd = props.text
 
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -17,9 +16,8 @@ const InfoTextReact = (props: { text: string, title?: string }) => {
   return (
     <>
       <button
-        type="button"
         className="text-slate-200 light:hover:bg-slate-600 light:focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-full text-sm text-center bg-slate-700  light:bg-sky-200 hover:bg-sky-700 focus:ring-blue-800 px-2"
-        onClick={(event) => togglePopover(event)}
+        onClick={togglePopover}
       >
         i
       </button>
