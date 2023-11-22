@@ -1,8 +1,8 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom/client'
+import InfoText from './InfoText.tsx'
 
 import {
-  ColumnDef,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
@@ -11,43 +11,9 @@ import {
   getSortedRowModel,
 } from '@tanstack/react-table'
 
-type Person = {
-  firstName: string
-  lastName: string
-  age: number
-  visits: number
-  status: string
-  progress: number
-}
-
-const defaultData: Person[] = [
-  {
-    firstName: 'tanner',
-    lastName: 'linsley',
-    age: 24,
-    visits: 100,
-    status: 'In Relationship',
-    progress: 50,
-  },
-  {
-    firstName: 'tandy',
-    lastName: 'miller',
-    age: 40,
-    visits: 40,
-    status: 'Single',
-    progress: 80,
-  },
-  {
-    firstName: 'joe',
-    lastName: 'dirte',
-    age: 45,
-    visits: 20,
-    status: 'Complicated',
-    progress: 10,
-  },
-]
-type DataItem = {
+type Ranking = {
   Name: string;
+  GithubStars: number;
   GithubIssues: number;
   BootstrapTime: number;
   FirstDeploymentTime: number;
@@ -62,20 +28,29 @@ type DataItem = {
 };
 
 
-const columnHelper = createColumnHelper<DataItem>()
+const columnHelper = createColumnHelper<Ranking>()
 
 const columns = [
   columnHelper.accessor('Name', {
-    id: 'Name',
     header: () => <span>Tool</span>,
     footer: (props) => props.column.id,
     cell: (info) => <b>{info.row.original.Name}</b>
   }),
+  columnHelper.accessor('GithubStars', {
+    header: () => <span>Github Stars</span>,
+    footer: (props) => props.column.id,
+    cell: (info) => {
+      const val = info.row.original.GithubStars
+      return <div>{val >= 1000 ? (val / 1000 + "k") : val}</div>
+    },
+  }),
   columnHelper.accessor('GithubIssues', {
-    id: 'lastName',
     header: () => <span>Github Issues</span>,
     footer: (props) => props.column.id,
-    cell: (info) => info.row.original.GithubIssues,
+    cell: (info) => {
+      const val = info.row.original.GithubIssues
+      return <div>{val >= 1000 ? (val / 1000 + "k") : val}</div>
+    },
   }),
   columnHelper.accessor('BootstrapTime', {
     header: () => 'Bootstrap Time',
@@ -89,23 +64,41 @@ const columns = [
   }),
   columnHelper.accessor('CodeDeploymentTime', {
     header: 'Code Depl Time',
-    cell: (info) => <div className="text-blue-500">{info.row.original.CodeDeploymentTime + "s"}</div>,
+    cell: (info) => <div className={"text-blue-" + (100 * Math.round(info.row.original.CodeDeploymentTime / 5))}>{info.row.original.CodeDeploymentTime + "s"}</div>,
+    footer: (props) => props.column.id,
+  }),
+  columnHelper.accessor('DirtyDeploymentTime', {
+    header: 'Dirty Depl Time',
+    cell: (info) => <div className={"text-blue-" + (100 * Math.round(info.row.original.DirtyDeploymentTime / 5))}>{info.row.original.DirtyDeploymentTime + "s"}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('LocalExecution', {
     header: 'Local Execution',
+    cell: (info) => {
+      const val = info.row.original.LocalExecution
+      return <div className={val == 1 ? "text-blue-600" : "text-blue-300"}>{val}{getInfoText(info.row.original.Name, "LocalExecution")}</div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('LocalDebugging', {
     header: 'Local Debugging',
+    cell: (info) => {
+      const val = info.row.original.LocalDebugging
+      return <div className={val == 1 ? "text-blue-600" : "text-blue-300"}>{val}</div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('StreamedCloudExecution', {
     header: 'Streamed Cloud Execution',
+    cell: (info) => {
+      const val = info.row.original.StreamedCloudExecution
+      return <div className={val == 1 ? "text-blue-600" : "text-blue-300"}>{val}</div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('OverallDX', {
-    header: 'Overall DX',
+    header: 'DX',
+    cell: (info) => <div>{info.row.original.OverallDX}{getInfoText(info.row.original.Name, "OverallDX")}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('VersatilityRating', {
@@ -113,13 +106,21 @@ const columns = [
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('Score', {
-    header: 'Score',
+    header: 'Total',
     cell: (info) => calculateScore(info.row.original).toFixed(1),
     footer: (props) => props.column.id,
   }),
 ];
 
-function calculateScore(input: DataItem) {
+function getInfoText(tool: string, category: string) {
+  let text: string | undefined
+  if (infoData[tool] && infoData[tool][category]) text = infoData[tool][category]
+  if (text) {
+    return <> <InfoText text={text} /></>
+  }
+}
+
+function calculateScore(input: Ranking) {
   const { BootstrapTime, CodeDeploymentTime, DirtyDeploymentTime, FirstDeploymentTime, GithubIssues, LocalDebugging,
     LocalExecution, Name, OverallDX, StreamedCloudExecution, VersatilityRating
   } = input
@@ -129,8 +130,8 @@ function calculateScore(input: DataItem) {
 
 }
 
-function App() {
-  const [data, setData] = React.useState(() => [...invertedData])
+function RankingTable() {
+  const [data, setData] = React.useState(() => [...rankingData])
   const rerender = React.useReducer(() => ({}), {})[1]
   const [sorting, setSorting] = React.useState<SortingState>([])
 
@@ -198,9 +199,27 @@ function App() {
 
 
 
-const invertedData = [
+// extra info for specific fields to explain a given score or rating
+const infoData: { [key: string]: { [key: string]: string } } = {
+  "CDK": {
+    "LocalExecution": "Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)",
+    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work right is crazy. Local execution only by hooking in SAM."
+  },
+  "CDKTF": {
+    "OverallDX": "Not a drop-in replacement to the normal CDK dependency at all as one might expect. Completely new packages that need to be seperately downloaded which are also not typed."
+  },
+  "SAM": {
+    "LocalExecution": "Does work in general but not for the bun lambda layer. Bun runtime wont start because sam local won't pass a traceId."
+  },
+  "Terraform": {
+    "OverallDX": "It is simple and does what it's supposed to do. No local execution but also no surprises. Faster than all the other tools."
+  }
+}
+
+const rankingData = [
   {
     Name: 'Terraform',
+    GithubStars: 48100,
     GithubIssues: 5500,
     BootstrapTime: 18,
     FirstDeploymentTime: 25,
@@ -215,6 +234,7 @@ const invertedData = [
   },
   {
     Name: 'Open Tofu',
+    GithubStars: 15300,
     GithubIssues: 119,
     BootstrapTime: 18,
     FirstDeploymentTime: 35,
@@ -229,6 +249,7 @@ const invertedData = [
   },
   {
     Name: 'CDK',
+    GithubStars: 10700,
     GithubIssues: 1900,
     BootstrapTime: 61,
     FirstDeploymentTime: 70,
@@ -243,6 +264,7 @@ const invertedData = [
   },
   {
     Name: 'CDKTF',
+    GithubStars: 4600,
     GithubIssues: 296,
     BootstrapTime: -1,
     FirstDeploymentTime: 0,
@@ -257,6 +279,7 @@ const invertedData = [
   },
   {
     Name: 'SAM',
+    GithubStars: 6400,
     GithubIssues: 383,
     BootstrapTime: 47,
     FirstDeploymentTime: 49,
@@ -271,6 +294,7 @@ const invertedData = [
   },
   {
     Name: 'SST',
+    GithubStars: 18100,
     GithubIssues: 660,
     BootstrapTime: -1,
     FirstDeploymentTime: -1,
@@ -285,7 +309,8 @@ const invertedData = [
   },
   {
     Name: 'Serverless Framework',
-    GithubIssues: -1,
+    GithubStars: 45300,
+    GithubIssues: 1000,
     BootstrapTime: -1,
     FirstDeploymentTime: -1,
     CodeDeploymentTime: -1,
@@ -299,4 +324,4 @@ const invertedData = [
   },
 
 ]
-export default App
+export default RankingTable

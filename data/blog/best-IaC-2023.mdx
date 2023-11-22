@@ -8,6 +8,7 @@ tags: [terraform, cloud, infrastructure, IaC, ranking, aws, serverless, bun, cdk
 ---
 import GithubRepoTag from "~/components/atoms/GithubRepoTag.astro";
 import InfoText from "~/components/atoms/InfoText.astro";
+import RankingTable from "~/components/atoms/RankingTable.astro";
 
 The recent release of bun 1.0 still has us all hyped up. The unseen speed of bun, together with a
 completely overhauled dev experience by unifying the wide range of tools into one is simply
@@ -32,7 +33,7 @@ within an AWS account, which runs ontop of bun.
 
 <GithubRepoTag text="Terraform" repoSlug="hashicorp/terraform" stargazers="39.1k" issues="1.7k"/> is
 an IaC tool that allows you to create both cloud and on-premise infrasture, with providers
-available for all major clouds (<GithubRepoTag text="Terraform AWS Provider" stargazers="9k"
+available for all major clouds (<GithubRepoTag text="terraform AWS provider" stargazers="9k"
 issues="3.8k"/>). The code is comprised of the hashicorp language, a custom language for
 templating. It supports basic programming features like loops, modules and variables within
 certain limits[^6] [^7] [^8] [^9] [^10].
@@ -94,10 +95,13 @@ Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify.
 
 
 ## Evaluation
+
+<RankingTable />
+
 |Category|Terraform|Open Tofu|CDK|CDKTF|SAM|SST|Serverless Framework|
 |-|-|-|-|-|-|-|-|
-|Github Stars|39.1k|15.3k|10.7k|4.6k|6.4k|18.1k|45.3k|
-|Github Issues|1.7k|119|1.9k|296|383|660|1k|
+|Github Stars|48.1k|15.3k|10.7k|4.6k|6.4k|18.1k|45.3k|
+|Github Issues|5.5k|119|1.9k|296|383|660|1k|
 |Bootstrap Time|18s|18s|61s|?|47s|?|?|
 |First deployment time|25s|35s (why?)|70s|?|49s|?|?|
 |Code deployment time|15s|15s|32s|?|31s|?|?|

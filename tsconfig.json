@@ -3,11 +3,14 @@
   "compilerOptions": {
     "skipLibCheck": true,
     "allowJs": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "~/*": [
         "src/*"
       ]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
