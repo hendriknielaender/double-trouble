@@ -27,6 +27,12 @@ type Ranking = {
   Score: number;
 };
 
+const weightsInit = [
+  { Name: "Popularity", Weight: 1 },
+  { Name: "Issues", Weight: 1 },
+  { Name: "Speed", Weight: 1 },
+  { Name: "DX", Weight: 2 }
+]
 
 const columnHelper = createColumnHelper<Ranking>()
 
@@ -107,7 +113,7 @@ const columns = [
   }),
   columnHelper.accessor('Score', {
     header: 'Total',
-    cell: (info) => calculateScore(info.row.original).toFixed(1),
+    cell: (info) => info.row.original.Score.toFixed(1),
     footer: (props) => props.column.id,
   }),
 ];
@@ -126,14 +132,35 @@ function calculateScore(input: Ranking) {
   } = input
   const times = (BootstrapTime + CodeDeploymentTime + DirtyDeploymentTime + FirstDeploymentTime) / 60
 
-  return (GithubIssues / 1000) + times + VersatilityRating + StreamedCloudExecution + OverallDX + LocalExecution + LocalDebugging
-
+  const score = (GithubIssues / 1000) + times + VersatilityRating + StreamedCloudExecution + OverallDX + LocalExecution + LocalDebugging
+  return score
 }
 
 function RankingTable() {
-  const [data, setData] = React.useState(() => [...rankingData])
+  const [data, setData] = React.useState(() => [...rankingData.map((row) => ({ ...row, Score: calculateScore(row) }))])
   const rerender = React.useReducer(() => ({}), {})[1]
   const [sorting, setSorting] = React.useState<SortingState>([])
+  const [weights, setWeights] = React.useState(weightsInit)
+
+  function updateWeight(name: string) {
+    setWeights(weights.map((weight) => {
+      const maxCounter = 3
+      if (weight.Name == name) {
+        console.log("Weight:" + weight.Weight)
+        if (weight.Weight < maxCounter) {
+          weight.Weight++
+        } else {
+          weight.Weight = 0
+        }
+      }
+      return weight
+    }))
+  }
+
+  React.useEffect(() => {
+    console.log("Weight state update!")
+  }, [weights])
+
 
   const table = useReactTable({
     data,
@@ -192,12 +219,11 @@ function RankingTable() {
           ))}
         </tbody>
       </table>
-      <pre>{JSON.stringify(sorting, null, 2)}</pre>
-    </div>
+      <p>Weights: {weights.map((weight) => <><button className={`rounded-full px-2 bg-blue-${600 + weight.Weight * 100}`} onClick={() => updateWeight(weight.Name)}>{weight.Name}: {weight.Weight}</button> </>)
+      }</p>
+    </div >
   )
 }
-
-
 
 // extra info for specific fields to explain a given score or rating
 const infoData: { [key: string]: { [key: string]: string } } = {
