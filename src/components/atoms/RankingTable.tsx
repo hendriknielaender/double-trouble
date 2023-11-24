@@ -27,11 +27,16 @@ type Ranking = {
   Score: number;
 };
 
-const weightsInit = [
+type Weight = {
+  Name: string,
+  Weight: number
+}
+const weightsInit: Weight[] = [
   { Name: "Popularity", Weight: 1 },
   { Name: "Issues", Weight: 1 },
   { Name: "Speed", Weight: 1 },
-  { Name: "DX", Weight: 2 }
+  { Name: "DX", Weight: 2 },
+  { Name: "Versatility", Weight: 1 }
 ]
 
 const columnHelper = createColumnHelper<Ranking>()
@@ -59,7 +64,7 @@ const columns = [
     },
   }),
   columnHelper.accessor('BootstrapTime', {
-    header: () => 'Bootstrap Time',
+    header: () => 'Init Time',
     cell: (info) => info.row.original.BootstrapTime + "s",
     footer: (props) => props.column.id,
   }),
@@ -115,6 +120,7 @@ const columns = [
     header: 'Total',
     cell: (info) => info.row.original.Score.toFixed(1),
     footer: (props) => props.column.id,
+
   }),
 ];
 
@@ -126,20 +132,45 @@ function getInfoText(tool: string, category: string) {
   }
 }
 
-function calculateScore(input: Ranking) {
+function calculateScore(input: Ranking, weights: Weight[]) {
   const { BootstrapTime, CodeDeploymentTime, DirtyDeploymentTime, FirstDeploymentTime, GithubIssues, LocalDebugging,
-    LocalExecution, Name, OverallDX, StreamedCloudExecution, VersatilityRating
+    LocalExecution, OverallDX, StreamedCloudExecution, VersatilityRating, GithubStars
   } = input
-  const times = (BootstrapTime + CodeDeploymentTime + DirtyDeploymentTime + FirstDeploymentTime) / 60
+  const speed = (BootstrapTime + CodeDeploymentTime + DirtyDeploymentTime + FirstDeploymentTime) / 60
 
-  const score = (GithubIssues / 1000) + times + VersatilityRating + StreamedCloudExecution + OverallDX + LocalExecution + LocalDebugging
+  const popWeight = getWeight(weights, "Popularity")
+  const speedWeight = getWeight(weights, "Speed")
+  const issueWeight = getWeight(weights, "Issues")
+  const dxWeight = getWeight(weights, "DX")
+  const versatilityWeight = getWeight(weights, "Versatility")
+
+  const score = (GithubIssues / 1000) * issueWeight * (-1) +
+    (GithubStars / 10000) * popWeight +
+    (speed * speedWeight) * (-1) +
+    VersatilityRating * versatilityWeight * 0.5 +
+    (StreamedCloudExecution + OverallDX + LocalExecution + LocalDebugging) * dxWeight
+
   return score
 }
 
+// helper function, can be refactored with map
+function getWeight(weights: Weight[], name: string): number {
+  const weight = weights.find(weight => weight.Name === name)
+  if (!weight) {
+    console.error("Couldnt find weight " + name)
+    return 0
+  }
+  return weight.Weight
+}
+
 function RankingTable() {
-  const [data, setData] = React.useState(() => [...rankingData.map((row) => ({ ...row, Score: calculateScore(row) }))])
-  const rerender = React.useReducer(() => ({}), {})[1]
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [data, setData] = React.useState(() => [...rankingData.map((row) => ({ ...row, Score: calculateScore(row, weightsInit) }))])
+  const [sorting, setSorting] = React.useState<SortingState>([
+    {
+      id: "Score",
+      desc: true,
+    },
+  ])
   const [weights, setWeights] = React.useState(weightsInit)
 
   function updateWeight(name: string) {
@@ -159,6 +190,9 @@ function RankingTable() {
 
   React.useEffect(() => {
     console.log("Weight state update!")
+    setData([
+      ...rankingData.map((row) => ({ ...row, Score: calculateScore(row, weights) }))
+    ])
   }, [weights])
 
 
@@ -282,7 +316,7 @@ const rankingData = [
     CodeDeploymentTime: 32,
     DirtyDeploymentTime: 12,
     LocalExecution: 0.5,
-    LocalDebugging: -1,
+    LocalDebugging: 0.5,
     StreamedCloudExecution: 0,
     OverallDX: 1.5,
     VersatilityRating: 2.5,
@@ -312,7 +346,7 @@ const rankingData = [
     CodeDeploymentTime: 31,
     DirtyDeploymentTime: 10,
     LocalExecution: 0.5,
-    LocalDebugging: -1,
+    LocalDebugging: 0.5,
     StreamedCloudExecution: 0,
     OverallDX: 1.5,
     VersatilityRating: 2,
