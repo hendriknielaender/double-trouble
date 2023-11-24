@@ -17,8 +17,9 @@ about IaC?
 
 At the workplace, the choice of IaC tooling is largely determined by company policy, by what is
 generally already used and works reasonably well. Through years of evolution and growing maturity,
-a hand ful of projects have gained the most popularity: CDK and terraform (data?). But taking a fresh
-look today, what could be the best tool today in the context of serverless AWS?
+a hand ful of projects have gained the most popularity: CDK, terraform and the serverless
+framework. But taking a fresh look today, what could currently be the best tool in the context of
+serverless AWS?
 
 Let's find out and take a look at the best infrastructure tools of the year. We'll evaluate
 currently available infrastructure as code (IaC) tools, and look at them within certain
@@ -50,7 +51,7 @@ of terraform, while it has the same core features. Providers won't be affected.
 
 The <GithubRepoTag repoSlug="aws/aws-cdk" text="CDK" stargazers="10.7k" issues="1.9k"/> is the
 programmatic solution from AWS for IaC tooling. The AWS CTO himself Werner Vogels praised the CDK
-as the revolutionary [^1] [^2], and it was the first popular tool to offer infrastructure code
+as revolutionary [^1] [^2], and it was the first popular tool to offer infrastructure code
 definition via a regular programming language. The initial hype for the CDK has led to a wide
 adaption, while it also exposed its limits and shortcomings.
 
@@ -83,6 +84,7 @@ defined in one yaml file, which can be extended with various plugins.
 Possibly the initial Amazonian answer to the Serverless Framework is <GithubRepoTag text="AWS SAM"
 repoSlug="aws/aws-sam-cli" stargazers="6.4k" issues="383"/>. It's maskot is a little beaver, which
 is supposed to help get your things running in the cloud. While it is not as sophisiticated as the
+
 CDK, it has many features which are more geared towards developer productivity, which is also why
 the CDK has dependencies on SAM for things like local execution.
 
@@ -98,26 +100,11 @@ Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify.
 
 <RankingTable />
 
-|Category|Terraform|Open Tofu|CDK|CDKTF|SAM|SST|Serverless Framework|
-|-|-|-|-|-|-|-|-|
-|Github Stars|48.1k|15.3k|10.7k|4.6k|6.4k|18.1k|45.3k|
-|Github Issues|5.5k|119|1.9k|296|383|660|1k|
-|Bootstrap Time|18s|18s|61s|?|47s|?|?|
-|First deployment time|25s|35s (why?)|70s|?|49s|?|?|
-|Code deployment time|15s|15s|32s|?|31s|?|?|
-|Dirty deployment time|15s|15s|12s|?|10s|?|?|
-|Local Execution|0|0|0.5 <InfoText text="Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)" />|0|0.5 <InfoText text="Does work in general but not for the bun lambda layer. Bun runtime wont start because sam local won't pass a traceId." />|?|?|
-|Local Debugging|0|0|?|0|?|?|?|
-|Streamed Cloud Execution|0|0|0|0|0|1|0|
-|Overall DX        |2 <InfoText text="It is simple and does what it's supposed to do. No local execution but also no surprises. Faster than all the other tools." />|2|1-2 <InfoText text="The amount of work-arounds and hacks needed to make the CDK work right is crazy. Local execution only by hooking in SAM." />|1 <InfoText text="Not a drop-in replacement to the normal CDK dependency at all as one might expect. Completely new packages that need to be seperately downloaded which are also not typed." />|1-2|?|3|
-|Versatility Rating|3|3|2-3|1|2|?|1|
-|Score|||||3.1|||
-
-Bootstrap time: Some IaC frameworks use some kind of resources for state or access management,
+Glossary:
+- Init time: Some IaC frameworks use some kind of resources for state or access management,
 which is shared across IaC projects within the same account.
-
-Versatility Rating: The ability to add other infrastructure ontop of the lambda function and extend the
-given stack
+- Versatility Rating: The ability to add other infrastructure ontop of the lambda function and extend the given stack
+- "Depl" is here the abbreviation for "Deployment"
 
 #### Evaluation Takeaways
 
@@ -154,16 +141,23 @@ bridged.
 
 #### AWS and speed
 
-Lay out the limits of spped of IaC tools to be anywhere near as fast as bun while dealing with
-AWS. Removing a role: 30s. Updating lambda function code: 15s (high variation). Creating a VPC
-adapter for a lambda: multiple minutes. Updating a cloudfront distribution: up to 20 minutes.
+One big takeaway from the comparison is no matter the tool, there will be always limits in terms
+of of speed by the core api calls made to AWS. This greatly diminishes the possibility for IaC
+tools to be anywhere near as fast as bun while dealing with AWS. To give an example, removing an
+AWS IAM role takes around 30s. This is just the api call itself. Updating lambda function code
+takes around 15s with some variation. Creating a VPC adapter for a lambda takes multiple
+minutes. Or, to give a far-out example, updating a cloudfront distribution takes up to 20
+minutes. Historically AWS doesnt promise any speed on their general apis. The aws docs are
+intentionally fuzzy in this aspect.
 
-#### Local Debugging outside of IaC Tools
 
-Give a generic way to start the debugger (with bun) despite of the IaC tool.
+But this is not to say it will always be this way. Maybe AWS will come up with an upgrade which
+greatly increases their deployment-related api calls. These kind of things already happened
+recently with Eventbridge for example, one api call here improved in speed significantly. Other
+approaches for speed could also be possible. If code changes would be live-streamed to AWS (like
+with the sst), and compilation plus deployment happened already within your AWS network, this
+could further increase deployment times, but these approaches would be more intricate.
 
-A generic node / bun approach outside of the IaC tool might come to the rescue here:
-[link](https://stackoverflow.com/questions/64689865/debugging-lambda-locally-using-cdk-not-sam).
 
 ## On the sidelines: Winglang
 
@@ -203,7 +197,7 @@ In our estimate Winglang is a huge leap forward from the current paradigms of Ia
 deliver on its promises, it might not be the solution that the whole engineering uses for every
 project, but it might be that awesome tool to get small things done with ease and pleasure. Given
 that Wing works with JSII just like the CDK, it can also import JSII compatible code like the CDK
-back into its code. Seems Elad really fell in love with this concpet here. With this wing might be
+back into its code. Seems Elad really fell in love with this concept here. With this wing might be
 even somewhat similar to SST, by giving better abstractions ontop of the CDK, just on a whole
 different level.
 
@@ -223,10 +217,11 @@ less popular than he thought, which we can confirm. The positive points about th
 Stuvy dont seem substantial to us, as he also ends with "the real winner here is CloudFormation",
 but the episode is still definitely worth a listen.
 
-Stuvyenberg also points out that in some cases running bun lambdas from a container is more
-beneficial than from a zip file. At the same time he does also recommend to run bun via a lambda
-layer. [Chalice](https://aws.github.io/chalice/index.html) was also listed in their list of IaC
-tools, which is yet to be added to our ranking.
+Stuvyenberg also points out that in some cases running bun lambdas from a
+[container](https://aaronstuyvenberg.com/posts/why-you-should-not-use-lambda-layers) is more
+beneficial than with a layer ontop of AL2 and a zip file. At the same time he does also recommend
+to run bun via a lambda layer. [Chalice](https://aws.github.io/chalice/index.html) was also listed
+in their list of IaC tools, which is yet to be added to our ranking.
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/42TzrteyawiNJdaDv85Hse?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
@@ -239,14 +234,12 @@ the v2/v3 migration efforts, the various work-arounds and helpers needed to work
 disappointment of "awesome reusable contructs" remaining mostly a theory. Going into it we thought
 to find out that something like terraform was going to be the best after all.
 
-Looking at the range of tools that is available, it has become again obvious that some of them are
-more geared towards serverless development than others. At the same time within your own
-organization you may have teams which have a different areas of focus. Having these
-serverless-tuned tools for us made for a far better development experience, less frustrations and
-faster iterations. Depending on your flexibility, in the end it might not be a question of "the
-best tool", but choosing different tools depending on the purpose.
-
-For our purpose of serverless bun lambda functions, the ?.
+Looking at the range of tools that is available, it has become again obvious that some are more
+geared towards serverless development than others. At the same time within your own organization
+you may have teams which have a different areas of focus. Having these serverless-tuned tools for
+us made for a far better development experience, less frustrations and faster
+iterations. Depending on your flexibility, in the end it might not be a question of "the best
+tool", but choosing different tools depending on the purpose.
 
 
 ### Footnotes
