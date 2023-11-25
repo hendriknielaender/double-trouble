@@ -66,17 +66,17 @@ const columns = [
   }),
   columnHelper.accessor('BootstrapTime', {
     header: () => 'Init Time',
-    cell: (info) => info.row.original.BootstrapTime + "s",
+    cell: (info) => <>{info.row.original.BootstrapTime + "s"}{getInfoText(info.row.original.Name, "BootstrapTime")}</>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('FirstDeploymentTime', {
     header: () => "First Depl Time",
-    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.FirstDeploymentTime / 10))}>{info.row.original.FirstDeploymentTime + "s"}</div>,
+    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.FirstDeploymentTime / 10))}>{info.row.original.FirstDeploymentTime + "s"}{getInfoText(info.row.original.Name, "FirstDeploymentTime")}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('CodeDeploymentTime', {
     header: 'Code Depl Time',
-    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.CodeDeploymentTime / 5))}>{info.row.original.CodeDeploymentTime + "s"}</div>,
+    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.CodeDeploymentTime / 5))}>{info.row.original.CodeDeploymentTime + "s"}{getInfoText(info.row.original.Name, "CodeDeploymentTime")}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('DirtyDeploymentTime', {
@@ -278,7 +278,13 @@ const infoData: { [key: string]: { [key: string]: string } } = {
   },
   "Serverless Framework": {
     "DirtyDeploymentTime": "Dirty deployments are currently not supported (serverless/issues/4454), but certain delpoyments can still be sped up either with the --update-config flag, only for config updates, and --aws-s3-accelerate for artifact upload speed improvements.",
-    "LocalExecution": "Depends on the build plugin which does not yet exist for bun.",
+    "LocalExecution": "Local Execution depends on the javascript build plugin which does not yet exist for bun.",
+  },
+  "SST": {
+    "BootstrapTime": "Both the CDK bootstrap stack as well as the SST bootstrap stack need to be deployed, which results in a higher init time.",
+    "OverallDX": "The custom runtime property is currently not supported by sst, they only support the container version(sst/sst/issues/3264). Even still, the DX of SST is absolutely outstanding.",
+    "CodeDeploymentTime": "Increased deployment times everywhere here as custom runtimes are not supported, only the container version, which takes longer to deploy and build.",
+    "LocalDebugging": "Doesnt seem to work yet for containers, but works in general for supported runtimes and is well documented."
   }
 }
 
@@ -336,10 +342,10 @@ const rankingData: Ranking[] = [
     Link: 'https://github.com/hashicorp/terraform-cdk',
     GithubStars: 4600,
     GithubIssues: 296,
-    BootstrapTime: -1,
-    FirstDeploymentTime: -1,
-    CodeDeploymentTime: -1,
-    DirtyDeploymentTime: -1,
+    BootstrapTime: 19,
+    FirstDeploymentTime: 26,
+    CodeDeploymentTime: 16,
+    DirtyDeploymentTime: 16,
     LocalExecution: 0,
     LocalDebugging: 0,
     StreamedCloudExecution: 0,
@@ -368,15 +374,15 @@ const rankingData: Ranking[] = [
     Link: 'https://github.com/sst/sst',
     GithubStars: 18100,
     GithubIssues: 660,
-    BootstrapTime: -1,
-    FirstDeploymentTime: -1,
-    CodeDeploymentTime: -1,
-    DirtyDeploymentTime: -1,
-    LocalExecution: -1,
-    LocalDebugging: -1,
+    BootstrapTime: 233,
+    FirstDeploymentTime: 156,
+    CodeDeploymentTime: 81,
+    DirtyDeploymentTime: 81,
+    LocalExecution: 1,
+    LocalDebugging: 0.5,
     StreamedCloudExecution: 1,
     OverallDX: 3,
-    VersatilityRating: 1,
+    VersatilityRating: 2.5,
     Score: 0,
   },
   {

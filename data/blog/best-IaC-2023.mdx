@@ -89,8 +89,9 @@ the CDK has dependencies on SAM for things like local execution.
 <br />
 *Non-Contenders*: Among the wide assortment of tools which can be used to provision infrastructure,
 there are some we didn't consider for various reasons. For the interested reader, we're still
-listing them here for completeness: Pulumi, AWS Cloudformation, AWS Copilot, AWS Composer, AWS App
-Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify.
+listing them here for completeness: AWS Cloudformation, AWS Copilot, AWS Composer, AWS App
+Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify. Pulumi is also not yet part of our
+ranking as we have never seen it used, but we might add it in the future.
 
 
 ## Evaluation
@@ -124,19 +125,19 @@ world, for whatever reason, it seems the parameters have changed. Updates today 
 more frequent, and dependencies between resources exist more in lambda code, rather than
 infrastructure definitions. While this might not be the whole reason, the observation is that the
 whole Cloudformation state handling in serverless seems like a feature that is a little bit of a
-surplus. Flags like the cdks `--hotswap` and `--no-rollback`show, that a perfect stack state is no
-longer the most relevant. Still, if anything in those IaC tools breaks, you will have to dive deep
-into the Cloudformation level.
+surplus. Recently added flags like cdks `--hotswap` and `--no-rollback`show, that a perfect
+stack state is no longer the most relevant. Still, if anything in those IaC tools breaks, you will
+have to dive deep into the Cloudformation level.
 
 This begs the question if future AWS IaC tools will always depend on Cloudformation, requiring you
 as the user to dive into intricacies of that, or if a new methodology will arise. This additional
 layer of tooling under the hood is at least something that is already a minor inconvenience,
-dealing with serverless infrastructure today. Many infrastructure tools today still expect you to
-dive into Cloudformation when needed, while wholistic tools that try to hide all abstractions have
-failed (Amplify, Beanstalk). It will be interesting to seee if this sea of complexity can ever be
+dealing with serverless infrastructure today. Many infrastructure tools still expect you to dive
+into Cloudformation when needed, while wholistic tools that try to hide all abstractions have
+failed (Amplify, Beanstalk). It will be interesting to see if this sea of complexity can ever be
 bridged.
 
-#### AWS and speed
+#### AWS and Speed
 
 One big takeaway from the comparison is no matter the tool, there will be always limits in terms
 of of speed by the core api calls made to AWS. This greatly diminishes the possibility for IaC
@@ -207,7 +208,7 @@ infrastructure related tools have so far attempted.
 Interestingly [Yan Cui](https://theburningmonk.com/) has also recently discussed the topic of
 infrastructure tools and bun lambdas together with AJ Stuyvenberg. While the stackoverflow
 developer survey doesnt cover the IaC tool usage and studies on this are rare (but they to
-exist[^11]), it is re-assuring to see that also such great engineers ponder on the question of
+exist[^11]), it is re-assuring to see that also such renowned engineers ponder on the question of
 tool popularity. In the podcast they agreed that big enterprise companies mostly use terraform,
 while some positive points on the serverless framework (Cui) and the CDK (Stuvy) were made. At the
 same time Yan Cui mentioned that the CDK is less popular than he thought, which we can confirm,
@@ -226,11 +227,12 @@ listen if you are into bun and serverless!
 ## Rounding up
 
 Going into writing this post, we had a suspicion that terraform was simply going to be fastest, as
-it doesn't rely on CloudFormation under the hood. After years of being the reigning champion, the
-reputation of the CDK for us and others[^3] [^4] has weakened. CDKs weird packaging, together with
-the v2/v3 migration efforts, the various work-arounds and helpers needed to work with the CDK, the
-disappointment of "awesome reusable contructs" remaining mostly a theory. Going into it we thought
-to find out that something like terraform was going to be the best after all.
+it doesn't rely on CloudFormation under the hood. After years of being the reigning champion - at
+least within our proximity - the reputation of the CDK for us and others[^3] [^4] has
+weakened. CDKs weird packaging, together with the v2/v3 migration efforts, the various
+work-arounds and helpers needed to work with the CDK, the disappointment of "awesome reusable
+contructs" remaining mostly a theory. Going into it we thought to find out that something like
+terraform was going to be the best after all.
 
 Looking at the range of tools that is available, it has become again obvious that some are more
 geared towards serverless development than others. At the same time within your own organization
