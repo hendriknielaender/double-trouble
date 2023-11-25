@@ -4,6 +4,7 @@
     "skipLibCheck": true,
     "allowJs": true,
     "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {
       "~/*": [
