@@ -264,7 +264,7 @@ function RankingTable() {
 const infoData: { [key: string]: { [key: string]: string } } = {
   "CDK": {
     "LocalExecution": "Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)",
-    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work as expected for us substantial. Local execution itself only works by hooking in SAM. The v2 / v3 migration efforts, together with a bunch of alpha plugins for services like AppSync make for a bad experience."
+    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work as expected for us is substantial. Local execution itself only works by hooking in SAM. The v2 / v3 migration efforts, together with a bunch of alpha plugins for services like AppSync make for a bad experience."
   },
   "CDKTF": {
     "OverallDX": "Not a drop-in replacement to the normal CDK dependency at all as one might expect. Completely new packages that need to be seperately downloaded which are also not typed."
@@ -274,7 +274,7 @@ const infoData: { [key: string]: { [key: string]: string } } = {
   },
   "Terraform": {
     "GithubStars": "Here we combined the stars from the terraform repo and the aws-provider package together, same for the issues.",
-    "OverallDX": "It is simple and does what it's supposed to do. No local execution but also no surprises. Faster than all the other tools."
+    "OverallDX": "Terraform is simple and might have fewer features than others, but it does what it's supposed to do. No local execution but also no hacky solutions or surprises in this area. Less is more for terraform."
   },
   "Serverless Framework": {
     "DirtyDeploymentTime": "Dirty deployments are currently not supported (serverless/issues/4454), but certain delpoyments can still be sped up either with the --update-config flag, only for config updates, and --aws-s3-accelerate for artifact upload speed improvements.",
