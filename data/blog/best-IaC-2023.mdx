@@ -7,13 +7,12 @@ imageCreditUrl: https://labs.openai.com/
 tags: [terraform, cloud, infrastructure, IaC, ranking, aws, serverless, bun, cdk]
 ---
 import GithubRepoTag from "~/components/atoms/GithubRepoTag.astro";
-import InfoText from "~/components/atoms/InfoText.astro";
 import RankingTable from "~/components/atoms/RankingTable.astro";
 
-The recent release of bun 1.0 still has us all hyped up. The unseen speed of bun, together with a
-completely overhauled dev experience by unifying the wide range of tools into one is simply
-amazing. This new sense of speed and convenience got us thinking also about other tools - what
-about IaC?
+The recent release of [bun 1.0](https://bun.sh/blog/bun-v1.0) still has us all hyped up. The
+unseen speed of bun, together with a completely overhauled dev experience by unifying the wide
+range of tools into one is simply amazing. This new sense of speed and convenience got us thinking
+also about other tools - what about IaC?
 
 At the workplace, the choice of IaC tooling is largely determined by company policy, by what is
 generally already used and works reasonably well. Through years of evolution and growing maturity,
@@ -51,7 +50,7 @@ of terraform, while it has the same core features. Providers won't be affected.
 
 The <GithubRepoTag repoSlug="aws/aws-cdk" text="CDK" stargazers="10.7k" issues="1.9k"/> is the
 programmatic solution from AWS for IaC tooling. The AWS CTO himself Werner Vogels praised the CDK
-as revolutionary [^1] [^2], and it was the first popular tool to offer infrastructure code
+as revolutionary [^1] [^2], and it was the first tool from AWS to offer infrastructure code
 definition via a regular programming language. The initial hype for the CDK has led to a wide
 adaption, while it also exposed its limits and shortcomings.
 
@@ -213,15 +212,15 @@ developer survey doesnt cover the IaC tool usage and studies on this are rare, i
 to see that also such great engineers ponder on the question of tool popularity. In the podcast
 they agreed that big enterprise companies mostly use terraform, while some positive points on the
 serverless framework and the CDK were made. At the same time Yan Cui mentioned that the CDK is
-less popular than he thought, which we can confirm. The positive points about the CDK made from
-Stuvy dont seem substantial to us, as he also ends with "the real winner here is CloudFormation",
-but the episode is still definitely worth a listen.
+less popular than he thought, which we can confirm, while Stuvy said the real winner is
+CloudFormation.
 
 Stuvyenberg also points out that in some cases running bun lambdas from a
 [container](https://aaronstuyvenberg.com/posts/why-you-should-not-use-lambda-layers) is more
 beneficial than with a layer ontop of AL2 and a zip file. At the same time he does also recommend
 to run bun via a lambda layer. [Chalice](https://aws.github.io/chalice/index.html) was also listed
-in their list of IaC tools, which is yet to be added to our ranking.
+in their list of IaC tools, which is yet to be added to our ranking. Definitely give the episode a
+listen if you are into bun and serverless!
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/42TzrteyawiNJdaDv85Hse?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 

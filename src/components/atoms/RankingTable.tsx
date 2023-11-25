@@ -13,6 +13,7 @@ import {
 
 type Ranking = {
   Name: string;
+  Link: string;
   GithubStars: number;
   GithubIssues: number;
   BootstrapTime: number;
@@ -45,14 +46,14 @@ const columns = [
   columnHelper.accessor('Name', {
     header: () => <span>Tool</span>,
     footer: (props) => props.column.id,
-    cell: (info) => <b>{info.row.original.Name}</b>
+    cell: (info) => <b><a href={info.row.original.Link}>{info.row.original.Name}</a></b>
   }),
   columnHelper.accessor('GithubStars', {
     header: () => <span>Github Stars</span>,
     footer: (props) => props.column.id,
     cell: (info) => {
       const val = info.row.original.GithubStars
-      return <div>{val >= 1000 ? (val / 1000 + "k") : val}</div>
+      return <div>{val >= 1000 ? (val / 1000 + "k") : val}{getInfoText(info.row.original.Name, "GithubStars")}</div>
     },
   }),
   columnHelper.accessor('GithubIssues', {
@@ -70,24 +71,24 @@ const columns = [
   }),
   columnHelper.accessor('FirstDeploymentTime', {
     header: () => "First Depl Time",
-    cell: (info) => <div className={"text-blue-" + (600 - 100 * Math.round(info.row.original.FirstDeploymentTime / 10))}>{info.row.original.FirstDeploymentTime + "s"}</div>,
+    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.FirstDeploymentTime / 10))}>{info.row.original.FirstDeploymentTime + "s"}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('CodeDeploymentTime', {
     header: 'Code Depl Time',
-    cell: (info) => <div className={"text-blue-" + (600 - 100 * Math.round(info.row.original.CodeDeploymentTime / 5))}>{info.row.original.CodeDeploymentTime + "s"}</div>,
+    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.CodeDeploymentTime / 5))}>{info.row.original.CodeDeploymentTime + "s"}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('DirtyDeploymentTime', {
     header: 'Dirty Depl Time',
-    cell: (info) => <div className={"text-blue-" + (600 - 100 * Math.round(info.row.original.DirtyDeploymentTime / 5))}>{info.row.original.DirtyDeploymentTime + "s"}</div>,
+    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.DirtyDeploymentTime / 5))}>{info.row.original.DirtyDeploymentTime + "s"}</div>,
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('LocalExecution', {
     header: 'Local Execution',
     cell: (info) => {
       const val = info.row.original.LocalExecution
-      return <div className={val == 1 ? "text-blue-600" : "text-blue-300"}>{val}{getInfoText(info.row.original.Name, "LocalExecution")}</div>
+      return <div className={val >= 0.5 ? "text-blue-500" : "text-blue-300"}>{val}{getInfoText(info.row.original.Name, "LocalExecution")}</div>
     },
     footer: (props) => props.column.id,
   }),
@@ -95,7 +96,7 @@ const columns = [
     header: 'Local Debugging',
     cell: (info) => {
       const val = info.row.original.LocalDebugging
-      return <div className={val == 1 ? "text-blue-600" : "text-blue-300"}>{val}</div>
+      return <div className={val >= 0.5 ? "text-blue-500" : "text-blue-300"}>{val}</div>
     },
     footer: (props) => props.column.id,
   }),
@@ -103,7 +104,7 @@ const columns = [
     header: 'Streamed Cloud Execution',
     cell: (info) => {
       const val = info.row.original.StreamedCloudExecution
-      return <div className={val == 1 ? "text-blue-600" : "text-blue-300"}>{val}</div>
+      return <div className={val >= 0.5 ? "text-blue-500" : "text-blue-300"}>{val}</div>
     },
     footer: (props) => props.column.id,
   }),
@@ -136,7 +137,7 @@ function calculateScore(input: Ranking, weights: Weight[]) {
   const { BootstrapTime, CodeDeploymentTime, DirtyDeploymentTime, FirstDeploymentTime, GithubIssues, LocalDebugging,
     LocalExecution, OverallDX, StreamedCloudExecution, VersatilityRating, GithubStars
   } = input
-  const speed = (BootstrapTime + CodeDeploymentTime + DirtyDeploymentTime + FirstDeploymentTime) / 60
+  const speed = (BootstrapTime * 0.5 + CodeDeploymentTime + DirtyDeploymentTime + FirstDeploymentTime) / 60
 
   const popWeight = getWeight(weights, "Popularity")
   const speedWeight = getWeight(weights, "Speed")
@@ -263,7 +264,7 @@ function RankingTable() {
 const infoData: { [key: string]: { [key: string]: string } } = {
   "CDK": {
     "LocalExecution": "Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)",
-    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work right is crazy. Local execution only by hooking in SAM."
+    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work as expected for us substantial. Local execution itself only works by hooking in SAM. The v2 / v3 migration efforts, together with a bunch of alpha plugins for services like AppSync make for a bad experience."
   },
   "CDKTF": {
     "OverallDX": "Not a drop-in replacement to the normal CDK dependency at all as one might expect. Completely new packages that need to be seperately downloaded which are also not typed."
@@ -272,16 +273,19 @@ const infoData: { [key: string]: { [key: string]: string } } = {
     "LocalExecution": "Does work in general but not for the bun lambda layer. Bun runtime wont start because sam local won't pass a traceId."
   },
   "Terraform": {
+    "GithubStars": "Here we combined the stars from the terraform repo and the aws-provider package together, same for the issues.",
     "OverallDX": "It is simple and does what it's supposed to do. No local execution but also no surprises. Faster than all the other tools."
   },
   "Serverless Framework": {
-    "DirtyDeploymentTime": "Dirty deployments are currently not supported (serverless/issues/4454), but certain delpoyments can still be sped up either with the --update-config flag, only for config updates, and --aws-s3-accelerate for artifact upload speed improvements."
+    "DirtyDeploymentTime": "Dirty deployments are currently not supported (serverless/issues/4454), but certain delpoyments can still be sped up either with the --update-config flag, only for config updates, and --aws-s3-accelerate for artifact upload speed improvements.",
+    "LocalExecution": "Depends on the build plugin which does not yet exist for bun.",
   }
 }
 
-const rankingData = [
+const rankingData: Ranking[] = [
   {
     Name: 'Terraform',
+    Link: 'https://github.com/hashicorp/terraform',
     GithubStars: 48100,
     GithubIssues: 5500,
     BootstrapTime: 18,
@@ -297,6 +301,7 @@ const rankingData = [
   },
   {
     Name: 'Open Tofu',
+    Link: 'https://github.com/opentofu/opentofu',
     GithubStars: 15300,
     GithubIssues: 119,
     BootstrapTime: 18,
@@ -312,6 +317,7 @@ const rankingData = [
   },
   {
     Name: 'CDK',
+    Link: 'https://github.com/aws/aws-cdk',
     GithubStars: 10700,
     GithubIssues: 1900,
     BootstrapTime: 61,
@@ -327,6 +333,7 @@ const rankingData = [
   },
   {
     Name: 'CDKTF',
+    Link: 'https://github.com/hashicorp/terraform-cdk',
     GithubStars: 4600,
     GithubIssues: 296,
     BootstrapTime: -1,
@@ -342,6 +349,7 @@ const rankingData = [
   },
   {
     Name: 'SAM',
+    Link: 'https://github.com/aws/aws-sam-cli',
     GithubStars: 6400,
     GithubIssues: 383,
     BootstrapTime: 47,
@@ -357,6 +365,7 @@ const rankingData = [
   },
   {
     Name: 'SST',
+    Link: 'https://github.com/sst/sst',
     GithubStars: 18100,
     GithubIssues: 660,
     BootstrapTime: -1,
@@ -372,14 +381,15 @@ const rankingData = [
   },
   {
     Name: 'Serverless Framework',
+    Link: 'https://github.com/serverless/serverless',
     GithubStars: 45300,
     GithubIssues: 1000,
     BootstrapTime: 43,
     FirstDeploymentTime: 55,
     CodeDeploymentTime: 32,
     DirtyDeploymentTime: 32,
-    LocalExecution: 1,
-    LocalDebugging: 1,
+    LocalExecution: 0.5,
+    LocalDebugging: 0.5,
     StreamedCloudExecution: 0,
     OverallDX: 3,
     VersatilityRating: 1,
