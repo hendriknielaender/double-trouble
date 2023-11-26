@@ -139,7 +139,7 @@ bridged.
 
 #### AWS and Speed
 
-One big takeaway from the comparison is no matter the tool, there will be always limits in terms
+A critical insight from our analysis is the inherent speed limitations imposed by AWS's core API calls. Despite advancements in IaC tools, they struggle to match the lightning pace of platforms like bun when interacting with AWS services.
 of of speed by the core api calls made to AWS. This greatly diminishes the possibility for IaC
 tools to be anywhere near as fast as bun while dealing with AWS. To give an example, removing an
 AWS IAM role takes around 30s. This is just the api call itself. Updating lambda function code
