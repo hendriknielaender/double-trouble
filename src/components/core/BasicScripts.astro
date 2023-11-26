@@ -4,8 +4,8 @@ import { SITE } from '~/config.mjs';
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
   function applyTheme(theme) {
-    if (theme === 'dark' || !theme) {
-      document.documentElement.classList.add('dark');
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
     } else {
       document.documentElement.classList.remove('light');
     }
@@ -78,9 +78,11 @@ import { SITE } from '~/config.mjs';
 
     attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
       document.documentElement.classList.toggle("light");
-      localStorage.theme = document.documentElement.classList.contains("light")
-        ? "dark"
-        : "light";
+      // as we already toggled the classlist, the current theme is already the new theme
+      const newTheme = document.documentElement.classList.contains("light")
+        ? "light"
+        : "dark";
+      localStorage.theme = newTheme
 
       adjustTweetsToTheme()
     });
