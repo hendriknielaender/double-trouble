@@ -2,6 +2,35 @@ import * as React from 'react'
 import ReactDOM from 'react-dom/client'
 import InfoText from './InfoText.tsx'
 
+// https://tailwindcss.com/docs/content-configuration#dynamic-class-names
+// learning: variables should not be used in tailwind color attributes
+// light colors are adapted / capped so they remain easily readable
+const colorMap = {
+  100: "text-blue-100 light:text-blue-400",
+  200: "text-blue-200 light:text-blue-400",
+  300: "text-blue-300 light:text-blue-400",
+  400: "text-blue-400 light:text-blue-500",
+  500: "text-blue-500 light:text-blue-600",
+  600: "text-blue-600 light:text-blue-700",
+  700: "text-blue-700 light:text-blue-800",
+  800: "text-blue-800 light:text-blue-900",
+  900: "text-blue-900 light:text-blue-900",
+}
+
+const bgColorMap = {
+  100: "bg-blue-100 light:bg-blue-100",
+  200: "bg-blue-200 light:bg-blue-200",
+  300: "bg-blue-300 light:bg-blue-300",
+  400: "bg-blue-400 light:bg-blue-400",
+  500: "bg-blue-500 light:bg-blue-500",
+  600: "bg-blue-600 light:bg-blue-600",
+  700: "bg-blue-700 light:bg-blue-700",
+  800: "bg-blue-800 light:bg-blue-800",
+  900: "bg-blue-900 light:bg-blue-900",
+}
+
+
+
 import {
   createColumnHelper,
   flexRender,
@@ -52,8 +81,11 @@ const columns = [
     header: () => <span>Github Stars</span>,
     footer: (props) => props.column.id,
     cell: (info) => {
-      const val = info.row.original.GithubStars
-      return <div>{val >= 1000 ? (val / 1000 + "k") : val}{getInfoText(info.row.original.Name, "GithubStars")}</div>
+      const val = info.row.original.GithubStars >= 1000 ? (info.row.original.GithubStars / 1000 + "k") : info.row.original.GithubStars
+
+      return <div>
+        {val}{getInfoText(info.row.original.Name, "GithubStars")}
+      </div>
     },
   }),
   columnHelper.accessor('GithubIssues', {
@@ -61,34 +93,56 @@ const columns = [
     footer: (props) => props.column.id,
     cell: (info) => {
       const val = info.row.original.GithubIssues
-      return <div>{val >= 1000 ? (val / 1000 + "k") : val}</div>
+      return <div>
+        {val >= 1000 ? (val / 1000 + "k") : val}
+      </div>
     },
   }),
   columnHelper.accessor('BootstrapTime', {
     header: () => 'Init Time',
-    cell: (info) => <>{info.row.original.BootstrapTime + "s"}{getInfoText(info.row.original.Name, "BootstrapTime")}</>,
+    cell: (info) => {
+      const color = 800 - 100 * Math.round(info.row.original.BootstrapTime / 15)
+      return <div className={colorMap[color]}>
+        {info.row.original.BootstrapTime + "s"}{getInfoText(info.row.original.Name, "BootstrapTime")}
+      </div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('FirstDeploymentTime', {
     header: () => "First Depl Time",
-    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.FirstDeploymentTime / 10))}>{info.row.original.FirstDeploymentTime + "s"}{getInfoText(info.row.original.Name, "FirstDeploymentTime")}</div>,
+    cell: (info) => {
+      const color = 800 - 100 * Math.round(info.row.original.FirstDeploymentTime / 15)
+      return <div className={colorMap[color]}>
+        {info.row.original.FirstDeploymentTime + "s"}{getInfoText(info.row.original.Name, "FirstDeploymentTime")}
+      </div >
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('CodeDeploymentTime', {
     header: 'Code Depl Time',
-    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.CodeDeploymentTime / 5))}>{info.row.original.CodeDeploymentTime + "s"}{getInfoText(info.row.original.Name, "CodeDeploymentTime")}</div>,
+    cell: (info) => {
+      const color = (800 - 100 * Math.round(info.row.original.CodeDeploymentTime / 7))
+      return <div className={colorMap[color]}>
+        {info.row.original.CodeDeploymentTime + "s"}{getInfoText(info.row.original.Name, "CodeDeploymentTime")}
+      </div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('DirtyDeploymentTime', {
     header: 'Dirty Depl Time',
-    cell: (info) => <div className={"text-blue-" + (800 - 100 * Math.round(info.row.original.DirtyDeploymentTime / 5))}>{info.row.original.DirtyDeploymentTime + "s"}</div>,
+    cell: (info) => {
+      let color = 800 - 100 * Math.round(info.row.original.DirtyDeploymentTime / 7)
+      return <div className={colorMap[color]}>{info.row.original.DirtyDeploymentTime + "s"}</div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('LocalExecution', {
     header: 'Local Execution',
     cell: (info) => {
       const val = info.row.original.LocalExecution
-      return <div className={val >= 0.5 ? "text-blue-500" : "text-blue-300"}>{val}{getInfoText(info.row.original.Name, "LocalExecution")}</div>
+      return <div className={val >= 0.5 ? "text-blue-700" : `text-blue-400`}>
+        {val}{getInfoText(info.row.original.Name, "LocalExecution")}
+      </div>
     },
     footer: (props) => props.column.id,
   }),
@@ -96,7 +150,7 @@ const columns = [
     header: 'Local Debugging',
     cell: (info) => {
       const val = info.row.original.LocalDebugging
-      return <div className={val >= 0.5 ? "text-blue-500" : "text-blue-300"}>{val}</div>
+      return <div className={val >= 0.5 ? colorMap[700] : colorMap[400]}>{val}</div>
     },
     footer: (props) => props.column.id,
   }),
@@ -104,17 +158,28 @@ const columns = [
     header: 'Streamed Cloud Execution',
     cell: (info) => {
       const val = info.row.original.StreamedCloudExecution
-      return <div className={val >= 0.5 ? "text-blue-500" : "text-blue-300"}>{val}</div>
+      return <div className={val >= 0.5 ? colorMap[700] : colorMap[400]}>{val}</div>
     },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('OverallDX', {
     header: 'DX',
-    cell: (info) => <div>{info.row.original.OverallDX}{getInfoText(info.row.original.Name, "OverallDX")}</div>,
+    cell: (info) => {
+      let color = 100 + 100 * Math.round(info.row.original.OverallDX * 2)
+      return <div className={colorMap[color]}>
+        {info.row.original.OverallDX}{getInfoText(info.row.original.Name, "OverallDX")}
+      </div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('VersatilityRating', {
     header: 'Versatility Rating',
+    cell: (info) => {
+      let color = 100 + 100 * Math.round(info.row.original.VersatilityRating * 2)
+      return <div className={colorMap[color]}>
+        {info.row.original.VersatilityRating}{getInfoText(info.row.original.Name, "VersatilityRating")}
+      </div>
+    },
     footer: (props) => props.column.id,
   }),
   columnHelper.accessor('Score', {
@@ -254,7 +319,13 @@ function RankingTable() {
           ))}
         </tbody>
       </table>
-      <p>Weights: {weights.map((weight) => <><button className={`rounded-full px-2 bg-blue-${600 + weight.Weight * 100}`} onClick={() => updateWeight(weight.Name)}>{weight.Name}: {weight.Weight}</button> </>)
+      <p>Weights: {weights.map((weight) => {
+        const color = 600 + weight.Weight * 100
+        return <><button className={`rounded-full px-2 light:text-blue-100 ${bgColorMap[color]}`}
+          onClick={() => updateWeight(weight.Name)}>
+          {weight.Name}: {weight.Weight}
+        </button> </>
+      })
       }</p>
     </div >
   )
@@ -264,7 +335,7 @@ function RankingTable() {
 const infoData: { [key: string]: { [key: string]: string } } = {
   "CDK": {
     "LocalExecution": "Works by leveraging AWS SAM. Same limitation as sam, plus it doesn't support hot reloading (aws-sam-cli/issues/4000)",
-    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work as expected for us is substantial. Local execution itself only works by hooking in SAM. The v2 / v3 migration efforts, together with a bunch of alpha plugins for services like AppSync make for a bad experience."
+    "OverallDX": "The amount of work-arounds and hacks needed to make the CDK work as expected for us is substantial. Local execution itself only works by hooking in SAM. The v2 / v3 migration efforts, together with a bunch of alpha plugins for services like AppSync make for a lackluster experience overall."
   },
   "CDKTF": {
     "OverallDX": "Not a drop-in replacement to the normal CDK dependency at all as one might expect. Completely new packages that need to be seperately downloaded which are also not typed."
