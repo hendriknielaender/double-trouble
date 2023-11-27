@@ -19,14 +19,14 @@ const colorMap = {
 
 const bgColorMap = {
   100: "bg-blue-100 light:bg-blue-100",
-  200: "bg-blue-200 light:bg-blue-200",
-  300: "bg-blue-300 light:bg-blue-300",
-  400: "bg-blue-400 light:bg-blue-400",
-  500: "bg-blue-500 light:bg-blue-500",
-  600: "bg-blue-600 light:bg-blue-600",
-  700: "bg-blue-700 light:bg-blue-700",
-  800: "bg-blue-800 light:bg-blue-800",
-  900: "bg-blue-900 light:bg-blue-900",
+  200: "bg-blue-200 light:bg-blue-100",
+  300: "bg-blue-300 light:bg-blue-200",
+  400: "bg-blue-400 light:bg-blue-300",
+  500: "bg-blue-500 light:bg-blue-400",
+  600: "bg-blue-600 light:bg-blue-500",
+  700: "bg-blue-700 light:bg-blue-600",
+  800: "bg-blue-800 light:bg-blue-700",
+  900: "bg-blue-900 light:bg-blue-800",
 }
 
 
@@ -102,7 +102,7 @@ const columns = [
     header: () => 'Init Time',
     cell: (info) => {
       const color = 800 - 100 * Math.round(info.row.original.BootstrapTime / 15)
-      return <div className={colorMap[color]}>
+      return <div className={colorMap[color] ?? colorMap[100]}>
         {info.row.original.BootstrapTime + "s"}{getInfoText(info.row.original.Name, "BootstrapTime")}
       </div>
     },
@@ -112,7 +112,7 @@ const columns = [
     header: () => "First Depl Time",
     cell: (info) => {
       const color = 800 - 100 * Math.round(info.row.original.FirstDeploymentTime / 15)
-      return <div className={colorMap[color]}>
+      return <div className={colorMap[color] ?? colorMap[100]}>
         {info.row.original.FirstDeploymentTime + "s"}{getInfoText(info.row.original.Name, "FirstDeploymentTime")}
       </div >
     },
@@ -122,7 +122,7 @@ const columns = [
     header: 'Code Depl Time',
     cell: (info) => {
       const color = (800 - 100 * Math.round(info.row.original.CodeDeploymentTime / 7))
-      return <div className={colorMap[color]}>
+      return <div className={colorMap[color] ?? colorMap[100]}>
         {info.row.original.CodeDeploymentTime + "s"}{getInfoText(info.row.original.Name, "CodeDeploymentTime")}
       </div>
     },
@@ -132,7 +132,7 @@ const columns = [
     header: 'Dirty Depl Time',
     cell: (info) => {
       let color = 800 - 100 * Math.round(info.row.original.DirtyDeploymentTime / 7)
-      return <div className={colorMap[color]}>{info.row.original.DirtyDeploymentTime + "s"}</div>
+      return <div className={colorMap[color] ?? colorMap[100]}>{info.row.original.DirtyDeploymentTime + "s"}</div>
     },
     footer: (props) => props.column.id,
   }),
@@ -166,7 +166,7 @@ const columns = [
     header: 'DX',
     cell: (info) => {
       let color = 100 + 100 * Math.round(info.row.original.OverallDX * 2)
-      return <div className={colorMap[color]}>
+      return <div className={colorMap[color] ?? colorMap[100]}>
         {info.row.original.OverallDX}{getInfoText(info.row.original.Name, "OverallDX")}
       </div>
     },
@@ -176,7 +176,7 @@ const columns = [
     header: 'Versatility Rating',
     cell: (info) => {
       let color = 100 + 100 * Math.round(info.row.original.VersatilityRating * 2)
-      return <div className={colorMap[color]}>
+      return <div className={colorMap[color] ?? colorMap[100]}>
         {info.row.original.VersatilityRating}{getInfoText(info.row.original.Name, "VersatilityRating")}
       </div>
     },
