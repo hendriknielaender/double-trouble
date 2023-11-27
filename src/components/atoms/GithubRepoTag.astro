@@ -1,0 +1,30 @@
+---
+const { repoSlug, stargazers, issues, text } = Astro.props;
+/**
+TODO figure out how to do this right
+try {
+  if(window.localStorage[repoSlug]) {
+    console.log("Loading from localstorage")
+    const data = window.localStorage[repoSlug]
+    stargazers = data.stargazers
+    watchers = data.watchers
+    issues=data.issues
+  }
+  const reponse = await fetch(`https://api.github.com/repos/${repoSlug}`)
+  const jsonRes = await reponse.json()
+  stargazers = jsonRes["stargazers_count"]
+  watchers = jsonRes["watchers_count"]
+  issues = jsonRes["open_issues"]
+  window.localStorage[repoSlug] = {stargazers, watchers, issues}
+} catch (error) {
+  throw new Error(`Couldnt fetch github tag for repo ${repoSlug}: ` + error)
+} */
+
+---
+<!-- https://tailwindui.com/components/application-ui/elements/badges -->
+<a href={`https://github.com/${repoSlug}`}>{text ? `${text}`: undefined}</a>{text ? ` `: undefined}
+{text ? ` `: undefined}<a href={`https://github.com/${repoSlug}`}>
+  <span class="inline-flex items-center rounded-md bg-slate-800 light:bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-100 light:text-indigo-800 ring-1 ring-inset ring-slate-700 light:ring-slate-300">
+ ⭐ {stargazers}, 🤔 {issues}
+ </span>
+</a>

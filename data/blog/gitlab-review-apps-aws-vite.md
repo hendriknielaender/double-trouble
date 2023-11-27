@@ -4,7 +4,7 @@ title: "How to configure Vite on AWS for Gitlab Review Apps"
 description: "A guide on how to make Merge Requests more awesome! "
 image: ~/assets/images/thumbnails/gitlab_review_apps_aws2.png
 imageCreditUrl: https://labs.openai.com/
-tags: [aws, vite, gitlab, reviews apps, code reviews]
+tags: [aws, vite, gitlab, reviews apps, code reviews, infrastructure, cicd]
 ---
 Engineering teams often struggle working in just a few shared cloud environments.
 Deployments accidentally overwrite each other make it a hassle

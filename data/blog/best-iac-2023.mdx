@@ -1,0 +1,257 @@
+---
+publishDate: "Nov 27, 2023"
+title: "The best IaC tool in 2023"
+description: "A fresh look at infrastructure provisioning tools in 2023 and their performance across different categories."
+image: "~/assets/images/thumbnails/iac_best_2023.jpg"
+imageCreditUrl: https://labs.openai.com/
+tags: [terraform, cloud, infrastructure, IaC, ranking, aws, serverless, bun, cdk]
+---
+import GithubRepoTag from "~/components/atoms/GithubRepoTag.astro";
+import RankingTable from "~/components/atoms/RankingTable.astro";
+
+The recent release of [bun 1.0](https://bun.sh/blog/bun-v1.0) had us all hyped up. The
+unseen speed of bun, together with a completely overhauled dev experience by unifying the wide
+range of tools into one is simply amazing. This new sense of speed and convenience got us thinking
+also about other tools - what about IaC?
+
+At the workplace, the choice of IaC tooling is largely determined by company policy, by what is
+generally already used and works reasonably well. Through years of evolution and growing maturity,
+a hand ful of projects have gained the most popularity: CDK and terraform[^11]. But taking a fresh look
+today, what could currently be the best tool in the context of serverless AWS?
+
+Let's find out and explore the best infrastructure tools of the year. We'll evaluate
+currently available infrastructure as code (IaC) tools, and look at them within certain
+categories. This is in a specific context which we believe is relevant today: A lambda function
+within an AWS account, which runs ontop of bun.
+
+*All the code related to this comparison can be found in this repository:* <GithubRepoTag text="lambda-iac-2023" repoSlug="flyck/lambda-iac-2023" stargazers="0" issues="0"/>.
+
+## Contenders
+
+### Terraform
+
+<GithubRepoTag text="Terraform" repoSlug="hashicorp/terraform" stargazers="39.1k" issues="1.7k"/> is
+an IaC tool that allows you to create both cloud and on-premise infrasture, with providers
+available for all major clouds (<GithubRepoTag text="terraform AWS provider" stargazers="9k"
+issues="3.8k"/>). The code is comprised of the hashicorp language, a custom language for
+templating. It supports basic programming features like loops, modules and variables within
+certain limits[^6] [^7] [^8] [^9] [^10].
+
+### Open Tofu
+
+In a surprising move, Terraform announced a significant license alteration, potentially impacting its future availability and usage. In response, the community has rallied around <GithubRepoTag
+text="opentofu" repoSlug="opentofu/opentofu" stargazers="15.3k" issues="119"/>, an open-source initiative poised to preserve Terraform's accessibility and openness.
+terraform in the future. For this reason, the open terraform dubbed as <GithubRepoTag
+text="opentofu" repoSlug="opentofu/opentofu" stargazers="15.3k" issues="119"/> repository has been
+started in protest. If the license change goes through, this will be a more future-proof version
+of terraform, while it has the same core features. Providers won't be affected.
+
+### CDK
+
+The <GithubRepoTag repoSlug="aws/aws-cdk" text="CDK" stargazers="10.7k" issues="1.9k"/> is the
+programmatic solution from AWS for IaC tooling. The AWS CTO himself Werner Vogels praised the CDK
+as revolutionary [^1] [^2], and it was the first tool from AWS to offer infrastructure code
+definition via a regular programming language. The initial hype for the CDK has led to a wide
+adaption, while it also exposed its limits and shortcomings.
+
+### CDKTF
+
+While the CDK uses AWS CloudFormation under the hood, <GithubRepoTag text="CDKTF"
+repoSlug="hashicorp/terraform-cdk" stargazers="4.6k" issues="296"/> uses terraform. This allows to
+break the boundaries which exist in certain cases in the hashicorp configuration syntax, and use
+"real code". It attempts to combine the benefits of terraform with the flexibility offered by the CDK.
+
+### SST
+
+The serverless stack <GithubRepoTag text="sst" repoSlug="sst/sst" stargazers="18.1k"
+issues="660"/> is a combination of tools which aims at providing the best modern developer
+experience for fullstack application building. Historically it was comprised of a collection of
+streamlined CDK constructs and a live lambda development console. Recently the new and improved
+SST Console has been added, which aims at improving the overview over the provisioned
+resources. It is like the CDK but with massive batteries included.
+
+### Serverless Framework
+
+An oppiniated tool aimed at simplicity and developer experience around serverless services is the
+<GithubRepoTag text="serverless framework" repoSlug="serverless/serverless" stargazers="45.3k"
+issues="1k"/>. While it is also connected to a web console for CI/CD, monitoring and debugging,
+the main part - the cli makes it easy to deploy lambdas, api gateways and more. Infrastructure is
+defined in one yaml file, which can be extended with various plugins.
+
+### AWS SAM
+
+Possibly the initial Amazonian answer to the Serverless Framework is <GithubRepoTag text="AWS SAM"
+repoSlug="aws/aws-sam-cli" stargazers="6.4k" issues="383"/>. It's maskot is a little beaver, which
+is supposed to help get your things running in the cloud. While it is not as sophisiticated as the
+
+CDK, it has many features which are more geared towards developer productivity, which is also why
+the CDK has dependencies on SAM for things like local execution.
+
+<br />
+*Non-Contenders*: Among the wide assortment of tools which can be used to provision infrastructure,
+there are some we didn't consider for various reasons. For the interested reader, we're still
+listing them here for completeness: AWS Cloudformation, AWS Copilot, AWS Composer, AWS App
+Runner, AWS Proton, AWS Lightsail, AWS EBS & AWS Amplify. Pulumi is also not yet part of our
+ranking as we have never seen it used, but we might add it in the future.
+
+
+## Evaluation
+
+<RankingTable />
+
+Glossary:
+- Init time: Some IaC frameworks use some kind of resources for state or access management,
+which is shared across IaC projects within the same account.
+- Versatility Rating: The ability to add other infrastructure ontop of the lambda function and extend the given stack
+- "Depl" is here the abbreviation for "Deployment"
+
+#### Evaluation Takeaways
+
+What we immediately learned from the evaluation:
+
+
+- AWS has some variety in the time the api calls take, which we especially observed for
+the lambda updateFunction call. It can be as fast as 15s but a moment later it might be at
+35s. This makes a true obsession and optimization for speed a little bit difficult, and leaves the
+numbers in that code category more as a median than an exact value.
+- Debugger integration depends on the tool working together with the build utility. As bun is
+still in the early stages, bun is not yet supported by most of the tools.
+
+#### Cloudformation and the Limits of Abstraction
+
+Most of the IaC tools we can chose from use Cloudformation under the hood. It's emphasis
+historically has been moving infrastructure from one sane state to the next. Changing
+infrastructure was a bit scary, and Cloudformation was a great tool in that scenario. In todays
+world, for whatever reason, it seems the parameters have changed. Updates today seem to be far
+more frequent, and dependencies between resources exist more in lambda code, rather than
+infrastructure definitions. While this might not be the whole reason, the observation is that the
+whole Cloudformation state handling in serverless seems like a feature that is a little bit of a
+surplus. Recently added flags like cdks `--hotswap` and `--no-rollback`show, that a perfect
+stack state is no longer the most relevant. Still, if anything in those IaC tools breaks, you will
+have to dive deep into the Cloudformation level.
+
+This begs the question if future AWS IaC tools will always depend on Cloudformation, requiring you
+as the user to dive into intricacies of that, or if a new methodology will arise. This additional
+layer of tooling under the hood is at least something that is already a minor inconvenience,
+dealing with serverless infrastructure today. Many infrastructure tools still expect you to dive
+into Cloudformation when needed, while wholistic tools that try to hide all abstractions have
+failed (Amplify, Beanstalk). It will be interesting to see if this sea of complexity can ever be
+bridged.
+
+#### AWS and Speed
+
+A critical insight from our analysis is the inherent speed limitations imposed by AWS's core API calls. Despite advancements in IaC tools, they struggle to match the lightning pace of platforms like bun when interacting with AWS services.
+of of speed by the core api calls made to AWS. This greatly diminishes the possibility for IaC
+tools to be anywhere near as fast as bun while dealing with AWS. To give an example, removing an
+AWS IAM role takes around 30s. This is just the api call itself. Updating lambda function code
+takes around 15s with some variation. Creating a VPC adapter for a lambda takes multiple
+minutes. Or, to give a far-out example, updating a cloudfront distribution takes up to 20
+minutes. Historically AWS doesnt promise any speed on their general apis. The aws docs are
+intentionally fuzzy in this aspect.
+
+
+But this is not to say it will always be this way. Maybe AWS will come up with an upgrade which
+greatly increases their deployment-related api calls. These kind of things already happened
+recently with Eventbridge for example, one api call here improved in speed significantly. Other
+approaches for speed could also be possible. If code changes would be live-streamed to AWS (like
+with the sst), and compilation plus deployment happened already within your AWS network, this
+could further increase deployment times, but these approaches would be more intricate.
+
+
+## On the sidelines: Winglang
+
+<GithubRepoTag text="Winglang" repoSlug="winglang/wing" stargazers="2.6k" issues="671"/> is an
+up-and-coming IaC tool, but it is also more than that. It got founded in late 2022[^5] by the
+original creator of the code that eventually became the CDK, Elad Ben-Israel
+[@emeshbi](https://twitter.com/emeshbi). At its core it is a new programming language, which uses
+one piece of code to instruct both the infrastructure and the business logic together (called as
+"preflight" vs "inflight" code). It hereby diffuses the division between infrastructure and
+application code, bringing them all into the same place.
+
+The wing project itself is a combination of this new wing programming language, a local cloud
+simulater & dashboard, together with exports into different IaC tools (terraform or cdk), so they
+can provision the needed infrastructure after compilation. At the moment they are [not yet
+production ready](https://www.winglang.io/contributing/status), and only a few resources are
+supported. Yet, the most important serverless resources are already there: a lambda function, SQS
+queues, a bucket and a dynamoDB table (as the primitive form of a "counter").
+
+Let's see an example of this. The following snipped is just the example snippet from their
+website, and it creates a bucket, a lambda, an sqs queue and a dynamodb for the counter:
+
+```typescript
+bring cloud;
+
+let queue = new cloud.Queue(timeout: 2m);
+let bucket = new cloud.Bucket();
+let counter = new cloud.Counter(initial: 100);
+
+queue.setConsumer(inflight (body: str): str => {
+  let next = counter.inc();
+  let key = "myfile-${next}.txt";
+  bucket.put(key, body);
+});
+```
+
+In our estimate Winglang is a huge leap forward from the current paradigms of IaC. If it can
+deliver on its promises, it might not be the solution that the whole engineering uses for every
+project, but it might be that awesome tool to get small things done with ease and pleasure. Given
+that Wing works with JSII just like the CDK, it can also import JSII compatible code like the CDK
+back into its code. Seems Elad really fell in love with this concept here. With this wing might be
+even somewhat similar to SST, by giving better abstractions ontop of the CDK, just on a whole
+different level.
+
+Wing seems to aim to bring the developer experience to such a level of abstraction and simplicity,
+that even a project manager could solve simple problems. This is something that none of the other
+infrastructure related tools have so far attempted.
+
+## Yan Cui & Stuvy
+
+Interestingly [Yan Cui](https://theburningmonk.com/) has also recently discussed the topic of
+infrastructure tools and bun lambdas together with AJ Stuyvenberg. While the stackoverflow
+developer survey doesnt cover the IaC tool usage and studies on this are rare (but they to
+exist[^11]), it is re-assuring to see that also such renowned engineers ponder on the question of
+tool popularity. In the podcast they agreed that big enterprise companies mostly use terraform,
+while some positive points on the serverless framework (Cui) and the CDK (Stuvy) were made. At the
+same time Yan Cui mentioned that the CDK is less popular than he thought, which we can confirm,
+while Stuvy said the real winner is CloudFormation. This is true to the extend that most tools use
+CloudFormatino under the hood.
+
+Stuvyenberg also points out that in some cases running bun lambdas from a
+[container](https://aaronstuyvenberg.com/posts/why-you-should-not-use-lambda-layers) is more
+beneficial than with a layer ontop of AL2 and a zip file. At the same time he does also recommend
+to run bun via a lambda layer. [Chalice](https://aws.github.io/chalice/index.html) was also listed
+in their list of IaC tools, which is yet to be added to our ranking. Definitely give the episode a
+listen if you are into bun and serverless!
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/42TzrteyawiNJdaDv85Hse?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+## Rounding up
+
+When we began writing this post, we suspected that Terraform would simply be the fastest, as
+it doesn't rely on CloudFormation under the hood. After years of being the reigning champion - at
+least within our proximity - the reputation of the CDK for us and others[^3] [^4] has
+weakened. CDKs weird packaging, together with the v2/v3 migration efforts, the various
+work-arounds and helpers needed to work with the CDK, the disappointment of "awesome reusable
+contructs" remaining mostly a theory. Going into it we thought to find out that something like
+terraform was going to be the best after all.
+
+Looking at the range of tools that is available, it has become again obvious that some are more
+geared towards serverless development than others. At the same time within your own organization
+you may have teams which have a different areas of focus. Having these serverless-tuned tools for
+us made for a far better development experience, less frustrations and faster
+iterations. Depending on your flexibility, in the end it might not be a question of "the best
+tool", but choosing different tools depending on the purpose.
+
+
+### Footnotes
+[^1]: https://twitter.com/Werner/status/1528384285924806657
+[^2]: https://www.youtube.com/watch?v=AYYTrDaEwLs
+[^3]: https://www.alexdebrie.com/posts/serverless-framework-vs-cdk/
+[^4]: https://theburningmonk.com/2023/04/are-you-ready-for-this-top-5-earth-shattering-pros-and-cons-of-aws-cdk/
+[^5]: https://twitter.com/winglangio account got created in Aug 2022
+[^6]: https://github.com/hashicorp/terraform/issues/30135 dynamic variable names
+[^7]: https://github.com/hashicorp/terraform/issues/33272 templates within templates
+[^8]: https://github.com/hashicorp/terraform/issues/24476 multiple regions within same module
+[^9]: https://github.com/hashicorp/terraform/issues/24188 support for dynamic blocks and meta-arguments
+[^10]: https://github.com/hashicorp/terraform/issues/27365 ability to create custom types
+[^11]: https://www.jetbrains.com/lp/devecosystem-2023/devops/
