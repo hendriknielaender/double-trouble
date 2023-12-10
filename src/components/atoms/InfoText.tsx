@@ -16,6 +16,7 @@ const InfoTextReact = (props: { text: string; title?: string }) => {
 	return (
 		<>
 			<button
+				type="button"
 				className="text-slate-200 light:hover:bg-slate-600 light:focus:ring-1 focus:outline-none focus:ring-blue-300 font-semibold rounded-full text-sm text-center bg-slate-700 light:bg-sky-300 light:hover:bg-sky-600 hover:bg-sky-700 focus:ring-blue-800 px-2"
 				onClick={togglePopover}
 			>

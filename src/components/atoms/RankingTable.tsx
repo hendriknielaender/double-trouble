@@ -2,6 +2,15 @@ import * as React from "react";
 import ReactDOM from "react-dom/client";
 import InfoText from "./InfoText.tsx";
 
+import type SortingState from "@tanstack/react-table";
+import {
+	createColumnHelper,
+	flexRender,
+	getCoreRowModel,
+	getSortedRowModel,
+	useReactTable,
+} from "@tanstack/react-table";
+
 // https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 // learning: variables should not be used in tailwind color attributes
 // light colors are adapted / capped so they remain easily readable
@@ -28,15 +37,6 @@ const bgColorMap = {
 	800: "bg-blue-800 light:bg-blue-700",
 	900: "bg-blue-900 light:bg-blue-800",
 };
-
-import {
-	type SortingState,
-	createColumnHelper,
-	flexRender,
-	getCoreRowModel,
-	getSortedRowModel,
-	useReactTable,
-} from "@tanstack/react-table";
 
 type Ranking = {
 	Name: string;
@@ -320,14 +320,13 @@ function RankingTable() {
 	}
 
 	React.useEffect(() => {
-		console.log("Weight state update!");
 		setData([
 			...rankingData.map((row) => ({
 				...row,
 				Score: calculateScore(row, weights),
 			})),
 		]);
-	}, [weights]);
+	}, [weights, setData]);
 
 	const table = useReactTable({
 		data,
@@ -393,6 +392,7 @@ function RankingTable() {
 					return (
 						<>
 							<button
+								type="button"
 								className={`rounded-full px-2 light:text-blue-100 ${bgColorMap[color]}`}
 								onClick={() => updateWeight(weight.Name)}
 							>

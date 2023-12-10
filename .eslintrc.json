@@ -1,0 +1,18 @@
+{
+	"rules": {
+		"quotes": ["error", "double"]
+	},
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"overrides": [
+		{
+			"files": ["bin/*.js", "lib/*.js"],
+			"excludedFiles": "*.test.js",
+			"rules": {
+				"quotes": ["error", "single"]
+			}
+		}
+	]
+}
