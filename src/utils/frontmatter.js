@@ -1,4 +1,4 @@
-import util from "mdast-util-to-string";
+import * as util from "mdast-util-to-string";
 import getReadingTime from "reading-time";
 
 export function remarkReadingTime() {

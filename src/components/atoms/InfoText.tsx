@@ -1,12 +1,12 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { v4 } from "uuid";
 
-const InfoTextReact = (props: { text: string; title?: string }) => {
+const InfoTextReact = ({ text, title }) => {
 	// have the uuid shorter
 	const uuid = v4().split("-")[0];
 	const popoverId = `popover-${uuid}`;
 
-	const [isVisible, setIsVisible] = React.useState(false);
+	const [isVisible, setIsVisible] = useState(false);
 
 	const togglePopover = (event) => {
 		event.stopPropagation();
@@ -31,11 +31,11 @@ const InfoTextReact = (props: { text: string; title?: string }) => {
 				>
 					<div className="py-1 px-2 light:bg-gray-100 border-b light:border-gray-200 rounded-t-lg border-gray-600 bg-slate-800">
 						<h3 className="font-semibold light:text-gray-900 text-white">
-							{props.title || "Info"}
+							{title || "Info"}
 						</h3>
 					</div>
 					<div className="py-1 px-2">
-						<p>{props.text}</p>
+						<p>{text}</p>
 					</div>
 					<div data-popper-arrow />
 				</div>
