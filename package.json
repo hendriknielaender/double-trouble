@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.0.9",
+    "unpic": "^3.16.0",
     "@tanstack/react-table": "^8.10.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
