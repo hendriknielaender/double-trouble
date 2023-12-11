@@ -99,10 +99,10 @@
     "@vitejs/plugin-react" "^4.0.4"
     ultrahtml "^1.3.0"
 
-"@astrojs/rss@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-3.0.0.tgz#5a2d1f5ec304585360d31cc50e143af6f1f213f4"
-  integrity sha512-PMX8iqByk9gtOrusikten/oF5uHjOCZigL6RuXFBUu+xtdKQxXzfIohJ99V2haA4FJjVDyibDTGzXR81POBMxQ==
+"@astrojs/rss@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-4.0.1.tgz#be87720dbbdeb6e3bf8beac7d0f154758e7cea88"
+  integrity sha512-fzXWsrAp17atO02OZJETM8e8McRz+dNWzMeO7ENb6xgod2nWj5mH/auPBFs1a9FzMUi1nOQmzSPHO1hxZZpkwQ==
   dependencies:
     fast-xml-parser "^4.2.7"
     kleur "^4.1.5"
