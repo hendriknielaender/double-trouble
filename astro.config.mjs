@@ -9,7 +9,10 @@ import { remarkReadingTime } from './src/utils/frontmatter.js';
 import { SITE } from './src/config.mjs';
 import react from "@astrojs/react";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
+import { autolinkConfig } from './plugins/rehype-autolink-config'
+import rehypeSlug from 'rehype-slug'
+import { tsconfigPaths } from 'vite-plugin-lib'
+import autolinkHeadings from 'rehype-autolink-headings'
 
 // https://astro.build/config
 export default defineConfig({
@@ -40,6 +43,10 @@ export default defineConfig({
   react()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
+    rehypePlugins: [
+      rehypeSlug,
+      [autolinkHeadings, autolinkConfig],
+    ],
     extendDefaultPlugins: true,
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
@@ -57,6 +64,7 @@ export default defineConfig({
     },
     optimizeDeps: {
       exclude: ['limax']
-    }
+    },
+    plugins: [tsconfigPaths({ verbose: true })]
   }
 });
