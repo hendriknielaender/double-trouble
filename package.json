@@ -31,7 +31,7 @@
     "astro": "4.1.1",
     "astro-icon": "^0.8.2",
     "eslint": "^8.55.0",
-    "eslint-plugin-astro": "^0.30.0",
+    "eslint-plugin-astro": "^0.31.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "limax": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
