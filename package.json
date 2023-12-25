@@ -24,6 +24,8 @@
     "@fontsource/inter": "^5.0.16",
     "@tailwindcss/typography": "^0.5.10",
     "@types/bun": "^1.0.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.14.0",
     "astro": "4.1.1",
@@ -44,12 +46,10 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.0.9",
-    "unpic": "^3.16.0",
     "@tanstack/react-table": "^8.10.7",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.0.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "unpic": "^3.16.0",
     "uuid": "^9.0.1"
   },
   "resolutions": {
