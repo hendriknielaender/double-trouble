@@ -56,5 +56,6 @@
   },
   "resolutions": {
     "shiki": "^0.14.4"
-  }
+  },
+  "trustedDependencies": ["sharp"]
 }
