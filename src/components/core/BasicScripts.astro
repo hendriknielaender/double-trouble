@@ -82,7 +82,17 @@ import { SITE } from '~/config.mjs';
       const newTheme = document.documentElement.classList.contains("light")
         ? "light"
         : "dark";
-      localStorage.theme = newTheme
+      localStorage.theme = newTheme;
+
+        // Toggle classes on #content
+        const content = document.getElementById("content");
+        if (newTheme === "light") {
+            content.classList.remove("bg-dark-svg");
+            content.classList.add("bg-white-svg");
+        } else {
+            content.classList.remove("bg-white-svg");
+            content.classList.add("bg-dark-svg");
+        }
 
       adjustTweetsToTheme()
     });
