@@ -4,17 +4,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "bunx --bun astro dev",
+    "start": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
+    "preview": "bunx --bun astro preview",
     "astro": "astro",
     "format": "prettier -w .",
     "lint:eslint": "eslint . --ext .js,.ts,.astro",
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.0",
@@ -26,6 +23,7 @@
     "@astrolib/seo": "^0.6.0",
     "@fontsource/inter": "^5.0.16",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/bun": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "astro": "4.0.3",
@@ -45,9 +43,9 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.7",
+    "@astrojs/react": "^3.0.9",
     "@tanstack/react-table": "^8.10.7",
-    "@types/react": "^18.2.42",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
