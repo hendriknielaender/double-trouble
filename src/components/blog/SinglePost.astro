@@ -23,38 +23,37 @@ const { post, url } = Astro.props;
       >
         {post.title}
       </h1>
-      {
-        post.image ? (
-          <div class="flex flex-col items-center justify-center">
-            <div transition:name={"picture"+post.id}>
-              <Image
-                src={post.image}
-                class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md light:bg-gray-400 bg-slate-700"
-                widths={[400, 900]}
-                sizes="(max-width: 900px) 400px, 900px"
-                alt={post.description}
-                aspectRatio="16:9"
-              />
-              <div
-                class="bottom-0 max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 text-right text-s text-gray-600"
-                id="image-credit"
+      { post.image ? (
+        <div class="flex flex-col items-center justify-center">
+          <div transition:name={"picture"+post.id}>
+            <Image
+              src={post.image}
+              class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md light:bg-gray-400 bg-slate-700"
+              widths={[400, 900]}
+              sizes="(max-width: 900px) 400px, 900px"
+              alt={post.description}
+              aspectRatio="16:9"
+            />
+            <div
+              class="bottom-0 max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 text-right text-s text-gray-600"
+              id="image-credit"
+            >
+              Image credit:
+              <a
+                href={post.imageCreditUrl}
+                class="underline hover:text-blue-500"
               >
-                Image credit:
-                <a
-                  href={post.imageCreditUrl}
-                  class="underline hover:text-blue-500"
-                >
-                  {new URL(post.imageCreditUrl).hostname}
-                </a>
-              </div>
+                {new URL(post.imageCreditUrl).hostname}
+              </a>
             </div>
-          </>
-        ) : (
-          <div class="max-w-3xl mx-auto px-4 sm:px-6">
-            <div class="light:border-slate-100 border-slate-700" />
           </div>
-        )
-      }
+        </div>
+      ) : (
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+          <div class="light:border-slate-100 border-slate-700" />
+        </div>
+      )
+    }
     </header>
     <div
       class="container mx-auto px-6 sm:px-6 max-w-3xl prose prose-m lg:prose-l light:text-slate-800 text-slate-300 light:prose-blockquote:text-slate-900 prose-blockquote:text-slate-100 light:prose-code:text-slate-800 prose-code:text-slate-200 light:prose-strong:text-slate-800 prose-strong:text-slate-200 light:prose-headings:text-slate-800 prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold light:prose-a:text-primary-600 prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
