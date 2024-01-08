@@ -26,7 +26,7 @@
     "@astrolib/seo": "^0.6.0",
     "@fontsource/inter": "^5.0.16",
     "@tailwindcss/typography": "^0.5.10",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^6.16.0",
     "astro": "3.6.4",
     "astro-icon": "^0.8.1",
