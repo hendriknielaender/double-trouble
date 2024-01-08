@@ -4,20 +4,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "bunx --bun astro dev",
+    "start": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
+    "preview": "bunx --bun astro preview",
     "astro": "astro",
     "format": "prettier -w .",
     "lint:eslint": "eslint . --ext .js,.ts,.astro",
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "devDependencies": {
-    "@astrojs/mdx": "^1.1.5",
+    "@astrojs/mdx": "^2.0.0",
     "@astrojs/partytown": "^2.0.2",
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.3",
@@ -26,10 +23,13 @@
     "@astrolib/seo": "^0.6.0",
     "@fontsource/inter": "^5.0.16",
     "@tailwindcss/typography": "^0.5.10",
-    "@typescript-eslint/eslint-plugin": "^6.18.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "astro": "3.6.4",
-    "astro-icon": "^0.8.1",
+    "@types/bun": "^1.0.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "astro": "4.1.1",
+    "astro-icon": "^0.8.2",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -40,27 +40,26 @@
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.2",
     "reading-time": "^1.5.0",
-    "rehype-autolink-headings": "^7.1.0",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.0",
     "subfont": "^7.1.1",
-    "tailwindcss": "^3.4.0",
+    "tailwindcss": "^3.3.6",
     "tailwindcss-theme-variants": "^2.0.0-beta.0",
-    "typescript": "^5.3.2",
+    "typescript": "^5.3.3",
+    "rehype-autolink-headings": "^7.1.0",
     "vite-plugin-lib": "^2.0.3",
     "html-escaper": "^3.0.3",
     "rehype-slug": "^6.0.0"
   },
   "dependencies": {
-    "unpic": "^3.16.0",
-    "@astrojs/react": "^3.0.8",
+    "@astrojs/react": "^3.0.9",
     "@tanstack/react-table": "^8.11.3",
-    "@types/react": "^18.2.47",
-    "@types/react-dom": "^18.0.6",
+    "unpic": "^3.16.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "uuid": "^9.0.1"
   },
   "resolutions": {
     "shiki": "^0.14.4"
-  }
+  },
+  "trustedDependencies": ["sharp"]
 }
