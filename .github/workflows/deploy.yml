@@ -24,7 +24,7 @@ jobs:
         uses: withastro/action@v0
         with:
             path: . # The root location of your Astro project inside the repository. (optional)
-            package-manager: bun@latest
+            package-manager: bun
 
 
   deploy:
