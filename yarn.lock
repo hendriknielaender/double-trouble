@@ -115,10 +115,10 @@
     sitemap "^7.1.1"
     zod "^3.22.4"
 
-"@astrojs/tailwind@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-5.0.3.tgz#4e43a639837bb20426862daeeabd295750d73bb4"
-  integrity sha512-p+uFa1PNuV8RxhGkPUFgVq8CUbmS3xr0u5k1An2xKECLotRh7vsrGcPUijHvYOt42URohcg8rIq0CxNoVMhReg==
+"@astrojs/tailwind@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-5.1.0.tgz#f63d285825f448704dbdccb3430980fee7ba7d26"
+  integrity sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==
   dependencies:
     autoprefixer "^10.4.15"
     postcss "^8.4.28"
