@@ -15,8 +15,8 @@ could also be applied to other CI/CD platforms.
 Many pipeline systems have the concept of caching and artficats, and so does
 [gitlab](https://docs.gitlab.com/ee/ci/caching/). Our recommendation is to use caches for install
 dependencies and artifacts for build results, with fallback caches to master in case the
-dependencies didnt change. This allows MRs to skip the install job in case no dependency has
-changed. Similarly the artifact has to be build only once.
+dependencies didnt change. This allows pull requests to skip the install job in case no dependency
+has changed. Similarly the artifact has to be build only once.
 
 ```yaml
 example-job:
@@ -60,13 +60,15 @@ In gitlab, job dependencies are specified via the [needs](https://docs.gitlab.co
 It can be helpful to think of pipelines in terms of their user workflow, like an application. What
 are the usecases the pipeline should be supported?
 
-Probably at least those two, but maybe more:
+Probably at least those three, but maybe more:
 - It is only an IaC change
 - It is only a code change
+- It is not a dependency change
 
-For each supported use-case we can ask: How long until I can execute the job that I need to be
-executed? If any use-case somehow needs a bunch of unrelated other jobs to be executed first, then
-this can be optimized. The ideal waiting time is 0.
+For each supported use-case we can ask: How much waiting time is there in the pipeline, until I
+the job that my workflows needs will be executed? If any use-case somehow needs a bunch of
+unrelated other jobs to be executed first, then this can be optimized. The ideal waiting time is
+0.
 
 ## Job Dependencies and Stages
 
