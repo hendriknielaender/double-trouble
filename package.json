@@ -28,7 +28,7 @@
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
-    "astro": "4.1.1",
+    "astro": "4.2.1",
     "astro-icon": "^0.8.2",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.0",
