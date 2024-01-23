@@ -1,6 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
+import icon from "astro-icon";
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
@@ -32,6 +33,22 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
+  }),
+  icon({
+      include: {
+        tabler: ['*'],
+        'flat-color-icons': [
+          'template',
+          'gallery',
+          'approval',
+          'document',
+          'advertising',
+          'currency-exchange',
+          'voice-presentation',
+          'business-contact',
+          'database',
+        ],
+      },
   }),
   sitemap(),
   mdx(), /* Disable this integration if you don't use Google Analytics (or other external script). */
