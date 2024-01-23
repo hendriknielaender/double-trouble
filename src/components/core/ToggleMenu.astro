@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const {
   label = "Toggle Menu",
@@ -11,5 +11,5 @@ const {
 ---
 
 <button type="button" class={className} aria-label={label} data-aw-toggle-menu>
-  <Icon name={iconName} class={iconClass} optimize={false} />
+  <Icon name={iconName} class={iconClass} />
 </button>
