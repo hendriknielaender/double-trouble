@@ -4,23 +4,21 @@ import { SITE } from '~/config.mjs';
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
   function applyTheme(theme) {
+    const content = document.getElementById('content');
     if (theme === 'light') {
       document.documentElement.classList.add('light');
+        content.classList.remove('bg-dark-svg');
+        content.classList.add('bg-white-svg');
     } else {
       document.documentElement.classList.remove('light');
+      content.classList.remove('bg-white-svg');
+      content.classList.add('bg-dark-svg');
     }
   }
 
-  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
-    applyTheme(defaultTheme.replace(':only', ''));
-  } else if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    applyTheme('dark');
-  } else {
-    applyTheme('light');
-  }
+  const initialTheme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(initialTheme);
+
 
   function adjustTweetsToTheme() {
     // toggle tweets that are still blockquotes (only shortly after pageload)
@@ -84,15 +82,15 @@ import { SITE } from '~/config.mjs';
         : "dark";
       localStorage.theme = newTheme;
 
-        // Toggle classes on #content
-        const content = document.getElementById("content");
-        if (newTheme === "light") {
-            content.classList.remove("bg-dark-svg");
-            content.classList.add("bg-white-svg");
-        } else {
-            content.classList.remove("bg-white-svg");
-            content.classList.add("bg-dark-svg");
-        }
+      // Toggle classes on #content
+      const content = document.getElementById("content");
+      if (newTheme === "light") {
+        content.classList.remove("bg-dark-svg");
+        content.classList.add("bg-white-svg");
+      } else {
+        content.classList.remove("bg-white-svg");
+        content.classList.add("bg-dark-svg");
+      }
 
       adjustTweetsToTheme()
     });
