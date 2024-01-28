@@ -1,5 +1,5 @@
 ---
-publishDate: "Jan 21 2024"
+publishDate: "Jan 28 2024"
 title: "How to setup efficient Pipeline Triggers"
 description: "How we tune our CI/CD pipelines for optimal workflows and minimal waiting times"
 image: "~/assets/images/thumbnails/optimal_pipeline_dalle.jpg"
