@@ -2,7 +2,7 @@
 publishDate: "Jan 21 2024"
 title: "How to setup efficient Pipeline Triggers"
 description: "How we tune our CI/CD pipelines for optimal workflows and minimal waiting times"
-image: "~/assets/images/thumbnails/optimal_pipeline_setup_dalle.png"
+image: "~/assets/images/thumbnails/optimal_pipeline.jpg"
 imageCreditUrl: https://labs.openai.com
 tags: [cloud, infrastructure, IaC, gitlab]
 ---
