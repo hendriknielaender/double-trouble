@@ -1,9 +1,10 @@
 ---
-publishDate: "Jan 28 2024"
+publishDate: "Jan 29 2024"
 title: "Efficient CI/CD Pipeline Triggers: A Step-by-Step Guide for GitLab"
 description: "Discover strategies to fine-tune your CI/CD pipelines in GitLab for maximum efficiency and reduced wait times, complete with practical examples and tips."
 image: "~/assets/images/thumbnails/optimal_pipeline_dalle.jpg"
 imageCreditUrl: https://labs.openai.com
+tweet: "https://twitter.com/doubletrblblogs/status/1752040836450132384"
 tags: [cloud, infrastructure, IaC, GitLab, CI/CD, DevOps, pipeline, automation]
 ---
 
@@ -46,12 +47,12 @@ variables:
 
 ## Deployment Job Triggers
 
-The deployment to prod on master generally should be a manual action that can be triggered
+The deployment to production on master generally should be a manual action that can be triggered
 immediately. It doesn't have to wait for the dev and test deployment to succeed again first. A
 merged MR will anyway have had all necessary safety checks succeeding in the Pull Request
-already. This make it safe to deploy immediately to production after merge in 99% of the cases. This
-also makes it so a hot-fix can be deployed to prod asap without waiting for some dev deployment
-first.
+already. This make it safe to deploy immediately to production after merge in 99% of the
+cases. This also makes it so a hot-fix can be deployed to production asap without waiting for some
+dev deployment first.
 
 In gitlab, job dependencies are specified via the [needs](https://docs.gitlab.com/ee/ci/yaml/#needs) keyword:
 ```yaml
@@ -90,11 +91,11 @@ If you use big dependencies during deployment, it can be worth it to bundle them
 build container. Maintaining 1 or 2 build containers is usually within reason, while it should of
 course not go out of hand.
 
-If all you need is the aws cli, note that there is an official docker images for that by AWS
-[AWS CLI Official Docker Image](https://hub.docker.com/r/amazon/aws-cli). Using a combination of such tool-specific
-containers can get you around having to maintain your own CI/CD container, but keep in mind
-anything that has to be installed during runtime depends on package repositories, which don't have
-100% up-time.
+If all you need is the aws cli, note that there is an [official docker
+image](https://hub.docker.com/r/amazon/aws-cli) for that by AWS. Using a combination of such
+tool-specific containers can get you around having to maintain your own CI/CD container, but keep
+in mind anything that has to be installed during runtime depends on package repositories, which
+don't have 100% up-time.
 
 Note that if you use shared gitlab runners in your AWS account, it might be useful to use
 company-wide shared build containers. This allows for easier caching of the build container on the
