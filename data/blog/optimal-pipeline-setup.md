@@ -1,9 +1,10 @@
 ---
-publishDate: "Jan 28 2024"
+publishDate: "Jan 29 2024"
 title: "Efficient CI/CD Pipeline Triggers: A Step-by-Step Guide for GitLab"
 description: "Discover strategies to fine-tune your CI/CD pipelines in GitLab for maximum efficiency and reduced wait times, complete with practical examples and tips."
 image: "~/assets/images/thumbnails/optimal_pipeline_dalle.jpg"
 imageCreditUrl: https://labs.openai.com
+tweet: "https://twitter.com/doubletrblblogs/status/1752040836450132384"
 tags: [cloud, infrastructure, IaC, GitLab, CI/CD, DevOps, pipeline, automation]
 ---
 
