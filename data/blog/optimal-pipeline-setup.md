@@ -1,10 +1,10 @@
 ---
 publishDate: "Jan 28 2024"
-title: "How to setup efficient Pipeline Triggers"
-description: "How we tune our CI/CD pipelines for optimal workflows and minimal waiting times"
+title: "Efficient CI/CD Pipeline Triggers: A Step-by-Step Guide for GitLab"
+description: "Discover strategies to fine-tune your CI/CD pipelines in GitLab for maximum efficiency and reduced wait times, complete with practical examples and tips."
 image: "~/assets/images/thumbnails/optimal_pipeline_dalle.jpg"
 imageCreditUrl: https://labs.openai.com
-tags: [cloud, infrastructure, IaC, gitlab]
+tags: [cloud, infrastructure, IaC, GitLab, CI/CD, DevOps, pipeline, automation]
 ---
 
 At work we have spend a bunch of time together, looking the pipeline of a massive monorepo we were
@@ -18,8 +18,8 @@ CI/CD platforms.
 Many pipeline systems have the concept of caching and artifacts, and so does
 [gitlab](https://docs.gitlab.com/ee/ci/caching/). Our recommendation is to use caches for install
 dependencies and artifacts for build results, with fallback caches to master in case the
-dependencies didn't change. This allows pull requests to skip the install job in case no dependency
-has changed. Similarly the artifact has to be build only once.
+dependencies didn't change. This setup enables pull requests to bypass the installation job when there are no changes in dependencies.
+has changed. Similarly, the artifact has to be build only once.
 
 ```yaml
 example-job:
@@ -49,7 +49,7 @@ variables:
 The deployment to prod on master generally should be a manual action that can be triggered
 immediately. It doesn't have to wait for the dev and test deployment to succeed again first. A
 merged MR will anyway have had all necessary safety checks succeeding in the Pull Request
-already. This make it safe to deploy immediately to prod after merge in 99% of the cases. This
+already. This make it safe to deploy immediately to production after merge in 99% of the cases. This
 also makes it so a hot-fix can be deployed to prod asap without waiting for some dev deployment
 first.
 
@@ -91,7 +91,7 @@ build container. Maintaining 1 or 2 build containers is usually within reason, w
 course not go out of hand.
 
 If all you need is the aws cli, note that there is an official docker images for that by AWS
-[link](https://hub.docker.com/r/amazon/aws-cli). Using a combination of such tool-specific
+[AWS CLI Official Docker Image](https://hub.docker.com/r/amazon/aws-cli). Using a combination of such tool-specific
 containers can get you around having to maintain your own CI/CD container, but keep in mind
 anything that has to be installed during runtime depends on package repositories, which don't have
 100% up-time.
