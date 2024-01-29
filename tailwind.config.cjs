@@ -19,7 +19,7 @@ module.exports = {
 
 			},
 			fontFamily: {
-				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
+				sans: ["var(--aw-font-sans)", ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
