@@ -1,22 +1,19 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 const { themeVariants } = require("tailwindcss-theme-variants");
 
 module.exports = {
-	content: [
-                 './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-        ],
+	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
 		extend: {
 			colors: {
-                                ...colors,
+				...colors,
 				primary: colors.blue,
 				secondary: colors.pink,
-                                slate: {
-                                       900: '#0d1117',
-                                       800: '#161b22',
-                                }
-
+				slate: {
+					900: "#0d1117",
+					800: "#161b22",
+				},
 			},
 			fontFamily: {
 				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
@@ -24,18 +21,18 @@ module.exports = {
 		},
 	},
 	plugins: [
-                require('@tailwindcss/typography'),
-                themeVariants({
-                    themes: {
-                        light: {
-                            selector: ".light",
-                        },
-                        dark: {
-                            selector: ".dark",
-                        },
-                    },
-                }),
-        ],
+		require("@tailwindcss/typography"),
+		themeVariants({
+			themes: {
+				light: {
+					selector: ".light",
+				},
+				dark: {
+					selector: ".dark",
+				},
+			},
+		}),
+	],
 };
 
 /*
