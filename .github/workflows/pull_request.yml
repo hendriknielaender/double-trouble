@@ -3,6 +3,11 @@ name: Code quality
 on:
   push:
   pull_request:
+    paths-ignore:
+      - '**.md'
+      - '**.mdx'
+      - '**.json'
+      - '**.yaml'
 
 jobs:
   quality:
