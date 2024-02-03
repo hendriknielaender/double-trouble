@@ -12,10 +12,15 @@ const { text, url, class: className = "inline-block" } = Astro.props;
     data-aw-text={text}
     ><Icon name="logos:twitter" class="w-6 h-6" />
   </button>
-  <button class="ml-2" data-aw-social-share="facebook" data-aw-url={url}
+  <button
+    aria-label="facebook"
+    class="ml-2"
+    data-aw-social-share="facebook"
+    data-aw-url={url}
     ><Icon name="logos:facebook" class="w-6 h-6" />
   </button>
   <button
+    aria-label="linkedin"
     class="ml-2"
     data-aw-social-share="linkedin"
     data-aw-url={url}
@@ -23,6 +28,7 @@ const { text, url, class: className = "inline-block" } = Astro.props;
     ><Icon name="logos:linkedin-icon" class="w-6 h-6" />
   </button>
   <button
+    aria-label="whatsapp"
     class="ml-2"
     data-aw-social-share="whatsapp"
     data-aw-url={url}
@@ -30,6 +36,7 @@ const { text, url, class: className = "inline-block" } = Astro.props;
     ><Icon name="logos:whatsapp" class="w-6 h-6" />
   </button>
   <button
+    aria-label="mail"
     class="ml-2"
     data-aw-social-share="mail"
     data-aw-url={url}
