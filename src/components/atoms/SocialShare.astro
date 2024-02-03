@@ -6,6 +6,7 @@ const { text, url, class: className = "inline-block" } = Astro.props;
 <div class={className}>
   <span class="align-super font-bold">Share:</span>
   <button
+    aria-label="twitter"
     class="ml-2"
     data-aw-social-share="twitter"
     data-aw-url={url}
