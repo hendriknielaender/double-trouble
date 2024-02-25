@@ -11,9 +11,9 @@ tags: [concept, bun, astro, htmx, fly.io, sqlite]
 On github we have an app that is called
 [party-task-planner](https://github.com/flyck/party-task-planner). It is a basic app which allows
 users to create parties, add participants and assign tasks to those participants. An attempt to
-organize party planning in a collaborative setting via websockets. It is hosted on Vercel and uses
-NextJs and React in the frontend, together with an AWS AppSync graphql api in the backend to store
-the data.
+organize party planning in a collaborative setting, featuring websockets. It is hosted on Vercel
+and uses NextJs and React in the frontend, together with an AWS AppSync graphql api in the backend
+to store the data.
 
 Looking at this app, which is basically a CRUD application with little extra functionality, we had
 the idea of rebuilding it with different tools, to ideally achieve better development speed, as
