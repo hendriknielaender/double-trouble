@@ -23,7 +23,10 @@ dependencies didn't change. This setup enables pull requests to bypass the insta
 has changed. Similarly, the artifact has to be build only once.
 
 ```yaml
-example-job:
+variables:
+  CACHE_FALLBACK_KEY: repo-name-main-node-modules.zip-7
+
+install:
   script:
     - yarn install --frozen-lockfile --check-files
   cache:
@@ -32,6 +35,14 @@ example-job:
 ```
 
 ```yaml
+build-job:
+  needs:
+    - job: install
+      optional: true
+```
+
+Cache compression itself can be optimized, but watch out, some of these will not work well in combination with pnpm:
+```yaml
 variables:
   FF_USE_FASTZIP: "true"
   # These can be specified per job or per pipeline (slowest, slow, default, fast, and fastest)
@@ -39,11 +50,6 @@ variables:
   CACHE_COMPRESSION_LEVEL: "fastest"
 ```
 
-```yaml
-  needs:
-    - job: install
-      optional: true
-```
 
 ## Deployment Job Triggers
 
@@ -85,6 +91,9 @@ command, instead of spinning up a whole new docker environment in a subsequent a
 cases it might make sense to merge the install job with the build or similar. An optimal pipeline
 is one that adapts to changes in the repository, to be always as fast as possible.
 
+For further reading, the team at gitlab also has an article focussing on this topic: [Pipeline
+Efficiency](https://docs.gitlab.com/ee/ci/pipelines/pipeline_efficiency.html).
+
 ## The Build Container
 
 If you use big dependencies during deployment, it can be worth it to bundle them already into the
@@ -112,6 +121,21 @@ If you don't stay up to date on tooling for you language, you might be missing o
 pipeline. Especially with things like package management, it's probably worth it to give that new
 tool a shot to potentially have a huge time saving in the end.
 
+```yaml
+install:
+  stage: install
+  cache:
+    -
+      <<: *global_cache_node_modules
+      policy: pull-push
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@latest-8 --activate
+    - pnpm config set store-dir .pnpm-store
+  script:
+    - pnpm install
+```
+
 ## Review Apps
 
 Review apps or branch-based deployments is something nobody should sleep on. Especially with
@@ -134,6 +158,12 @@ time saver to use some sort of linting. For gitlab linters exist for
 [VSCode](https://docs.gitlab.com/ee/ci/lint.html) and
 [emacs](https://gitlab.com/joewreschnig/gitlab-ci-mode/), for github there is a cli tool called
 [actionlint](https://github.com/rhysd/actionlint/).
+
+```lisp
+;; gitlab-ci linting in emacs:
+(use-package gitlab-ci-mode
+  :ensure t)
+```
 
 ## Rounding Up
 
