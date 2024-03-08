@@ -135,34 +135,7 @@ let jobs: object[] = []
 async function fetchAllPages(endCursor?: string): Promise<void> {
   const apiUrl = 'https://gitlab.com/api/graphql';
 
-  const query = `
-query jobs($after: String) {
-  project(fullPath: ${REPO_PATH}) {
-        jobs(statuses: [SUCCESS, FAILED], after: $after, first: ${PAGE_SIZE}) {
-          pageInfo {
-            startCursor
-            endCursor
-          }
-          nodes {
-            id
-            name
-            status
-            startedAt
-            finishedAt
-            duration
-            queuedDuration
-            pipeline {
-              id
-              status
-              computeMinutes
-              duration
-              complete
-            }
-          }
-        }
-      }
-    }
-  `;
+  const query = `your_query`;
 
   const variables = endCursor ? { after: endCursor } : {};
 
@@ -303,7 +276,7 @@ job data, but in our two-step process we don't have to do this too many times.
 
 ### 5) Preparing Grafana
 
-Next up is starting a local grafana instance. It is as easy as running the following command:
+Next up is starting a local grafana instance.
 
 ```sh
 mkdir data
@@ -315,8 +288,34 @@ docker run -d -p 3000:3000 --name=grafana \
   grafana/grafana-enterprise
 ```
 
-Of course we will also need our
+Of course we will also need our sqlite data
 
 ```sh
-
+cp test.sqlite data/
 ```
+
+Next we can add this data as a new data source. The path needs to be:
+
+```sh
+/var/lib/grafana/test.sqlite
+```
+
+### 6) Exploring the data
+
+Finally we can play around with the data. In grafana the data is basically modelled via the query,
+so it can then be displayed in various forms.
+
+For example to get the most recent jobs, the query looks like this:
+```sh
+SELECT * from jobs order by startedAt limit 10;
+```
+
+You can download the gist here TODO
+
+## Our Findings
+
+TODO
+
+## Rounding Up
+
+TODO
