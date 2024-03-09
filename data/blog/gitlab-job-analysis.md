@@ -128,18 +128,16 @@ bun init
 In getting the data, we can retrieve as many pages as we like. The maximum page size is 100, and we will
 save the raw data in a file as a savepoint.
 ```typescript
-// Import necessary modules from Bun
 import { SQLite } from 'bun:sqlite';
 import { file } from 'bun:fs';
 
 // Environment variables for configuration
 const REPO_PATH = 'path/to/repo';
-const GITLAB_TOKEN = Bun.env.GITLAB_TOKEN; // Use Bun.env for environment variables
+const GITLAB_TOKEN = Bun.env.GITLAB_TOKEN;
 const PAGE_SIZE = 100;
 const DB_PATH = 'jobs_database.sqlite';
 const GRAPHQL_ENDPOINT = 'https://gitlab.com/api/graphql';
 
-// Function to fetch jobs data using GraphQL
 async function fetchJobs(after?: string): Promise<{ jobs: JobData[]; nextCursor?: string }> {
   const query = `your GraphQL query here, including variables for pagination`;
   const variables = after ? { after, first: PAGE_SIZE } : { first: PAGE_SIZE };
