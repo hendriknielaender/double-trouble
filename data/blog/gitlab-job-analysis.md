@@ -236,7 +236,7 @@ async function runIngestionProcess() {
     insertJobs(jobs);
     jobsCounter += PAGE_SIZE;
     endCursor = nextCursor;
-  } while (endCursor || jobsCounter > JOB_LIMIT);
+  } while (endCursor && jobsCounter < JOB_LIMIT);
   db.close();
 }
 
