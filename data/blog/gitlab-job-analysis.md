@@ -253,7 +253,8 @@ bun run index.ts
 
 For our 20000 jobs, which is the amount of jobs triggered by a 4 man team over 5 months in one
 repository, the resulting sqlite file is 5MB. The bottleneck here is more with the fetching of the
-job data, but in our two-step process we don't have to do this too many times.
+job data from the api. This can take a few moments, which makes for a great opportunity to grab a
+hot beverage.
 
 ### 5) Preparing Grafana
 
