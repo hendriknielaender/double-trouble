@@ -33,14 +33,14 @@ the amount of commits, merge requests, gitlab issues or lines changed.
 
 ### Build
 
-In the build tab we can browse through a list of recent jobs and pipelines. The results are simply
+In the `Build` tab we can browse through a list of recent jobs and pipelines. The results are simply
 returned as a paginated table. For pipelines this can give an impression on an individual basis,
 but grasping the overall trend over a longer period is hard.
 
 Especially with the Jobs search getting a job overview is challenging. This search is infamous for
-only allowing to filter by job status, not by name. The related issue for the underlying api is 5
-years old [22027](https://gitlab.com/gitlab-org/gitlab/-/issues/22027), with many people wishing
-for its resolution.
+only allowing to filter by job status, not by name. The related issue
+[#22027](https://gitlab.com/gitlab-org/gitlab/-/issues/22027) for the underlying api is 5 years
+old, with many people wishing for its resolution.
 
 ## Grafana
 
@@ -74,7 +74,7 @@ kubernetes, together with a prometheus backend then this is probably the best op
 
 ## Grafana and Sqlite
 
-With the easy options off the table there were few options left. We had to build something
+With the easy options off the table there were few choices left. We had to build something
 ourselves, fetching the data via the gitlab api and ingesting them into some datasource.
 
 The company that we work at does not have a grafana server and the only monitoring tool is
