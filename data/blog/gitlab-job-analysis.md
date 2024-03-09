@@ -125,8 +125,8 @@ cd fetchdata
 bun init
 ```
 
-In getting the data, we can retrieve as many pages as we like. The maximum page size is 100, and we will
-save the raw data in a file as a savepoint.
+In getting the data, we can retrieve as many pages as we like. The maximum page size is 100, so we
+will need to call this function a couple of times until we hit our threshold.
 ```typescript
 import { SQLite } from 'bun:sqlite';
 import { file } from 'bun:fs';
@@ -135,6 +135,7 @@ import { file } from 'bun:fs';
 const REPO_PATH = 'path/to/repo';
 const GITLAB_TOKEN = Bun.env.GITLAB_TOKEN;
 const PAGE_SIZE = 100;
+const JOB_LIMIT = 20000;
 const DB_PATH = 'jobs_database.sqlite';
 const GRAPHQL_ENDPOINT = 'https://gitlab.com/api/graphql';
 
@@ -229,11 +230,13 @@ function insertJobs(jobs: JobData[]) {
 
 async function runIngestionProcess() {
   let endCursor: string | undefined = undefined;
+  let jobsCounter = 0;
   do {
     const { jobs, nextCursor } = await fetchJobs(endCursor);
     insertJobs(jobs);
+    jobsCounter += PAGE_SIZE;
     endCursor = nextCursor;
-  } while (endCursor);
+  } while (endCursor || jobsCounter > JOB_LIMIT);
   db.close();
 }
 
