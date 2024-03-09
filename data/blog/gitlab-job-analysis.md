@@ -128,26 +128,27 @@ bun init
 In getting the data, we can retrieve as many pages as we like. The maximum page size is 100, and we will
 save the raw data in a file as a savepoint.
 ```typescript
-const REPO_PATH = "path/to/repo"
-const GITLAB_TOKEN = process.env["GITLAB_TOKEN"]
-const PAGE_SIZE = 100
+// Import necessary modules from Bun
+import { SQLite } from 'bun:sqlite';
+import { file } from 'bun:fs';
 
-let jobs: object[] = []
+// Environment variables for configuration
+const REPO_PATH = 'path/to/repo';
+const GITLAB_TOKEN = Bun.env.GITLAB_TOKEN; // Use Bun.env for environment variables
+const PAGE_SIZE = 100;
+const DB_PATH = 'jobs_database.sqlite';
+const GRAPHQL_ENDPOINT = 'https://gitlab.com/api/graphql';
 
-async function fetchAllPages(endCursor?: string): Promise<void> {
-  const apiUrl = 'https://gitlab.com/api/graphql';
+// Function to fetch jobs data using GraphQL
+async function fetchJobs(after?: string): Promise<{ jobs: JobData[]; nextCursor?: string }> {
+  const query = `your GraphQL query here, including variables for pagination`;
+  const variables = after ? { after, first: PAGE_SIZE } : { first: PAGE_SIZE };
 
-  const query = `your_query`;
-
-  const variables = endCursor ? { after: endCursor } : {};
-
-  console.info(`Retrieving ${PAGE_SIZE} jobs after ${endCursor}`)
-
-  const response = await fetch(apiUrl, {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${GITLAB_TOKEN}`
+      'Authorization': `Bearer ${GITLAB_TOKEN}`,
     },
     body: JSON.stringify({
       query,
@@ -155,31 +156,19 @@ async function fetchAllPages(endCursor?: string): Promise<void> {
     }),
   });
 
-  const result = await response.json() as any;
+  const { data } = await response.json();
+  const jobs: JobData[] = data.project.jobs.nodes;
+  const nextCursor = data.project.jobs.pageInfo.endCursor;
 
-  const pageInfo = result.data.project.jobs.pageInfo;
-  const nodes = result.data.project.jobs.nodes;
-
-  jobs = jobs.concat(nodes);
-
-  // Recursively fetch the next page if available
-  if (pageInfo.endCursor && jobs.length < 20000) {
-    console.log(`Got ${jobs.length} jobs, fetching more`)
-    await fetchAllPages(pageInfo.endCursor);
-  }
-}
-
-async function fetchData() {
-  await fetchAllPages()
-  await Bun.write("raw_data.json", JSON.stringify(jobs, null, 2));
+  return { jobs, nextCursor };
 }
 ```
 
 ### 3) Transforming the data
 
 After we downloading the data, we can dump it into a sqlite database for local analysis. But
-first, we will need the insert statements. With `ChatGPT` we can easily generate the following code
-outline just based on the graphql query.
+first, we will need the insert statements. With `ChatGPT` we can easily generate the related type
+and create table statement, just based on the graphql query.
 
 ```typescript
 interface JobData {
@@ -199,40 +188,9 @@ interface JobData {
   };
 }
 
-function denormalizeToSQLiteStatements(data: JobData): string {
-  // Denormalize data
-  const deno = {
-    ...data,
-    pipelineId: data.pipeline.id,
-    pipelineStatus: data.pipeline.status,
-    pipelineComputeMinutes: data.pipeline.computeMinutes,
-    pipelineDuration: data.pipeline.duration,
-    pipelineComplete: data.pipeline.complete ? 1 : 0,
-  };
-
-  // Insert statement
-  const insertStatement = `
-    INSERT INTO jobs VALUES (
-      '${deno.id}',
-      '${deno.name}',
-      '${deno.status}',
-      '${deno.startedAt}',
-      '${deno.finishedAt}',
-      ${deno.duration},
-      ${deno.queuedDuration},
-      '${deno.pipelineId}',
-      '${deno.pipelineStatus}',
-      ${deno.pipelineComputeMinutes},
-      ${deno.pipelineDuration},
-      ${deno.pipelineComplete}
-    );
-`.replaceAll("\n", "");
-
-  return insertStatement;
-}
-
-// Create table statement
-const createTable = `
+// SQLite Database initialization
+const db = new SQLite(DB_PATH);
+db.query(`
   CREATE TABLE IF NOT EXISTS jobs (
     id TEXT PRIMARY KEY,
     name TEXT,
@@ -247,26 +205,49 @@ const createTable = `
     pipelineDuration INTEGER,
     pipelineComplete INTEGER
   );
-`.replaceAll("\n", "");
+`);
 
-async function createQueries() {
-  const jsonJobs = Bun.file("raw_data.json")
-  const jobs: JobData[] = JSON.parse(await jsonJobs.text())
-
-  let output = [createTable]
-  output = output.concat(jobs.map((job) => {
-    return denormalizeToSQLiteStatements(job)
-  }))
-
-  await Bun.write("queries.sql", output.join("\n"))
+function insertJobs(jobs: JobData[]) {
+  jobs.forEach(job => {
+    db.query(`
+      INSERT INTO jobs (id, name, status, startedAt, finishedAt, duration, queuedDuration, pipelineId, pipelineStatus, pipelineComputeMinutes, pipelineDuration, pipelineComplete)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, [
+      job.id,
+      job.name,
+      job.status,
+      job.startedAt,
+      job.finishedAt,
+      job.duration,
+      job.queuedDuration,
+      job.pipeline.id,
+      job.pipeline.status,
+      job.pipeline.computeMinutes,
+      job.pipeline.duration,
+      job.pipeline.complete ? 1 : 0,
+    ]);
+  });
 }
+
+async function runIngestionProcess() {
+  let endCursor: string | undefined = undefined;
+  do {
+    const { jobs, nextCursor } = await fetchJobs(endCursor);
+    insertJobs(jobs);
+    endCursor = nextCursor;
+  } while (endCursor);
+  db.close();
+}
+
+runIngestionProcess()
 ```
 
 ### 4) Ingesting the data
 
-After running step 2 and 3, ingesting the transformed data is easy as pie:
+Putting part 2 and 3 together, download and transformation only needs a `bun run`. The complete
+code sample can also be found here: [gist](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
 ```sh
-sqlite3 test.sqlite < queries.sql
+bun run index.ts
 ```
 
 For our 20000 jobs, which is the amount of jobs triggered by a 4 man team over 5 months in one
@@ -290,7 +271,7 @@ docker run -d -p 3000:3000 --name=grafana \
 Of course we will also need our sqlite data:
 
 ```sh
-cp test.sqlite data/
+cp jobs_database.sqlite data/
 ```
 
 Now we can log into our fresh local grafana instance at http://localhost:3000. Here we need to add
@@ -301,7 +282,7 @@ section](http://localhost:3000/connections/datasources/frser-sqlite-datasource),
 path to the sqlite database:
 
 ```sh
-/var/lib/grafana/test.sqlite
+/var/lib/grafana/jobs_database.sqlite
 ```
 
 ### 6) Exploring the data
@@ -314,7 +295,7 @@ For example to display a table of the most recent jobs, the query looks like thi
 SELECT * from jobs order by startedAt limit 10;
 ```
 
-The dashboard that we used for our findings below can also be copied from this
+The dashboard that we used for our findings below can also be copied from the
 [gist](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
 
 ## Our Findings
