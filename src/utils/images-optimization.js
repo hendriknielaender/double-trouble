@@ -1,5 +1,5 @@
-import { parseUrl, transformUrl } from "unpic";
 import { getImage } from "astro:assets";
+import { parseUrl, transformUrl } from "unpic";
 
 /* ******* */
 const config = {
@@ -41,7 +41,7 @@ const parseAspectRatio = (aspectRatio) => {
 			const [, num, den] = match.map(Number);
 			if (den && !Number.isNaN(num)) return num / den;
 		} else {
-			const numericValue = parseFloat(aspectRatio);
+			const numericValue = Number.parseFloat(aspectRatio);
 			if (!Number.isNaN(numericValue)) return numericValue;
 		}
 	}
