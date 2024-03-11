@@ -80,6 +80,9 @@ ourselves, fetching the data via the gitlab api and ingesting them into some dat
 The company that we work at does not have a grafana server and the only monitoring tool is
 basically cloudwatch, to ingest this data we will have to start grafana locally.
 
+The complete code is also available
+[here](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
+
 ### 1) Exploring the data
 
 Gladly gitlab offers a supergraph, which can be easily explored with their public [graphql
@@ -88,7 +91,7 @@ explorer](https://gitlab.com/-/graphql-explorer). After a tries we had our pagin
 ```graphql
 query jobs($after: String) {
   project(fullPath: "path/to/repo") {
-    jobs(statuses: [SUCCESS, FAILED], after: $after, first:10) {
+    jobs(statuses: [SUCCESS, FAILED], after: $after, first: 100) {
       pageInfo {
         startCursor
         endCursor
@@ -128,8 +131,8 @@ bun init
 In getting the data, we can retrieve as many pages as we like. The maximum page size is 100, so we
 will need to call this function a couple of times until we hit our threshold.
 ```typescript
-import { SQLite } from 'bun:sqlite';
-import { file } from 'bun:fs';
+import SQLite from 'bun:sqlite';
+import file from 'bun';
 
 // Environment variables for configuration
 const REPO_PATH = 'path/to/repo';
@@ -155,7 +158,7 @@ async function fetchJobs(after?: string): Promise<{ jobs: JobData[]; nextCursor?
     }),
   });
 
-  const { data } = await response.json();
+  const { data } = await response.json() as any;
   const jobs: JobData[] = data.project.jobs.nodes;
   const nextCursor = data.project.jobs.pageInfo.endCursor;
 
@@ -204,14 +207,16 @@ db.query(`
     pipelineDuration INTEGER,
     pipelineComplete INTEGER
   );
-`);
+`).run();
+
 
 function insertJobs(jobs: JobData[]) {
   jobs.forEach(job => {
-    db.query(`
+    const query = db.query(`
       INSERT INTO jobs (id, name, status, startedAt, finishedAt, duration, queuedDuration, pipelineId, pipelineStatus, pipelineComputeMinutes, pipelineDuration, pipelineComplete)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `, [
+      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)
+`);
+    query.run(
       job.id,
       job.name,
       job.status,
@@ -224,7 +229,7 @@ function insertJobs(jobs: JobData[]) {
       job.pipeline.computeMinutes,
       job.pipeline.duration,
       job.pipeline.complete ? 1 : 0,
-    ]);
+    )
   });
 }
 
@@ -235,6 +240,7 @@ async function runIngestionProcess() {
     const { jobs, nextCursor } = await fetchJobs(endCursor);
     insertJobs(jobs);
     jobsCounter += PAGE_SIZE;
+    console.log(`Retrieved ${jobsCounter} jobs`)
     endCursor = nextCursor;
   } while (endCursor && jobsCounter < JOB_LIMIT);
   db.close();
@@ -297,8 +303,8 @@ For example to display a table of the most recent jobs, the query looks like thi
 SELECT * from jobs order by startedAt limit 10;
 ```
 
-The dashboard that we used for our findings below can also be copied from the
-[gist](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
+The dashboard that we used for our findings below can also be imported from the
+gist [here](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
 
 ## Our Findings
 
