@@ -6,6 +6,9 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
+			"style": {
+				"useNodejsImportProtocol": "off"
+			},
 			"recommended": true
 		}
 	},
