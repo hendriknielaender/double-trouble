@@ -53,7 +53,7 @@ datasource](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/).
 grafana cloud subscriptions, which also has a free tier, or for any grafana enterprise license.
 
 Unfortunately in our scenario, we cannot simply pipe our corporate gitlab data into a grafana
-cloud account for some ad-hoc analysis, and our company doesnt have the enterprise license. Though
+cloud account for some ad-hoc analysis, and our company doesn't have the enterprise license. Though
 it only supports the pipelines and not jobs, if your company fills these requirements, it might be
 a good option for you.
 
@@ -295,7 +295,7 @@ path to the sqlite database:
 
 ### 6) Exploring the data
 
-Finally we can play around with the data. In grafana the data is basically modelled via the query,
+Finally we can play around with the data. In grafana the data is basically modeled via the query,
 so it can then be displayed in various forms.
 
 For example to display a table of the most recent jobs, the query looks like this:
@@ -324,7 +324,7 @@ job got much faster, much more was revealed looking at the same job over a longe
 
 ![](../../src/assets/images/posts/gitlab-job-analysis/build-job-long.png)
 
-A visible bump around the start of december, together with a general slight upwards trend as the
+A visible bump around the start of December, together with a general slight upwards trend as the
 project is getting bigger.
 
 Looking at the test job, we could see a similar upwards trend over time, though the curve is not
@@ -334,13 +334,13 @@ as steep.
 
 A couple of saved minutes on a single job wouldn't seem like a huge win, but for the team it *felt*
 huge. This is related to other job dependencies which got also optimized, but also due to the
-amound of times a single job gets triggered every day.
+amount of times a single job gets triggered every day.
 
 This is also something we can easily query:
 
 ![](../../src/assets/images/posts/gitlab-job-analysis/job-execution-amount.png)
 
-Looking at the overall pipeline speed is more tricky. This is because pipline looks different
+Looking at the overall pipeline speed is more tricky. This is because pipeline looks different
 based on the branch, but also based on the amount of manual jobs which get triggered. Despite
 that, we could still see the observed savings in the displayed graph on the very right.
 
@@ -354,9 +354,9 @@ with a tool as snappy and optimized as grafana made for a great experience.
 
 The same technique of data analysis can be basically applied to any small dataset, which has
 timestamps in it. Having such a technique in mind can break through such barriers of lackluster
-default dashboards, while the data is availabe via api.
+default dashboards, while the data is available via api.
 
 All in all it would be best to have a proper data platform where everything is already prepared to
 do such analysis easily, either with grafana, datadog, or something similar. When these
 preparations have not been made by your company, we hope the above approach can help you out in
-this sitation.
+this situation.
