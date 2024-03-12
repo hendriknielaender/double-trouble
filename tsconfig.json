@@ -1,15 +1,15 @@
 {
-	"extends": "astro/tsconfigs/base",
-	"compilerOptions": {
-		"skipLibCheck": true,
-		"allowJs": true,
-		"esModuleInterop": true,
-		"allowImportingTsExtensions": true,
-		"baseUrl": ".",
-		"paths": {
-			"~/*": ["src/*"]
-		},
-		"jsx": "react-jsx",
-		"jsxImportSource": "react"
-	}
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }
