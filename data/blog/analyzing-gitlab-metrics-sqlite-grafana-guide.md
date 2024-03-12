@@ -26,7 +26,7 @@ number of successful and total pipeline runs. Below are the pipelines for the mo
 commit. Pipelines which fail early appear as shorter, which makes it not very useful for our
 analysis.
 
-![](../../src/assets/images/posts/gitlab-job-analysis/gitlab-cicd-analytics.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/gitlab-cicd-analytics.png)
 
 Other dashboards in the `Analyze` tab sound intriguing, but they mostly display graphs based on
 the amount of commits, merge requests, GitLab issues or lines changed.
@@ -312,18 +312,18 @@ gist [here](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
 On a job level, we could confirm our observed time-savings with real data, over all failed and
 successful jobs.
 
-![](../../src/assets/images/posts/gitlab-job-analysis/build-job-short.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/build-job-short.png)
 
 We could also finally see the total amount of job queue times. It is the amount of time a GitLab
 CI/CD job has to wait, before it gets picked up by a runner.
 
-![](../../src/assets/images/posts/gitlab-job-analysis/job-queue-times2.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/job-queue-times2.png)
 
 But what was even more interesting that that, was to see the job duration over a larger period of
 multiple months. While the short-term analysis had confirmed our own observation that the build
 job got much faster, much more was revealed looking at the same job over a longer timespan.
 
-![](../../src/assets/images/posts/gitlab-job-analysis/build-job-long.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/build-job-long.png)
 
 A visible bump around the start of December, together with a general slight upwards trend as the
 project is getting bigger.
@@ -331,7 +331,7 @@ project is getting bigger.
 Looking at the test job, we could see a similar upwards trend over time, though the curve is not
 as steep.
 
-![](../../src/assets/images/posts/gitlab-job-analysis/test-job-long.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/test-job-long.png)
 
 A couple of saved minutes on a single job wouldn't seem like a huge win, but for the team it *felt*
 huge. This is related to other job dependencies which got also optimized, but also due to the
@@ -339,13 +339,13 @@ amount of times a single job gets triggered every day.
 
 This is also something we can easily query:
 
-![](../../src/assets/images/posts/gitlab-job-analysis/job-execution-amount.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/job-execution-amount.png)
 
 Looking at the overall pipeline speed is more tricky. This is because pipeline looks different
 based on the branch, but also based on the amount of manual jobs which get triggered. Despite
 that, we could still see the observed savings in the displayed graph on the very right.
 
-![](../../src/assets/images/posts/gitlab-job-analysis/successful-pipeline-short.png)
+![](../../src/assets/images/posts/analyzing-gitlab-metrics-sqlite-grafana-guide/successful-pipeline-short.png)
 
 
 ## Rounding Up
