@@ -33,9 +33,10 @@ the amount of commits, merge requests, GitLab issues or lines changed.
 
 ### Build
 
-In the `Build` tab we can browse through a list of recent jobs and pipelines. The results are simply
-returned as a paginated table. For pipelines this can give an impression on an individual basis,
-but grasping the overall trend over a longer period is hard.
+The `Build` tab allows a review of the most recent jobs and pipelines, but it lacks insights into
+a broader performance picture. The results are simply returned as a paginated table. For pipelines
+this can give an impression on an individual basis, but grasping the overall trend over a longer
+period is hard.
 
 Especially with the Jobs search getting a job overview is challenging. This search is infamous for
 only allowing to filter by job status, not by name. The related issue
@@ -251,7 +252,7 @@ runIngestionProcess()
 
 ### 4) Ingesting the data
 
-Putting part 2 and 3 together, download and transformation only needs a `bun run`. The complete
+Merging steps 2 and 3, the script it complete and we can trigger it with a `bun run`. The complete
 code sample can also be found here: [gist](https://gist.github.com/flyck/e3deb7db07a5817dfb3a5c49b205a1c4).
 ```sh
 bun run index.ts
