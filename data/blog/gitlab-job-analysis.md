@@ -16,7 +16,7 @@ picture. How had the pipeline improved over a bigger timespan?
 ## GitLabs Dashboards
 
 Going into this questions the natural start were the existing GitLab dashboards. GitLab has a wide
-variety of different dashboards build-in, so it seemed likely that we would find the answer within
+variety of different dashboards built-in, so it seemed likely that we would find the answer within
 GitLab itself.
 
 ### CI/CD Analytics
@@ -86,7 +86,7 @@ The complete code is also available
 ### 1) Exploring the data
 
 Gladly GitLab offers a supergraph, which can be easily explored with their public [graphql
-explorer](https://gitlab.com/-/graphql-explorer). After a tries we had our paginated query:
+explorer](https://gitlab.com/-/graphql-explorer). After a few tries, we had our paginated query:
 
 ```graphql
 query jobs($after: String) {
@@ -168,7 +168,7 @@ async function fetchJobs(after?: string): Promise<{ jobs: JobData[]; nextCursor?
 
 ### 3) Transforming the data
 
-After we downloading the data, we can dump it into a SQLite database for local analysis. But
+After downloading the data, we can dump it into a SQLite database for local analysis. But
 first, we will need the insert statements. With `ChatGPT` we can easily generate the related type
 and create table statement, just based on the graphql query.
 
