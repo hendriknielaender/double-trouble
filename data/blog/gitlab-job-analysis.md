@@ -1,5 +1,5 @@
 ---
-publishDate: "Mar 10 2024"
+publishDate: "Mar 12 2024"
 title: "How to dive deep into Gitlab Metrics with SQLite and Grafana"
 description: "Follow along as we showcase a recent dive into gitlab jobs metrics."
 image: "~/assets/images/thumbnails/gitlab-job-analysis.jpg"
