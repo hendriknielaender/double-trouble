@@ -1,6 +1,6 @@
 ---
 publishDate: "Mar 12 2024"
-title: "How to dive deep into Gitlab Metrics with SQLite and Grafana"
+title: "How to dive deep into GitLab Metrics with SQLite and Grafana"
 description: "Follow along our recent analysis of GitLab jobs metrics using SQLite and Grafana with our step-by-step guide. Enhance your CI/CD pipeline analysis today."
 image: "~/assets/images/thumbnails/gitlab-job-analysis.jpg"
 imageCreditUrl: https://labs.openai.com
