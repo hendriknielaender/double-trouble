@@ -4,6 +4,7 @@ title: "How to dive deep into Gitlab Metrics with SQLite and Grafana"
 description: "Follow along our recent analysis of GitLab jobs metrics using SQLite and Grafana with our step-by-step guide. Enhance your CI/CD pipeline analysis today."
 image: "~/assets/images/thumbnails/gitlab-job-analysis.jpg"
 imageCreditUrl: https://labs.openai.com
+tweet: "https://twitter.com/doubletrblblogs/status/1767846960680071225"
 tags: [GitLab, CI/CD, DevOps, pipeline, automation]
 ---
 
