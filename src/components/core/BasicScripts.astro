@@ -16,10 +16,6 @@ import { SITE } from '~/config.mjs';
     }
   }
 
-  const initialTheme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  applyTheme(initialTheme);
-
-
   function adjustTweetsToTheme() {
     // toggle tweets that are still blockquotes (only shortly after pageload)
     const blockquotes = document.getElementsByTagName("blockquote");
@@ -66,14 +62,16 @@ import { SITE } from '~/config.mjs';
     }
   }
 
-  window.onload = function () {
-    attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
-      elem.classList.toggle("expanded");
-      document.body.classList.toggle("overflow-hidden");
-      document.getElementById("header")?.classList.toggle("h-screen");
-      document.querySelector("#header nav")?.classList.toggle("hidden");
-    });
+  function activateMenu() {
+     attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
+       elem.classList.toggle("expanded");
+       document.body.classList.toggle("overflow-hidden");
+       document.getElementById("header")?.classList.toggle("h-screen");
+       document.querySelector("#header nav")?.classList.toggle("hidden");
+     });
+  }
 
+  function activateDarkmodeToggle() {
     attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
       document.documentElement.classList.toggle("light");
       // as we already toggled the classlist, the current theme is already the new theme
@@ -94,7 +92,10 @@ import { SITE } from '~/config.mjs';
 
       adjustTweetsToTheme()
     });
+  }
 
+  // TODO can be probably removed
+  function renderSocialButtons() {
     attachEvent("[data-aw-social-share]", "click", function (elem) {
       const network = elem.getAttribute("data-aw-social-share");
       const url = encodeURIComponent(elem.getAttribute("data-aw-url"));
@@ -127,7 +128,18 @@ import { SITE } from '~/config.mjs';
       newlink.href = href;
       newlink.click();
     });
+  }
+
+  window.onload = function () {
+    const initialTheme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(initialTheme);
+
+    activateMenu()
+    activateDarkmodeToggle()
+    renderSocialButtons()
+    adjustTweetsToTheme()
   };
+
   window.onpageshow = function () {
     const elem = document.querySelector("[data-aw-toggle-menu]");
     if (elem) {
@@ -136,7 +148,20 @@ import { SITE } from '~/config.mjs';
     document.body.classList.remove("overflow-hidden");
     document.getElementById("header")?.classList.remove("h-screen");
     document.querySelector("#header nav")?.classList.add("hidden");
-
-    adjustTweetsToTheme()
   };
+
+  /* reapply scripts after view transition */
+  document.addEventListener(
+    "astro:after-swap",
+    () => {
+      const initialTheme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(initialTheme);
+
+      activateMenu()
+      activateDarkmodeToggle()
+      renderSocialButtons()
+      adjustTweetsToTheme()
+    },
+    { once: false }
+  );
 </script>
