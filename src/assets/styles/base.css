@@ -123,12 +123,12 @@ pre[class*="astro-code"] button:hover {
 @media (prefers-reduced-motion: no-preference) {
   #leftFist {
     animation: move-from-left ease-in both;
-    animation-timeline: view();
+    animation-timeline: view(20% 40%);
     animation-range: 0vw 40vw;
   }
   #rightFist {
     animation: move-from-right ease-in both;
-    animation-timeline: view();
+    animation-timeline: view(20% 40%);
     animation-range: 0vw 40vw;
   }
 }
