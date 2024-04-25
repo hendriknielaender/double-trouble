@@ -2,7 +2,7 @@
 publishDate: "Apr 2 2024"
 title: "How to ditch React and build an app with HTMX, Astro DB & Astro SSR"
 description: "Explore common techniques and solutions needed for building a basic CRUD app with this modern react-less stack."
-image: "~/assets/images/thumbnails/agile-roadmaps-1.png"
+image: "~/assets/images/thumbnails/htmx_app.jpg"
 imageCreditUrl: https://midjourney.com
 tags: [htmx, react, astro, astrodb, astrossr, crud, netlify]
 ---
@@ -116,6 +116,13 @@ const { loading, title, location, date, description } = Astro.props
 Once an interaction is submitted, problems can happen. There are many ways to display such
 interactive errors to the user, and once such way are toast messages.
 
+<img
+    style="display: block;
+           margin-left: auto;
+           margin-right: auto;"
+    src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/toast.gif">
+</img>
+
 The server action can be wrapped in a try-catch block, and the server itself decides that this
 error will be rendered as a toast.
 ```ts
@@ -131,27 +138,8 @@ try {
 }
 ```
 
-Though we do we return the toast message, we still stuck with the typical server response codes
-here, so these can be used for monitoring. The toast error from the backend is then translated
-into a server resposne, which turns it into a format HTMX can catch:
-
-```js
-return new Response(null, {
-  status: statusCode,
-  headers: {
-    "hx-trigger": JSON.stringify({
-      displayToast: {
-        level,
-        message
-      }
-    }),
-    "hx-reswap": "none"
-  },
-})
-```
-
-On the frontend side, this toast can be displayed by the event that is generated from HTMX based
-on our `hx-trigger` reply, and the toast can be displayed:
+The backend returns toast message as a part of the `hx-trigger` reply header. Htmx transforms that
+payloed into an event, which we can listen for in the frontend and display the appropriate toast.
 ```js
 function onDisplayToast(e) {
    const toast = new Toast(e.detail.level, e.detail.message);
@@ -160,5 +148,62 @@ function onDisplayToast(e) {
 document.body.addEventListener("displayToast", onMakeToast);
 ```
 
-How the toast is then displayed on the frontend depends on the toast library, but it can be of
-course also just basic html.
+## View Transitions
+
+View transitions are a modern browser feature, wich make it easy to have seamless transitions
+between pages. They are natively supported by Astro,
+
+<img
+    style="display: block;
+           margin-left: auto;
+           margin-right: auto;"
+    src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/viewtransition.gif">
+</img>
+
+```html
+<head>
+    <!-- ... -->
+    <ViewTransitions />
+</head>
+<!-- ... -->
+```
+
+After a simulated page transition via the client-side navigation, javascript that had already been
+loaded stays untouched. This has the positive effect of loading the htmx dependency only once, but
+we will still have to re-trigger htmx with the new page.
+
+```js
+<script is:inline>
+document.addEventListener(
+  "astro:after-swap",
+  () => {
+    htmx.process(document.body || null)
+  },
+  { once: false }
+);
+</script>
+```
+
+## Astro SSR & Netlify
+
+In theory, HTMX doesn't need any framework. You could write pure html with that bit of javascript.
+
+For [astro-party](https://github.com/flyck/astro-party), the app behind this post, Astro gave the
+following benefits:
+- View Transitions (animated client-side routing with optimal dependency loading)
+- Astro DB (persisting data on the backend with great local DX and generous free-tier)
+- Astro SSR (dynamic backend routes with familiar astro templates)
+
+Instead of using HTMX with a GOLang server, which is dishing out HTML, we use astro ssr with
+astro db for persistence, and `.astro` syntax for templating.
+
+## Performance
+
+Using Astro in SSR mode was first a point of concern. It seemed like an abuse of astro to start it
+in server mode. This turned out to be false looking at the performance.
+
+TODO move DB also to us-east to reduce the roundtrip
+
+Performance for us was limited, as the Netlify free-tier is restricted to us-east-2(?), but we are
+situated in germany. Still, the general performance was great, with 20-150ms for the
+initial page load, even with an unoptimal setup. (TODO update)
