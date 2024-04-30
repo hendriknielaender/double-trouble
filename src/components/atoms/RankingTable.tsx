@@ -391,7 +391,7 @@ function RankingTable() {
 				{weights.map((weight) => {
 					const color = 600 + weight.Weight * 100;
 					return (
-						<>
+						<div key={weight.Name}>
 							<button
 								type="button"
 								className={`rounded-full px-2 light:text-blue-100 ${bgColorMap[color]}`}
@@ -399,7 +399,7 @@ function RankingTable() {
 							>
 								{weight.Name}: {weight.Weight}
 							</button>{" "}
-						</>
+						</div>
 					);
 				})}
 			</p>
