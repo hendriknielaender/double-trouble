@@ -14,7 +14,7 @@ enough, we took it to the test and re-implemented an existing React project in h
 We had created the original app earlier this year mostly to play around with Websockets and
 AppSync subcriptions. In the frontend it was based on React and Nextjs, hosted ontop of Vercel. On
 the backend it ran on AWS AppSync and Dynamodb as a persistent storage. In the re-implementation
-we moved the frontend from to purely html, using [HTMX](https://htmx.org/) and
+we moved the frontend from to purely html, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") and
 [Astro](https://astro.build). For the backend we used [Astro DB](https://astro.build/db/), which
 is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/) in the
 free tier.
