@@ -9,7 +9,7 @@ tags: [htmx, react, astro, astrodb, astrossr, crud, netlify]
 
 These days, many people feel tired of React, and as [Primeagen](https://twitter.com/ThePrimeagen)
 announced it: `This is the year of HTMX!` While the htmx examples in the documentation look easy
-enough, we took it to the test and and re-implement an existing React project in HTMX.
+enough, we took it to the test and re-implemented an existing React project in htmx.
 
 We had created the original app earlier this year mostly to play around with Websockets and
 AppSync subcriptions. In the frontend it was based on React and Nextjs, hosted ontop of Vercel. On
