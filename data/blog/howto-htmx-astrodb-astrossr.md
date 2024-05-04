@@ -1,6 +1,6 @@
 ---
 publishDate: "Apr 2 2024"
-title: "How to ditch React and build an app with HTMX, Astro DB & Astro SSR"
+title: "Ditch React: Build Faster with htmx, Astro DB & Astro SSR in 2024"
 description: "Explore common techniques and solutions needed for building a basic CRUD app with this modern react-less stack."
 image: "~/assets/images/thumbnails/htmx_app.jpg"
 imageCreditUrl: https://midjourney.com
