@@ -27,7 +27,7 @@
     "@types/bun": "^1.0.12",
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
-    "astro": "4.7.0",
+    "astro": "4.7.1",
     "astro-icon": "^0.8.2",
     "hast-util-to-string": "^3.0.0",
     "hastscript": "^9.0.0",
