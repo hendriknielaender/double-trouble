@@ -196,15 +196,18 @@ following benefits:
 - Astro SSR (dynamic backend routes with familiar astro templates)
 
 Instead of using HTMX with a GOLang server, which is dishing out HTML, we use astro ssr with
-astro db for persistence, and `.astro` syntax for templating.
+astro db for persistence, and `.astro` syntax for templating. The experience here for our small
+app was simply amazing.
 
-## Performance
+For prototyping and learning within our own app, astro db and ssr with netlify gave an amazing,
+carefree experience.
 
-Using Astro in SSR mode was first a point of concern. It seemed like an abuse of astro to start it
-in server mode. This turned out to be false looking at the performance.
+## Rounding up
 
-TODO move DB also to us-east to reduce the roundtrip
+Coming from react, HTMX introduces a completely different application paradigm. It requires going
+back to the basics, which felt good. Simply not having the app written in React felt great.
 
-Performance for us was limited, as the Netlify free-tier is restricted to us-east-2(?), but we are
-situated in germany. Still, the general performance was great, with 20-150ms for the
-initial page load, even with an unoptimal setup. (TODO update)
+On the other hand, it also revealed things react does, which can be easily taken for
+granted. In react there is rarely ever the case where you'll need to worry about ids. In htmx this
+is much mor the case. Also the dataflow between components is taken care of by react. Within htmx,
+if you need a list of items to each open a modal with different properties,
