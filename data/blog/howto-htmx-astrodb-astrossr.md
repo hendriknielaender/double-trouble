@@ -7,20 +7,27 @@ imageCreditUrl: https://midjourney.com
 tags: [htmx, react, astro, astrodb, astrossr, crud, netlify]
 ---
 
-These days, many people feel tired of React, and as [Primeagen](https://twitter.com/ThePrimeagen)
-announced it: `This is the year of HTMX!` While the htmx examples in the documentation look easy
-enough, we took it to the test and re-implemented an existing React project in htmx.
+These days, many people feel tired of React, and as [@ThePrimeagen](https://twitter.com/ThePrimeagen)
+announced it:
 
-We had created the original app earlier this year mostly to play around with Websockets and
-AppSync subcriptions. In the frontend it was based on React and Nextjs, hosted ontop of Vercel. On
-the backend it ran on AWS AppSync and Dynamodb as a persistent storage. In the re-implementation
-we moved the frontend from to purely html, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") and
+> This is the year of HTMX!
+
+
+While the htmx examples in the [documentation](https://htmx.org/examples/) look easy enough, we
+decided to take it to the test and re-implemented an existing [React
+project](https://github.com/flyck/party-task-planner) in htmx.
+
+We had created the original app earlier this year, mostly to play around with Websockets and
+AppSync subscriptions. In the frontend it was based on React and Nextjs, hosted ontop of
+Vercel. On the backend it ran on AWS AppSync and Dynamodb as a persistent storage. In the
+[re-implementation](https://github.com/flyck/astro-party) we moved the frontend to pure html and
+js, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") and
 [Astro](https://astro.build). For the backend we used [Astro DB](https://astro.build/db/), which
-is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/) in the
-free tier.
+is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/).
 
-The basic point of this experiment was to see, how CRUD apps could be implemented in a
-straightforward way, but also to see how the experience would be with HTMX instead of React.
+We wanted to see how CRUD apps could be implemented in a straightforward way with this stack, but
+also to see how the experience would be with htmx instead of React. In the following we'll share
+basic techniques using this stack, and also our experience, looking back.
 
 ## Responsive Buttons
 
@@ -48,8 +55,9 @@ classes:
 <Spinner class="hidden htmx-request:block" />
 ```
 
-These htmx-specific tags do not come out-of-the-box with tailwind, but they can be defined via a
-tailwind [plugin](https://www.crocodile.dev/blog/css-transitions-with-tailwind-and-htmx):
+These htmx-specific tags are not available by default in tailwind, but they can be added via
+tailwind [plugins](https://www.crocodile.dev/blog/css-transitions-with-tailwind-and-htmx) in the
+astro config:
 ```ts
   plugins: [
     plugin(function({ addVariant }) {
@@ -63,8 +71,8 @@ tailwind [plugin](https://www.crocodile.dev/blog/css-transitions-with-tailwind-a
 
 ## Skeletons
 
-Before dynamic content loads, we typically want to display *something*. A basic component will have
-skeletons as the initial content, which then gets replaced after loading.
+Before dynamic content loads, we typically want to display *something*. A basic component will
+have skeletons as the initial content, which then gets replaced after loading.
 
 <img
     style="display: block;
@@ -87,7 +95,7 @@ In the static frontend page which holds those sceletons, we can load the form li
 </div>
 ```
 
-While the server returns the same astro component with the relevant data:
+While the server returns the same astro component, but with the relevant data:
 ```html
 <PartyDetails title={title} location={location} date={date} description={description} loading={false} />
 ```
@@ -106,16 +114,16 @@ interface Props {
 
 const { loading, title, location, date, description } = Astro.props
 ---
-<Input name="title" title="Title" type="text" value={title} loading={loading}></Input>
-<Input name="location" title="Where" type="text" value={location} loading={loading}></Input>
-<Input name="date" title="When" type="text" value={date} loading={loading}></Input>
-<Input name="description" title="Description" type="text" value={description} loading={loading}></Input>
+<Input name="title" title="Title" value={title} loading={loading}></Input>
+<Input name="location" title="Where" value={location} loading={loading}></Input>
+<Input name="date" title="When" value={date} loading={loading}></Input>
+<Input name="description" title="Description" value={description} loading={loading}></Input>
 ```
 
 ## Toasty Errors
 
 Once an interaction is submitted, problems can happen. There are many ways to display such
-interactive errors to the user, and once such way are toast messages.
+interactive errors to the user, and one such way is toast messages.
 
 <img
     style="display: block;
@@ -135,12 +143,12 @@ try {
   if (error instanceof ToastError) {
     return toastResponse(error)
   }
-  return toastResponse(new ToastError("error", "Something went wrong. :(", 500))
+  return toastResponse(new ToastError("danger", "Something went wrong. :(", 500))
 }
 ```
 
 The backend returns toast message as a part of the `hx-trigger` reply header. Htmx transforms that
-payloed into an event, which we can listen for in the frontend and display the appropriate toast.
+payload into an event, which we can listen for in the frontend and display the appropriate toast.
 ```js
 function onDisplayToast(e) {
    const toast = new Toast(e.detail.level, e.detail.message);
@@ -167,6 +175,9 @@ between pages. They are natively supported by Astro,
     <ViewTransitions />
 </head>
 <!-- ... -->
+<div transition:animate={slide()}>
+    <slot />
+</div>
 ```
 
 After a simulated page transition via the client-side navigation, javascript that had already been
@@ -187,27 +198,42 @@ document.addEventListener(
 
 ## Astro SSR & Netlify
 
-In theory, HTMX doesn't need any framework. You could write pure html with that bit of javascript.
+Htmx itself doesn't need any outside framework, in order to stand up an app. You could write pure
+html with that bit of javascript.
 
-For [astro-party](https://github.com/flyck/astro-party), the app behind this post, Astro gave the
-following benefits:
-- View Transitions (animated client-side routing with optimal dependency loading)
-- Astro DB (persisting data on the backend with great local DX and generous free-tier)
-- Astro SSR (dynamic backend routes with familiar astro templates)
+Instead of using htmx with a Go, we used Astro SSR as the api, with Astro DB for persistence, and
+`.astro` syntax for templating all around. The experience here for our small app was simply
+amazing. The complexity of React and NextJS could be completely skipped, and we could deliver an
+app without any JSON contracts.
 
-Instead of using HTMX with a GOLang server, which is dishing out HTML, we use astro ssr with
-astro db for persistence, and `.astro` syntax for templating. The experience here for our small
-app was simply amazing.
+## Is htmx the future?
 
-For prototyping and learning within our own app, astro db and ssr with netlify gave an amazing,
-carefree experience.
+Htmx has certain areas where it shines brightest, but it also has its limits. Carson himself lays
+the pros and cons out in this recommended essay: [When Should You Use
+Hypermedia?](https://htmx.org/essays/when-to-use-hypermedia/). The essay itself doesnt recommend
+htmx as "the tool", but recommends it for particular situations.
+
+To us, htmx excells at going back to basics. Html forms are a breeze, and the whole contracted
+JSON api middleman can be skipped. Especially with Astro, having `.astro` templates all the way
+through, with minimal external dependencies, keeps the complexity low.
+
+On the other hand, building this app highlighted also a few strenghts of React. Handling the data
+flow between components is the main purpose of the React Component Properties. With htmx, doing
+the same while only fetching data once, had us come up with some last-mile javascript.
+
+Also things like onclick eventlisteners, instead of having to attach your own in Astro
 
 ## Rounding up
 
 Coming from react, HTMX introduces a completely different application paradigm. It requires going
 back to the basics, which felt good. Simply not having the app written in React felt great.
 
-On the other hand, it also revealed things react does, which can be easily taken for
-granted. In react there is rarely ever the case where you'll need to worry about ids. In htmx this
-is much mor the case. Also the dataflow between components is taken care of by react. Within htmx,
-if you need a list of items to each open a modal with different properties,
+Also the combination of Astro DB with Astro SSR hosted on Netlify felt good. After it initially
+seemed like an anti-pattern to use astro for dynamic content, the site itself is quite fast and
+the experience was great.
+
+Htmx is conceptionally easy to grasp, and while the initial learning curve is somewhat steap, it
+plateaus relatively quickly, due to the standards-based approach. For smaller apps we definitely
+already recommend to give htmx a try. Hopefully as more and more people learn these basic
+concepts, we can eventually use them for real project at work, and build simple solutions in a
+simple way.
