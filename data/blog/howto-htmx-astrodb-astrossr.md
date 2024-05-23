@@ -40,7 +40,7 @@ the confirmation is being processed.
            margin-left: auto;
            margin-right: auto;"
   alt="Demonstration of HTMX responsive button"
-src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/ezgif-button.gif">
+src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/button.gif">
 </img>
 
 Htmx automatically adds predefined css classes to requesting elements, so with tailwinds
