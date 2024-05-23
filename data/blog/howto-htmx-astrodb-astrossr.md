@@ -1,5 +1,5 @@
 ---
-publishDate: "Apr 2 2024"
+publishDate: "May 23 2024"
 title: "Ditch React: Build Faster with htmx, Astro DB & Astro SSR in 2024"
 description: "Explore common techniques and solutions needed for building a basic CRUD app with this modern react-less stack."
 image: "~/assets/images/thumbnails/htmx_app.jpg"
@@ -18,7 +18,7 @@ decided to take it to the test and re-implemented an existing [React
 project](https://github.com/flyck/party-task-planner) in htmx.
 
 We had created the original app earlier this year, mostly to play around with Websockets and
-AppSync subscriptions. In the frontend it was based on React and Nextjs, hosted ontop of
+AppSync subscriptions. In the frontend it was based on React and Next.js, hosted on top of
 Vercel. On the backend it ran on AWS AppSync and Dynamodb as a persistent storage. In the
 [re-implementation](https://github.com/flyck/astro-party), we moved the frontend to pure HTML and
 js, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") and
@@ -31,7 +31,7 @@ basic techniques using this stack, and also our conclusions, looking back.
 
 ## Responsive Buttons
 
-A responsive button would change its appearance while the operation is ongoing. For our usecase
+A responsive button would change its appearance while the operation is ongoing. For our use-case
 this means we want to show a "Confirm" text while the button is ready, and a loading spinner while
 the confirmation is being processed.
 
@@ -43,9 +43,9 @@ the confirmation is being processed.
 src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/button.gif">
 </img>
 
-Htmx automatically adds predefined css classes to requesting elements, so with tailwinds
+Htmx automatically adds predefined CSS classes to requesting elements, so with tailwinds
 conditional styles, we can use them to hide and display elements when needed. Instead of the
-regular `useEffect` shenanigans and a dedicated loading state, we can make use of basic css
+regular `useEffect` shenanigans and a dedicated loading state, we can make use of basic CSS
 classes:
 
 ```html
@@ -81,7 +81,7 @@ have skeletons as the initial content, which then gets replaced after loading.
     src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/loading-forms.gif">
 </img>
 
-In the static frontend page which holds those sceletons, we can load the form like so:
+In the static frontend page which holds those skeletons, we can load the form like so:
 ```html
 <div
   hx-trigger="load"
@@ -95,7 +95,7 @@ In the static frontend page which holds those sceletons, we can load the form li
 </div>
 ```
 
-While the server returns the same astro component, but with the relevant data:
+While the server returns the same Astro component, but with the relevant data:
 ```html
 <PartyDetails title={title} location={location} date={date} description={description} loading={false} />
 ```
@@ -133,7 +133,7 @@ great way to increase the user experience.
 src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/inline-validation.gif">
 </img>
 
-In the frontend, we trigger the validation on keyup or input change (copy paste actions). Htmx
+In the frontend, we trigger the validation on key-up or input change (copy paste actions). Htmx
 conveniently resets the timer if another letter is input early. Using `hx-params`, we make sure to
 only send the current input as payload.
 ```js
@@ -200,7 +200,7 @@ function onDisplayToast(e) {
 document.body.addEventListener("displayToast", onMakeToast);
 ```
 
-Shoutout to `thisisthemurph` for the basic concept in his [blogpost](https://dev.to/thisisthemurph/go-beyond-the-basics-mastering-toast-notifications-with-go-and-htmx-4ao3).
+Shout-out to `thisisthemurph` for the basic concept in his [blog-post](https://dev.to/thisisthemurph/go-beyond-the-basics-mastering-toast-notifications-with-go-and-htmx-4ao3).
 
 ## View Transitions
 
@@ -226,7 +226,7 @@ between pages. They make page navigation more smooth, while also hiding a bit of
 ```
 
 They are natively supported by Astro, by introducing client-side navigation. After a simulated
-page load, javascript that had already been loaded stays untouched. This has the positive
+page load, JavaScript that had already been loaded stays untouched. This has the positive
 side-effect of loading the htmx dependency only once, but we will still have to re-trigger htmx
 with the new page.
 
@@ -245,30 +245,30 @@ document.addEventListener(
 ## Astro SSR & Netlify
 
 Htmx itself doesn't need any outside framework, in order to stand up an app. You could write pure
-html with that bit of javascript.
+html with that bit of JavaScript.
 
 Instead of using htmx with a Go, we used Astro SSR as the api, with Astro DB for persistence, and
 `.astro` syntax for templating all around. The experience here for our small app was simply
-amazing. The complexity of React and NextJS could be completely skipped, and we could deliver an
+amazing. The complexity of React and Next.js could be completely skipped, and we could deliver an
 app without any JSON contracts minimal dependencies.
 
 ## Is htmx the ultimate choice?
 
-Htmx author Carson himself points out the advantages and disadvatages of htmx based on the
+Htmx author Carson himself points out the advantages and disadvantages of htmx based on the
 situation (see [essay](https://htmx.org/essays/when-to-use-hypermedia/)).
 
-To us, htmx excells at going back to basics. HTML forms are a breeze, and the whole contracted
+To us, htmx excels at going back to basics. HTML forms are a breeze, and the whole contracted
 JSON api middleman can be skipped, by shipping HTML directly. Especially with Astro, having
 `.astro` templates all the way through, with minimal external dependencies, keeps the complexity
 low.
 
-On the other hand, building this app highlighted also a few strenghts of React. Handling the data
+On the other hand, building this app highlighted also a few strengths of React. Handling the data
 flow between components is the main purpose of the React component properties. With htmx, doing
-the same while only fetching data once, had us come up with some last-mile javascript. The
-alternative could be to simply fetch more html, which seems to be part of the htmx paradigm.
+the same while only fetching data once, had us come up with some last-mile JavaScript. The
+alternative could be to simply fetch more HTML, which seems to be part of the htmx paradigm.
 
-Generally the chance of writing explicit javascript seems slightly higher with htmx, but atleast
-you know what you're doing, and it's very honest work. Though in this case more explicit javascript
+Generally the chance of writing explicit JavaScript seems slightly higher with htmx, but at-least
+you know what you're doing, and it's very honest work. Though in this case more explicit JavaScript
 was written, the perceived complexity was lower and the overall enjoyment greater.
 
 ## Rounding up
@@ -277,10 +277,10 @@ Coming from react, htmx introduces a completely different application paradigm. 
 back to the basics, which felt good. Simply not having the app written in React felt great.
 
 Also the combination of Astro DB with Astro SSR hosted on Netlify was great. After it initially
-seemed like an anti-pattern to use astro for dynamic content, the site itself is quite fast and
+seemed like an anti-pattern to use Astro for dynamic content, the site itself is quite fast and
 the experience was great.
 
-Htmx is conceptionally easy to grasp, and while the initial learning curve is somewhat steap, it
+Htmx is conceptionally easy to grasp, and while the initial learning curve is somewhat steep, it
 plateaus relatively quickly, due to the standards-based approach. For smaller apps we definitely
 already recommend to give htmx a try. Hopefully as more and more people learn these basic
 concepts, we can eventually use them for real project at work, and build simple solutions in a
