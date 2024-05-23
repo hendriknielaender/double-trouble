@@ -12,10 +12,9 @@
       "recommended": true
     }
   },
-  "json": {
-    "formatter": {
-      "indentStyle": "space"
-    }
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2
   },
   "files": {
     "include": [
