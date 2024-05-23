@@ -57,10 +57,15 @@ code {
 code .line::before {
   content: counter(step);
   counter-increment: step;
+  width: 1.5rem;
   margin-right: 0.8rem;
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
+}
+
+code .line:last-child::before {
+  display: none;
 }
 
 pre[class*="astro-code"] {
