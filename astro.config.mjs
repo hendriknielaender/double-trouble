@@ -51,7 +51,7 @@ export default defineConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
       theme: "rose-pine",
       // Enable word wrap to prevent horizontal scrolling
-      wrap: true,
+      wrap: false,
     },
   },
   vite: {
