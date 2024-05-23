@@ -20,14 +20,14 @@ project](https://github.com/flyck/party-task-planner) in htmx.
 We had created the original app earlier this year, mostly to play around with Websockets and
 AppSync subscriptions. In the frontend it was based on React and Nextjs, hosted ontop of
 Vercel. On the backend it ran on AWS AppSync and Dynamodb as a persistent storage. In the
-[re-implementation](https://github.com/flyck/astro-party) we moved the frontend to pure html and
+[re-implementation](https://github.com/flyck/astro-party), we moved the frontend to pure HTML and
 js, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") and
 [Astro](https://astro.build). For the backend we used [Astro DB](https://astro.build/db/), which
 is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/).
 
-We wanted to see how CRUD apps could be implemented in a straightforward way with this stack, but
-also to see how the experience would be with htmx instead of React. In the following we'll share
-basic techniques using this stack, and also our experience, looking back.
+We wanted to find out how CRUD apps could be implemented in a straightforward way using this
+stack, but also get the experience of using htmx instead of React. In the following we'll share
+basic techniques using this stack, and also our conclusions, looking back.
 
 ## Responsive Buttons
 
@@ -157,10 +157,14 @@ function onDisplayToast(e) {
 document.body.addEventListener("displayToast", onMakeToast);
 ```
 
+Shoutout to
+[thisisthemurph](https://dev.to/thisisthemurph/go-beyond-the-basics-mastering-toast-notifications-with-go-and-htmx-4ao3)
+for his original blogpost.
+
 ## View Transitions
 
-View transitions are a modern browser feature, wich make it easy to have seamless transitions
-between pages. They are natively supported by Astro,
+View transitions are a modern browser feature, which make it easy to have seamless transitions
+between pages. They make page navigation more smooth, while also hiding a bit of loading time.
 
 <img
     style="display: block;
@@ -180,9 +184,10 @@ between pages. They are natively supported by Astro,
 </div>
 ```
 
-After a simulated page transition via the client-side navigation, javascript that had already been
-loaded stays untouched. This has the positive effect of loading the htmx dependency only once, but
-we will still have to re-trigger htmx with the new page.
+They are natively supported by Astro, by introducing client-side navigation. After a simulated
+page load, javascript that had already been loaded stays untouched. This has the positive
+side-effect of loading the htmx dependency only once, but we will still have to re-trigger htmx
+with the new page.
 
 ```js
 <script is:inline>
@@ -204,31 +209,33 @@ html with that bit of javascript.
 Instead of using htmx with a Go, we used Astro SSR as the api, with Astro DB for persistence, and
 `.astro` syntax for templating all around. The experience here for our small app was simply
 amazing. The complexity of React and NextJS could be completely skipped, and we could deliver an
-app without any JSON contracts.
+app without any JSON contracts minimal dependencies.
 
-## Is htmx the future?
+## Is htmx the ultimate choice?
 
-Htmx has certain areas where it shines brightest, but it also has its limits. Carson himself lays
-the pros and cons out in this recommended essay: [When Should You Use
-Hypermedia?](https://htmx.org/essays/when-to-use-hypermedia/). The essay itself doesnt recommend
-htmx as "the tool", but recommends it for particular situations.
+Htmx author Carson himself points out the advantages and disadvatages of htmx based on the
+situation (see [essay](https://htmx.org/essays/when-to-use-hypermedia/)).
 
-To us, htmx excells at going back to basics. Html forms are a breeze, and the whole contracted
-JSON api middleman can be skipped. Especially with Astro, having `.astro` templates all the way
-through, with minimal external dependencies, keeps the complexity low.
+To us, htmx excells at going back to basics. HTML forms are a breeze, and the whole contracted
+JSON api middleman can be skipped, by shipping HTML directly. Especially with Astro, having
+`.astro` templates all the way through, with minimal external dependencies, keeps the complexity
+low.
 
 On the other hand, building this app highlighted also a few strenghts of React. Handling the data
-flow between components is the main purpose of the React Component Properties. With htmx, doing
-the same while only fetching data once, had us come up with some last-mile javascript.
+flow between components is the main purpose of the React component properties. With htmx, doing
+the same while only fetching data once, had us come up with some last-mile javascript. The
+alternative could be to simply fetch more html, which seems to be part of the htmx paradigm.
 
-Also things like onclick eventlisteners, instead of having to attach your own in Astro
+Generally the chance of writing explicit javascript seems slightly higher with htmx, but atleast
+you know what you're doing, and its very honest work. Though more javascript is written, the
+perceived complexity is lower and the overall enjoyment is greater.
 
 ## Rounding up
 
-Coming from react, HTMX introduces a completely different application paradigm. It requires going
+Coming from react, htmx introduces a completely different application paradigm. It requires going
 back to the basics, which felt good. Simply not having the app written in React felt great.
 
-Also the combination of Astro DB with Astro SSR hosted on Netlify felt good. After it initially
+Also the combination of Astro DB with Astro SSR hosted on Netlify was great. After it initially
 seemed like an anti-pattern to use astro for dynamic content, the site itself is quite fast and
 the experience was great.
 
