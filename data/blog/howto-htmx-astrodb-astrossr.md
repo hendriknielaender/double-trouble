@@ -120,6 +120,49 @@ const { loading, title, location, date, description } = Astro.props
 <Input name="description" title="Description" value={description} loading={loading}></Input>
 ```
 
+## Inline Validation
+
+Giving the user early feedback, by displaying form errors on individual fields, is another
+great way to increase the user experience.
+
+<img
+    style="display: block;
+           margin-left: auto;
+           margin-right: auto;"
+  alt="Demonstration of HTMX responsive button"
+src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/inline-validation.gif">
+</img>
+
+In the frontend, we trigger the validation on keyup or input change (copy paste actions). Htmx
+conveniently resets the timer if another letter is input early. Using `hx-params`, we make sure to
+only send the current input as payload.
+```js
+<div class="...">
+  {title}: <div class="ml-2" id={validationResultId}></div>
+</div>
+<!-- ... -->
+<input aria-label={title} type={type || "text"} name={name} {...rest}
+  hx-trigger="keyup changed delay:0.8s, change delay:0.8s"
+  hx-post={validateUrl}
+  hx-params={name}
+  hx-swap="innerHTML"
+  hx-target={"#" + validationResultId}
+  />
+```
+
+In the backend, we then simply apply a partial schema validation using Astro DB's Zod:
+
+```js
+// ...
+const parsedInput = schema.partial().safeParse(inputJson);
+if (!parsedInput.success) {
+  error = parsedInput.error.errors[0].message;
+}
+---
+<div class="text-xs text-red-400">{error ? `(${error})` : undefined}</div>
+```
+
+
 ## Toasty Errors
 
 Once an interaction is submitted, problems can happen. There are many ways to display such
@@ -157,9 +200,7 @@ function onDisplayToast(e) {
 document.body.addEventListener("displayToast", onMakeToast);
 ```
 
-Shoutout to
-[thisisthemurph](https://dev.to/thisisthemurph/go-beyond-the-basics-mastering-toast-notifications-with-go-and-htmx-4ao3)
-for his original blogpost.
+Shoutout to `thisisthemurph` for the basic concept in his [blogpost](https://dev.to/thisisthemurph/go-beyond-the-basics-mastering-toast-notifications-with-go-and-htmx-4ao3).
 
 ## View Transitions
 
@@ -227,8 +268,8 @@ the same while only fetching data once, had us come up with some last-mile javas
 alternative could be to simply fetch more html, which seems to be part of the htmx paradigm.
 
 Generally the chance of writing explicit javascript seems slightly higher with htmx, but atleast
-you know what you're doing, and its very honest work. Though more javascript is written, the
-perceived complexity is lower and the overall enjoyment is greater.
+you know what you're doing, and it's very honest work. Though in this case more explicit javascript
+was written, the perceived complexity was lower and the overall enjoyment greater.
 
 ## Rounding up
 
