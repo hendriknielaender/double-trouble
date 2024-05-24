@@ -56,7 +56,7 @@ classes:
 <Spinner class="hidden htmx-request:block" />
 ```
 
-These htmx-specific tags are not available by default in tailwind, but they can be added via
+These htmx-specific tags are not available in tailwind by default, but they can be added via
 tailwind [plugins](https://www.crocodile.dev/blog/css-transitions-with-tailwind-and-htmx) in the
 astro config:
 ```ts
