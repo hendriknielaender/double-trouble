@@ -15,7 +15,8 @@ announced it:
 
 While the htmx examples in the [documentation](https://htmx.org/examples/) look easy enough, we
 decided to take it to the test and re-implemented an existing [React
-project](https://github.com/flyck/party-task-planner) in htmx.
+project](https://github.com/flyck/party-task-planner) in
+[htmx](https://github.com/flyck/astro-party).
 
 We had created the original app earlier this year, mostly to play around with Websockets and
 AppSync subscriptions. In the frontend it was based on React and Next.js, hosted on top of
@@ -25,9 +26,9 @@ js, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") 
 [Astro](https://astro.build). For the backend we used [Astro DB](https://astro.build/db/), which
 is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/).
 
-We wanted to find out how CRUD apps could be implemented in a straightforward way using this
-stack, but also get the experience of using htmx instead of React. In the following we'll share
-basic techniques using this stack, and also our conclusions, looking back.
+We were curious how well this stack could could work for CRUD apps, but especially the experience
+of using htmx instead of React. In the following we'll share basic techniques for this stack,
+and also our conclusions, looking back.
 
 ## Responsive Buttons
 
@@ -276,12 +277,13 @@ was written, the perceived complexity was lower and the overall enjoyment greate
 Coming from react, htmx introduces a completely different application paradigm. It requires going
 back to the basics, which felt good. Simply not having the app written in React felt great.
 
-Also the combination of Astro DB with Astro SSR hosted on Netlify was great. After it initially
-seemed like an anti-pattern to use Astro for dynamic content, the site itself is quite fast and
-the experience was great.
+Also the combination of [Astro DB](https://astro.build/db/) with [Astro
+SSR](https://docs.astro.build/en/guides/server-side-rendering/) hosted on
+[Netlify](https://www.netlify.com/) was great. After it initially seemed like an anti-pattern to
+use Astro for dynamic content, the site itself is quite fast and the experience was great.
 
 Htmx is conceptionally easy to grasp, and while the initial learning curve is somewhat steep, it
 plateaus relatively quickly, due to the standards-based approach. For smaller apps we definitely
-already recommend to give htmx a try. Hopefully as more and more people learn these basic
-concepts, we can eventually use them for real project at work, and build simple solutions in a
-simple way.
+already recommend to give htmx a try, for bigger apps we'll need to do more research. Hopefully,
+as more and more people learn these basic concepts, we can eventually use them for real projects
+at work, and build simple solutions in a simple way.
