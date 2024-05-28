@@ -35,13 +35,7 @@ A responsive button would change its appearance while the operation is ongoing. 
 this means we want to show a "Confirm" text while the button is ready, and a loading spinner while
 the confirmation is being processed.
 
-<img
-    style="display: block;
-           margin-left: auto;
-           margin-right: auto;"
-  alt="Demonstration of HTMX responsive button"
-src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/button.gif">
-</img>
+![](../../src/assets/images/posts/howto-htmx-astrodb-astrossr/button.gif)
 
 Htmx automatically adds predefined CSS classes to requesting elements, so with tailwind's
 conditional styles, we can use them to hide and display elements when needed. Instead of the
@@ -74,12 +68,7 @@ astro config:
 Before dynamic content loads, we typically want to display *something*. A basic component will
 have skeletons as the initial content, which then gets replaced after loading.
 
-<img
-    style="display: block;
-           margin-left: auto;
-           margin-right: auto;"
-    src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/loading-forms.gif">
-</img>
+![](../../src/assets/images/posts/howto-htmx-astrodb-astrossr/loading-forms.gif)
 
 In the static frontend page which holds those skeletons, we can load the form like so:
 ```html
@@ -125,13 +114,7 @@ const { loading, title, location, date, description } = Astro.props
 Giving the user early feedback, by displaying form errors on individual fields, is another
 great way to increase the user experience.
 
-<img
-    style="display: block;
-           margin-left: auto;
-           margin-right: auto;"
-  alt="Demonstration of HTMX responsive button"
-src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/inline-validation.gif">
-</img>
+![](../../src/assets/images/posts/howto-htmx-astrodb-astrossr/inline-validation.gif)
 
 In the frontend, we trigger the validation on key-up or input change (copy paste actions). Htmx
 conveniently resets the timer if another letter is input early. Using `hx-params`, we make sure to
@@ -168,12 +151,7 @@ if (!parsedInput.success) {
 Once an interaction is submitted, problems can happen. There are many ways to display such
 interactive errors to the user, and one such way is toast messages.
 
-<img
-    style="display: block;
-           margin-left: auto;
-           margin-right: auto;"
-    src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/toast.gif">
-</img>
+![](../../src/assets/images/posts/howto-htmx-astrodb-astrossr/toast.gif)
 
 The server action can be wrapped in a try-catch block, and the server itself decides that this
 error will be rendered as a toast.
@@ -207,12 +185,7 @@ Shout-out to `thisisthemurph` for the basic concept in his [blog-post](https://d
 View transitions are a modern browser feature, which make it easy to have seamless transitions
 between pages. They make page navigation more smooth, while also hiding a bit of loading time.
 
-<img
-    style="display: block;
-           margin-left: auto;
-           margin-right: auto;"
-    src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/viewtransition.gif">
-</img>
+![](../../src/assets/images/posts/howto-htmx-astrodb-astrossr/viewtransition.gif)
 
 ```html
 <head>
