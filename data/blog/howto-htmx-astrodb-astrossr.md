@@ -44,7 +44,7 @@ classes:
 
 ```html
 <div class="block htmx-request:hidden">
-    Confirm
+    Ok
 </div>
 <Spinner class="hidden htmx-request:block" />
 ```
