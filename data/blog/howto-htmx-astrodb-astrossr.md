@@ -26,7 +26,7 @@ js, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") 
 [Astro](https://astro.build). For the backend we used [Astro DB](https://astro.build/db/), which
 is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/).
 
-We were curious how well this stack could could work for CRUD apps, but especially the experience
+We were curious how well this stack could work for CRUD apps, but especially the experience
 of using htmx instead of React. In the following we'll share basic techniques for this stack,
 and also our conclusions, looking back.
 
@@ -44,7 +44,7 @@ the confirmation is being processed.
 src="../../src/assets/images/posts/howto-htmx-astrodb-astrossr/button.gif">
 </img>
 
-Htmx automatically adds predefined CSS classes to requesting elements, so with tailwinds
+Htmx automatically adds predefined CSS classes to requesting elements, so with tailwind's
 conditional styles, we can use them to hide and display elements when needed. Instead of the
 regular `useEffect` shenanigans and a dedicated loading state, we can make use of basic CSS
 classes:
@@ -268,13 +268,13 @@ flow between components is the main purpose of the React component properties. W
 the same while only fetching data once, had us come up with some last-mile JavaScript. The
 alternative could be to simply fetch more HTML, which seems to be part of the htmx paradigm.
 
-Generally the chance of writing explicit JavaScript seems slightly higher with htmx, but at-least
+Generally the chance of writing explicit JavaScript seems slightly higher with htmx, but at least
 you know what you're doing, and it's very honest work. Though in this case more explicit JavaScript
 was written, the perceived complexity was lower and the overall enjoyment greater.
 
 ## Rounding up
 
-Coming from react, htmx introduces a completely different application paradigm. It requires going
+Coming from React, htmx introduces a completely different application paradigm. It requires going
 back to the basics, which felt good. Simply not having the app written in React felt great.
 
 Also the combination of [Astro DB](https://astro.build/db/) with [Astro
@@ -282,7 +282,7 @@ SSR](https://docs.astro.build/en/guides/server-side-rendering/) hosted on
 [Netlify](https://www.netlify.com/) was great. After it initially seemed like an anti-pattern to
 use Astro for dynamic content, the site itself is quite fast and the experience was great.
 
-Htmx is conceptionally easy to grasp, and while the initial learning curve is somewhat steep, it
+Htmx is conceptually easy to grasp, and while the initial learning curve is somewhat steep, it
 plateaus relatively quickly, due to the standards-based approach. For smaller apps we definitely
 already recommend to give htmx a try, for bigger apps we'll need to do more research. Hopefully,
 as more and more people learn these basic concepts, we can eventually use them for real projects
