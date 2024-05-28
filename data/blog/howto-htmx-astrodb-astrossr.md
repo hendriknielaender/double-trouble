@@ -4,6 +4,7 @@ title: "Ditch React: Build Faster with htmx, Astro DB & Astro SSR in 2024"
 description: "Explore common techniques and solutions for building a fast and efficient CRUD app using htmx, Astro DB, and Astro SSR without React in 2024."
 image: "~/assets/images/thumbnails/htmx_app.jpg"
 imageCreditUrl: https://midjourney.com
+tweet: "https://twitter.com/doubletrblblogs/status/1795562784555475133"
 tags: [htmx, react, astro, astrodb, astrossr, crud, netlify]
 ---
 
@@ -223,7 +224,7 @@ html with that bit of JavaScript.
 Instead of using htmx with a Go, we used Astro SSR as the api, with Astro DB for persistence, and
 `.astro` syntax for templating all around. The experience here for our small app was simply
 amazing. The complexity of React and Next.js could be completely skipped, and we could deliver an
-app without any JSON contracts minimal dependencies.
+app without any JSON contracts and minimal dependencies.
 
 ## Is htmx the ultimate choice?
 
