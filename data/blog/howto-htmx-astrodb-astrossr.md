@@ -18,13 +18,12 @@ decided to take it to the test and re-implemented an existing [React
 project](https://github.com/flyck/party-task-planner) in
 [htmx](https://github.com/flyck/astro-party).
 
-We had created the original app earlier this year, mostly to play around with Websockets and
-AppSync subscriptions. In the frontend it was based on React and Next.js, hosted on top of
-Vercel. On the backend it ran on AWS AppSync and Dynamodb as a persistent storage. In the
+In the frontend, the old app was based on React and Next.js, hosted on Vercel. The old backend ran
+on AWS AppSync and DynamoDB for persistent storage. In the
 [re-implementation](https://github.com/flyck/astro-party), we moved the frontend to pure HTML and
-js, using [htmx](https://htmx.org/ "Visit HTMX Official Site for more details") and
-[Astro](https://astro.build). For the backend we used [Astro DB](https://astro.build/db/), which
-is currently in early preview, and Astro SSR hosted on [Netlify](https://www.netlify.com/).
+JavaScript using [htmx](https://htmx.org/ "Visit htmx Official Site for more details") and
+[Astro](https://astro.build). For the backend, we used [Astro DB](https://astro.build/db/) and
+Astro SSR, hosted on [Netlify](https://www.netlify.com/).
 
 We were curious how well this stack could work for CRUD apps, but especially the experience
 of using htmx instead of React. In the following we'll share basic techniques for this stack,
