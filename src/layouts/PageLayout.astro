@@ -7,9 +7,9 @@ const { meta  } = Astro.props;
 const isBlog = (meta.ogType == "article") ? true : false
 ---
 
-<Layout {meta}>
+<Layout {meta} class="flex flex-col">
   <Header {isBlog} />
-  <main>
+  <main class="flex-1">
     <slot />
   </main>
   <Footer />

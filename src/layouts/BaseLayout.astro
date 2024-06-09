@@ -6,7 +6,7 @@ import { ViewTransitions } from "astro:transitions";
 import MetaTags from "~/components/core/MetaTags.astro";
 import BasicScripts from "~/components/core/BasicScripts.astro";
 
-const { meta = {} } = Astro.props;
+const { meta = {}, class: className } = Astro.props;
 
 // https://stackoverflow.com/questions/66120513/property-does-not-exist-on-type-window-typeof-globalthis
 declare global {
@@ -39,7 +39,7 @@ declare global {
     class="antialiased light:text-gray-900 text-slate-100 tracking-tight light:bg-white bg-slate-900"
   >
     <div id="container">
-      <div id="content">
+      <div id="content" class:list={[className, "min-h-screen"]}>
         <slot />
       </div>
     </div>
