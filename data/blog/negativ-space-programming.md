@@ -107,9 +107,14 @@ It is essential to keep assertions in your production code. Assertions allow you
 
 Integrating these practices into your development workflow will enhance the reliability and clarity of your code, making negative space programming a cornerstone of robust software engineering.
 
+## Conclusion
+Negative space programming is a powerful technique that enhances code robustness, clarity, and security. By focusing on what should not happen, developers can create more resilient software.
+
 ### TigerStyle
 
-TigerStyle is more than just a set of rules; it's a philosophy. It emphasizes the importance of design, encapsulating safety, performance, and developer experience as its core goals. Good style, according to TigerStyle, goes beyond readability—it's about how the code works and how it makes the developer feel.
+Negative space programming is part of TigerStyle. But it's more than just a set of rules; it's a philosophy.
+
+It emphasizes the importance of design, encapsulating safety, performance, and developer experience as its core goals. Good style, according to TigerStyle, goes beyond readability—it's about how the code works and how it makes the developer feel.
 
 A significant aspect of TigerStyle is the pursuit of simplicity and elegance. Simplicity is not an easy pass but the result of rigorous thought and multiple revisions. It encourages you spending mental energy upfront during the design phase, ensuring that the code is efficient and reliable in the long run. This proactive approach prevents technical debt, making the codebase robust and maintainable.
 
@@ -120,6 +125,3 @@ Developer experience is also a critical focus. Naming things correctly, minimizi
 By integrating these principles, TigerStyle ensures that the code is not only functional but also elegant and maintainable. 
 
 For more details, check out the official [TigerStyle](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md).
-
-## Conclusion
-Negative space programming is a powerful technique that enhances code robustness, clarity, and security. By focusing on what should not happen, developers can create more resilient software. 
