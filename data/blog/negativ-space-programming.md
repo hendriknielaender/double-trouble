@@ -4,7 +4,7 @@ title: "Exploring the Power of Negative Space Programming"
 description: "Discover how negative space programming can enhance your code's robustness and clarity by focusing on what your program should not do."
 image: "~/assets/images/thumbnails/negativ-space.jpg"
 imageCreditUrl: https://chatgpt.com
-tags: [tigerstyle, programming, zig, assertion, assert, test]
+tags: [tigerstyle, programming, zig, assertion, assert, test, gptpost]
 ---
 
 Negative space programming is a concept that embraces the art of defining a program by what it should not do, rather than what it should. This approach allows developers to create more robust and error-resistant code. Let’s dive into how this concept can be applied and explore its benefits.
