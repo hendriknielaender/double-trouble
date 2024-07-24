@@ -83,32 +83,12 @@ fn openFile(path: []const u8) !std.fs.File {
 
 In this snippet, an error is returned if the file path is empty, clearly defining an invalid state and handling it gracefully.
 
-### 3. Documenting Expectations
-Negative space programming also involves documenting the negative space around your logic. This can be done through comments and error messages that clarify the constraints:
-
-```zig
-const std = @import("std");
-
-fn connectToServer(address: []const u8) !void {
-    if (address.len == 0) {
-        return error.InvalidAddress;
-    }
-    // Connect to server
-}
-```
-
-By documenting the invalid state `(address.len == 0)`, future developers understand the expectations without needing to delve deeply into the implementation.
-
-
 
 ### Keep Your Assertions in Production
 
 It is essential to keep assertions in your production code. Assertions allow your program to check its own logic continuously, ensuring that it runs correctly even under the unexpected conditions often encountered in production. By defining and enforcing negative space, you significantly reduce the risk of undetected bugs causing severe issues.
 
 Integrating these practices into your development workflow will enhance the reliability and clarity of your code, making negative space programming a cornerstone of robust software engineering.
-
-## Conclusion
-Negative space programming is a powerful technique that enhances code robustness, clarity, and security. By focusing on what should not happen, developers can create more resilient software.
 
 ### TigerStyle
 
@@ -118,6 +98,9 @@ It emphasizes the importance of design, encapsulating safety, performance, and d
 
 A significant aspect of TigerStyle is the pursuit of simplicity and elegance. Simplicity is not an easy pass but the result of rigorous thought and multiple revisions. It encourages you spending mental energy upfront during the design phase, ensuring that the code is efficient and reliable in the long run. This proactive approach prevents technical debt, making the codebase robust and maintainable.
 
+> Example:
+Explicitly pass options to library functions at the call site, instead of relying on the defaults. For example, write @prefetch(a, .{ .cache = .data, .rw = .read, .locality = 3 }); over @prefetch(a, .{});. This improves readability but most of all avoids latent, potentially catastrophic bugs in case the library ever changes its defaults.
+
 It also stresses the importance of thinking about performance from the design phase, optimizing for the slowest resources first, and using back-of-the-envelope sketches to be roughly right. This approach ensures that the system is efficient and meets the demands of real-world usage.
 
 Developer experience is also a critical focus. Naming things correctly, minimizing scope, and handling errors meticulously are all practices that enhance the developer's interaction with the code. It also emphasizes the importance of clear and concise documentation, explaining the rationale behind code decisions, and providing detailed commit messages.
@@ -125,3 +108,6 @@ Developer experience is also a critical focus. Naming things correctly, minimizi
 By integrating these principles, TigerStyle ensures that the code is not only functional but also elegant and maintainable. 
 
 For more details, check out the official [TigerStyle](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md).
+
+## Conclusion
+Negative space programming is a powerful technique that enhances code robustness, clarity, and security. By focusing on what should not happen, developers can create more resilient software.
