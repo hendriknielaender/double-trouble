@@ -64,6 +64,7 @@ fn calculateArea(width: i32, height: i32) i32 {
     return width * height;
 }
 ```
+> Note: `std.debug.assert`, is controlled by Zig's flag (e.g. `ReleaseFast`). You need to either use `ReleaseSafe` mode or implement a custom assertion function that does not get optimized out in other release modes.
 
 In this function, assertions ensure that the width and height are always positive, preventing invalid inputs from producing incorrect results.
 
