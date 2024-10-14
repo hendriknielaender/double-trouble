@@ -8,19 +8,20 @@ tweet: "https://twitter.com/doubletrblblogs/status/1752040836450132384"
 tags: [cloud, infrastructure, IaC, GitLab, CI/CD, DevOps, pipeline, automation]
 ---
 
-At work we have spend a bunch of time together, looking the pipeline of a massive monorepo we were
-handling. Through countless hours of doing this, we've arrived at a few "good defaults", or useful
-techniques, which we also found useful in other repos. In this post we will share these general
-techniques with concrete examples for gitlab, but similar concepts could also be applied to other
-CI/CD platforms.
+At work we have spend **a lot** of time together, looking the pipeline of a massive monorepo we
+are handling. Through countless hours of doing this, we've arrived at a few "good defaults", or
+useful techniques, which we also found useful in other repos. In this post we will share these
+general techniques with concrete examples for gitlab, but similar concepts could also be applied
+to other CI/CD platforms.
 
-## Caching & Artifacts
+## Use Caching & Artifacts
 
 Many pipeline systems have the concept of caching and artifacts, and so does
 [gitlab](https://docs.gitlab.com/ee/ci/caching/). Our recommendation is to use caches for install
-dependencies and artifacts for build results, with fallback caches to master in case the
-dependencies didn't change. This setup enables pull requests to bypass the installation job when there are no changes in dependencies.
-has changed. Similarly, the artifact has to be build only once.
+dependencies and artifacts for build results, with fallback caches to the main branch in case the
+dependencies didn't change. This setup enables pull requests to bypass the installation job when
+there are no changes in dependencies.  has changed. Similarly, the artifact has to be build only
+once.
 
 ```yaml
 variables:
@@ -51,11 +52,11 @@ variables:
 ```
 
 
-## Deployment Job Triggers
+## Finetune Job Triggers
 
-The deployment to production on master generally should be a manual action that can be triggered
-immediately. It doesn't have to wait for the dev and test deployment to succeed again first. A
-merged MR will anyway have had all necessary safety checks succeeding in the Pull Request
+The deployment to production on the main branch generally should be a manual action that can be
+triggered immediately. It doesn't have to wait for the dev and test deployment to succeed again
+first. A merged MR will anyway have had all necessary safety checks succeeding in the Pull Request
 already. This make it safe to deploy immediately to production after merge in 99% of the
 cases. This also makes it so a hot-fix can be deployed to production asap without waiting for some
 dev deployment first.
@@ -65,7 +66,7 @@ In gitlab, job dependencies are specified via the [needs](https://docs.gitlab.co
   needs: []
 ```
 
-## Pipeline Workflows
+## Optimize Common Scenarios
 
 If the pipeline feels slow, it can be helpful to think of pipelines in terms of their user
 workflow, like an application. What are the use-cases the pipeline should be supported?
@@ -77,13 +78,14 @@ We often see these three across our repos:
 
 For each supported use-case we can ask: How much waiting time is there in the pipeline, until I
 the job that my workflows needs will be executed? If any use-case somehow needs a bunch of
-unrelated other jobs to be executed first, then this can be optimized. The ideal waiting time is
-0.
+unrelated other jobs to be executed first, then this can be optimized.
 
-## Job Dependencies and Stages
+The ideal waiting time is 0.
+
+## Find Dependencies between Stages
 
 Adding more and more stages makes the pipeline easy to understand and satisfactory to look at, but
-often it comes at the detriment of speed. Therefor removing and merging stages might yield a
+often it comes at the detriment of speed. Therefor, removing and merging stages might yield a
 faster pipeline, which is still understandable.
 
 When tests are fast, it might even be advantageous to execute the test together with the build
@@ -94,7 +96,7 @@ is one that adapts to changes in the repository, to be always as fast as possibl
 For further reading, the team at gitlab also has an article focussing on this topic: [Pipeline
 Efficiency](https://docs.gitlab.com/ee/ci/pipelines/pipeline_efficiency.html).
 
-## The Build Container
+## Speed up the Build Container
 
 If you use big dependencies during deployment, it can be worth it to bundle them already into the
 build container. Maintaining 1 or 2 build containers is usually within reason, while it should of
@@ -110,7 +112,7 @@ Note that if you use shared gitlab runners in your AWS account, it might be usef
 company-wide shared build containers. This allows for easier caching of the build container on the
 runners, so it doesn't have to be downloaded for every job.
 
-## Great Tooling
+## Use Great Tools
 
 Staying up to date on tools, especially in JavaScript is essential. Better tools spring up all the
 time and can bring you the deciding advantage in your pipeline. What has been amazing with
@@ -136,7 +138,7 @@ install:
     - pnpm install
 ```
 
-## Review Apps
+## Leverage Review Apps
 
 Review apps or branch-based deployments is something nobody should sleep on. Especially with
 serverless, once a team exceeds a certain size, branch based environments are a big help. When you
@@ -150,7 +152,7 @@ Apps](https://double-trouble.dev/post/gitlab-review-apps-aws-vite/). This post s
 for branch based deployments in the frontend. This is often already enough, but to all the way
 with branch based deployments also for the backend, we'll help you out in a future post.
 
-## CI Linting
+## Try CI Linting
 
 Last but not least, when tuning the pipeline a lot, it is easy to make a small mistake which will
 have the pipeline not working after a push. To prevent at least some surprises here, it's a real
