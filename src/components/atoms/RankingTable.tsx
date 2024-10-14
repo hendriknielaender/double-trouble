@@ -386,23 +386,23 @@ function RankingTable() {
           ))}
         </tbody>
       </table>
-      <p>
-        Weights:{" "}
+      <div className="flex">
+        <div className="mr-2">Weights:</div>
         {weights.map((weight) => {
           const color = 600 + weight.Weight * 100;
           return (
             <div key={weight.Name}>
               <button
                 type="button"
-                className={`rounded-full px-2 light:text-blue-100 ${bgColorMap[color]}`}
+                className={`rounded-full px-2 mx-1 rounded-sm light:text-blue-100 ${bgColorMap[color]}`}
                 onClick={() => updateWeight(weight.Name)}
               >
                 {weight.Name}: {weight.Weight}
-              </button>{" "}
+              </button>
             </div>
           );
         })}
-      </p>
+      </div>
     </div>
   );
 }
