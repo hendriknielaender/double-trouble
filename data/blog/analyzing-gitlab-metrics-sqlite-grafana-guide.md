@@ -10,17 +10,17 @@ tags: [GitLab, CI/CD, DevOps, pipeline, automation]
 
 A recent optimization has left us again excited - the pipeline speed for a new project had
 significantly improved. Execution times had basically cut in half across the board. Looking at a
-few jobs we could confirm this on an individual basis, but we were wondering about the bigger
+few jobs, we could confirm this on an individual basis, but we were wondering about the bigger
 picture. How had the pipeline improved over a bigger timespan?
 
 
 ## GitLabs Dashboards
 
-Going into this questions the natural start were the existing GitLab dashboards. GitLab has a wide
-variety of different dashboards built-in, so it seemed likely that we would find the answer within
-GitLab itself.
+Having asked this question, the natural start were the existing GitLab dashboards. GitLab has a
+wide variety of different dashboards already built-in, so it seemed likely that we would find the
+answer there.
 
-### CI/CD Analytics
+### GitLab's CI/CD Analytics
 
 Under the projects `Analyze` tab, there is the `CI/CD Analytics` dashboard. A basic view of the
 number of successful and total pipeline runs. Below are the pipelines for the most recent
@@ -32,7 +32,7 @@ analysis.
 Other dashboards in the `Analyze` tab sound intriguing, but they mostly display graphs based on
 the amount of commits, merge requests, GitLab issues or lines changed.
 
-### Build
+### GitLab's Build Tab
 
 The `Build` tab allows a review of the most recent jobs and pipelines, but it lacks insights into
 a broader performance picture. The results are simply returned as a paginated table. For pipelines
@@ -46,13 +46,14 @@ old, with many people wishing for its resolution.
 
 ## Grafana
 
-Moving on from the GitLab metrics we turned our eyes towards Grafana.
+Leaving empty-handed from the GitLab search, we turned our focus towards Grafana.
 
 ### Grafana GitLab Plugin
 
-The best experience can probably be had with the official [Grafana GitLab
-datasource](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/). It comes free for
-Grafana Cloud subscriptions, which also has a free tier, or for any Grafana Enterprise license.
+The [Grafana GitLab
+datasource](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/) seems like a very
+powerful plugin. It comes free for Grafana Cloud subscriptions, which also has a free tier, or for
+any Grafana Enterprise license.
 
 Unfortunately in our scenario, we cannot simply pipe our corporate GitLab data into a Grafana
 Cloud account for some ad-hoc analysis, and our company doesn't have the enterprise license. Though
