@@ -91,6 +91,8 @@ It is essential to keep assertions in your production code. Assertions allow you
 
 Integrating these practices into your development workflow will enhance the reliability and clarity of your code, making negative space programming a cornerstone of robust software engineering.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jc_6ZkkOUpQ?si=6G144LaHH1rfKiEv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### TigerStyle
 
 Negative space programming is part of TigerStyle. But it's more than just a set of rules; it's a philosophy.
