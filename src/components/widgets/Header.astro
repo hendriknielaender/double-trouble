@@ -16,12 +16,12 @@ const { isBlog  } = Astro.props;
   class="sticky top-0 z-40 flex-none mx-auto w-full light:bg-slate-100 bg-slate-900 light:md:bg-slate-100/80 md:bg-black/40 md:backdrop-blur-sm light:border-b border-b-[1px] light:border-slate-400 border-slate-700"
   id="header"
 >
-  {isBlog && (
-    <div id="progress"></div>
-  )}
   <div
     class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"
   >
+     {isBlog && (
+    <div id="progress" class="absolute top-0 left-0"></div>
+    )}
     <div class="flex justify-between">
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
