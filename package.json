@@ -14,7 +14,7 @@
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.1.4",
+    "@astrojs/mdx": "^4.0.2",
     "@astrojs/partytown": "^2.1.1",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
@@ -27,7 +27,7 @@
     "@types/bun": "^1.1.7",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "astro": "4.16.17",
+    "astro": "5.0.5",
     "astro-icon": "^0.8.2",
     "hast-util-to-string": "^3.0.0",
     "hastscript": "^9.0.0",
