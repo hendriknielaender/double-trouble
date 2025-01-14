@@ -12,6 +12,11 @@ import {
 } from "~/utils/permalinks";
 import { fetchPosts } from "~/utils/posts";
 import { findImage } from "~/utils/images";
+import type { Post } from "~/types";
+
+interface Props {
+  post: Post
+}
 
 export async function getStaticPaths() {
   if (BLOG?.disabled || BLOG?.post?.disabled) return [];
