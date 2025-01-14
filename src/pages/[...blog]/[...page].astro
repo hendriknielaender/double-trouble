@@ -7,8 +7,9 @@ import Pagination from "~/components/atoms/Pagination.astro";
 
 import { fetchPosts } from "~/utils/posts";
 import { getCanonical, getPermalink, BLOG_BASE } from "~/utils/permalinks";
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 
-export async function getStaticPaths({ paginate }) {
+export const getStaticPaths = (async ({ paginate }) => {
   if (BLOG?.disabled || BLOG?.blog?.disabled) return [];
 
   const posts = await fetchPosts();
@@ -17,9 +18,11 @@ export async function getStaticPaths({ paginate }) {
     params: { blog: BLOG_BASE || undefined },
     pageSize: BLOG.postsPerPage,
   });
-}
+}) satisfies GetStaticPaths
 
-const { page } = Astro.props;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
 const meta = {
