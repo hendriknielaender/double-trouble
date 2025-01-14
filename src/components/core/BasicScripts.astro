@@ -28,7 +28,7 @@ import { SITE } from '~/config.mjs';
          else if (localStorage.theme == "light") {
            blockquotes[i].dataset.theme = "light"
          } else {
-           console.warning("unknown theme: " + localStorage.theme)
+           console.warn("unknown theme: " + localStorage.theme)
          }
        }
     }
