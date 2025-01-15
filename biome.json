@@ -28,7 +28,7 @@
       "./**/*.json",
       "./**/*.jsonc"
     ],
-    "ignore": ["./node_modules", "./dist"],
+    "ignore": ["./node_modules", "./dist", ".astro"],
     "ignoreUnknown": true
   }
 }

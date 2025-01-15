@@ -53,7 +53,7 @@ const load = async () => {
 let _posts;
 
 /** */
-export const fetchPosts = async () => {
+export const fetchPostsOld = async () => {
   if (!_posts) {
     _posts = await load();
   }
@@ -65,7 +65,7 @@ export const fetchPosts = async () => {
 export const findPostsByIds = async (ids) => {
   if (!Array.isArray(ids)) return [];
 
-  const posts = await fetchPosts();
+  const posts = await fetchPostsOld();
 
   return ids.reduce((r, id) => {
     posts.some((post) => id === post.id && r.push(post));
@@ -76,7 +76,7 @@ export const findPostsByIds = async (ids) => {
 /** */
 export const findLatestPosts = async ({ count }) => {
   const _count = count || 4;
-  const posts = await fetchPosts();
+  const posts = await fetchPostsOld();
 
   return posts ? posts.slice(_count * -1) : [];
 };

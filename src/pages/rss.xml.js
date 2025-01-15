@@ -1,8 +1,8 @@
 import rss from "@astrojs/rss";
 
 import { BLOG, SITE } from "~/config.mjs";
+import { fetchPosts } from "~/utils/blog";
 import { getPermalink } from "~/utils/permalinks";
-import { fetchPosts } from "~/utils/posts";
 
 export const GET = async () => {
   if (BLOG.disabled) {
