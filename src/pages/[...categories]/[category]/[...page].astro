@@ -5,7 +5,7 @@ import Layout from "~/layouts/BlogLayout.astro";
 import BlogList from "~/components/blog/List.astro";
 import Pagination from "~/components/atoms/Pagination.astro";
 
-import { fetchPosts } from "~/utils/posts";
+import { fetchPosts } from "~/utils/blog";
 import {
   getCanonical,
   getPermalink,
@@ -17,7 +17,7 @@ import type { Post } from "~/types";
 export async function getStaticPaths({ paginate }) {
   if (BLOG?.disabled || BLOG?.category?.disabled) return [];
 
-  const posts = await fetchPosts() as Post[];
+  const posts = await fetchPosts();
 
   const categories = new Set();
   posts.map((post) => {

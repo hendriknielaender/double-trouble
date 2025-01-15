@@ -1,16 +1,17 @@
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 export interface Post {
   id: string;
   publishDate: Date;
   draft: boolean;
-  canonical: string;
   slug: string;
   title: string;
   description: string;
   image: string;
   imageCreditUrl: string | null;
-  content: string; // or 'body' in case you consume from API
+  Content: AstroComponentFactory; // or 'body' in case you consume from API
+  content?: string;
   excerpt: string;
-  authors: string[];
   category: string;
   tags: string[];
   readingTime: number;
