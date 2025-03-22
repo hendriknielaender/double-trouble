@@ -12,11 +12,12 @@ import {
   cleanSlug,
   CATEGORY_BASE,
 } from "~/utils/permalinks";
+import type { Post } from "~/types";
 
 export async function getStaticPaths({ paginate }) {
   if (BLOG?.disabled || BLOG?.category?.disabled) return [];
 
-  const posts = await fetchPosts();
+  const posts = await fetchPosts() as Post[];
 
   const categories = new Set();
   posts.map((post) => {
