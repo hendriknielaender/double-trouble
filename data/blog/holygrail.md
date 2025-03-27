@@ -39,6 +39,10 @@ example, a basic Alpine counter component looks like:
 </div>
 ```
 
+Note that the value in the x-data always have to be a json, though you can also include central
+functions. This can be a point of confusion when being in the heat of the moment, as every other
+property in alpine is straight javascript.
+
 ### Example 1: Dropdown
 
 ### Example 2: Dialog
@@ -68,8 +72,8 @@ server integration rarely also needs to do any more javascript via the alpine bi
 
 ## No-Build Frontends
 
-All of the examples in this post could actually be used without any build tools. TODO enhance this
-section
+All of the examples in this post could actually be used without any build tools. Any of the
+previous examples could be copied into the following template, and they would instantly work.
 
 ```html
 <!DOCTYPE html>
@@ -87,22 +91,48 @@ section
 </html>
 ```
 
-Running a few examples locally is actually so easy in combination with bun (TODO mention bun
-version when this was released). To serve a few html files with bun, simply place them in the same
-directory and type:
+Running a few examples locally is actually so easy in combination with buns new html-server
+(introduced in [bun v1.2.3](https://bun.sh/blog/bun-v1.2.3)). To serve a few html files with bun,
+simply place them in the same directory and type:
 
 ```
 bun *.html
 ```
 
 Bun will serve these html files locally and can simulate the basic htmx flow, as one html file may
-load contents from another via htmx. This will give the advantage of avoiding any CORS errors, and
-hot-reloading changes in the html files via bun.
+load contents from another via htmx.
+
+This will give the advantage of avoiding any CORS errors, and hot-reloading changes in the html
+files via bun.
 
 
 ## Why we need simpler tools
 
-TODO section on grugbrain and theories of simplicty
+[Ryan Carniato](https://x.com/RyanCarniato), the author of [SolidJS](https://www.solidjs.com/),
+and a core member of [markoJS](https://markojs.com/), said it himself in his frontend framework
+[mega post](https://dev.to/this-is-learning/javascript-frameworks-heading-into-2025-hkb) at the
+start of this year:
+
+> The quest for simplicity hasn't resulted in making web development simpler.
+
+He mentions tighter economic times increase the pressure to really get things done, which couldn't
+be more true. He also recognizes HTMX as a great option, too, while his heart definitely still
+beats for web compilers.
+
+While we agree with Ryan's analysis, our take-away is a bit different. We see that complex tools,
+often hurt us developers more than we would like to admit. And we know that, not only since the
+release of [grugbrain.dev](https://grugbrain.dev/).
+
+When a problem in react is solved according to the holy rules of react, in a way which is as
+performant as it can be, there is a bit of a hindsight bias. Things weren't that hard after all,
+next time it will be easier. Meanwhile hours, days or weeks have been sunk into this problem,
+while we as developers still feel accomplished in the end.
+
+But all this struggle for what? To build the millionth web form, to build a dropdown, which can
+also expand in this weird way, to build redirects or autofills. We are shooting with huge guns at
+problems which have existed almost since the beginning of the web. It is this that is not
+justified, and it's honestly also not fun. It doesn't give the joy of building and moving
+swiftly. It's time to go simpler.
 
 ## Section on Performance
 
