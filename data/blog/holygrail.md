@@ -45,7 +45,48 @@ property in alpine is straight javascript.
 
 ### Example 1: Dropdown
 
+The following snippet shows an example dropdown in alpine.js. It's an adapted example from [the
+docs](https://alpinejs.dev/component/dropdown), focusing more on only the alpine basics rather
+than all the accessibility and styling shebangs.
+
+```html
+<div class="relative"
+     x-data="{selected: 'nothing', open: true,
+              toggle() {this.open = !this.open}}">
+
+    <div x-text="selected" class="text-gray-200"></div>
+    <!-- Button -->
+    <button x-on:click="toggle()" type="button"
+            class="relative flex items-center py-2 rounded-lg bg-white">
+        <span>Options ↓</span>
+    </button>
+
+    <!-- Panel -->
+    <div
+        x-show="open" x-cloak x-transition.origin.top.left
+        x-on:click.outside="open=false"
+        class="absolute left-0 min-w-48 rounded-lg mt-2 z-10 origin-top-left bg-white text-gray-800"
+    >
+        <button x-on:click="selected='new task'; toggle()"
+            class="p-2 w-full rounded-md text-left hover:bg-gray-50">
+            New Task
+        </button>
+        <button x-on:click="selected='edit task'; toggle()"
+            class="p-2 w-full rounded-md text-left hover:bg-gray-50">
+            Edit Task
+        </button>
+        <!-- more options -->
+    </div>
+</div>
+```
+
+This example leverages `x-on:click` event handlers to modify the selected value, which is
+displayed via `x-text`. A key element is also `x-show` and `x-cloak`, which together hide the
+dropdown element as long as alpine is still getting loaded, or while the open is set to false.
+
 ### Example 2: Dialog
+
+TODO
 
 ## Where Alpine and Htmx overlap
 
