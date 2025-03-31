@@ -43,7 +43,37 @@ Note that the value in the x-data always have to be a json, though you can also 
 functions. This can be a point of confusion when being in the heat of the moment, as every other
 property in alpine is straight javascript.
 
-### Example 1: Dropdown
+### Example 1: Dialog
+
+The following example creates a simple [html
+dialog](https://developer.mozilla.org/de/docs/Web/HTML/Element/dialog) as a modal. The native html
+dialog comes with many interactivity batteries included, while it lacks behind in some other aspects,
+for example transition effects on dialog closing.
+
+```html
+<div x-data="" class="flex w-full">
+  <button class="bg-gray-400 rounded-sm p-1 mx-auto"
+    x-on:click="$refs.dialog.showModal();">open</button>
+  <dialog x-ref="dialog"
+    x-on:click="if (!$refs['dialog-inner'].contains($event.target)) {$refs.dialog.close();}"
+    class="p-0 backdrop:bg-gray-400/50 mx-auto my-auto rounded-sm">
+    <div x-ref="dialog-inner" class="p-4 space-y-4 flex flex-col">
+      <span>This is an open dialog window</span>
+      <button x-on:click="$refs.dialog.close();" class="bg-gray-400 rounded-sm">
+        close
+      </button>
+    </div>
+  </dialog>
+</div>
+```
+
+The snippet above still serves as a great example for the `$refs` utility, which allows easy
+access of elements with by their `x-ref` property. For this to work, `x-ref` needs to be within a
+`x-data` property, as this is the scope it is being bound to.
+
+TODO maybe take an example which is cooler? I don't know..
+
+### Example 2: Dropdown
 
 The following snippet shows an example dropdown in alpine.js. It's an adapted example from [the
 docs](https://alpinejs.dev/component/dropdown), focusing more on only the alpine basics rather
@@ -83,10 +113,6 @@ than all the accessibility and styling shebangs.
 This example leverages `x-on:click` event handlers to modify the selected value, which is
 displayed via `x-text`. A key element is also `x-show` and `x-cloak`, which together hide the
 dropdown element as long as alpine is still getting loaded, or while the open is set to false.
-
-### Example 2: Dialog
-
-TODO
 
 ## Where Alpine and Htmx overlap
 
