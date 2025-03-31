@@ -201,10 +201,24 @@ problems which have existed almost since the beginning of the web. It is this th
 justified, and it's honestly also not fun. It doesn't give the joy of building and moving
 swiftly. It's time to go simpler.
 
-## Section on Performance
+## Section on Performance(?)
 
-TODO take some of the good bits from the gpt-posts
+- Htmx and alpine js, being in the order of a few tens of kilbytes (16 and 17kB respectively), are
+  much smaller than most JS frameworks. React and Angular being more in the 40-60kB area
+  [source](https://blog.logrocket.com/angular-vs-react-vs-vue-js-comparing-performance/).
+- Instead of going for a heavy SPA approach, the server-rendered html require only minimal
+  javascript in the browser to manage interactivity, while the html is mostly
+  server-rendered. This has the added benefit of the page always being indexable by search
+  engines, since it is just HTML.
+
+TODO take more of the good bits from the gpt-posts
 
 ## Rounding up
 
-TODO
+Our bet on htmx and Alpine.js is that it's going to help us to build things faster and
+simpler. Having small docs for just a handful of options, together with stable APIs, to us that is
+not a bug. It's a massive feature.
+
+We're eager to dig deeper into building with alpine.js and htmx, and share our continued
+findings. As we are building with it on our huge project, which should launch by the end of this
+summer, we can hopefully turn some heads and convince some folks to turn back to simplicity, too.
