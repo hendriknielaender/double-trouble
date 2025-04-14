@@ -71,8 +71,6 @@ The snippet above still serves as a great example for the `$refs` utility, which
 access of elements with by their `x-ref` property. For this to work, `x-ref` needs to be within a
 `x-data` property, as this is the scope it is being bound to.
 
-TODO maybe take an example which is cooler? I don't know..
-
 ### Example 2: Dropdown
 
 The following snippet shows an example dropdown in alpine.js. It's an adapted example from [the
@@ -114,11 +112,15 @@ This example leverages `x-on:click` event handlers to modify the selected value,
 displayed via `x-text`. A key element is also `x-show` and `x-cloak`, which together hide the
 dropdown element as long as alpine is still getting loaded, or while the open is set to false.
 
-## Where Alpine and Htmx overlap
+## Alpine & Htmx Synergies / Overlap
 
-While htmx and alpine synergize well, as alpine manages client-side interactivity, and htmx
-manages server-side integration, there is a bit of overlap. One of these overlaps in the click
-event trigger, which both htmx (`hx-trigger='click'`) and alpine (`x-on:click='foo=true'`) can do.
+While alpine manages client-side interactivity, and htmx manages server-side integration, both try
+to potentially stand on their own, so naturally there is a bit of overlap.
+
+### Clicks
+
+One of these overlaps is handling the click event trigger, which both htmx (`hx-trigger='click'`)
+and alpine (`x-on:click='foo=true'`) can do.
 
 ```html
 <div x-data="{isClicked: false}">
@@ -133,9 +135,54 @@ event trigger, which both htmx (`hx-trigger='click'`) and alpine (`x-on:click='f
 </div>
 ```
 
-In this case, both click-effects will be triggered, which is also what we would expect. In
-practice, we found these tiny overlaps rarely come into effect, and an element which triggers a
-server integration rarely also needs to do any more javascript via the alpine binding.
+In this case, both click-effects will be triggered and processed, which is also what we would
+expect. This is an overlap which is rather hypothetical, and rarely matters in
+
+### X-Bind
+
+X-Bind is an alpine directive, which allows to set html attributes based on the result of
+javascript expressions. In the following example, we set the path parameters for a conditional
+server request, by compiling the interpolated string for htmx as the value of `x-bind`.
+
+```html
+<div
+  x-ref="deep-link-dialog"
+  x-data="{id: new URLSearchParams(location.search).get('id')}"
+  x-bind:hx-trigger="`${id !== null ? 'load': ''}`"
+  x-bind:hx-get="`/api/tasks/${id}`"
+  hx-swap="innerHTML"
+></div>
+```
+
+Note that this example could also be implemented with pure htmx, if the parameter was [not a path
+parameter](https://github.com/bigskysoftware/htmx/issues/1202) (using `hx-params` &
+`hx-on:htmx:validation:validate` to skip the request), or by simply relying on the
+`HX-Current-URL` and parsing that in the backend. However, combining alpine and htmx with `x-bind`
+we get a traditional REST request using only simple methods.
+
+
+### Events
+
+Both htmx and alpine have helper functions to emit events, and both can natively catch all sorts
+of events, includign custom ones. The following example shows how both could be used
+interchangibly, to increase an alpine counter.
+
+```html
+<div x-data="{counter: 0}" x-on:notify="counter++" id="counter">
+  <div x-text="counter"></div>
+  <div class="flex w-full gap-2" class="flex flex-row">
+    <button class="bg-blue-400 p-2 rounded-sm" @click="$dispatch('notify')">Emit alpine event!</button>
+    <button class="bg-orange-400 p-2 rounded-sm" @click="htmx.trigger('#counter', 'notify')">Emit htmx event!</button>
+  </div>
+</div>
+```
+
+Since both libraries use native events under the hood, the can listen to each others events
+without any extra config, which again leads to easy and great synergies.
+
+By working only with the raw essentials of html and javascript in the browser, these two tools can
+work together great. Both tools having a different focus, they complement each other and give
+options, which would otherwise not be comfortable.
 
 ## No-Build Frontends
 
