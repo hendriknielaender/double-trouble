@@ -36,10 +36,10 @@ define component state, `x-text` or `x-html` to bind data to the DOM, `x-on:clic
 [and so on](https://alpinejs.dev/start-here). All of this happens *declaratively in the HTML*. For
 example, a basic Alpine counter component looks like:
 
-<CodePreview previewCode={`<div x-data="{ count: 0 }" class="flex flex-col">
-  <span x-text="count" class="text-center"></span>
-  <button class="rounded-sm px-2 bg-blue-800" x-on:click="count++">Increment</button>
-</div>`}>
+<script src="https://cdn.twind.style" crossorigin></script>
+
+
+<CodePreview ><div x-show="visible" className="-mt-6">
 
 ```html
 <div x-data="{ count: 0 }">
@@ -48,7 +48,17 @@ example, a basic Alpine counter component looks like:
 </div>
 ```
 
-</CodePreview>
+</div><div
+  x-show="!visible"
+  className="flex p-1 items-center justify-center rounded-lg border-[1px] border-slate-600"
+>
+
+<div x-data="{ count: 0 }" class="flex flex-col">
+  <span x-text="count" class="text-center"></span>
+  <button className="rounded-sm px-2 bg-green-800" x-on:click="count++">Increment</button>
+</div>
+
+</div></CodePreview>
 
 Note that the value in the x-data always have to be a json, though you can also include central
 functions. This can be a point of confusion when being in the heat of the moment, as every other
@@ -61,20 +71,7 @@ dialog](https://developer.mozilla.org/de/docs/Web/HTML/Element/dialog) as a moda
 dialog comes with many interactivity batteries included, while it lacks behind in some other aspects,
 for example transition effects on dialog closing.
 
-<CodePreview previewCode={`<div x-data="" class="flex w-full">
-  <button class="bg-blue-600 rounded-sm p-1 mx-auto"
-    x-on:click="$refs.dialog.showModal();">open</button>
-  <dialog x-ref="dialog"
-    x-on:click="if (!$refs['dialog-inner'].contains($event.target)) {$refs.dialog.close();}"
-    class="p-0 backdrop:bg-gray-400/50 mx-auto my-auto rounded-sm">
-    <div x-ref="dialog-inner" class="p-4 space-y-4 flex flex-col">
-      <span>This is an open dialog window</span>
-      <button x-on:click="$refs.dialog.close();" class="bg-blue-600 rounded-sm">
-        close
-      </button>
-    </div>
-  </dialog>
-</div>`}>
+<CodePreview><div x-show="visible" className="-mt-6">
 
 ```html
 <div x-data="" class="flex w-full">
@@ -93,7 +90,27 @@ for example transition effects on dialog closing.
 </div>
 ```
 
-</CodePreview>
+</div><div
+  x-show="!visible"
+  className="flex p-1 items-center justify-center rounded-lg border-[1px] border-slate-600"
+>
+
+<div x-data="" class="flex w-full">
+  <button className="bg-green-600 rounded-sm p-1 mx-auto"
+    x-on:click="$refs.dialog.showModal();">open</button>
+  <dialog x-ref="dialog"
+    x-on:click="if (!$refs['dialog-inner'].contains($event.target)) {$refs.dialog.close();}"
+    class="p-0 backdrop:bg-gray-400/50 mx-auto my-auto rounded-sm">
+    <div x-ref="dialog-inner" class="p-4 space-y-4 flex flex-col">
+      <span>This is an open dialog window</span>
+      <button x-on:click="$refs.dialog.close();" class="bg-green-600 w-min rounded-sm">
+        close
+      </button>
+    </div>
+  </dialog>
+</div>
+
+</div></CodePreview>
 
 The snippet above still serves as a great example for the `$refs` utility, which allows easy
 access of elements with by their `x-ref` property. For this to work, `x-ref` needs to be within a
@@ -104,6 +121,8 @@ access of elements with by their `x-ref` property. For this to work, `x-ref` nee
 The following snippet shows an example dropdown in alpine.js. It's an adapted example from [the
 docs](https://alpinejs.dev/component/dropdown), focusing more on only the alpine basics rather
 than all the accessibility and styling shebangs.
+
+<CodePreview><div x-show="visible" className="-mt-6">
 
 ```html
 <div class="relative"
@@ -135,6 +154,36 @@ than all the accessibility and styling shebangs.
     </div>
 </div>
 ```
+
+</div><div
+  x-show="!visible"
+  className="flex p-1 items-center justify-center rounded-lg border-[1px] border-slate-600"
+>
+
+<div class="relative" x-data="{selected: undefined, open: true, toggle() {this.open = !this.open}}">
+
+    <div x-text="selected" class="text-gray-200"></div>
+    <button x-on:click="toggle()" type="button"
+            class="relative flex items-center py-2 rounded-lg bg-white">
+        <span>Options ↓</span>
+    </button>
+
+    <div
+        x-show="open" x-cloak
+        class="absolute left-0 min-w-48 rounded-lg mt-2 z-10 origin-top-left bg-white text-gray-800"
+    >
+        <button x-on:click="selected='new task'; toggle()"
+            class="p-2 w-full rounded-md text-left hover:bg-gray-50">
+            New Task
+        </button>
+        <button x-on:click="selected='edit task'; toggle()"
+            class="p-2 w-full rounded-md text-left hover:bg-gray-50">
+            Edit Task
+        </button>
+    </div>
+</div>
+
+</div></CodePreview>
 
 This example leverages `x-on:click` event handlers to modify the selected value, which is
 displayed via `x-text`. A key element is also `x-show` and `x-cloak`, which together hide the

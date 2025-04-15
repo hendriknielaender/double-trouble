@@ -3,21 +3,35 @@ import type { ReactNode } from "react";
 /**
  * This component can toggle between the code children and the given previewCode.
  *
- * The html could also be pasted into the markdown directly, but then certain tailwind
- * styles are not available to style this preview toggle.
+ * HTML that is pasted directly into the markdown, or passed into this component as string
+ * will not have many of the tailwind styles applied, as they are not detected by the
+ * renderer.
  *
- * Limitation of this Component is that the previewCode has limited styling capability,
- * as it is set as a dangerouslyInnerHTML. Ideally this would be possible via mdx in
- * order to lift this limitation, but I couldn't figure this one so far.
+ * For this resason, both the preview and the markdown-rendered code snippet are passed as
+ * children, so they all get properly tailwind-rendered. The compromise here is that part
+ * of the component is passed as a children, which seemed to be the only way to have this
+ * work, without creating a custom markdown renderer.
+ *
+ * Example usage:
+ *  <CodePreview>
+ *  <div x-show="visible" className="-mt-6">
+ *
+ *  ```html
+ *  <div x-data="{ count: 0 }"></div>
+ *  ```
+ *  </div>
+ *  <div
+ *    x-show="!visible"
+ *    className="flex p-1 items-center justify-center rounded-lg border-[1px] border-slate-600"
+ *  >
+ *    <div x-data="{ count: 0 }"></div>
+ *  </div>
+ *  </CodePreview>
  */
 export function CodePreview({
   children,
-  previewCode,
 }: {
   children: ReactNode;
-  // the preview code is generally more styled than the regular code. also it is not rendered
-  // as a codeblock by the markdown renderer, so we actually need the raw string.
-  previewCode: string;
 }) {
   return (
     <div x-data="{ visible: true }" className="flex flex-col p-0">
@@ -39,14 +53,7 @@ export function CodePreview({
           </button>
         </div>
       </div>
-      <div x-show="visible" className="-mt-6">
-        {children}
-      </div>
-      <div
-        x-show="!visible"
-        className="flex p-1 items-center justify-center rounded-lg border-[1px] border-slate-600"
-        dangerouslySetInnerHTML={{ __html: previewCode }}
-      ></div>
+      {children}
     </div>
   );
 }
