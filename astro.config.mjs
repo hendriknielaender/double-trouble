@@ -4,7 +4,8 @@ import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+import tailwindcssVite from "@tailwindcss/vite"; // Added
+// import tailwind from "@astrojs/tailwind"; // Removed
 import { defineConfig } from "astro/config";
 import { SITE } from "./src/config.mjs";
 import { remarkReadingTime } from "./src/utils/frontmatter.js";
@@ -28,11 +29,11 @@ export default defineConfig({
     "/post/product_engineers": "/post/product-engineers",
   },
   integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
+    // tailwind({ // Removed
+    //   config: {
+    //     applyBaseStyles: false,
+    //   },
+    // }),
     sitemap(),
     mdx() /* Disable this integration if you don't use Google Analytics (or other external script). */,
     partytown({
@@ -63,6 +64,9 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["limax"],
     },
-    plugins: [tsconfigPaths({ verbose: true })],
+    plugins: [
+      tailwindcssVite(), // Added
+      tsconfigPaths({ verbose: true }),
+    ],
   },
 });
