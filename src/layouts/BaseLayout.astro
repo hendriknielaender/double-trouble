@@ -1,7 +1,7 @@
 ---
 import "~/assets/styles/base.css";
 
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 import MetaTags from "~/components/core/MetaTags.astro";
 import BasicScripts from "~/components/core/BasicScripts.astro";
@@ -33,7 +33,7 @@ declare global {
     <script>window.usermaven = window.usermaven || (function(){(window.usermavenQ = window.usermavenQ || []).push(arguments);})</script>
   </head>
 
-  <ViewTransitions />
+  <ClientRouter />
 
   <body
     class="antialiased light:text-gray-900 text-slate-100 tracking-tight light:bg-white bg-slate-900"
