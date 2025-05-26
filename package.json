@@ -14,7 +14,7 @@
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.1.4",
+    "@astrojs/mdx": "^4.3.0",
     "@astrojs/partytown": "^2.1.1",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
