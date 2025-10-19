@@ -1,5 +1,5 @@
 ---
-publishDate: "Sep 29 2025"
+publishDate: "Oct 19 2025"
 title: "Our Learnings after 1 Year of Building on Cloudflare"
 description: "Things we learned along the way and which stood out to us as cloudflare newbies"
 image: "~/assets/images/thumbnails/cloudflare-2025-review.png"
@@ -11,10 +11,12 @@ Professionally, we've both been mainly building on AWS. Slowly approaching our t
 milestones, continuously digging through Cloudwatch logs and tweaking IAM permissions, we've
 seen and build a lot.
 
-But during this and last year, when the time came to take on bigger private projects, we decided
-to turn our backs on Bezo's cloud, and learn something new. We decided to go for Cloudflare. This
-particular cloud for us promised to be something new and exciting. An up-and-coming all-purpose
-cloud champion, probably with less features, but also more compact.
+But during this and the last year, when the time came to take on bigger private projects, we
+decided to turn our backs on Bezo's cloud, and learn something new. We decided to go for
+Cloudflare. This particular cloud promised to be something new and exciting for us. An
+up-and-coming all-purpose cloud champion, build by an organization that already processes [over
+20%](https://convergedigest.com/cloudflare-expands-network-powers-over-20-of-internet-traffic-in-2024/)
+of global internet traffic.
 
 ## Getting our Feet wet
 
@@ -23,10 +25,13 @@ cloudflare the answer is [wrangler](https://developers.cloudflare.com/workers/wr
 is mainly configured via its `wrangler.jsonc`, or `wrangler.toml`, while we started with the toml
 file because it seemed easier to read.
 
-Where AWS has SAM, CDK, Cloudformation, the AWS CLI, Elastic Beanstalk and more, Cloudflare has
-wrangler. It is both the one tool that can stand up the local dev environment for all services, as
-well as the cloudflare cli tool, as well as the deployment cli, alongside with helpers to extend
-the central `.toml` file.
+Where AWS has
+[SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html),
+[CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html),
+[Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html), the
+[AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html), [Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html) and more, Cloudflare has wrangler. It is both the one tool that can
+stand up the local dev environment for all services, as well as the cloudflare cli tool, as well
+as the deployment cli, alongside with helpers to extend the central `.toml` file.
 
 Armed with our trusty all-purpose wrangler tool, we took on Cloudflare and started building.
 
@@ -89,16 +94,19 @@ database, block storage and container services just on cloudflare, based on a si
 ## Top Surprises
 
 Workers, the central way to do compute on cloudflare, have a `7 days max log retention`
-[link](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#limits).
+([docs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#limits)).
 
 Furthermore, workers in the free tier have `10ms maximum compute time per request`. This is
 extended to 5 minutes maximum in the paid tier
-[link](https://developers.cloudflare.com/workers/platform/limits/#worker-limits).
+([docs](https://developers.cloudflare.com/workers/platform/limits/#worker-limits)).
 
 Gladly, for more sizable compute jobs, containers come to the rescue, a big feature released by
 cloudflare this year. The 10ms compute time doesn't count the time we're waiting for responses,
-which makes 10ms turn out to be a lot. For the 7 day retention, we are publishing important logs
-also to our discord server, for better tracking.
+which makes 10ms turn out to be a lot. Cloudflare also recently improved [CPU
+performance](https://blog.cloudflare.com/unpacking-cloudflare-workers-cpu-performance-benchmarks/),
+further increasing compute effectivity.
+
+For the 7 day retention, we are publishing important logs also to our discord server, for better tracking.
 
 ## Top Oddities
 
