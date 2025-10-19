@@ -1,3 +1,4 @@
+// biome-ignore lint/correctness/noUnusedImports: the import is needed for the charts to work
 import Chart from "chart.js/auto";
 import type { FunctionComponent } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
@@ -34,7 +35,7 @@ function BarChart(props: {
   source?: string;
   type: "bar" | "pie" | "line";
 }) {
-  const { className, data, title, vertical, source, dataLabels, type } = props;
+  const { data, title, vertical, source, dataLabels, type } = props;
 
   const chartData = {
     // for simplicity it is assumed that if multiple datasets are given, they share their labels

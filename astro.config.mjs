@@ -1,14 +1,16 @@
-import path from "path";
-import { fileURLToPath } from "url";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
+import path from "path";
+import { fileURLToPath } from "url";
 import { SITE } from "./src/config.mjs";
 import { remarkReadingTime } from "./src/utils/frontmatter.js";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 import autolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { tsconfigPaths } from "vite-plugin-lib";

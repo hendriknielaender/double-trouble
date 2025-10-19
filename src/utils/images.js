@@ -1,18 +1,18 @@
 import { getImage } from "astro:assets";
 
 const load = async () => {
-  let images = undefined;
+  let images;
   try {
     images = import.meta.glob(
       "~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}",
     );
-  } catch (e) {
+  } catch (_e) {
     // continue regardless of error
   }
   return images;
 };
 
-let _images = undefined;
+let _images;
 
 /** */
 export const fetchLocalImages = async () => {
