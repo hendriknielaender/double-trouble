@@ -1,5 +1,5 @@
 ---
-import { SITE, BLOG } from "~/config.mjs";
+import { SITE, APP_BLOG as BLOG } from "astrowind:config";
 
 import Layout from "~/layouts/BlogLayout.astro";
 import BlogList from "~/components/blog/List.astro";
@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
   const posts = await fetchPosts();
 
   return paginate(posts, {
-    params: { blog: BLOG_BASE || undefined },
+    params: { post: BLOG_BASE || undefined },
     pageSize: BLOG.postsPerPage,
   });
 }

@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 const { text, url, class: className = "inline-block" } = Astro.props;
 ---
 
@@ -11,14 +11,14 @@ const { text, url, class: className = "inline-block" } = Astro.props;
     data-aw-social-share="twitter"
     data-aw-url={url}
     data-aw-text={text}
-    ><Icon name="logos:twitter" class="w-6 h-6" />
+    ><Icon name="tabler:brand-twitter" class="w-6 h-6" />
   </button>
   <button
     aria-label="facebook"
     class="ml-2"
     data-aw-social-share="facebook"
     data-aw-url={url}
-    ><Icon name="logos:facebook" class="w-6 h-6" />
+    ><Icon name="tabler:brand-facebook" class="w-6 h-6" />
   </button>
   <button
     aria-label="linkedin"
@@ -26,7 +26,7 @@ const { text, url, class: className = "inline-block" } = Astro.props;
     data-aw-social-share="linkedin"
     data-aw-url={url}
     data-aw-text={text}
-    ><Icon name="logos:linkedin-icon" class="w-6 h-6" />
+    ><Icon name="tabler:brand-linkedin" class="w-6 h-6" />
   </button>
   <button
     aria-label="whatsapp"
@@ -34,7 +34,7 @@ const { text, url, class: className = "inline-block" } = Astro.props;
     data-aw-social-share="whatsapp"
     data-aw-url={url}
     data-aw-text={text}
-    ><Icon name="logos:whatsapp" class="w-6 h-6" />
+    ><Icon name="tabler:brand-whatsapp" class="w-6 h-6" />
   </button>
   <button
     aria-label="mail"

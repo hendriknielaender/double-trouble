@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { getPermalink } from "~/utils/permalinks";
 const {
   prevUrl,
@@ -15,7 +15,7 @@ const {
       <div class="flex flex-row mx-auto container justify-between">
         <a
           href={getPermalink(prevUrl, "raw")}
-          class={`btn px-2 font-medium light:text-gray-600 light:hover:text-gray-900 text-gray-400 hover:text-white shadow-none mr-2
+          class={`inline-flex items-center justify-center rounded-full bg-transparent px-2 py-3.5 font-medium text-gray-400 hover:text-white hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-slate-800 transition ease-in duration-200 cursor-pointer mr-2
       ${!prevUrl ? "invisible" : ""}`}
         >
           <div class="flex flex-row align-middle">
@@ -25,7 +25,7 @@ const {
         </a>
         <a
           href={getPermalink(nextUrl, "raw")}
-          class={`btn px-2 font-medium light:text-gray-600 light:hover:text-gray-900 text-gray-400 hover:text-white shadow-none ${
+          class={`inline-flex items-center justify-center rounded-full bg-transparent px-2 py-3.5 font-medium text-gray-400 hover:text-white hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-slate-800 transition ease-in duration-200 cursor-pointer ${
             !nextUrl ? "invisible" : ""
           }`}
         >
