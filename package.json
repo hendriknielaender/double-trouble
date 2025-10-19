@@ -11,7 +11,11 @@
     "astro": "astro",
     "lint": "biome lint .",
     "format": "biome check --write .",
-    "subfont": "subfont -ir --no-fallbacks --silent --root dist"
+    "subfont": "subfont -ir --no-fallbacks --silent --root dist",
+    "test:setup": "playwright install",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed"
   },
   "devDependencies": {
     "@astrojs/mdx": "^3.1.4",
@@ -23,6 +27,7 @@
     "@astrolib/seo": "^1.0.0-beta.5",
     "@biomejs/biome": "2.0.6",
     "@fontsource/inter": "^5.0.20",
+    "@playwright/test": "^1.48.0",
     "@tailwindcss/typography": "^0.5.14",
     "@types/bun": "^1.1.7",
     "@types/react": "^19.0.10",
