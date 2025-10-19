@@ -142,7 +142,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
+        <div class="flex items-center gap-0">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
           {
             showRssFeed && (
@@ -155,11 +155,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               </a>
             )
           }
-        </div>
-        {
-          actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
-              {actions.map((action) => (
+          {
+            actions?.length ? (
+              actions.map((action) => (
                 <a
                   class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
                   href={action.href}
@@ -168,12 +166,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 >
                   <Icon name={action.icon} class="w-5 h-5" />
                 </a>
-              ))}
-            </span>
-          ) : (
-            ''
-          )
-        }
+              ))
+            ) : (
+              ''
+            )
+          }
+        </div>
       </div>
     </div>
   </div>

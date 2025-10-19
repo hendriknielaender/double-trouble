@@ -1,32 +1,39 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
+import react from "@astrojs/react";
 
-import { defineConfig } from 'astro/config';
-
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import mdx from '@astrojs/mdx';
-import partytown from '@astrojs/partytown';
-import react from '@astrojs/react';
-import icon from 'astro-icon';
-import compress from 'astro-compress';
-import type { AstroIntegration } from 'astro';
-
-import astrowind from './vendor/integration';
-
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter.ts';
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+import type { AstroIntegration } from "astro";
+import { defineConfig } from "astro/config";
+import compress from "astro-compress";
+import icon from "astro-icon";
+import path from "path";
 import autolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import { fileURLToPath } from "url";
 import { autolinkConfig } from "./plugins/rehype-autolink-config";
+import {
+  lazyImagesRehypePlugin,
+  readingTimeRemarkPlugin,
+  responsiveTablesRehypePlugin,
+} from "./src/utils/frontmatter.ts";
+import astrowind from "./vendor/integration";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
-const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
-  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+const whenExternalScripts = (
+  items: (() => AstroIntegration) | (() => AstroIntegration)[] = [],
+) =>
+  hasExternalScripts
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
 
 export default defineConfig({
-  output: 'static',
+  output: "static",
 
   integrations: [
     tailwind({
@@ -36,17 +43,17 @@ export default defineConfig({
     mdx(),
     icon({
       include: {
-        tabler: ['*'],
-        'flat-color-icons': [
-          'template',
-          'gallery',
-          'approval',
-          'document',
-          'advertising',
-          'currency-exchange',
-          'voice-presentation',
-          'business-contact',
-          'database',
+        tabler: ["*"],
+        "flat-color-icons": [
+          "template",
+          "gallery",
+          "approval",
+          "document",
+          "advertising",
+          "currency-exchange",
+          "voice-presentation",
+          "business-contact",
+          "database",
         ],
       },
     }),
@@ -54,14 +61,14 @@ export default defineConfig({
 
     ...whenExternalScripts(() =>
       partytown({
-        config: { forward: ['dataLayer.push'] },
-      })
+        config: { forward: ["dataLayer.push"] },
+      }),
     ),
 
     compress({
       CSS: true,
       HTML: {
-        'html-minifier-terser': {
+        "html-minifier-terser": {
           removeAttributeQuotes: false,
         },
       },
@@ -72,17 +79,22 @@ export default defineConfig({
     }),
 
     astrowind({
-      config: './src/config.yaml',
+      config: "./src/config.yaml",
     }),
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ["cdn.pixabay.com"],
   },
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin, rehypeSlug, [autolinkHeadings, autolinkConfig]],
+    rehypePlugins: [
+      responsiveTablesRehypePlugin,
+      lazyImagesRehypePlugin,
+      rehypeSlug,
+      [autolinkHeadings, autolinkConfig],
+    ],
   },
 
   redirects: {
@@ -95,7 +107,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
+        "~": path.resolve(__dirname, "./src"),
       },
     },
     optimizeDeps: {

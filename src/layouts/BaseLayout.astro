@@ -9,7 +9,6 @@ import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
-import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 // Comment the line below to disable View Transitions
@@ -35,7 +34,7 @@ declare global {
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="motion-safe:scroll-smooth text-base">
+<html lang={language} dir={textDirection} class="motion-safe:scroll-smooth text-lg">
   <head>
     <CommonMeta />
     <Favicons />
@@ -43,7 +42,6 @@ declare global {
     <ApplyColorMode />
     <Metadata {...metadata} />
     <SiteVerification />
-    <Analytics />
 
     <!-- Usermaven Analytics -->
     <script async src="https://t.usermaven.com/lib.js"

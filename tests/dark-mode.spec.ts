@@ -93,7 +93,7 @@ test.describe("Dark Mode", () => {
       localStorage.setItem("theme", "light");
     });
     await page.reload();
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState("networkidle");
 
     const content = page.locator("#content");
     await expect(content).toHaveClass(/bg-white-svg/);
@@ -103,7 +103,7 @@ test.describe("Dark Mode", () => {
       localStorage.setItem("theme", "dark");
     });
     await page.reload();
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState("networkidle");
 
     await expect(content).toHaveClass(/bg-dark-svg/);
     await expect(content).not.toHaveClass(/bg-white-svg/);

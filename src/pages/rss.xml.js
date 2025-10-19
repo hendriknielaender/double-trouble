@@ -1,6 +1,5 @@
-import rss from "@astrojs/rss";
-
 import { APP_BLOG as BLOG, SITE } from "astrowind:config";
+import rss from "@astrojs/rss";
 import { getPermalink } from "~/utils/permalinks";
 import { fetchPosts } from "~/utils/posts";
 
