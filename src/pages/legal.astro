@@ -1,5 +1,5 @@
 ---
-import { SITE } from "~/config.mjs";
+import { SITE } from "astrowind:config";
 import { getCanonical, getHomePermalink } from "~/utils/permalinks";
 import Layout from "~/layouts/PageLayout.astro";
 
@@ -12,7 +12,7 @@ const meta = {
   canonical: getCanonical(getHomePermalink()),
 };
 
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Picture from "~/components/core/Picture.astro";
 ---
 
