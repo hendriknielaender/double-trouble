@@ -1,12 +1,28 @@
 ---
-import "~/assets/styles/base.css";
+import '~/assets/styles/base.css';
 
-import { ViewTransitions } from "astro:transitions";
+import { I18N } from 'astrowind:config';
 
-import MetaTags from "~/components/core/MetaTags.astro";
-import BasicScripts from "~/components/core/BasicScripts.astro";
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Favicons from '~/components/Favicons.astro';
+import CustomStyles from '~/components/CustomStyles.astro';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
 
-const { meta = {}, class: className } = Astro.props;
+// Comment the line below to disable View Transitions
+import { ClientRouter } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '~/types';
+
+export interface Props {
+  metadata?: MetaDataType;
+  class?: string;
+}
+
+const { metadata = {}, class: className } = Astro.props;
+const { language, textDirection } = I18N;
 
 // https://stackoverflow.com/questions/66120513/property-does-not-exist-on-type-window-typeof-globalthis
 declare global {
@@ -17,11 +33,17 @@ declare global {
 }
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
+<!doctype html>
+<html lang={language} dir={textDirection} class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
   <head>
-    <MetaTags {...meta} />
-    <meta name="view-transition" content="same-origin" />
+    <CommonMeta />
+    <Favicons />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+
+    <!-- Usermaven Analytics -->
     <script async src="https://t.usermaven.com/lib.js"
         data-key="UMGyRPpZdu"
         data-tracking-host="https://events.usermaven.com"
@@ -31,18 +53,18 @@ declare global {
         defer>
     </script>
     <script>window.usermaven = window.usermaven || (function(){(window.usermavenQ = window.usermavenQ || []).push(arguments);})</script>
+
+    <!-- Comment the line below to disable View Transitions -->
+    <ClientRouter fallback="swap" />
   </head>
 
-  <ViewTransitions />
-
-  <body
-    class="antialiased light:text-gray-900 text-slate-100 tracking-tight light:bg-white bg-slate-900"
-  >
+  <body class="antialiased text-default bg-page tracking-tight">
     <div id="container">
       <div id="content" class:list={[className, "min-h-screen"]}>
         <slot />
       </div>
     </div>
+
     <BasicScripts />
     <style is:global>
       img {

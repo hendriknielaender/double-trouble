@@ -1,5 +1,5 @@
 ---
-import { SITE, BLOG } from "~/config.mjs";
+import { SITE, APP_BLOG as BLOG } from "astrowind:config";
 
 import Layout from "~/layouts/BlogLayout.astro";
 import BlogList from "~/components/blog/List.astro";
@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
   const posts = await fetchPosts();
 
   return paginate(posts, {
-    params: { blog: BLOG_BASE || undefined },
+    params: { post: BLOG_BASE || undefined },
     pageSize: BLOG.postsPerPage,
   });
 }
@@ -36,10 +36,9 @@ const meta = {
 <Layout {meta}>
   <Fragment slot="title">
     Latest
-    <span
-      class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500"
-      >Blogs</span
-    >
+      <span class="bg-clip-text text-transparent p-2 inline-block leading-tight bg-gradient-to-r from-[rgb(59,130,246)] to-[rgb(236,72,153)]">
+          Blogs
+      </span>
   </Fragment>
   <BlogList posts={page.data} />
   <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

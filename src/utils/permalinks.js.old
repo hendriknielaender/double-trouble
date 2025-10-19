@@ -1,6 +1,6 @@
 import slugify from "limax";
 
-import { BLOG, SITE } from "~/config.mjs";
+import { APP_BLOG as BLOG, SITE } from "astrowind:config";
 
 export const trim = (str, ch) => {
   let start = 0;
