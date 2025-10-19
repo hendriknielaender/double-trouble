@@ -13,7 +13,6 @@ export const headerData = {
   ],
   actions: [
     {
-      text: 'GitHub',
       href: 'https://github.com/hendriknielaender/double-trouble',
       target: '_blank',
       icon: 'tabler:brand-github',

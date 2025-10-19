@@ -12,8 +12,21 @@ import { UI } from 'astrowind:config';
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    }
+
+    const content = document.getElementById('content');
+    if (content) {
+      if (theme === 'dark') {
+        content.classList.add('bg-dark-svg');
+        content.classList.remove('bg-white-svg');
+      } else {
+        content.classList.add('bg-white-svg');
+        content.classList.remove('bg-dark-svg');
+      }
     }
   }
 
@@ -71,8 +84,10 @@ import { UI } from 'astrowind:config';
 
       Observer.removeAnimationDelay();
 
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const isDark = document.documentElement.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.theme = newTheme;
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {

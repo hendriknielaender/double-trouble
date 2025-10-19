@@ -32,7 +32,7 @@ export const getCanonical = (path = ''): string | URL => {
   const url = String(new URL(path, SITE.site));
   if (SITE.trailingSlash == false && path && url.endsWith('/')) {
     return url.slice(0, -1);
-  } else if (SITE.trailingSlash == true && path && !url.endsWith('/')) {
+  }if (SITE.trailingSlash == true && path && !url.endsWith('/')) {
     return url + '/';
   }
   return url;
@@ -107,7 +107,7 @@ const definitivePermalink = (permalink: string): string => createPath(BASE_PATHN
 export const applyGetPermalinks = (menu: object = {}) => {
   if (Array.isArray(menu)) {
     return menu.map((item) => applyGetPermalinks(item));
-  } else if (typeof menu === 'object' && menu !== null) {
+  }if (typeof menu === 'object' && menu !== null) {
     const obj = {};
     for (const key in menu) {
       if (key === 'href') {
