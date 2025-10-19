@@ -182,15 +182,6 @@ news but also see what's next.
 
 ![](./../../src/assets/images/posts/cloudflare-2025-review/docs-changelog.png)
 
-## Look and Feel
-
-- TODO build out this section or scratch?
-- TODO mention cloudflare announcements sometimes seemed scuffed, also ties back to the sometimes
-  subpar quality on cloudflare.tv
-- TODO maybe give a shout-out to them asking for beta feedback? The take betas seriously, also
-  looking at their release history:
-  https://developers.cloudflare.com/containers/beta-info/#feedback-wanted
-
 ## Going Forward
 
 Going forward, we're excited to see what's next for cloudflare. For our own experience, we would
