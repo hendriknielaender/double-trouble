@@ -1,5 +1,4 @@
 import * as React from "react";
-import ReactDOM from "react-dom/client";
 import InfoText from "./InfoText.tsx";
 
 // https://tailwindcss.com/docs/content-configuration#dynamic-class-names
@@ -30,11 +29,11 @@ const bgColorMap = {
 };
 
 import {
-  type SortingState,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 
