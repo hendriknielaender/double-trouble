@@ -3,14 +3,14 @@ import Grid from "~/components/blog/Grid.astro";
 
 import { findPostsByIds } from "~/utils/posts";
 
-const ids = [
-        "software-engineering-hamburg-2024",
-	"negativ-space-programming",
-        "howto-htmx-astrodb-astrossr",
-        "analyzing-gitlab-metrics-sqlite-grafana-guide"
+const highlightedPostIds = [
+    "cloudflare-2025-review",
+    "software-engineering-hamburg-2024",
+    "negativ-space-programming",
+    "howto-htmx-astrodb-astrossr",
 ];
 
-const posts = await findPostsByIds(ids);
+const posts = await findPostsByIds(highlightedPostIds);
 ---
 
 <section class="pt-16 px-4 py-4 mx-auto max-w-5xl">
