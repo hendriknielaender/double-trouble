@@ -137,7 +137,7 @@ almost felt like a data mining operation. As indicated in the screenshot below, 
 log entry, all sorts of information seems to be there, but the important bits could be in a
 different spot everytime.
 
-<img  width="80%" src="../../src/assets/images/posts/cloudflare-2025-review/cloudflare-logs-censored.png" />
+![](../../src/assets/images/posts/cloudflare-2025-review/cloudflare-logs-censored.png)
 
 If there is one thing that would improve our debugging experience a lot, it would be logs that are
 more to the point, and feel more understandable.
@@ -189,7 +189,7 @@ love a slightly snappier dashboard, something we believe cloudlfare as an intern
 definitely achieve. In the same vein, having the [bun runtime](https://bun.com/) available in
 cloudflare workers would have us absolutely stunned.
 
-<img  width="40%" src="../../src/assets/images/posts/cloudflare-2025-review/cloudflare+bun+questionmark.png" />
+![](../../src/assets/images/posts/cloudflare-2025-review/cloudflare+bun+questionmark.png)
 
 But besides all that, if cloudflare can keep growing its capabilities while retaining the
 simplicity and power of wrangler as the one developer tool, we believe we're going to have an
