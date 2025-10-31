@@ -1,5 +1,5 @@
 ---
-import { SITE } from "~/config.mjs";
+import { SITE } from "astrowind:config";
 import { getCanonical, getHomePermalink } from "~/utils/permalinks";
 import Layout from "~/layouts/PageLayout.astro";
 
@@ -24,8 +24,8 @@ const meta = {
       </div> the trouble.
     </h2>
     <div class="mb-12 mt-12">
-    <div id="leftFist" class="absolute left-1/2 transform -translate-y-1/2 -translate-x-40 text-9xl">🤜</div>
-    <div id="rightFist" class="absolute left-1/2 transform -translate-y-1/2 translate-x-8 text-9xl">🤛</div>
+    <div id="leftFist" class="absolute left-1/2 transform -translate-y-1/2 -translate-x-40 text-9xl select-none">🤜</div>
+    <div id="rightFist" class="absolute left-1/2 transform -translate-y-1/2 translate-x-8 text-9xl select-none">🤛</div>
     </div>
   </div>
   <HighlightedPosts />

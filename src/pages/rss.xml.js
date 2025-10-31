@@ -1,6 +1,5 @@
+import { APP_BLOG as BLOG, SITE } from "astrowind:config";
 import rss from "@astrojs/rss";
-
-import { BLOG, SITE } from "~/config.mjs";
 import { getPermalink } from "~/utils/permalinks";
 import { fetchPosts } from "~/utils/posts";
 
@@ -17,7 +16,7 @@ export const GET = async () => {
   return rss({
     title: `${SITE.name}’s Blog`,
     description: SITE.description,
-    site: import.meta.env.SITE,
+    site: SITE.site,
 
     items: posts.map((post) => ({
       link: getPermalink(post.slug, "post"),
