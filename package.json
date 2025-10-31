@@ -37,7 +37,7 @@
     "astro-compress": "2.3.8",
     "astro-icon": "^1.1.5",
     "hast-util-to-string": "^3.0.0",
-    "hastscript": "^9.0.0",
+    "hastscript": "^9.0.1",
     "html-escaper": "^3.0.3",
     "js-yaml": "^4.1.0",
     "limax": "4.1.0",
