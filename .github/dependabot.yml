@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
+  - package-ecosystem: "bun" # Bun package manager
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
@@ -13,3 +13,6 @@ updates:
       react:
         patterns:
           - "react*"
+    ignore:
+      - dependency-name: "@biomejs/biome"
+        update-types: ["version-update:semver-patch"]
