@@ -13,3 +13,6 @@ updates:
       react:
         patterns:
           - "react*"
+    ignore:
+      - dependency-name: "@biomejs/biome"
+        update-types: ["version-update:semver-patch"]
