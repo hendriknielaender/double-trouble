@@ -32,7 +32,7 @@
     "@types/lodash.merge": "^4.6.9",
     "@types/mdx": "^2.0.13",
     "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.12.9",
     "astro-compress": "2.3.8",
     "astro-icon": "^1.1.5",
