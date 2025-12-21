@@ -1,6 +1,6 @@
 ---
 publishDate: "Dec 25 2025"
-title: "How to send OTLP metrics into Grafana's mimir using Typescript"
+title: "How to send metrics into Grafana's Mimir using Typescript"
 description: ""
 image: "~/assets/images/thumbnails/grafana_typescript_metrics.png"
 imageCreditUrl: https://gemini.google.com
@@ -54,14 +54,16 @@ sdk can also be used. TODO investigate
 ## How to utilize the Schema
 
 To generate the Typescript boilerplate from the `.proto` schema, we can use the following steps
+(all files are also
+[here](https://github.com/flyck/mimir-metric-sender-examples/tree/main/proto_metrics)).
 
 ```sh
 bun init -y -m $NEW_PROJECT_NAME
 cd $NEW_PROJECT_NAME
-
+mkdir src; mv index.ts src/
 ```
 
-Install the dependencies
+Install the dependencies:
 ```sh
 bun add --dev @bufbuild/buf @bufbuild/protoc-gen-es@2
 
@@ -71,12 +73,6 @@ Download the basic opentelemetry metrics proto file, linked in the docs:
 ```sh
 mkdir proto
 wget https://raw.githubusercontent.com/open-telemetry/opentelemetry-proto/refs/heads/main/opentelemetry/proto/metrics/v1/metrics.proto -P proto
-```
-
-
-Additionally, download the proto file for the mimir request:
-```sh
-wget https://raw.githubusercontent.com/grafana/mimir/refs/heads/main/pkg/mimirpb/mimir.proto -P proto/
 ```
 
 Create a basic buf configuration file `buf.yaml`
@@ -104,111 +100,100 @@ inputs:
 plugins:
   - local: protoc-gen-es
     opt: target=ts
-    out: gen
+    out: src/gen
 
 ```
 
 Next, run the protobuf generation command:
 ```sh
-bunx buf generate
+bunx buf generate  --include-imports
 
 ```
 
-Both buf commands should have executed without warnings or errors.
-
-If everything succeeded, `gen` folder should now contain a typescript file called `metrics_pb.ts`
-and `mimir_pb.ts`.
+Both buf commands should have executed without warnings or errors, and we should now have the
+generated files in `src/gen`
 
 ## How to utilize the generated Code
 
 ```ts
 import { create, toBinary } from "@bufbuild/protobuf";
-import type { WriteRequest } from "./gen/mimir_pb";
-import { WriteRequestSchema } from "./gen/mimir_pb";
-import { compress } from "snappyjs";
+import {
+  MetricsDataSchema,
+  MetricSchema,
+  NumberDataPointSchema,
+  type Metric,
+} from "./gen/metrics_pb";
 
-const MIMIR_DEFAULT_PORT = 9009;
-const MIMIR_ENDPOINT = `http://localhost:${MIMIR_DEFAULT_PORT}/api/v1/push`;
+const MIMIR_OTLP_ENDPOINT = "http://localhost:9009/otlp/v1/metrics";
 const FETCH_TIMEOUT_MS = 10_000;
 
-const defaultHeaders = {
-  "Content-Type": "application/x-protobuf",
-  "X-Prometheus-Remote-Write-Version": "0.1.0",
-  "X-Scope-OrgID": "demo",
-  "Content-Encoding": "snappy",
-};
+export async function ingestOTLPMetrics(metrics: Metric[]) {
+  const bytes = toBinary(
+    MetricsDataSchema,
+    create(MetricsDataSchema, {
+      resourceMetrics: [
+        {
+          resource: { attributes: [] },
+          scopeMetrics: [
+            {
+              scope: { name: "metric-sender", version: "1.0.0" },
+              metrics,
+            },
+          ],
+        },
+      ],
+    }),
+  );
 
-export type MetricPushData = {
-  labels: { key: string; value: string }[];
-  samples: { timestampMs?: number; value: number }[];
-};
-
-export async function ingestTimeseries(data: MetricPushData[]) {
-  const compressedBytes = serializeMetricsToBytes(data);
-
-  const response = await fetch(MIMIR_ENDPOINT, {
+  const response = await fetch(MIMIR_OTLP_ENDPOINT, {
     method: "POST",
-    headers: defaultHeaders,
-    body: compressedBytes,
+    headers: {
+      "Content-Type": "application/x-protobuf",
+      "X-Scope-OrgID": "demo",
+    },
+    body: bytes,
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
     console.error(
-      `Failed to send metrics: ${response.status} ${response.statusText}`,
+      `Failed to send OTLP metrics: ${response.status} ${response.statusText}`,
       errorText,
     );
-    throw new Error("Error sending metrics data");
+    throw new Error("Error sending OTLP metrics data");
   }
 
-  console.info("Metrics data sent successfully");
+  console.info("OTLP metrics data sent successfully");
 }
 
-export function serializeMetricsToBytes(data: MetricPushData[]): Uint8Array {
-  const textEncoder = new TextEncoder();
-
-  const currentTimestamp = Date.now();
-
-  const metricsData = create(WriteRequestSchema, {
-    timeseries: data.map((entry) => ({
-      labels: entry.labels.map((label) => ({
-        name: textEncoder.encode(label.key),
-        value: textEncoder.encode(label.value),
-      })),
-      samples: entry.samples.map((entry) => ({
-        value: entry.value,
-        timestampMs: entry.timestampMs
-          ? BigInt(entry.timestampMs)
-          : BigInt(currentTimestamp),
-      })),
-    })),
-  });
-
-  const bytes = toBinary(WriteRequestSchema, metricsData);
-  return compress(bytes);
-}
-
-export function serializeWriteRequest(data: WriteRequest): Uint8Array {
-  const bytes = toBinary(WriteRequestSchema, data);
-  return compress(bytes);
-}
-
-ingestTimeseries([
-  {
-    labels: [
-      { key: "__name__", value: "answer" },
-      { key: "region", value: "EU" },
-    ],
-    samples: [{ value: 42 }],
-  },
-  {
-    labels: [
-      { key: "__name__", value: "answer" },
-      { key: "region", value: "US" },
-    ],
-    samples: [{ value: 42 }],
-  },
+ingestOTLPMetrics([
+  create(MetricSchema, {
+    name: "answer",
+    unit: "1",
+    data: {
+      case: "gauge",
+      value: {
+        dataPoints: [
+          { region: "EU", value: 42 },
+          { region: "US", value: 42 },
+        ].map((dp) =>
+          create(NumberDataPointSchema, {
+            attributes: [
+              {
+                key: "region",
+                value: {
+                  value: { case: "stringValue", value: dp.region },
+                },
+              },
+            ],
+            timeUnixNano: BigInt(Date.now() * 1_000_000),
+            value: { case: "asDouble", value: dp.value },
+          }),
+        ),
+      },
+    },
+  }),
 ]);
 
 ```
