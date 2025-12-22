@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
-    "@astrojs/mdx": "^4.3.10",
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/tailwind": "^6.0.2",
     "@biomejs/biome": "2.3.2",
