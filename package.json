@@ -33,7 +33,7 @@
     "@types/mdx": "^2.0.13",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.12.9",
+    "astro": "^5.16.6",
     "astro-compress": "2.3.8",
     "astro-icon": "^1.1.5",
     "hast-util-to-string": "^3.0.1",
