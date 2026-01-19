@@ -34,7 +34,7 @@
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.11",
-    "astro-compress": "2.3.8",
+    "astro-compress": "2.3.9",
     "astro-icon": "^1.1.5",
     "hast-util-to-string": "^3.0.1",
     "hastscript": "^9.0.1",
