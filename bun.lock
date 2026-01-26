@@ -56,7 +56,7 @@
         "tailwindcss": "^3.4.17",
         "typescript": "^5.8.3",
         "unist-util-visit": "^5.1.0",
-        "vite-plugin-lib": "^4.0.1",
+        "vite-plugin-lib": "^4.0.2",
       },
     },
   },
@@ -2039,7 +2039,7 @@
 
     "vite-plugin-dts": ["vite-plugin-dts@4.5.4", "", { "dependencies": { "@microsoft/api-extractor": "^7.50.1", "@rollup/pluginutils": "^5.1.4", "@volar/typescript": "^2.4.11", "@vue/language-core": "2.2.0", "compare-versions": "^6.1.1", "debug": "^4.4.0", "kolorist": "^1.8.0", "local-pkg": "^1.0.0", "magic-string": "^0.30.17" }, "peerDependencies": { "typescript": "*", "vite": "*" }, "optionalPeers": ["vite"] }, "sha512-d4sOM8M/8z7vRXHHq/ebbblfaxENjogAAekcfcDCCwAyvGqnPrc7f4NZbvItS+g4WTgerW0xDwSz5qz11JT3vg=="],
 
-    "vite-plugin-lib": ["vite-plugin-lib@4.0.1", "", { "dependencies": { "picocolors": "1.1.1", "vite-plugin-dts": "4.5.4" }, "peerDependencies": { "typescript": "*", "vite": "2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0" } }, "sha512-AiRa2o0GNaSW6fL/WD3yy7H0lWNUz1fq1CquEIe6TC6rlxnMyXm6KYsGTTAKLBtaBiQNd1DetynFOmo2c5VDvg=="],
+    "vite-plugin-lib": ["vite-plugin-lib@4.0.2", "", { "dependencies": { "picocolors": "1.1.1", "vite-plugin-dts": "4.5.4" }, "peerDependencies": { "typescript": "*", "vite": "2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0" } }, "sha512-0lS7dFlaUc4eL2DTM7z5lgtpPF2Q5bS00QBcaZZJxhBb40U5fWjdrn2hLZE2VE65KpE7p17NYCQMsXgjZS/e9Q=="],
 
     "vitefu": ["vitefu@1.1.1", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0" }, "optionalPeers": ["vite"] }, "sha512-B/Fegf3i8zh0yFbpzZ21amWzHmuNlLlmJT6n7bu5e+pCHUKQIfXSYokrqOBGEMMe9UG2sostKQF9mml/vYaWJQ=="],
 

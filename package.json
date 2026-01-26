@@ -52,7 +52,7 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "unist-util-visit": "^5.1.0",
-    "vite-plugin-lib": "^4.0.1"
+    "vite-plugin-lib": "^4.0.2"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
