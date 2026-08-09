@@ -23,54 +23,67 @@ const meta = {
         <i>double</i>
       </div> the trouble.
     </h2>
-    <div class="mb-12 mt-12">
-    <div id="leftFist" class="absolute left-1/2 transform -translate-y-1/2 -translate-x-40 text-9xl select-none">🤜</div>
-    <div id="rightFist" class="absolute left-1/2 transform -translate-y-1/2 translate-x-8 text-9xl select-none">🤛</div>
+    <div class="mb-20 mt-8">
+    <div id="leftFist" class="absolute left-1/2 w-24 h-24"><span class="flex items-center justify-center w-full h-full text-9xl select-none">🤜</span></div>
+    <div id="rightFist" class="absolute left-1/2 w-24 h-24"><span class="flex items-center justify-center w-full h-full text-9xl select-none">🤛</span></div>
     </div>
   </div>
   <HighlightedPosts />
-
-    <script>
-       let leftFist = document.getElementById('leftFist');
-       let rightFist = document.getElementById('rightFist');
-       const maxGap = 240; // Maximum gap between fists
-       const minGap = 120;   // Minimum gap when fully scrolled
-       const minGapBigScreen = 153;   // Minimum gap when fully scrolled on big screens
-
-       function activateFists() {
-           // Event listener for scroll
-           window.addEventListener('scroll', function animateFists() {
-               let scrollY = window.scrollY;
-               let gap = maxGap - scrollY;
-               var w = window.innerWidth;
-
-               if(location.pathname != "/") {
-                   window.removeEventListener('scroll', animateFists)
-                   return
-               }
-
-               // have a better gap on big screens
-               let flexibleMinGap = w < 1920 ? minGap : minGapBigScreen
-
-               if (gap < flexibleMinGap) {
-                   gap = flexibleMinGap;
-               }
-
-               // during transitions the fists seem to disappear from the dom
-               leftFist.style.transform = `translateY(-50%) translateX(calc(-50% - ${gap / 2}px))`;
-               rightFist.style.transform = `translateY(-50%) translateX(calc(-50% + ${gap / 2}px))`;
-           });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => activateFists())
-        document.addEventListener("astro:after-swap", () => {
-             // if the new page is not the main page, we dont want to activate the animation
-             if (location.pathname != "/") { return };
-
-             // reinitialize global variables after view transition
-             leftFist = document.getElementById('leftFist');
-             rightFist = document.getElementById('rightFist');
-             activateFists()
-        })
-    </script>
 </Layout>
+
+<style>
+  #leftFist {
+    transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 62.5%));
+  }
+  #rightFist {
+    transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 62.5%));
+  }
+
+  @keyframes fist-bump-left {
+    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 125%)); }
+    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 62.5%)); }
+  }
+
+  @keyframes fist-bump-right {
+    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 125%)); }
+    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 62.5%)); }
+  }
+
+  @keyframes fist-intro-left {
+    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 125%)); }
+    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 62.5%)); }
+  }
+
+  @keyframes fist-intro-right {
+    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 125%)); }
+    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 62.5%)); }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    #leftFist {
+      animation: fist-bump-left auto linear forwards;
+      animation-timeline: scroll(root);
+      animation-range: 0% 50%;
+    }
+    #rightFist {
+      animation: fist-bump-right auto linear forwards;
+      animation-timeline: scroll(root);
+      animation-range: 0% 50%;
+    }
+  }
+
+  @media (min-height: 900px) {
+    @supports (animation-timeline: scroll()) {
+      #leftFist {
+        animation: fist-intro-left 0.7s cubic-bezier(0.3, 0, 0.7, 1) 0.4s forwards;
+        animation-timeline: auto;
+        animation-range: normal;
+      }
+      #rightFist {
+        animation: fist-intro-right 0.7s cubic-bezier(0.3, 0, 0.7, 1) 0.4s forwards;
+        animation-timeline: auto;
+        animation-range: normal;
+      }
+    }
+  }
+</style>
