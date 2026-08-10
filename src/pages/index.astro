@@ -70,9 +70,18 @@ const meta = {
       animation-timeline: scroll(root);
       animation-range: 0% 50%;
     }
+
+    @media (max-width: 640px) {
+      #leftFist {
+        animation-range: 0% 20%;
+      }
+      #rightFist {
+        animation-range: 0% 20%;
+      }
+    }
   }
 
-  @media (min-height: 900px) {
+  @media (min-height: 900px) and (min-width: 1000px) {
     @supports (animation-timeline: scroll()) {
       #leftFist {
         animation: fist-intro-left 0.7s cubic-bezier(0.3, 0, 0.7, 1) 0.4s forwards;
