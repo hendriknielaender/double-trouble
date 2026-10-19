@@ -39,6 +39,31 @@ test("code blocks get a copy button", async ({
   expect(copied).toContain("CommandData");
 });
 
+test("code blocks name their language and run wider than the text", async ({
+  page,
+}) => {
+  await page.goto("/post/zvm");
+  const block = page.locator(".code-block").first();
+  await expect(block).toHaveAttribute("data-language", "zig");
+  await expect(block.locator(".lang")).toHaveText("zig");
+  const width = (selector: string) =>
+    page
+      .locator(selector)
+      .first()
+      .evaluate((element) => element.getBoundingClientRect().width);
+  expect(await width(".code-block")).toBeGreaterThan(
+    await width("[data-prose] > p"),
+  );
+});
+
+test("section headings link to themselves", async ({ page }) => {
+  await page.goto("/post/cloudflare-2025-review");
+  const heading = page.locator("[data-prose] h2").first();
+  const id = await heading.getAttribute("id");
+  expect(id).toBeTruthy();
+  await expect(heading.locator("a.anchor")).toHaveAttribute("href", `#${id}`);
+});
+
 test("charts render without client libraries", async ({ page }) => {
   await page.goto("/post/software-engineering-hamburg-2024");
   await expect(page.locator("[data-chart]")).toHaveCount(6);
