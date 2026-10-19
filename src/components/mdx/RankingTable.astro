@@ -108,6 +108,49 @@ const rows = tools
       return tool[key as keyof typeof tool];
     };
 
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const easing = getComputedStyle(document.documentElement)
+      .getPropertyValue("--ease-in-out")
+      .trim();
+
+    const reflow = (update: () => void) => {
+      if (!tbody) return update();
+      const rows = [...tbody.querySelectorAll<HTMLTableRowElement>("tr")];
+      const before = new Map(
+        rows.map((row) => [
+          row,
+          {
+            top: row.getBoundingClientRect().top,
+            total: row.querySelector("[data-score]")?.textContent,
+          },
+        ]),
+      );
+      for (const row of rows) {
+        for (const animation of row.getAnimations()) animation.cancel();
+      }
+      update();
+      for (const row of rows) {
+        const previous = before.get(row);
+        if (!previous) continue;
+        if (reduced.matches) {
+          const cell = row.querySelector("[data-score]");
+          if (cell && cell.textContent !== previous.total) {
+            cell.animate([{ opacity: 0.35 }, { opacity: 1 }], {
+              duration: 150,
+              easing: "ease",
+            });
+          }
+          continue;
+        }
+        const offset = previous.top - row.getBoundingClientRect().top;
+        if (Math.abs(offset) < 1) continue;
+        row.animate(
+          [{ transform: `translateY(${offset}px)` }, { transform: "none" }],
+          { duration: 220, easing: easing || "ease-in-out" },
+        );
+      }
+    };
+
     const render = () => {
       if (!tbody) return;
       const rows = [...tbody.querySelectorAll<HTMLTableRowElement>("tr")];
@@ -152,7 +195,7 @@ const rows = tools
         button.style.setProperty("--weight", String(weights[name]));
         const value = button.querySelector("[data-value]");
         if (value) value.textContent = `×${weights[name]}`;
-        render();
+        reflow(render);
       });
     }
   }
@@ -275,6 +318,12 @@ const rows = tools
   }
 
   .tip {
+    transform-origin: bottom center;
+    transition:
+      opacity 160ms var(--ease-out),
+      transform 160ms var(--ease-out),
+      overlay 160ms var(--ease-out) allow-discrete,
+      display 160ms var(--ease-out) allow-discrete;
     width: min(20rem, calc(100vw - 2rem));
     padding: 0.9rem 1rem;
     border: 1px solid var(--line-strong);
@@ -285,6 +334,28 @@ const rows = tools
     line-height: 1.5;
     white-space: normal;
     box-shadow: 0 18px 40px -16px rgb(0 0 0 / 0.45);
+  }
+
+  .tip:not(:popover-open) {
+    opacity: 0;
+  }
+
+  @starting-style {
+    .tip:popover-open {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .tip:not(:popover-open) {
+      transform: translateY(4px) scale(0.97);
+    }
+
+    @starting-style {
+      .tip:popover-open {
+        transform: translateY(4px) scale(0.97);
+      }
+    }
   }
 
   .tip-title {

@@ -47,6 +47,17 @@
   animation-timing-function: var(--ease-out);
 }
 
+::view-transition-group(.post-image) {
+  animation-duration: 320ms;
+  animation-timing-function: var(--ease-in-out);
+}
+
+::view-transition-old(.post-image),
+::view-transition-new(.post-image) {
+  height: 100%;
+  object-fit: cover;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -54,9 +65,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
+  ::view-transition-group(*) {
     animation: none;
   }
 }

@@ -11,7 +11,7 @@ const { post, eager = false } = Astro.props;
 ---
 
 <article class="card">
-  <div class="media">
+  <div class="media" style={`--post-vt: post-${post.id}`}>
     <Image
       src={post.data.image}
       alt=""
@@ -47,6 +47,13 @@ const { post, eager = false } = Astro.props;
     border-radius: var(--radius);
     background: var(--bg-raised);
     aspect-ratio: 16 / 10;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .media {
+      view-transition-name: var(--post-vt);
+      view-transition-class: post-image;
+    }
   }
 
   .media img {

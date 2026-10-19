@@ -83,6 +83,7 @@ const list = headings.map((heading) => ({
   }
 
   .inline {
+    interpolate-size: allow-keywords;
     margin-bottom: 2.5rem;
     border: 1px solid var(--line);
     border-radius: 14px;
@@ -95,6 +96,29 @@ const list = headings.map((heading) => ({
     min-height: 3rem;
     padding: 0 1.25rem;
     cursor: pointer;
+  }
+
+  .inline::details-content {
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition:
+      block-size 220ms var(--ease-out),
+      opacity 220ms var(--ease-out),
+      content-visibility 220ms var(--ease-out) allow-discrete;
+  }
+
+  .inline[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .inline::details-content {
+      transition:
+        opacity 150ms ease,
+        content-visibility 150ms ease allow-discrete;
+    }
   }
 
   .inline nav {
