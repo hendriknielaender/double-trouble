@@ -191,6 +191,12 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
     }
   }
 
+  :global([data-intro="seen"]) .double::after,
+  :global([data-intro="seen"]) .fist,
+  :global([data-intro="seen"]) .fist > span {
+    animation: none;
+  }
+
   .sections {
     display: grid;
     gap: clamp(4.5rem, 10vw, 7rem);

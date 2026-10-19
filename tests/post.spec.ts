@@ -21,25 +21,6 @@ test("post shows hero image, contents and sharing", async ({
   );
 });
 
-test("card image and post hero share a view transition name", async ({
-  page,
-}) => {
-  await page.goto("/");
-  const card = page.locator(".card .media").first();
-  const name = await card.evaluate(
-    (element) => getComputedStyle(element).viewTransitionName,
-  );
-  expect(name).toBe("post-cloudflare-2025-review");
-  await page.locator(".card h3 a").first().click();
-  const hero = page.locator("figure.hero img");
-  await expect(hero).toBeVisible();
-  expect(
-    await hero.evaluate(
-      (element) => getComputedStyle(element).viewTransitionName,
-    ),
-  ).toBe(name);
-});
-
 test("code blocks get a copy button", async ({
   page,
   context,

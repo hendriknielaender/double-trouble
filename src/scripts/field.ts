@@ -47,7 +47,7 @@ const toRect = (element: Element | null): Rect | null => {
   return { left, right, top, bottom };
 };
 
-export function startField(canvas: HTMLCanvasElement) {
+export function startField(canvas: HTMLCanvasElement, epoch: number) {
   const context = canvas.getContext("2d");
   if (!context) return;
   const ctx = context;
@@ -63,7 +63,6 @@ export function startField(canvas: HTMLCanvasElement) {
   const quietElements = [...document.querySelectorAll("[data-field-quiet]")];
   const glitches = new Map<number, Glitch>();
   const pointer = { x: -1e4, y: -1e4 };
-  const startedAt = performance.now() - Math.random() * 600_000;
   let ripple: { x: number; y: number; start: number } | null = null;
   let width = 0;
   let height = 0;
@@ -77,7 +76,7 @@ export function startField(canvas: HTMLCanvasElement) {
   let sprites: HTMLCanvasElement[] = [];
   let strength = 0.3;
   let frame = 0;
-  let last = 0;
+  let last = Number.NEGATIVE_INFINITY;
 
   const resolveColor = (variable: string) => {
     canvas.style.color = `var(${variable})`;
@@ -135,7 +134,7 @@ export function startField(canvas: HTMLCanvasElement) {
   };
 
   const draw = (now: number) => {
-    const time = reduced ? 0 : (now - startedAt) / 1000;
+    const time = reduced ? 0 : (performance.timeOrigin + now - epoch) / 1000;
     const hero = toRect(heroElement);
     const area = toRect(clearElement);
     const clear = area && area.left > 48 ? area : null;
@@ -284,12 +283,17 @@ export function startField(canvas: HTMLCanvasElement) {
   };
 
   const redraw = () => {
-    last = 0;
+    last = Number.NEGATIVE_INFINITY;
     wake();
   };
 
   layout();
   wake();
+
+  document.fonts.addEventListener("loadingdone", () => {
+    layout();
+    redraw();
+  });
 
   window.addEventListener(
     "resize",
@@ -326,7 +330,7 @@ export function startField(canvas: HTMLCanvasElement) {
 
   const fists = [...document.querySelectorAll("[data-bump]")];
   const pair = fists[0]?.parentElement;
-  if (pair && !reduced) {
+  if (pair && !reduced && root.dataset.intro !== "seen") {
     Promise.all(
       fists.flatMap((fist) =>
         fist.getAnimations().map((animation) => animation.finished),

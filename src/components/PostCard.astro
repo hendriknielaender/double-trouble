@@ -11,7 +11,7 @@ const { post, eager = false } = Astro.props;
 ---
 
 <article class="card">
-  <div class="media" style={`--post-vt: post-${post.id}`}>
+  <div class="media" data-morph={postUrl(post)}>
     <Image
       src={post.data.image}
       alt=""
@@ -49,18 +49,11 @@ const { post, eager = false } = Astro.props;
     aspect-ratio: 16 / 10;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .media {
-      view-transition-name: var(--post-vt);
-      view-transition-class: post-image;
-    }
-  }
-
   .media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 700ms var(--ease-out);
+    transition: transform 200ms ease;
   }
 
   h3 {
@@ -97,11 +90,13 @@ const { post, eager = false } = Astro.props;
     overflow: hidden;
   }
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     .card:hover .media img {
       transform: scale(1.03);
     }
+  }
 
+  @media (hover: hover) and (pointer: fine) {
     .card:hover h3 a {
       text-decoration: underline;
       text-decoration-color: color-mix(in oklab, var(--left) 60%, transparent);
