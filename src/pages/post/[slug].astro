@@ -69,7 +69,7 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
         sizes="(min-width: 76rem) 76rem, 100vw"
         loading="eager"
         fetchpriority="high"
-        style={`--post-vt: post-${post.id}`}
+        data-morph={postUrl(post)}
       />
       <figcaption class="meta">
         Image: <a href={imageCreditUrl}>{credit}</a>
@@ -239,13 +239,6 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
     aspect-ratio: 16 / 9;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .hero img {
-      view-transition-name: var(--post-vt);
-      view-transition-class: post-image;
-    }
-  }
-
   figcaption {
     margin-top: 0.75rem;
     text-align: right;
@@ -326,8 +319,10 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
     transition: transform 200ms var(--ease-out);
   }
 
-  .discuss:hover :global(svg) {
-    transform: translate(2px, -2px);
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .discuss:hover :global(svg) {
+      transform: translate(2px, -2px);
+    }
   }
 
   .related {

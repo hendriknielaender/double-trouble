@@ -83,6 +83,41 @@ const structured = article
         document.documentElement.dataset.theme = theme;
       })();
     </script>
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        try {
+          if (sessionStorage.getItem("field-epoch")) root.dataset.fieldResume = "";
+          if (sessionStorage.getItem("intro")) {
+            root.dataset.intro = "seen";
+          } else if (location.pathname === "/") {
+            sessionStorage.setItem("intro", "seen");
+          }
+        } catch {}
+        const still = matchMedia("(prefers-reduced-motion: reduce)");
+        const path = (url) => (url ? new URL(url).pathname : null);
+        const morph = (event, paths) => {
+          const marked = [...document.querySelectorAll("[data-morph]")];
+          for (const element of marked) element.style.viewTransitionName = "";
+          if (!event.viewTransition || still.matches) return;
+          for (const target of paths) {
+            const element = marked.find((candidate) => candidate.dataset.morph === target);
+            if (!element) continue;
+            element.style.viewTransitionName = "post-image";
+            event.viewTransition.finished.finally(() => {
+              element.style.viewTransitionName = "";
+            });
+            return;
+          }
+        };
+        addEventListener("pageswap", (event) =>
+          morph(event, [path(event.activation?.entry.url), location.pathname]),
+        );
+        addEventListener("pagereveal", (event) =>
+          morph(event, [location.pathname, path(window.navigation?.activation?.from?.url)]),
+        );
+      })();
+    </script>
     <Font cssVariable="--font-sans" preload={[{ style: "normal" }]} />
     <Font cssVariable="--font-mono" preload />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

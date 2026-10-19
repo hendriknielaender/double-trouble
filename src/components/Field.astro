@@ -5,19 +5,19 @@
 
   const canvas = document.querySelector<HTMLCanvasElement>("[data-field]");
   if (canvas) {
-    const family = getComputedStyle(document.documentElement)
-      .getPropertyValue("--font-mono")
-      .trim();
-    const run = () =>
-      document.fonts
-        .load(`13px ${family || "monospace"}`)
-        .catch(() => [])
-        .then(() => startField(canvas));
+    let epoch = Date.now() - Math.random() * 600_000;
+    try {
+      epoch = Number(sessionStorage.getItem("field-epoch")) || epoch;
+      sessionStorage.setItem("field-epoch", String(epoch));
+    } catch {}
+    const run = () => startField(canvas, epoch);
     const schedule = () =>
       "requestIdleCallback" in window
         ? requestIdleCallback(run, { timeout: 2000 })
         : setTimeout(run, 300);
-    if (document.readyState === "complete") {
+    if ("fieldResume" in document.documentElement.dataset) {
+      run();
+    } else if (document.readyState === "complete") {
       schedule();
     } else {
       addEventListener("load", schedule, { once: true });
@@ -39,5 +39,9 @@
 
   .field[data-ready] {
     opacity: 1;
+  }
+
+  :global([data-field-resume]) .field {
+    transition: none;
   }
 </style>
