@@ -19,15 +19,16 @@ test("toggle switches and persists the theme", async ({ page }) => {
   await page.goto("/");
   const toggle = page.locator("[data-theme-toggle]");
   await expect(toggle).toHaveAttribute("aria-label", "Switch to light theme");
+  const html = page.locator("html");
   await toggle.click();
-  expect(await theme(page)).toBe("light");
+  await expect(html).toHaveAttribute("data-theme", "light");
   expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe(
     "light",
   );
   await page.goto("/about");
   expect(await theme(page)).toBe("light");
   await page.locator("[data-theme-toggle]").click();
-  expect(await theme(page)).toBe("dark");
+  await expect(html).toHaveAttribute("data-theme", "dark");
 });
 
 test("dark readers never see a light frame", async ({ page }) => {

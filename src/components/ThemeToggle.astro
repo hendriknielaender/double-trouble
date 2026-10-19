@@ -30,9 +30,15 @@ import Icon from "./Icon.astro";
     meta?.setAttribute("content", getComputedStyle(root).backgroundColor);
   };
   apply(root.dataset.theme ?? "dark", false);
-  button?.addEventListener("click", () =>
-    apply(root.dataset.theme === "dark" ? "light" : "dark", true),
-  );
+  button?.addEventListener("click", () => {
+    const toggle = () =>
+      apply(root.dataset.theme === "dark" ? "light" : "dark", true);
+    if (document.startViewTransition) {
+      document.startViewTransition(toggle);
+    } else {
+      toggle();
+    }
+  });
   matchMedia("(prefers-color-scheme: light)").addEventListener(
     "change",
     (event) => {

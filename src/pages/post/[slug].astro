@@ -69,6 +69,7 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
         sizes="(min-width: 76rem) 76rem, 100vw"
         loading="eager"
         fetchpriority="high"
+        style={`--post-vt: post-${post.id}`}
       />
       <figcaption class="meta">
         Image: <a href={imageCreditUrl}>{credit}</a>
@@ -236,6 +237,13 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
     border-radius: calc(var(--radius) + 4px);
     background: var(--bg-raised);
     aspect-ratio: 16 / 9;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero img {
+      view-transition-name: var(--post-vt);
+      view-transition-class: post-image;
+    }
   }
 
   figcaption {

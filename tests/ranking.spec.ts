@@ -27,6 +27,16 @@ test("weights change the total score", async ({ page }) => {
   await expect(total).not.toHaveText(before ?? "");
 });
 
+test("rows glide to their new rank when a weight changes", async ({ page }) => {
+  const moving = await page.evaluate(() => {
+    document.querySelector<HTMLButtonElement>('[data-weight="Speed"]')?.click();
+    return [...document.querySelectorAll("[data-ranking] tbody tr")].filter(
+      (row) => row.getAnimations().length > 0,
+    ).length;
+  });
+  expect(moving).toBeGreaterThan(0);
+});
+
 test("notes open as popovers", async ({ page }) => {
   const note = page.getByRole("button", { name: "Note on CDK DX" });
   await note.click();
