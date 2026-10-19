@@ -2,7 +2,7 @@
 publishDate: "Oct 23 2025"
 title: "Our Learnings after 1 Year of Building on Cloudflare"
 description: "Things we learned along the way and which stood out to us as cloudflare newbies"
-image: "~/assets/images/thumbnails/cloudflare-2025-review.png"
+image: "../../src/assets/images/thumbnails/cloudflare-2025-review.png"
 imageCreditUrl: https://gemini.google.com
 tags: [cloudflare, cloud, DevOps, aws, surfing]
 ---

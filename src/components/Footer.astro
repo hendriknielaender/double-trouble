@@ -1,0 +1,107 @@
+---
+import { site } from "~/site";
+
+const year = new Date().getFullYear();
+const links = [
+  { href: "/blog", label: "Writing" },
+  { href: "/about", label: "About" },
+  { href: "/rss.xml", label: "RSS" },
+  { href: site.repo, label: "GitHub" },
+  { href: site.x, label: "X" },
+];
+---
+
+<footer class="footer">
+  <div class="wrap grid">
+    <div class="about">
+      <p class="name">{site.name}</p>
+      <p class="tagline">{site.tagline}</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        {
+          links.map(({ href, label }) => (
+            <li>
+              <a href={href}>{label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap base">
+    <p class="meta">
+      © {site.since}–{year}
+      {site.authors.join(" & ")}
+    </p>
+    <p class="meta legal">
+      <a href="/legal">Legal notice</a>
+      <a href="/privacy">Privacy policy</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: clamp(5rem, 12vw, 9rem);
+    border-top: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: 3rem 2.5rem;
+  }
+
+  .name {
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  .tagline {
+    margin-top: 0.25rem;
+    color: var(--fg-muted);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  a:hover {
+    color: var(--fg);
+  }
+
+  nav a {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+  }
+
+  .base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    padding-block: 1.25rem 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+</style>

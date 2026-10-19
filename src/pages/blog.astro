@@ -1,0 +1,44 @@
+---
+import Archive from "~/components/Archive.astro";
+import PageHead from "~/components/PageHead.astro";
+import Base from "~/layouts/Base.astro";
+import { getPosts, getTags, tagUrl } from "~/lib/posts";
+
+const posts = await getPosts();
+const tags = getTags(posts).filter((tag) => tag.posts.length > 1);
+---
+
+<Base title="Writing" description="Every post on Double Trouble, newest first.">
+  <PageHead
+    eyebrow="Archive"
+    title="Writing"
+    lede={`Every post since we started, newest first. ${posts.length} so far.`}
+  >
+    <ul class="chip-list tags" aria-label="Popular tags">
+      {
+        tags.map((tag) => (
+          <li>
+            <a class="chip" href={tagUrl(tag.name)}>
+              {tag.name}
+              <span class="count">{tag.posts.length}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </PageHead>
+  <div class="wrap" data-field-clear>
+    <Archive posts={posts} />
+  </div>
+</Base>
+
+<style>
+  .tags {
+    margin-top: 2rem;
+  }
+
+  .count {
+    margin-left: 0.5rem;
+    color: var(--fg-faint);
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import Archive from "~/components/Archive.astro";
+import PageHead from "~/components/PageHead.astro";
+import Base from "~/layouts/Base.astro";
+import { getPosts, getTags, type Tag } from "~/lib/posts";
+
+export async function getStaticPaths() {
+  const tags = getTags(await getPosts());
+  return tags.map((tag) => ({ params: { tag: tag.slug }, props: { tag } }));
+}
+
+interface Props {
+  tag: Tag;
+}
+
+const { tag } = Astro.props;
+const count = tag.posts.length;
+---
+
+<Base title={`Posts tagged ${tag.name}`} noindex>
+  <PageHead
+    eyebrow="Tag"
+    title={tag.name}
+    lede={`${count} ${count === 1 ? "post" : "posts"} tagged ${tag.name}.`}
+  >
+    <a class="text-link back" href="/blog">Back to all writing</a>
+  </PageHead>
+  <div class="wrap" data-field-clear>
+    <Archive posts={tag.posts} />
+  </div>
+</Base>
+
+<style>
+  .back {
+    display: inline-block;
+    margin-top: 1.5rem;
+  }
+</style>

@@ -1,11 +1,69 @@
 ---
-import Layout from "~/layouts/BaseLayout.astro";
-import { SITE } from "astrowind:config";
-import Error404 from "~/components/widgets/Error404.astro";
-
-const title = `Error 404 — ${SITE.name}`;
+import Base from "~/layouts/Base.astro";
 ---
 
-<Layout meta={{ title }}>
-  <Error404 />
-</Layout>
+<Base title="Page not found" noindex>
+  <section class="lost" data-field-hero>
+    <div class="wrap copy" data-field-quiet>
+      <p class="eyebrow">Error 404</p>
+      <h1>This page is in trouble.</h1>
+      <p class="lede">The link may be old or mistyped. The writing is still where we left it.</p>
+      <div class="links">
+        <a class="button" href="/">Go home</a>
+        <a class="text-link" href="/blog">Browse all writing</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .lost {
+    display: grid;
+    min-height: 70svh;
+    align-content: center;
+  }
+
+  .copy {
+    display: grid;
+    justify-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 560;
+    letter-spacing: -0.04em;
+  }
+
+  .lede {
+    max-width: 32rem;
+    color: var(--fg-muted);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    border-radius: 999px;
+    background: var(--fg);
+    color: var(--bg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 120ms var(--ease-out);
+  }
+
+  .button:active {
+    transform: scale(0.97);
+  }
+</style>

@@ -2,7 +2,7 @@
 publishDate: "Oct 17 2022"
 title: "NodeConf EU 2022 Writeup"
 description: "Visiting was a blast. Notes, Links and Inspirations we took from the conf."
-image: "~/assets/images/thumbnails/nodeconf-eu-2022.png"
+image: "../../src/assets/images/thumbnails/nodeconf-eu-2022.png"
 imageCreditUrl: https://www.nodeconf.eu
 tags: [conf, node]
 ---

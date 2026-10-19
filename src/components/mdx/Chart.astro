@@ -1,0 +1,365 @@
+---
+interface Props {
+  type: "bar" | "pie" | "line";
+  title: string;
+  data: Record<string, number>[];
+  dataLabels?: string[];
+  vertical?: boolean;
+  source?: string;
+}
+
+const { type, title, data, dataLabels = [], source } = Astro.props;
+const series = data.map((entry, index) => ({
+  label: dataLabels[index],
+  points: Object.entries(entry),
+}));
+const points = series[0]?.points ?? [];
+const values = points.map(([, value]) => value);
+const max = Math.max(...values);
+const total = values.reduce((sum, value) => sum + value, 0);
+const format = (value: number) =>
+  new Intl.NumberFormat("en", { maximumFractionDigits: 1 }).format(value);
+const palette = [
+  "var(--left)",
+  "var(--right)",
+  "var(--fg-muted)",
+  "var(--fg-faint)",
+];
+
+const slices = points.reduce<
+  { label: string; value: number; start: number; share: number }[]
+>((list, [label, value]) => {
+  const previous = list.at(-1);
+  const start = previous ? previous.start + previous.share : 0;
+  list.push({ label, value, start, share: value / total });
+  return list;
+}, []);
+
+const allValues = series.flatMap((entry) =>
+  entry.points.map(([, value]) => value),
+);
+const low = Math.min(...allValues);
+const high = Math.max(...allValues);
+const span = high - low || 1;
+const lines = series.map((entry, index) => ({
+  ...entry,
+  color: palette[index % palette.length],
+  path: entry.points
+    .map(([, value], i) => {
+      const x = (i / Math.max(entry.points.length - 1, 1)) * 100;
+      const y = 100 - ((value - low) / span) * 100;
+      return `${i === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+    })
+    .join(" "),
+}));
+const yearTicks = points
+  .map(([label], index) => ({ label, index }))
+  .filter(
+    ({ label }, i) =>
+      i === 0 || label.split("-")[0] !== points[i - 1][0].split("-")[0],
+  )
+  .map(({ label, index }) => ({
+    label: label.split("-")[0],
+    left: (index / Math.max(points.length - 1, 1)) * 100,
+  }));
+const summary =
+  type === "line"
+    ? `${title}: from ${format(values[0])} at ${points[0]?.[0]} to ${format(values.at(-1) ?? 0)} at ${points.at(-1)?.[0]}, peaking at ${format(max)}.`
+    : "";
+let sourceHost = "";
+if (source) sourceHost = new URL(source).hostname.replace(/^www\./, "");
+---
+
+<figure class="chart" data-chart={type}>
+  <figcaption>{title}</figcaption>
+  {
+    type === "bar" && (
+      <ol class="bars">
+        {points.map(([label, value]) => (
+          <li class:list={{ top: value === max }} style={`--share: ${value / max}`}>
+            <span class="label">{label}</span>
+            <span class="track" aria-hidden="true">
+              <span class="fill" />
+            </span>
+            <span class="value">{format(value)}</span>
+          </li>
+        ))}
+      </ol>
+    )
+  }
+  {
+    type === "pie" && (
+      <div class="pie">
+        <svg viewBox="0 0 42 42" role="img" aria-label={title}>
+          {slices.map((slice, index) => (
+            <circle
+              cx="21"
+              cy="21"
+              r="15.915"
+              pathLength="100"
+              stroke={palette[index % palette.length]}
+              stroke-dasharray={`${(slice.share * 100).toFixed(3)} ${(100 - slice.share * 100).toFixed(3)}`}
+              stroke-dashoffset={(25 - slice.start * 100).toFixed(3)}
+            />
+          ))}
+        </svg>
+        <ul class="legend">
+          {slices.map((slice, index) => (
+            <li style={`--swatch: ${palette[index % palette.length]}`}>
+              <span class="label">{slice.label}</span>
+              <span class="value">
+                {format(slice.value)} · {Math.round(slice.share * 100)}%
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+  {
+    type === "line" && (
+      <div class="line">
+        <div class="axis-y" aria-hidden="true">
+          <span>{format(high)}</span>
+          <span>{format(low)}</span>
+        </div>
+        <div class="plot">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={summary}>
+            <line class="grid" x1="0" x2="100" y1="0" y2="0" />
+            <line class="grid" x1="0" x2="100" y1="50" y2="50" />
+            <line class="grid" x1="0" x2="100" y1="100" y2="100" />
+            {lines.map((line) => (
+              <path d={line.path} stroke={line.color} />
+            ))}
+          </svg>
+          <div class="axis-x" aria-hidden="true">
+            {yearTicks.map((tick) => (
+              <span style={`left: ${tick.left}%`}>{tick.label}</span>
+            ))}
+          </div>
+        </div>
+        {lines.some((line) => line.label) && (
+          <ul class="legend">
+            {lines.map((line) => (
+              <li style={`--swatch: ${line.color}`}>
+                <span class="label">{line.label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )
+  }
+  {
+    source && (
+      <p class="source meta">
+        Source: <a href={source}>{sourceHost}</a>
+      </p>
+    )
+  }
+</figure>
+
+<style>
+  .chart {
+    margin: 2.5em 0;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: color-mix(in oklab, var(--bg-raised) 70%, transparent);
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  figcaption {
+    margin-bottom: 1.25rem;
+    color: var(--fg);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .bars {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bars li {
+    display: grid;
+    grid-template-columns: minmax(6rem, 10rem) 1fr 3rem;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .label {
+    color: var(--fg-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .track {
+    height: 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--fg) 6%, transparent);
+  }
+
+  .fill {
+    display: block;
+    width: calc(var(--share) * 100%);
+    height: 100%;
+    border-radius: inherit;
+    background: color-mix(in oklab, var(--left) 75%, transparent);
+    transform-origin: left;
+  }
+
+  .top .fill {
+    background: var(--right);
+  }
+
+  .value {
+    color: var(--fg);
+    font: 0.8125rem / 1 var(--mono);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .fill {
+        animation: grow linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+    }
+  }
+
+  @keyframes grow {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
+  .pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .pie svg {
+    width: 9rem;
+    height: 9rem;
+    transform: rotate(0deg);
+  }
+
+  .pie circle {
+    fill: none;
+    stroke-width: 6;
+  }
+
+  .legend {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+  }
+
+  .legend li::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 3px;
+    background: var(--swatch);
+  }
+
+  .legend .value {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .line {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+  }
+
+  .axis-y {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 12rem;
+    color: var(--fg-faint);
+    font: 0.75rem / 1 var(--mono);
+    text-align: right;
+  }
+
+  .plot svg {
+    width: 100%;
+    height: 12rem;
+    overflow: visible;
+  }
+
+  .plot path {
+    fill: none;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .grid {
+    stroke: var(--line);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .axis-x {
+    position: relative;
+    height: 1.5rem;
+    margin-top: 0.5rem;
+    color: var(--fg-faint);
+    font: 0.75rem / 1 var(--mono);
+  }
+
+  .axis-x span {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .axis-x span:first-child {
+    transform: none;
+  }
+
+  .line .legend {
+    grid-column: 2;
+  }
+
+  .source {
+    margin-top: 1.25rem;
+  }
+
+  .source a {
+    color: var(--fg-muted);
+  }
+
+  @media (max-width: 30rem) {
+    .bars li {
+      grid-template-columns: 1fr 2.5rem;
+    }
+
+    .bars .label {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

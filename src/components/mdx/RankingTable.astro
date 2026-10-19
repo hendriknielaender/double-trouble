@@ -1,0 +1,344 @@
+---
+import { columns, initialWeights, notes, score, tools } from "./ranking";
+
+const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const rows = tools
+  .map((tool) => ({ tool, total: score(tool, initialWeights) }))
+  .sort((a, b) => b.total - a.total);
+---
+
+<div class="ranking" data-ranking>
+  <div class="scroll">
+    <table>
+      <caption class="visually-hidden">
+        Infrastructure as code tools ranked by weighted score. Column headers sort the table.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" aria-sort="none">
+            <button type="button" data-sort="Name">Tool</button>
+          </th>
+          {
+            columns.map((column) => (
+              <th scope="col" aria-sort="none">
+                <button type="button" data-sort={column.key}>
+                  {column.label}
+                </button>
+              </th>
+            ))
+          }
+          <th scope="col" aria-sort="descending">
+            <button type="button" data-sort="Score">Total</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map(({ tool, total }) => (
+            <tr data-tool={tool.Name}>
+              <th scope="row">
+                <a href={tool.Link}>{tool.Name}</a>
+              </th>
+              {columns.map((column) => {
+                const value = tool[column.key];
+                const note = notes[tool.Name]?.[column.key];
+                const id = `note-${slug(tool.Name)}-${slug(column.key)}`;
+                return (
+                  <td
+                    style={column.tone ? `--tone: ${column.tone(value).toFixed(2)}` : undefined}
+                    class:list={{ toned: column.tone }}
+                  >
+                    {column.format(value)}
+                    {note && (
+                      <>
+                        <button
+                          type="button"
+                          class="note"
+                          popovertarget={id}
+                          style={`anchor-name: --${id}`}
+                          aria-label={`Note on ${tool.Name} ${column.label}`}
+                        >
+                          i
+                        </button>
+                        <div id={id} popover class="tip" style={`position-anchor: --${id}`}>
+                          <p class="tip-title">{tool.Name} · {column.label}</p>
+                          <p>{note}</p>
+                        </div>
+                      </>
+                    )}
+                  </td>
+                );
+              })}
+              <td class="total" data-score>
+                {total.toFixed(1)}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <fieldset class="weights">
+    <legend class="visually-hidden">Score weights</legend>
+    <span class="meta" aria-hidden="true">Weights</span>
+    {
+      Object.entries(initialWeights).map(([name, weight]) => (
+        <button type="button" class="weight" data-weight={name} style={`--weight: ${weight}`}>
+          {name} <span data-value>×{weight}</span>
+        </button>
+      ))
+    }
+  </fieldset>
+</div>
+
+<script>
+  import { initialWeights, maxWeight, score, tools, type WeightName, type Weights } from "./ranking";
+
+  for (const root of document.querySelectorAll<HTMLElement>("[data-ranking]")) {
+    const tbody = root.querySelector("tbody");
+    const headers = [...root.querySelectorAll<HTMLButtonElement>("[data-sort]")];
+    const weights: Weights = { ...initialWeights };
+    const byName = new Map(tools.map((tool) => [tool.Name, tool]));
+    let sort = { key: "Score", descending: true };
+
+    const read = (row: HTMLTableRowElement, key: string): number | string => {
+      const tool = byName.get(row.dataset.tool ?? "");
+      if (!tool) return 0;
+      if (key === "Score") return score(tool, weights);
+      return tool[key as keyof typeof tool];
+    };
+
+    const render = () => {
+      if (!tbody) return;
+      const rows = [...tbody.querySelectorAll<HTMLTableRowElement>("tr")];
+      for (const row of rows) {
+        const cell = row.querySelector("[data-score]");
+        if (cell) cell.textContent = Number(read(row, "Score")).toFixed(1);
+      }
+      rows.sort((a, b) => {
+        const x = read(a, sort.key);
+        const y = read(b, sort.key);
+        const order =
+          typeof x === "string" && typeof y === "string"
+            ? x.localeCompare(y)
+            : Number(x) - Number(y);
+        return sort.descending ? -order : order;
+      });
+      tbody.append(...rows);
+      for (const header of headers) {
+        const active = header.dataset.sort === sort.key;
+        header.closest("th")?.setAttribute(
+          "aria-sort",
+          active ? (sort.descending ? "descending" : "ascending") : "none",
+        );
+      }
+    };
+
+    for (const header of headers) {
+      header.addEventListener("click", () => {
+        const key = header.dataset.sort ?? "Score";
+        sort =
+          sort.key === key
+            ? { key, descending: !sort.descending }
+            : { key, descending: key !== "Name" };
+        render();
+      });
+    }
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>("[data-weight]")) {
+      const name = button.dataset.weight as WeightName;
+      button.addEventListener("click", () => {
+        weights[name] = weights[name] >= maxWeight ? 0 : weights[name] + 1;
+        button.style.setProperty("--weight", String(weights[name]));
+        const value = button.querySelector("[data-value]");
+        if (value) value.textContent = `×${weights[name]}`;
+        render();
+      });
+    }
+  }
+</script>
+
+<style>
+  .ranking {
+    margin: 2.5em 0;
+    font-size: 0.875rem;
+  }
+
+  .scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: color-mix(in oklab, var(--bg-raised) 70%, transparent);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th,
+  td {
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    padding: 0;
+  }
+
+  thead button {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.6rem 0.8rem;
+    border: 0;
+    background: none;
+    color: var(--fg-muted);
+    font: 500 0.6875rem / 1.3 var(--mono);
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: normal;
+    cursor: pointer;
+  }
+
+  thead button::after {
+    content: "↕";
+    opacity: 0.35;
+  }
+
+  th[aria-sort="ascending"] button::after {
+    content: "↑";
+    opacity: 1;
+  }
+
+  th[aria-sort="descending"] button::after {
+    content: "↓";
+    opacity: 1;
+  }
+
+  th[aria-sort="ascending"] button,
+  th[aria-sort="descending"] button,
+  thead button:hover {
+    color: var(--fg);
+  }
+
+  tbody th {
+    position: sticky;
+    left: 0;
+    background: var(--bg-raised);
+    font-weight: 600;
+  }
+
+  tbody th a {
+    color: var(--fg);
+  }
+
+  .toned {
+    color: color-mix(in oklab, var(--left) calc(var(--tone) * 100%), var(--fg-faint));
+  }
+
+  .total {
+    color: var(--fg);
+    font: 600 0.875rem / 1 var(--mono);
+  }
+
+  .note {
+    display: inline-grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 0.4rem;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: none;
+    color: var(--fg-muted);
+    font: italic 600 0.6875rem / 1 var(--sans);
+    vertical-align: 0.1em;
+    cursor: pointer;
+  }
+
+  .note:hover {
+    color: var(--fg);
+    border-color: var(--fg-muted);
+  }
+
+  .tip {
+    width: min(20rem, calc(100vw - 2rem));
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: var(--bg-raised);
+    color: var(--fg-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: normal;
+    box-shadow: 0 18px 40px -16px rgb(0 0 0 / 0.45);
+  }
+
+  .tip-title {
+    margin-bottom: 0.35rem;
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  @supports (position-area: top) {
+    .tip {
+      margin: 0 0 0.5rem;
+      position-area: top;
+      position-try-fallbacks: flip-block;
+    }
+  }
+
+  .weights {
+    min-inline-size: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .weights .meta {
+    margin-right: 0.25rem;
+  }
+
+  .weight {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.25rem;
+    padding: 0 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--left) calc(var(--weight) * 9%), transparent);
+    color: var(--fg);
+    font-size: 0.8125rem;
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      transform 120ms var(--ease-out);
+  }
+
+  .weight:active {
+    transform: scale(0.96);
+  }
+
+  .weight [data-value] {
+    font-family: var(--mono);
+    color: var(--fg-muted);
+  }
+</style>

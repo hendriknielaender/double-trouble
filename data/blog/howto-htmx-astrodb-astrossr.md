@@ -2,7 +2,7 @@
 publishDate: "May 28 2024"
 title: "Ditch React: Build Faster with htmx, Astro DB & Astro SSR in 2024"
 description: "Explore common techniques and solutions for building a fast and efficient CRUD app using htmx, Astro DB, and Astro SSR without React in 2024."
-image: "~/assets/images/thumbnails/htmx_app.jpg"
+image: "../../src/assets/images/thumbnails/htmx_app.jpg"
 imageCreditUrl: https://midjourney.com
 tweet: "https://twitter.com/doubletrblblogs/status/1795562784555475133"
 tags: [htmx, react, astro, astrodb, astrossr, crud, netlify]

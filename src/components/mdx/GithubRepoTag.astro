@@ -1,0 +1,43 @@
+---
+interface Props {
+  repoSlug: string;
+  text?: string;
+  stargazers: string;
+  issues: string;
+}
+
+const { repoSlug, text, stargazers, issues } = Astro.props;
+const href = `https://github.com/${repoSlug}`;
+---
+
+<a class="repo" href={href}>
+  {text && <span class="name">{text}</span>}
+  <span class="stats">
+    <span aria-hidden="true">★ {stargazers} · ◎ {issues}</span>
+    <span class="visually-hidden">{stargazers} stars, {issues} open issues</span>
+  </span>
+</a>
+
+<style>
+  .repo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5em;
+    text-decoration: none;
+  }
+
+  .name {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--left) 60%, transparent);
+  }
+
+  .stats {
+    padding: 0.1em 0.5em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg-raised);
+    color: var(--fg-muted);
+    font: 0.72em / 1.6 var(--mono);
+    white-space: nowrap;
+  }
+</style>

@@ -2,7 +2,7 @@
 publishDate: "Dec 09 2022"
 title: "How to configure Vite on AWS for Gitlab Review Apps"
 description: "A guide on how to make Merge Requests more awesome! "
-image: ~/assets/images/thumbnails/gitlab_review_apps_aws2.png
+image: "../../src/assets/images/thumbnails/gitlab_review_apps_aws2.png"
 imageCreditUrl: https://labs.openai.com/
 tags: [aws, vite, gitlab, reviews apps, code reviews, infrastructure, cicd]
 ---

@@ -2,7 +2,7 @@
 publishDate: "May 16 2023"
 title: "Bun v0.6.0: Just Got Fluffier and More Delicious!"
 description: "Streamlined JavaScript Development with Advanced Features."
-image: ~/assets/images/thumbnails/bun.png
+image: "../../src/assets/images/thumbnails/bun.png"
 imageCreditUrl: https://labs.openai.com/
 tags: [gptpost, nodejs, bun, typescript, javascript, release]
 tweet: "https://twitter.com/doubletrblblogs/status/1680501484037844992"
@@ -40,7 +40,7 @@ By eliminating the need for external tools and intricate configurations, Bun emp
 
 Testing is a crucial aspect of any software development project, and Bun v0.6.0 takes testing to the next level. The `bun test` framework now comes packed with powerful features and improvements to make your testing experience smoother and more efficient.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">in the next version of bun<br><br>bun:test prints out how long each test took<br><br>slow tests are highlighted yellow <a href="https://t.co/yXDSJrkYBu">pic.twitter.com/yXDSJrkYBu</a></p>&mdash; Jarred Sumner (@jarredsumner) <a href="https://twitter.com/jarredsumner/status/1656569942354042880?ref_src=twsrc%5Etfw">May 11, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">in the next version of bun<br><br>bun:test prints out how long each test took<br><br>slow tests are highlighted yellow <a href="https://t.co/yXDSJrkYBu">pic.twitter.com/yXDSJrkYBu</a></p>&mdash; Jarred Sumner (@jarredsumner) <a href="https://twitter.com/jarredsumner/status/1656569942354042880?ref_src=twsrc%5Etfw">May 11, 2023</a></blockquote>
 
 Bun's testing framework supports skipping tests, allowing you to focus on specific test cases during development. You can easily skip a test using the `describe.skip` syntax. Additionally, Bun introduces custom matchers like `toBeEven()` and `toBeOdd()`, enabling you to write more expressive test cases.
 

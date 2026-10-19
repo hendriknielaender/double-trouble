@@ -1,0 +1,334 @@
+---
+import { Picture } from "astro:assets";
+import { render } from "astro:content";
+import Icon from "~/components/Icon.astro";
+import PostCard from "~/components/PostCard.astro";
+import Share from "~/components/Share.astro";
+import Toc from "~/components/Toc.astro";
+import Base from "~/layouts/Base.astro";
+import {
+  formatDate,
+  getPosts,
+  type Post,
+  postUrl,
+  readingMinutes,
+  relatedPosts,
+  tagUrl,
+} from "~/lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, posts },
+  }));
+}
+
+interface Props {
+  post: Post;
+  posts: Post[];
+}
+
+const { post, posts } = Astro.props;
+const { title, description, image, imageCreditUrl, publishDate, tags, tweet } =
+  post.data;
+const { Content, headings } = await render(post);
+const sections = headings.filter((heading) => heading.depth === 2);
+const withToc = sections.length >= 3;
+const related = relatedPosts(post, posts);
+const url = new URL(postUrl(post), Astro.site).href;
+const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
+---
+
+<Base
+  title={title}
+  description={description}
+  image={image}
+  article={{ published: publishDate, tags }}
+  progress
+>
+  <article>
+    <header class="head" data-field-hero>
+      <div class="column" data-field-quiet>
+        <p class="meta meta-row">
+          <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>
+          <span aria-hidden="true">·</span>
+          {readingMinutes(post)} minute read
+        </p>
+        <h1>{title}</h1>
+        <p class="lede">{description}</p>
+      </div>
+    </header>
+
+    <figure class="wrap hero">
+      <Picture
+        src={image}
+        formats={["avif", "webp"]}
+        alt=""
+        widths={[640, 960, 1280, 1600]}
+        sizes="(min-width: 76rem) 76rem, 100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <figcaption class="meta">
+        Image: <a href={imageCreditUrl}>{credit}</a>
+      </figcaption>
+    </figure>
+
+    <div class:list={["column", "body", { "with-toc": withToc }]} data-field-clear>
+      {withToc && <Toc headings={sections} variant="aside" />}
+      <div class="content">
+        {withToc && <Toc headings={sections} variant="inline" />}
+        <div class="prose" data-prose>
+          <Content />
+        </div>
+        <footer class="foot">
+          {
+            tags.length > 0 && (
+              <ul class="chip-list" aria-label="Tags">
+                {tags.map((tag) => (
+                  <li>
+                    <a class="chip" href={tagUrl(tag)}>
+                      {tag}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+          <div class="actions">
+            <Share url={url} title={title} />
+            {
+              tweet && (
+                <a class="discuss" href={tweet}>
+                  Discuss on X
+                  <Icon name="arrowUpRight" />
+                </a>
+              )
+            }
+          </div>
+        </footer>
+      </div>
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="wrap related" aria-labelledby="related">
+        <div class="section-head">
+          <h2 id="related">Keep reading</h2>
+          <a class="text-link" href="/blog">
+            All writing
+          </a>
+        </div>
+        <div class="grid">
+          {related.map((entry) => (
+            <PostCard post={entry} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<script>
+  import { svg } from "~/lib/icons";
+
+  for (const pre of document.querySelectorAll("[data-prose] pre")) {
+    const block = document.createElement("div");
+    block.className = "code-block";
+    pre.replaceWith(block);
+    block.append(pre);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "copy";
+    button.setAttribute("aria-label", "Copy code");
+    button.innerHTML = svg("copy", "idle") + svg("check", "done");
+    button.addEventListener("click", async () => {
+      const code = pre.querySelector("code") ?? pre;
+      await navigator.clipboard.writeText(code.textContent ?? "");
+      button.dataset.copied = "";
+      button.setAttribute("aria-label", "Copied");
+      setTimeout(() => {
+        delete button.dataset.copied;
+        button.setAttribute("aria-label", "Copy code");
+      }, 1400);
+    });
+    block.append(button);
+  }
+
+  const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-toc] a")];
+  const targets = [
+    ...new Set(links.map((link) => decodeURIComponent(link.hash.slice(1)))),
+  ]
+    .map((id) => document.getElementById(id))
+    .filter((target) => target !== null);
+
+  if (targets.length > 0) {
+    let pending = false;
+    const update = () => {
+      pending = false;
+      const line = window.innerHeight * 0.3;
+      let active = targets[0].id;
+      for (const target of targets) {
+        if (target.getBoundingClientRect().top <= line) active = target.id;
+      }
+      for (const link of links) {
+        if (decodeURIComponent(link.hash.slice(1)) === active) {
+          link.setAttribute("aria-current", "true");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      }
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!pending) {
+          pending = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true },
+    );
+    update();
+  }
+</script>
+
+<style>
+  .column {
+    width: min(100% - 2 * var(--gutter), 62rem);
+    margin-inline: auto;
+  }
+
+  .head {
+    padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .head .column {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  h1 {
+    max-width: 22ch;
+    font-size: clamp(2.375rem, 5.6vw, 4.25rem);
+    font-weight: 560;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+  }
+
+  .lede {
+    max-width: 40rem;
+    font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
+    color: var(--fg-muted);
+  }
+
+  .hero {
+    margin: 0 auto;
+  }
+
+  .hero img {
+    width: 100%;
+    max-height: 42rem;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) + 4px);
+    background: var(--bg-raised);
+    aspect-ratio: 16 / 9;
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    text-align: right;
+  }
+
+  figcaption a {
+    color: var(--fg-muted);
+  }
+
+  .body {
+    margin-top: clamp(3rem, 7vw, 5rem);
+  }
+
+  .content {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .with-toc .content {
+    margin-inline: 0;
+  }
+
+  .body > :global(.aside) {
+    display: none;
+  }
+
+  @media (min-width: 68rem) {
+    .with-toc {
+      display: grid;
+      grid-template-columns: 12.5rem minmax(0, var(--measure));
+      justify-content: space-between;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .body > :global(.aside) {
+      display: block;
+    }
+
+    .content > :global(.inline) {
+      display: none;
+    }
+  }
+
+  .foot {
+    display: grid;
+    gap: 1.75rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .discuss {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 2.5rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .discuss:hover {
+    color: var(--fg);
+  }
+
+  .discuss :global(svg) {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .discuss:hover :global(svg) {
+    transform: translate(2px, -2px);
+  }
+
+  .related {
+    margin-top: clamp(5rem, 11vw, 8rem);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 3rem 2rem;
+  }
+</style>

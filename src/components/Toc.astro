@@ -1,0 +1,107 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+  variant: "aside" | "inline";
+}
+
+const { headings, variant } = Astro.props;
+const list = headings.map((heading) => ({
+  href: `#${heading.slug}`,
+  text: heading.text,
+}));
+---
+
+{
+  variant === "aside" ? (
+    <nav class="toc aside" aria-label="Contents" data-toc>
+      <p class="meta">Contents</p>
+      <ol>
+        {list.map(({ href, text }) => (
+          <li>
+            <a href={href}>{text}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  ) : (
+    <details class="toc inline">
+      <summary class="meta">Contents</summary>
+      <nav aria-label="Contents" data-toc>
+        <ol>
+          {list.map(({ href, text }) => (
+            <li>
+              <a href={href}>{text}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </details>
+  )
+}
+
+<style>
+  .aside {
+    position: sticky;
+    top: calc(var(--header) + 2rem);
+    max-height: calc(100dvh - var(--header) - 4rem);
+    overflow-y: auto;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .aside .meta {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--fg-faint);
+    font-size: 0.875rem;
+    line-height: 1.35;
+    text-decoration: none;
+    transition:
+      color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  a:hover {
+    color: var(--fg);
+  }
+
+  a[aria-current] {
+    color: var(--fg);
+    font-weight: 560;
+    border-bottom-color: var(--fg);
+  }
+
+  .inline {
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--bg-raised);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 1.25rem;
+    cursor: pointer;
+  }
+
+  .inline nav {
+    padding: 0 1.25rem 0.75rem;
+  }
+
+  .inline li:last-child a {
+    border-bottom: 0;
+  }
+</style>

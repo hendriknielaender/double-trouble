@@ -2,7 +2,7 @@
 publishDate: "September 23 2023"
 title: "Managing Zig Versions with zvm: A Technical Dive"
 description: "Building CLI applications in Zig, using zvm for version management, and the challenges of JSON parsing."
-image: ~/assets/images/thumbnails/zvm.webp
+image: "../../src/assets/images/thumbnails/zvm.webp"
 imageCreditUrl: https://www.labs.openai.com
 tags: [gptpost, zig, zvm, release, version, cli, compiler]
 ---

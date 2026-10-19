@@ -2,7 +2,7 @@
 publishDate: "July 13 2023"
 title: "Stirring Up Some TypeScript Magic"
 description: "Advanced tips and helper functions for enhancing code structure and readability."
-image: ~/assets/images/thumbnails/tips.png
+image: "../../src/assets/images/thumbnails/tips.png"
 imageCreditUrl: https://labs.openai.com/
 tags: [gptpost, tips, functions, typescript, javascript, code]
 ---

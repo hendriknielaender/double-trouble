@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import { formatDate, type Post, postUrl, readingMinutes } from "~/lib/posts";
+
+interface Props {
+  post: Post;
+  eager?: boolean;
+}
+
+const { post, eager = false } = Astro.props;
+---
+
+<article class="card">
+  <div class="media">
+    <Image
+      src={post.data.image}
+      alt=""
+      widths={[480, 720, 960]}
+      sizes="(min-width: 64rem) 36rem, (min-width: 40rem) 50vw, 100vw"
+      loading={eager ? "eager" : "lazy"}
+    />
+  </div>
+  <p class="meta meta-row">
+    <time datetime={post.data.publishDate.toISOString()}>
+      {formatDate(post.data.publishDate)}
+    </time>
+    <span aria-hidden="true">·</span>
+    {readingMinutes(post)} min read
+  </p>
+  <h3><a href={postUrl(post)}>{post.data.title}</a></h3>
+  <p class="description">{post.data.description}</p>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .media {
+    order: -1;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    aspect-ratio: 16 / 10;
+  }
+
+  .media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms var(--ease-out);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h3 a {
+    text-decoration: none;
+  }
+
+  h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+  }
+
+  h3 a:focus-visible {
+    outline: none;
+  }
+
+  h3 a:focus-visible::after {
+    outline: 2px solid var(--left);
+    outline-offset: 6px;
+  }
+
+  .description {
+    color: var(--fg-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (hover: hover) {
+    .card:hover .media img {
+      transform: scale(1.03);
+    }
+
+    .card:hover h3 a {
+      text-decoration: underline;
+      text-decoration-color: color-mix(in oklab, var(--left) 60%, transparent);
+    }
+  }
+</style>
