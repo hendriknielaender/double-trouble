@@ -1,0 +1,125 @@
+---
+import { Font, getImage } from "astro:assets";
+import defaultImage from "~/assets/images/default.png";
+import Field from "~/components/Field.astro";
+import Footer from "~/components/Footer.astro";
+import Header from "~/components/Header.astro";
+import { site } from "~/site";
+import "~/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: ImageMetadata;
+  article?: { published: Date; tags: string[] };
+  noindex?: boolean;
+  progress?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  image = defaultImage,
+  article,
+  noindex = false,
+  progress = false,
+} = Astro.props;
+
+const pageTitle = title
+  ? `${title} — ${site.name}`
+  : `${site.name} — ${site.tagline}`;
+const path = Astro.url.pathname.replace(/(\/index)?\.html$/, "") || "/";
+const canonical = new URL(path, Astro.site).href;
+const social = await getImage({
+  src: image,
+  width: 1200,
+  height: 630,
+  fit: "cover",
+  format: "jpg",
+});
+const socialImage = new URL(social.src, Astro.site).href;
+const structured = article
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      description,
+      image: socialImage,
+      datePublished: article.published.toISOString(),
+      keywords: article.tags.join(", "),
+      url: canonical,
+      author: site.authors.map((name) => ({ "@type": "Person", name })),
+      publisher: { "@type": "Organization", name: site.name, url: site.url },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: site.name,
+      url: site.url,
+      description: site.description,
+    };
+---
+
+<!doctype html>
+<html lang={site.locale} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b0d13" />
+    <script is:inline>
+      (() => {
+        let theme = null;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch {}
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <Font cssVariable="--font-sans" preload={[{ style: "normal" }]} />
+    <Font cssVariable="--font-mono" preload />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="alternate" type="application/rss+xml" title={site.name} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="google-site-verification" content={site.googleSiteVerification} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:title" content={title ?? site.name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {article && <meta property="article:published_time" content={article.published.toISOString()} />}
+    {article?.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={site.twitter} />
+    <script type="application/ld+json" set:html={JSON.stringify(structured)} />
+    <script
+      is:inline
+      async
+      src="https://t.usermaven.com/lib.js"
+      data-key="UMGyRPpZdu"
+      data-tracking-host="https://events.usermaven.com"
+      data-autocapture="true"
+      data-privacy-policy="strict"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Field />
+    <Header progress={progress} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

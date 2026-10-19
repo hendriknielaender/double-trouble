@@ -2,7 +2,7 @@
 publishDate: "July 26 2024"
 title: "Exploring the Power of Negative Space Programming"
 description: "Discover how negative space programming can enhance your code's robustness and clarity by focusing on what your program should not do."
-image: "~/assets/images/thumbnails/negativ-space.jpg"
+image: "../../src/assets/images/thumbnails/negativ-space.jpg"
 imageCreditUrl: https://chatgpt.com
 tags: [tigerstyle, programming, zig, assertion, assert, test, gptpost]
 ---
@@ -37,8 +37,8 @@ He also provided an excellent example of using assertions to check for infinite 
 Another famous dev, who now has changed the way he is programming is [ThePrimeagen](https://www.youtube.com/@ThePrimeagen):
 
 <center>
-<iframe width="315" height="560" 
-src="https://www.youtube.com/embed/M-VU0fLjIUU?si=sFXEIxlBtWdTFTAw" 
+<iframe loading="lazy" width="315" height="560" 
+src="https://www.youtube-nocookie.com/embed/M-VU0fLjIUU?si=sFXEIxlBtWdTFTAw" 
 title="ThePrimeagen negativ space programming" frameborder="0" 
 allow="accelerometer; autoplay; clipboard-write; encrypted-media;
 gyroscope; picture-in-picture;
@@ -92,7 +92,7 @@ It is essential to keep assertions in your production code. Assertions allow you
 Integrating these practices into your development workflow will enhance the reliability and clarity of your code, making negative space programming a cornerstone of robust software engineering.
 
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jc_6ZkkOUpQ?si=6G144LaHH1rfKiEv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube-nocookie.com/embed/jc_6ZkkOUpQ?si=6G144LaHH1rfKiEv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <i>Primeagen talking about Tygerstyle</i>
 </center>
 

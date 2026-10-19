@@ -2,7 +2,7 @@
 publishDate: "May 8 2023"
 title: "Highlights and Insights from AWS Berlin Summit 2023"
 description: "Highlights, tips and recommendations from this years summit."
-image: ~/assets/images/thumbnails/berlin_summit_keynote.jpg
+image: "../../src/assets/images/thumbnails/berlin_summit_keynote.jpg"
 imageCreditUrl: https://double-trouble.dev
 tags: [conf, aws]
 tweet: "https://twitter.com/doubletrblblogs/status/1655882804540977154"

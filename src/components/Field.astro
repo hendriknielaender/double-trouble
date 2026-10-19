@@ -1,0 +1,43 @@
+<canvas class="field" data-field aria-hidden="true"></canvas>
+
+<script>
+  import { startField } from "~/scripts/field";
+
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-field]");
+  if (canvas) {
+    const family = getComputedStyle(document.documentElement)
+      .getPropertyValue("--font-mono")
+      .trim();
+    const run = () =>
+      document.fonts
+        .load(`13px ${family || "monospace"}`)
+        .catch(() => [])
+        .then(() => startField(canvas));
+    const schedule = () =>
+      "requestIdleCallback" in window
+        ? requestIdleCallback(run, { timeout: 2000 })
+        : setTimeout(run, 300);
+    if (document.readyState === "complete") {
+      schedule();
+    } else {
+      addEventListener("load", schedule, { once: true });
+    }
+  }
+</script>
+
+<style>
+  .field {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.4s var(--ease-out);
+  }
+
+  .field[data-ready] {
+    opacity: 1;
+  }
+</style>

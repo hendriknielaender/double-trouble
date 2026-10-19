@@ -25,3 +25,4 @@ pnpm-lock.yaml
 # playwright
 playwright-report
 test-results
+.astro/

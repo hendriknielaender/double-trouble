@@ -2,12 +2,12 @@
 publishDate: "Nov 11 2024"
 title: "What is up with Hamburg Software Jobs? Some Trends and Numbers"
 description: "An investigation in trends, themes and numbers on the German software job market"
-image: "~/assets/images/thumbnails/software-jobs-2024.jpeg"
+image: "../../src/assets/images/thumbnails/software-jobs-2024.jpeg"
 imageCreditUrl: "https://www.bing.com"
 tweet: "https://x.com/doubletrblblogs/status/1856719796252897305"
 tags: [software, jobs, startups, trends, data]
 ---
-import Chart from "~/components/atoms/Chart.tsx";
+import Chart from "~/components/mdx/Chart.astro";
 
 What kind of jobs are available in the field? What kind of numbers do we see from companies, and
 what is the trend overall? On a quest to answer all of these questions, we captured the current
@@ -20,22 +20,22 @@ the job-scraper tool [jobspy](https://github.com/Bunsly/JobSpy) to get current j
 for the term "software developer". For these 157 available jobs that were posted this year, we then
 extracted the required languages, framework and more using the `gpt-4o` model via the openai api.
 
-<Chart type="pie" title={"Company Types"} data={[{"consulting":25,"regular":132}]} client:load />
+<Chart type="pie" title={"Company Types"} data={[{"consulting":25,"regular":132}]} />
 
 Consulting definitely plays a sizable role in the software market. If you're a software developer
 in Hamburg, there is a good chance, you're going to do it in consulting.
 
-<Chart type="bar" title={"Top Languages"} data={[{"JavaScript":48,"Java":45,"SQL":44,"TypeScript":41,"C#":31,"Python":23,"Go":16,"C++":13,"Kotlin":12,"PHP":12,"Swift":8,"C":5,"Rust":5,"Ruby":4,"Scala":3,"SAP":3,"Golang":2,"Pascal":1,"Visual Basic .NET":1,"Perl":1}]} client:load />
+<Chart type="bar" title={"Top Languages"} data={[{"JavaScript":48,"Java":45,"SQL":44,"TypeScript":41,"C#":31,"Python":23,"Go":16,"C++":13,"Kotlin":12,"PHP":12,"Swift":8,"C":5,"Rust":5,"Ruby":4,"Scala":3,"SAP":3,"Golang":2,"Pascal":1,"Visual Basic .NET":1,"Perl":1}]} />
 
 With JavaScript corresponding to frontend jobs, we see Java as the dominant backend language in
 Hamburg. With Java being already a bit dated, this points to older tech stacks, which need to be
 maintained and extended.
 
-<Chart type="bar" title={"Top Frameworks"} data={[{"React":37,"Angular":20,"Vue":16,"Svelte":3,"Spring Boot":1,"NodeJS":1,"Vue.js":1,"Fastify":1,"Express.js":1}]} client:load />
+<Chart type="bar" title={"Top Frameworks"} data={[{"React":37,"Angular":20,"Vue":16,"Svelte":3,"Spring Boot":1,"NodeJS":1,"Vue.js":1,"Fastify":1,"Express.js":1}]} />
 
 It's no surprise to see React at the top of the framework list, being the reigning champ.
 
-<Chart type="bar" title={"Company Sizes"} data={[{"2 to 10":3,"1 to 50":4,"11 to 50":10,"51 to 200":19,"201 to 500":9,"501 to 1,000":6,"1,001 to 5,000":12,"5,001 to 10,000":9,"10,000+":16,"unknown":69}]} client:load />
+<Chart type="bar" title={"Company Sizes"} data={[{"2 to 10":3,"1 to 50":4,"11 to 50":10,"51 to 200":19,"201 to 500":9,"501 to 1,000":6,"1,001 to 5,000":12,"5,001 to 10,000":9,"10,000+":16,"unknown":69}]} />
 
 The company size for available job goes across a wide range. Due to the big number of unlabeled
 jobs this chart is somewhat irrelevant, but it gives us some hints. The grown startup seems the
@@ -50,7 +50,7 @@ of open HR positions, is still on a downwards trend. This indicates a continuati
 shrinking of the job market.
 
 <Chart type={"line"} title={"Market Trends in Germany"} data={[{"2020-1":100,"2020-2":96,"2020-3":82,"2020-4":79,"2020-5":81,"2020-6":83,"2020-7":85,"2020-8":85,"2020-9":88,"2020-10":91,"2020-11":95,"2021-0":99,"2021-1":100,"2021-2":104,"2021-3":107,"2021-4":112,"2021-5":117,"2021-6":125,"2021-7":134,"2021-8":138,"2021-9":145,"2021-10":150,"2021-11":155,"2022-0":156,"2022-1":158,"2022-2":160,"2022-3":163,"2022-4":166,"2022-5":166,"2022-6":162,"2022-7":161,"2022-8":157,"2022-9":156,"2022-10":156,"2022-11":153,"2023-0":146,"2023-1":145,"2023-2":139,"2023-3":131,"2023-4":124,"2023-5":121,"2023-6":119,"2023-7":117,"2023-8":112,"2023-9":112,"2023-10":109,"2023-11":106,"2024-0":105,"2024-1":98,"2024-2":91,"2024-3":87,"2024-4":84,"2024-5":81,"2024-6":78,"2024-7":77,"2024-8":73,"2024-9":72,"2024-10":72},
-{"2020-1":103,"2020-2":98,"2020-3":71,"2020-4":61,"2020-5":59,"2020-6":61,"2020-7":63,"2020-8":66,"2020-9":73,"2020-10":74,"2020-11":75,"2021-0":81,"2021-1":86,"2021-2":94,"2021-3":105,"2021-4":114,"2021-5":129,"2021-6":144,"2021-7":158,"2021-8":172,"2021-9":188,"2021-10":197,"2021-11":200,"2022-0":214,"2022-1":226,"2022-2":231,"2022-3":239,"2022-4":244,"2022-5":240,"2022-6":245,"2022-7":240,"2022-8":236,"2022-9":228,"2022-10":216,"2022-11":204,"2023-0":205,"2023-1":203,"2023-2":194,"2023-3":192,"2023-4":185,"2023-5":185,"2023-6":192,"2023-7":191,"2023-8":185,"2023-9":177,"2023-10":163,"2023-11":152,"2024-0":152,"2024-1":145,"2024-2":140,"2024-3":137,"2024-4":132,"2024-5":124,"2024-6":123,"2024-7":121,"2024-8":118,"2024-9":117,"2024-10":114}]} dataLabels={["HR Jobs", "Software Jobs" ]}source={"https://data.indeed.com/#/postings"} client:load />
+{"2020-1":103,"2020-2":98,"2020-3":71,"2020-4":61,"2020-5":59,"2020-6":61,"2020-7":63,"2020-8":66,"2020-9":73,"2020-10":74,"2020-11":75,"2021-0":81,"2021-1":86,"2021-2":94,"2021-3":105,"2021-4":114,"2021-5":129,"2021-6":144,"2021-7":158,"2021-8":172,"2021-9":188,"2021-10":197,"2021-11":200,"2022-0":214,"2022-1":226,"2022-2":231,"2022-3":239,"2022-4":244,"2022-5":240,"2022-6":245,"2022-7":240,"2022-8":236,"2022-9":228,"2022-10":216,"2022-11":204,"2023-0":205,"2023-1":203,"2023-2":194,"2023-3":192,"2023-4":185,"2023-5":185,"2023-6":192,"2023-7":191,"2023-8":185,"2023-9":177,"2023-10":163,"2023-11":152,"2024-0":152,"2024-1":145,"2024-2":140,"2024-3":137,"2024-4":132,"2024-5":124,"2024-6":123,"2024-7":121,"2024-8":118,"2024-9":117,"2024-10":114}]} dataLabels={["HR Jobs", "Software Jobs" ]}source={"https://data.indeed.com/#/postings"} />
 
 While the curve shows the German job availability in general, the reduction of available software
 jobs is one of the highest, as mentioned in the [indeed
@@ -84,13 +84,13 @@ software job boards.
 While job opportunities are adapting to pre-COVID levels, job satisfaction is on the decline. This
 was captured by the recent Stack Overflow development survey.
 
-<Chart type="bar" vertical={true} title={"Job Satisfaction (%)"} data={[{"Not Happy at Work": 33,"Complacent at Work": 47.7,"Happy at Work":19.3}]} source={"https://survey.stackoverflow.co/2024"} client:load />
+<Chart type="bar" vertical={true} title={"Job Satisfaction (%)"} data={[{"Not Happy at Work": 33,"Complacent at Work": 47.7,"Happy at Work":19.3}]} source={"https://survey.stackoverflow.co/2024"} />
 
 This perceived high difference caused somewhat of an outcry, which was covered by engineering
 social media, with noteworthy videos from [@ThePrimeagen](https://x.com/ThePrimeagen) and
 [Fireship](https://www.youtube.com/@Fireship):
 
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/-pSf9_MgsZ4?si=UcQoPmScxAJBBvZu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
+<center><iframe loading="lazy" width="560" height="315" src="https://www.youtube-nocookie.com/embed/-pSf9_MgsZ4?si=UcQoPmScxAJBBvZu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
 
 Comparing these to numbers from the pre-COVID [2020 stackoverflow developer
 survey](https://survey.stackoverflow.co/2020#work-how-do-developers-feel-about-their-jobs), the
@@ -127,7 +127,7 @@ engineering organizations. Instead of working at the big 4, working with 4 colle
 of a smaller size seems much more probable. These companies are likely to not have a major focus
 in tech, but to only invest in software as part of their digitization efforts.
 
-<center><blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">Sam Altman says 1 person + 10,000 GPUs could make a billion-dollar company <a href="https://t.co/ZjtFbc31dS">pic.twitter.com/ZjtFbc31dS</a></p>&mdash; Tsarathustra (@tsarnick) <a href="https://twitter.com/tsarnick/status/1855012753410531766?ref_src=twsrc%5Etfw">November 8, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<center><blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">Sam Altman says 1 person + 10,000 GPUs could make a billion-dollar company <a href="https://t.co/ZjtFbc31dS">pic.twitter.com/ZjtFbc31dS</a></p>&mdash; Tsarathustra (@tsarnick) <a href="https://twitter.com/tsarnick/status/1855012753410531766?ref_src=twsrc%5Etfw">November 8, 2024</a></blockquote></center>
 
 ## With Enough Thrust...
 
@@ -136,7 +136,7 @@ anything can fly. During the COVID boom, we saw many companies thriving. But whi
 fit enough to make it beyond the initial thrust? For a long-distance flight, it
 needs great tools and a great process.
 
-<img src="https://i.imgflip.com/235zci.jpg" />
+![Meme of pigs flying over a field, captioned "Pigs fly. You just need enough thrust."](../../src/assets/images/posts/software-engineering-2024/pigs-fly.jpg)
 
 Here we see a possible connection between declining developer job satisfaction, and struggling software
 companies. This can be attributed at least in part to the current software planning process, which is all centered around jira, and which we

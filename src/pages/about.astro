@@ -1,37 +1,85 @@
 ---
-import { SITE } from "astrowind:config";
-import { getCanonical, getHomePermalink } from "~/utils/permalinks";
-import Layout from "~/layouts/PageLayout.astro";
-
-const meta = {
-  title: SITE.title,
-  description: SITE.description,
-  canonical: getCanonical(getHomePermalink()),
-};
-
+import PageHead from "~/components/PageHead.astro";
+import Base from "~/layouts/Base.astro";
+import { site } from "~/site";
 ---
 
-<Layout {meta}>
-  <section>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="py-12 md:py-20">
-        <div>
-          <div style="text-align:center">
-            <h1>What is double trouble?</h1>
-            <br />
-            Double trouble is a shared blog between us two engineers, Hendrik & Felix.
-            <br />
-            We use this blog to share our technical oppinions and findings with a
-            greater audience.
-            <br /><br /><br />
-
-            Hello from Hendrik.
-            <br />
-            Hello from Felix.
-            <br />
-          </div>
-        </div>
-      </div>
+<Base title="About" description="Double Trouble is a shared blog by two software engineers, Hendrik and Felix.">
+  <PageHead
+    eyebrow="About"
+    title="Two engineers, one blog."
+    lede="Double Trouble is a shared blog by Hendrik Nieländer and Felix Brilej. We use it to share our technical opinions and findings with a wider audience."
+  />
+  <div class="wrap" data-field-clear>
+    <ul class="pair">
+      <li class="hendrik">
+        <span class="dot" aria-hidden="true"></span>
+        <p>Hello from Hendrik.</p>
+      </li>
+      <li class="felix">
+        <span class="dot" aria-hidden="true"></span>
+        <p>Hello from Felix.</p>
+      </li>
+    </ul>
+    <div class="prose">
+      <h2>What we write about</h2>
+      <p>
+        Mostly the things we run into at work and on the side: cloud infrastructure on AWS and
+        Cloudflare, CI/CD pipelines, developer tooling, new language releases and the conferences we
+        visit.
+      </p>
+      <h2>Say hello</h2>
+      <p>
+        Follow along via <a href="/rss.xml">RSS</a> or on <a href={site.x}>X</a>, and find the
+        source of this site on <a href={site.repo}>GitHub</a>.
+      </p>
     </div>
-  </section>
-</Layout>
+  </div>
+</Base>
+
+<style>
+  .pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1rem;
+    margin: 0 0 clamp(3rem, 7vw, 5rem);
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+    font-weight: 560;
+    letter-spacing: -0.02em;
+  }
+
+  .dot {
+    flex: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+  }
+
+  .hendrik .dot {
+    background: var(--left);
+  }
+
+  .felix .dot {
+    background: var(--right);
+  }
+
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .prose h2:first-child {
+    margin-top: 0;
+  }
+</style>

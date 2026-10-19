@@ -1,98 +1,204 @@
 ---
-import { SITE } from "astrowind:config";
-import { getCanonical, getHomePermalink } from "~/utils/permalinks";
-import Layout from "~/layouts/PageLayout.astro";
+import Archive from "~/components/Archive.astro";
+import PostCard from "~/components/PostCard.astro";
+import Base from "~/layouts/Base.astro";
+import { getPosts } from "~/lib/posts";
+import { site } from "~/site";
 
-import HighlightedPosts from "~/components/blog/HighlightedPosts.astro";
-
-const meta = {
-  title: SITE.title,
-  description: SITE.description,
-  canonical: getCanonical(getHomePermalink()),
-};
+const posts = await getPosts();
+const featured = site.featured
+  .map((id) => posts.find((post) => post.id === id))
+  .filter((post) => post !== undefined);
+const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
 ---
 
-<Layout {meta}>
-  <div style="text-align:center">
-    <h2
-      class="mt-8 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading"
-    >
-      Twice the fun, <div
-        class="bg-clip-text text-transparent bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-yellow-600 to-yellow-100"
-      >
-        <i>double</i>
-      </div> the trouble.
-    </h2>
-    <div class="mb-20 mt-8">
-    <div id="leftFist" class="absolute left-1/2 w-24 h-24"><span class="flex items-center justify-center w-full h-full text-9xl select-none">🤜</span></div>
-    <div id="rightFist" class="absolute left-1/2 w-24 h-24"><span class="flex items-center justify-center w-full h-full text-9xl select-none">🤛</span></div>
+<Base>
+  <section class="hero" data-field-hero>
+    <div class="wrap inner">
+      <div class="copy" data-field-quiet>
+        <p class="eyebrow">Hendrik &amp; Felix · writing since {site.since}</p>
+        <h1>
+          Twice the fun, <span class="double" data-text="double">double</span> the
+          trouble.
+        </h1>
+        <p class="lede">{site.description}</p>
+      </div>
+      <div class="bump" aria-hidden="true" data-field-quiet>
+        <span class="fist left" data-bump><span>🤜</span></span>
+        <span class="fist right" data-bump><span>🤛</span></span>
+      </div>
     </div>
+  </section>
+
+  <div class="wrap sections" data-field-clear>
+    <section aria-labelledby="featured">
+      <div class="section-head">
+        <h2 id="featured">Featured</h2>
+        <a class="text-link" href="/blog">All writing</a>
+      </div>
+      <div class="grid">
+        {featured.map((post) => <PostCard post={post} />)}
+      </div>
+    </section>
+
+    <section aria-labelledby="latest">
+      <div class="section-head">
+        <h2 id="latest">More writing</h2>
+        <a class="text-link" href="/blog">Full archive</a>
+      </div>
+      <Archive posts={latest} headingLevel="h3" />
+    </section>
   </div>
-  <HighlightedPosts />
-</Layout>
+</Base>
 
 <style>
-  #leftFist {
-    transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 62.5%));
-  }
-  #rightFist {
-    transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 62.5%));
-  }
-
-  @keyframes fist-bump-left {
-    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 125%)); }
-    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 62.5%)); }
+  .hero {
+    display: grid;
+    min-height: min(86svh, 54rem);
+    padding-block: clamp(3rem, 8vw, 6rem) 2rem;
   }
 
-  @keyframes fist-bump-right {
-    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 125%)); }
-    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 62.5%)); }
+  .inner {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    text-align: center;
   }
 
-  @keyframes fist-intro-left {
-    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 125%)); }
-    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% - 62.5%)); }
+  .copy {
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
+    max-width: 58rem;
+    padding: 1rem;
   }
 
-  @keyframes fist-intro-right {
-    from { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 125%)); }
-    to   { transform: translateY(calc(-50% + 3rem)) translateX(calc(-50% + 62.5%)); }
+  h1 {
+    font-size: clamp(2.875rem, 8.4vw, 6.75rem);
+    font-weight: 560;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
   }
 
-  @supports (animation-timeline: scroll()) {
-    #leftFist {
-      animation: fist-bump-left auto linear forwards;
-      animation-timeline: scroll(root);
-      animation-range: 0% 50%;
+  .double {
+    position: relative;
+    isolation: isolate;
+    display: inline-block;
+    padding-inline: 0.04em 0.08em;
+    color: var(--left);
+    font-style: italic;
+  }
+
+  .double::after {
+    content: attr(data-text) / "";
+    position: absolute;
+    inset: 0;
+    padding-inline: inherit;
+    color: var(--right);
+    mix-blend-mode: screen;
+    transform: translate(0.05em, 0.035em);
+    animation: register 1.1s var(--ease-out) 0.25s both;
+  }
+
+  :global([data-theme="light"]) .double::after {
+    z-index: -1;
+    color: color-mix(in oklab, var(--right) 45%, var(--bg));
+    mix-blend-mode: normal;
+  }
+
+  .lede {
+    max-width: 34rem;
+    font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
+    color: var(--fg-muted);
+  }
+
+  .bump {
+    display: flex;
+    font-size: clamp(3rem, 7vw, 4.75rem);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .fist {
+    display: inline-block;
+  }
+
+  .fist > span {
+    display: inline-block;
+  }
+
+  .left {
+    animation: punch-left 560ms cubic-bezier(0.55, 0, 0.9, 0.45) 0.35s both;
+  }
+
+  .right {
+    animation: punch-right 560ms cubic-bezier(0.55, 0, 0.9, 0.45) 0.35s both;
+  }
+
+  .left > span {
+    animation: recoil-left 520ms var(--ease-out) 0.91s both;
+  }
+
+  .right > span {
+    animation: recoil-right 520ms var(--ease-out) 0.91s both;
+  }
+
+  @keyframes register {
+    from {
+      opacity: 0;
+      transform: translate(0.3em, 0.1em);
     }
-    #rightFist {
-      animation: fist-bump-right auto linear forwards;
-      animation-timeline: scroll(root);
-      animation-range: 0% 50%;
-    }
+  }
 
-    @media (max-width: 640px) {
-      #leftFist {
-        animation-range: 0% 20%;
-      }
-      #rightFist {
-        animation-range: 0% 20%;
-      }
+  @keyframes punch-left {
+    from {
+      opacity: 0;
+      transform: translateX(-120%) rotate(-10deg);
+    }
+    30% {
+      opacity: 1;
     }
   }
 
-  @media (min-height: 900px) and (min-width: 1000px) {
-    @supports (animation-timeline: scroll()) {
-      #leftFist {
-        animation: fist-intro-left 0.7s cubic-bezier(0.3, 0, 0.7, 1) 0.4s forwards;
-        animation-timeline: auto;
-        animation-range: normal;
-      }
-      #rightFist {
-        animation: fist-intro-right 0.7s cubic-bezier(0.3, 0, 0.7, 1) 0.4s forwards;
-        animation-timeline: auto;
-        animation-range: normal;
-      }
+  @keyframes punch-right {
+    from {
+      opacity: 0;
+      transform: translateX(120%) rotate(10deg);
     }
+    30% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes recoil-left {
+    40% {
+      transform: translateX(-9%) rotate(-3deg);
+    }
+  }
+
+  @keyframes recoil-right {
+    40% {
+      transform: translateX(9%) rotate(3deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .double::after,
+    .fist,
+    .fist > span {
+      animation: none;
+    }
+  }
+
+  .sections {
+    display: grid;
+    gap: clamp(4.5rem, 10vw, 7rem);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+    gap: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
   }
 </style>

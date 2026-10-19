@@ -1,0 +1,122 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  url: string;
+  title: string;
+}
+
+const { url, title } = Astro.props;
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+const targets = [
+  {
+    icon: "x",
+    label: "Share on X",
+    href: `https://x.com/intent/post?url=${encodedUrl}&text=${encodedTitle}`,
+  },
+  {
+    icon: "linkedin",
+    label: "Share on LinkedIn",
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  },
+  {
+    icon: "mail",
+    label: "Share by email",
+    href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
+  },
+] as const;
+---
+
+<div class="share">
+  <span class="meta">Share</span>
+  <button class="action" type="button" data-copy-link={url} aria-label="Copy link">
+    <Icon name="link" class="idle" />
+    <Icon name="check" class="done" />
+  </button>
+  {
+    targets.map(({ icon, label, href }) => (
+      <a class="action" href={href} aria-label={label} target="_blank" rel="noopener">
+        <Icon name={icon} />
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>(
+    "[data-copy-link]",
+  )) {
+    button.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(button.dataset.copyLink ?? location.href);
+      button.dataset.copied = "";
+      button.setAttribute("aria-label", "Link copied");
+      setTimeout(() => {
+        delete button.dataset.copied;
+        button.setAttribute("aria-label", "Copy link");
+      }, 1600);
+    });
+  }
+</script>
+
+<style>
+  .share {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .meta {
+    margin-right: 0.5rem;
+  }
+
+  .action {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: none;
+    color: var(--fg-muted);
+    cursor: pointer;
+    transition:
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 120ms var(--ease-out);
+  }
+
+  .action:hover {
+    color: var(--fg);
+    border-color: var(--line-strong);
+  }
+
+  .action:active {
+    transform: scale(0.94);
+  }
+
+  .action :global(svg) {
+    grid-area: 1 / 1;
+    width: 1.05rem;
+    height: 1.05rem;
+    transition:
+      opacity 200ms var(--ease-out),
+      transform 200ms var(--ease-out),
+      filter 200ms var(--ease-out);
+  }
+
+  .action :global(.done),
+  .action[data-copied] :global(.idle) {
+    opacity: 0;
+    transform: scale(0.6);
+    filter: blur(2px);
+  }
+
+  .action[data-copied] :global(.done) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    color: var(--left);
+  }
+</style>

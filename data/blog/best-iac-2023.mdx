@@ -2,13 +2,13 @@
 publishDate: "Nov 27, 2023"
 title: "The best IaC tool in 2023"
 description: "A fresh look at infrastructure provisioning tools in 2023 and their performance across different categories."
-image: "~/assets/images/thumbnails/iac_best_2023.jpg"
+image: "../../src/assets/images/thumbnails/iac_best_2023.jpg"
 imageCreditUrl: https://labs.openai.com/
 tags: [terraform, cloud, infrastructure, IaC, ranking, aws, serverless, bun, cdk]
 tweet: "https://twitter.com/doubletrblblogs/status/1729107507703071024"
 ---
-import GithubRepoTag from "~/components/atoms/GithubRepoTag.astro";
-import RankingTable from "~/components/atoms/RankingTable.astro";
+import GithubRepoTag from "~/components/mdx/GithubRepoTag.astro";
+import RankingTable from "~/components/mdx/RankingTable.astro";
 
 The recent release of [bun 1.0](https://bun.sh/blog/bun-v1.0) had us all hyped up. The
 unseen speed of bun, together with a completely overhauled dev experience by unifying the wide
@@ -106,7 +106,7 @@ Glossary:
   extend the given stack
 - "Depl" is here the abbreviation for "Deployment"
 
-#### Evaluation Takeaways
+### Evaluation Takeaways
 
 What we immediately learned from the evaluation:
 
@@ -117,7 +117,7 @@ What we immediately learned from the evaluation:
 - Debugger integration depends on the tool working together with the build utility. As bun is
   still in the early stages, bun is not yet supported by most tools.
 
-#### Cloudformation and the Limits of Abstraction
+### Cloudformation and the Limits of Abstraction
 
 Most of the IaC tools we can chose from use Cloudformation under the hood. It's emphasis
 historically has been moving infrastructure from one sane state to the next. Changing
@@ -138,7 +138,7 @@ expect you to dive into Cloudformation when needed, while wholistic tools that t
 abstractions have failed (Amplify, Beanstalk). It will be interesting to see if this trench of
 complexity can ever be bridged.
 
-#### AWS and Speed
+### AWS and Speed
 
 A critical insight from our analysis is the inherent speed limitations imposed by AWS's core API
 calls. Despite advancements in IaC tools, they struggle to match the lightning pace of platforms
@@ -223,7 +223,7 @@ to run bun via a lambda layer. [Chalice](https://aws.github.io/chalice/index.htm
 in their list of IaC tools, which is yet to be added to our ranking. Definitely give the episode a
 listen if you are into bun and serverless!
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/42TzrteyawiNJdaDv85Hse?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe loading="lazy" title="Spotify podcast episode" style="border-radius:12px" src="https://open.spotify.com/embed/episode/42TzrteyawiNJdaDv85Hse?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 ## Rounding up
 
