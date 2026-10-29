@@ -65,7 +65,8 @@ const heroWidth = withToc ? "68.5rem" : "52rem";
       <figure class="column hero">
         <Picture
           src={image}
-          formats={["avif", "webp"]}
+          formats={["avif"]}
+          fallbackFormat="webp"
           alt=""
           widths={[640, 960, 1280, 1600]}
           sizes={`(min-width: 76rem) ${heroWidth}, 100vw`}

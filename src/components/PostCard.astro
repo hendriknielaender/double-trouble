@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { formatDate, type Post, postUrl, readingMinutes } from "~/lib/posts";
 
 interface Props {
@@ -12,8 +12,10 @@ const { post, eager = false } = Astro.props;
 
 <article class="card">
   <div class="media" data-morph={postUrl(post)}>
-    <Image
+    <Picture
       src={post.data.image}
+      formats={["avif"]}
+      fallbackFormat="webp"
       alt=""
       widths={[480, 720, 960]}
       sizes="(min-width: 64rem) 36rem, (min-width: 40rem) 50vw, 100vw"
@@ -47,6 +49,10 @@ const { post, eager = false } = Astro.props;
     border-radius: var(--radius);
     background: var(--bg-raised);
     aspect-ratio: 16 / 10;
+  }
+
+  .media :global(picture) {
+    display: contents;
   }
 
   .media img {
