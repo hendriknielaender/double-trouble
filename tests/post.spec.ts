@@ -56,6 +56,21 @@ test("code blocks name their language and run wider than the text", async ({
   );
 });
 
+test("the contents rail counts down the minutes left", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "the rail only shows beside the article");
+  await page.goto("/post/cloudflare-2025-review");
+  const left = page.locator("[data-toc-left]");
+  await expect(left).toHaveText(/^\d+ min left$/);
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, document.documentElement.scrollHeight);
+  });
+  await expect(left).toHaveText("Thanks for reading");
+});
+
 test("section headings link to themselves", async ({ page }) => {
   await page.goto("/post/cloudflare-2025-review");
   const heading = page.locator("[data-prose] h2").first();
