@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T16:02:02.837143+00:00",
+  "title": "Design System: Double Trouble",
+  "extensions": {
+    "colorMeta": {
+      "hendrik-blue": {
+        "role": "primary",
+        "displayName": "Hendrik Blue",
+        "canonical": "#8ea3ff",
+        "tonalRamp": [
+          "#21232c",
+          "#243063",
+          "#1430ad",
+          "#002ffb",
+          "#375cff",
+          "#8397ec",
+          "#c4cae6",
+          "#f0f1f4"
+        ]
+      },
+      "felix-amber": {
+        "role": "secondary",
+        "displayName": "Felix Amber",
+        "canonical": "#ffc062",
+        "tonalRamp": [
+          "#2c2721",
+          "#634a24",
+          "#ad7014",
+          "#fb9600",
+          "#ffaf37",
+          "#ecc283",
+          "#e6d9c4",
+          "#f4f3f0"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "#0b0d13",
+        "tonalRamp": [
+          "#252528",
+          "#3b3f4c",
+          "#4c5675",
+          "#5c6d9f",
+          "#808db6",
+          "#aab1c6",
+          "#d1d3da",
+          "#f2f2f3"
+        ]
+      },
+      "canvas-raised": {
+        "role": "neutral",
+        "displayName": "Canvas Raised",
+        "canonical": "#12151e",
+        "tonalRamp": [
+          "#252628",
+          "#3b3f4b",
+          "#4d5774",
+          "#5e6e9d",
+          "#828eb4",
+          "#abb1c5",
+          "#d1d3d9",
+          "#f2f2f3"
+        ]
+      },
+      "canvas-sunken": {
+        "role": "neutral",
+        "displayName": "Canvas Sunken",
+        "canonical": "#07080d",
+        "tonalRamp": [
+          "#252528",
+          "#3a3d4d",
+          "#495178",
+          "#5865a3",
+          "#7d87b9",
+          "#a8adc8",
+          "#d0d2da",
+          "#f2f2f3"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#1d2130",
+        "tonalRamp": [
+          "#252528",
+          "#3c3f4b",
+          "#4e5673",
+          "#5f6c9d",
+          "#828db4",
+          "#abb0c5",
+          "#d1d3d9",
+          "#f2f2f3"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "#2e3446",
+        "tonalRamp": [
+          "#252627",
+          "#3d404a",
+          "#515970",
+          "#647198",
+          "#8690b0",
+          "#adb3c3",
+          "#d2d3d9",
+          "#f2f2f3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#ecebe6",
+        "tonalRamp": [
+          "#272725",
+          "#48463f",
+          "#6b6856",
+          "#8f896d",
+          "#a8a48d",
+          "#bfbdb1",
+          "#d7d7d3",
+          "#f3f2f2"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#a6abba",
+        "tonalRamp": [
+          "#262627",
+          "#3f4147",
+          "#575c6a",
+          "#6e768e",
+          "#8e94a8",
+          "#b1b5bf",
+          "#d3d4d7",
+          "#f2f2f2"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#7f8598",
+        "tonalRamp": [
+          "#262627",
+          "#404247",
+          "#585c69",
+          "#70778b",
+          "#9095a6",
+          "#b2b5be",
+          "#d3d4d7",
+          "#f2f2f2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Post and page titles, capped at 22ch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Article sections with 3em of air above."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and archive titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Article prose on a 43rem measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Dates, read times, captions, tags; mono only where the text is data."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Code blocks with line numbers; inline code at 0.86em of body."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Entrances, presses, hover returns."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "On-screen movement such as the card to hero morph and ranking row slides."
+      },
+      {
+        "name": "press",
+        "value": "120ms",
+        "purpose": "Press scale on buttons."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Colour, border and opacity state changes."
+      },
+      {
+        "name": "reveal",
+        "value": "220ms",
+        "purpose": "Page crossfade, contents panel, popovers."
+      },
+      {
+        "name": "morph",
+        "value": "320ms",
+        "purpose": "Card to hero image morph."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-header",
+        "value": "30rem"
+      },
+      {
+        "name": "edge-to-edge-code",
+        "value": "40rem"
+      },
+      {
+        "name": "two-column-cards",
+        "value": "64rem"
+      },
+      {
+        "name": "contents-rail",
+        "value": "68rem"
+      },
+      {
+        "name": "page",
+        "value": "76rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The inverted pill used for the 404 action.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Go home</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 1.25rem;border-radius:999px;background:var(--fg,#ecebe6);color:var(--bg,#0b0d13);font:600 1.0625rem/1.6 var(--sans,Schibsted Grotesk,system-ui,sans-serif);text-decoration:none;transition:transform 120ms cubic-bezier(.23,1,.32,1)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid var(--left,#8ea3ff);outline-offset:3px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Tag chip: mono label in a hairline pill that fills on hover.",
+      "html": "<a class=\"ds-chip\" href=\"#\">cloudflare</a>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;min-height:2rem;padding:0 .75rem;border:1px solid var(--line,#1d2130);border-radius:999px;background:transparent;color:var(--fg-muted,#a6abba);font:400 .75rem/1 var(--mono,Martian Mono,ui-monospace,monospace);text-decoration:none;transition:color 160ms ease,border-color 160ms ease,background-color 160ms ease}.ds-chip:hover{color:var(--fg,#ecebe6);border-color:var(--line-strong,#2e3446);background:var(--bg-raised,#12151e)}.ds-chip:focus-visible{outline:2px solid var(--left,#8ea3ff);outline-offset:3px}"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Share and copy-link circles.",
+      "html": "<button class=\"ds-icon-btn\" type=\"button\" aria-label=\"Copy link\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" width=\"17\" height=\"17\"><path d=\"m9 15 6-6m-4-3 .463-.536a5 5 0 0 1 7.071 7.072L18 13m-5 5-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11\"/></svg></button>",
+      "css": ".ds-icon-btn{display:grid;place-items:center;width:2.5rem;height:2.5rem;padding:0;border:1px solid var(--line,#1d2130);border-radius:999px;background:none;color:var(--fg-muted,#a6abba);cursor:pointer;transition:color 160ms ease,border-color 160ms ease,transform 120ms cubic-bezier(.23,1,.32,1)}.ds-icon-btn:hover{color:var(--fg,#ecebe6);border-color:var(--line-strong,#2e3446)}.ds-icon-btn:active{transform:scale(.94)}.ds-icon-btn:focus-visible{outline:2px solid var(--left,#8ea3ff);outline-offset:3px}"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header navigation pill with a filled current state.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Writing</a><a href=\"#\">About</a></nav>",
+      "css": ".ds-nav{display:flex;gap:.25rem}.ds-nav a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .75rem;border-radius:999px;color:var(--fg-muted,#a6abba);font:400 .9375rem/1.6 var(--sans,Schibsted Grotesk,system-ui,sans-serif);text-decoration:none;transition:color 160ms ease,background-color 160ms ease}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--fg,#ecebe6)}.ds-nav a[aria-current]{background:color-mix(in oklab,var(--fg,#ecebe6) 7%,transparent)}.ds-nav a:focus-visible{outline:2px solid var(--left,#8ea3ff);outline-offset:3px}"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Sunken block with a language label strip and line numbers.",
+      "html": "<div class=\"ds-code\"><span class=\"ds-code-lang\">zig</span><pre><code><span class=\"ds-line\">const zvm = @import(\"zvm\");</span>\n<span class=\"ds-line\">try zvm.use(\"0.16.0\");</span></code></pre></div>",
+      "css": ".ds-code{position:relative}.ds-code pre{margin:0;padding:2.9rem 1.25rem 1.1rem;overflow-x:auto;border:1px solid var(--line,#1d2130);border-radius:14px;background:var(--bg-sunken,#07080d);color:var(--fg,#ecebe6);font:400 .84rem/1.7 ui-monospace,SF Mono,Menlo,Consolas,monospace;tab-size:2}.ds-code code{counter-reset:line;display:block}.ds-line::before{counter-increment:line;content:counter(line);display:inline-block;width:2ch;margin-right:1.25rem;text-align:right;color:var(--fg-faint,#7f8598);opacity:.5}.ds-code-lang{position:absolute;top:.55rem;left:1.25rem;display:flex;align-items:center;height:2.25rem;color:var(--fg-faint,#7f8598);font:400 .6875rem/1 var(--mono,Martian Mono,ui-monospace,monospace);letter-spacing:.12em;text-transform:uppercase}"
+    },
+    {
+      "name": "Post Card",
+      "kind": "card",
+      "refersTo": "card-media",
+      "description": "Image in an 18px frame with mono meta, a title and a two-line description.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-media\"></div><p class=\"ds-card-meta\">Oct 23, 2025 \u00b7 6 min read</p><h3 class=\"ds-card-title\"><a href=\"#\">Our Learnings after 1 Year of Building on Cloudflare</a></h3><p class=\"ds-card-desc\">Things we learned along the way and which stood out to us as cloudflare newbies</p></article>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:.75rem;max-width:22rem;font-family:var(--sans,Schibsted Grotesk,system-ui,sans-serif)}.ds-card-media{aspect-ratio:16/10;border:1px solid var(--line,#1d2130);border-radius:18px;background:linear-gradient(135deg,var(--left,#8ea3ff),var(--right,#ffc062));margin-bottom:.5rem}.ds-card-meta{margin:0;color:var(--fg-faint,#7f8598);font:400 .75rem/1.5 var(--mono,Martian Mono,ui-monospace,monospace);letter-spacing:.02em}.ds-card-title{margin:0;font-size:1.375rem;font-weight:600;line-height:1.2;letter-spacing:-.02em}.ds-card-title a{color:var(--fg,#ecebe6);text-decoration:none}.ds-card:hover .ds-card-title a{text-decoration:underline;text-decoration-color:color-mix(in oklab,var(--left,#8ea3ff) 60%,transparent)}.ds-card-desc{margin:0;color:var(--fg-muted,#a6abba);font-size:1.0625rem;line-height:1.6}"
+    },
+    {
+      "name": "Contents Rail",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky section list with an inked active item and the minutes-left countdown.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Contents\"><p class=\"ds-rail-label\">Contents</p><ol><li><a href=\"#\" aria-current=\"true\">Getting our Feet wet</a></li><li><a href=\"#\">Available Services</a></li><li><a href=\"#\">Top DX Moments</a></li></ol><p class=\"ds-rail-left\">6 min left</p></nav>",
+      "css": ".ds-rail{width:12.5rem;font-family:var(--sans,Schibsted Grotesk,system-ui,sans-serif)}.ds-rail ol{margin:0;padding:0;list-style:none}.ds-rail-label,.ds-rail-left{margin:0;color:var(--fg-faint,#7f8598);font:400 .75rem/1.5 var(--mono,Martian Mono,ui-monospace,monospace);letter-spacing:.02em}.ds-rail-label{margin-bottom:1rem}.ds-rail-left{margin-top:1.25rem}.ds-rail a{display:block;padding:.7rem 0;border-bottom:1px solid var(--line,#1d2130);color:var(--fg-faint,#7f8598);font-size:.875rem;line-height:1.35;text-decoration:none;transition:color 160ms ease,border-color 160ms ease}.ds-rail a:hover{color:var(--fg,#ecebe6)}.ds-rail a[aria-current]{color:var(--fg,#ecebe6);font-weight:560;border-bottom-color:var(--fg,#ecebe6)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Terminal",
+    "overview": "Double Trouble reads like a quiet console after hours: a near-black canvas (#0b0d13), an ambient field of DOUBLE and TROUBLE glyphs drifting and glitching behind the page, mono labels for dates and tags, and code as the main event rather than an interruption. Two inks sit on that canvas, Hendrik Blue and Felix Amber, one per author, overprinted slightly out of register in the mark and the home-page title. Light mode is the same terminal with the lights on (#f3f4f7), never a different product.\n\nThe mood is calm, confident and playful at the edges. The reading surface is restrained: one sans family, a 43rem measure, generous section air, hairlines instead of boxes. Personality lives in a few authored moments: the fist bump on first visit, the glitching field reacting to the pointer, the morph from card to hero, the countdown in the contents rail. Nothing animates on every interaction, and nothing competes with the text.",
+    "keyCharacteristics": [
+      "Dark-first, tonal, shadowless surfaces with 1px hairlines.",
+      "Two accent inks only, each tied to an author, used sparingly.",
+      "Schibsted Grotesk for everything readable, Martian Mono for labels, the system monospace for code.",
+      "Media runs wider than text; text, media and title share one left edge.",
+      "Motion is purposeful and brief: exits and entrances under 320ms, custom ease-out, reduced-motion paths everywhere."
+    ],
+    "rules": [
+      {
+        "name": "The Two Inks Rule",
+        "body": "Hendrik Blue and Felix Amber are the only chromatic colours. New states and charts reuse them before any neutral; no third hue enters the system.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tone Rule",
+        "body": "Depth is three tones of the canvas and a hairline. Body copy is Ink mixed 92% into the canvas so it never glares in the dark.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-Is-Data Rule",
+        "body": "Martian Mono appears only where the text is a measurement, a date, a tag or a language name.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "If something needs to read as above the page, raise its tone or add a hairline; never add a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep body text on the 43rem measure and let only media run to 52rem.",
+      "Do use Martian Mono at 0.75rem for every date, read time, caption and tag.",
+      "Do use hairlines (1px, Hairline token) for every division; raise the tone for surfaces that need to stand out.",
+      "Do give every pressable a press scale and a 120 to 160ms transition on the custom ease-out.",
+      "Do provide a reduced-motion path for every animation that moves something.",
+      "Do credit the image source under every hero in the label style."
+    ],
+    "donts": [
+      "Don't add a third hue; chart series, states and highlights reuse Hendrik Blue and Felix Amber.",
+      "Don't add box shadows, gradient text or glass panels beyond the header blur.",
+      "Don't set display or body text in the mono face.",
+      "Don't centre body text or media in the article; everything hangs off the left edge.",
+      "Don't animate hover states on touch devices or play the intro more than once per session."
+    ]
+  }
+}

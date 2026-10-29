@@ -38,6 +38,7 @@ const withToc = sections.length >= 3;
 const related = relatedPosts(post, posts);
 const url = new URL(postUrl(post), Astro.site).href;
 const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
+const heroWidth = withToc ? "68.5rem" : "52rem";
 ---
 
 <Base
@@ -47,99 +48,113 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   article={{ published: publishDate, tags }}
   progress
 >
-  <article>
-    <header class="head" data-field-hero>
-      <div class="column" data-field-quiet>
-        <p class="meta meta-row">
-          <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>
-          <span aria-hidden="true">·</span>
-          {readingMinutes(post)} minute read
-        </p>
-        <h1>{title}</h1>
-        <p class="lede">{description}</p>
-      </div>
-    </header>
-
-    <figure class="wrap hero">
-      <Picture
-        src={image}
-        formats={["avif", "webp"]}
-        alt=""
-        widths={[640, 960, 1280, 1600]}
-        sizes="(min-width: 76rem) 76rem, 100vw"
-        loading="eager"
-        fetchpriority="high"
-        data-morph={postUrl(post)}
-      />
-      <figcaption class="meta">
-        Image: <a href={imageCreditUrl}>{credit}</a>
-      </figcaption>
-    </figure>
-
-    <div class:list={["column", "body", { "with-toc": withToc }]} data-field-clear>
-      {withToc && <Toc headings={sections} variant="aside" />}
-      <div class="content">
-        {withToc && <Toc headings={sections} variant="inline" />}
-        <div class="prose" data-prose>
-          <Content />
+  <div class:list={["post", { "has-toc": withToc }]}>
+    <article>
+      <header class="head" data-field-hero>
+        <div class="column" data-field-quiet>
+          <p class="meta meta-row">
+            <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>
+            <span aria-hidden="true">·</span>
+            {readingMinutes(post)} minute read
+          </p>
+          <h1>{title}</h1>
+          <p class="lede">{description}</p>
         </div>
-        <footer class="foot">
-          {
-            tags.length > 0 && (
-              <ul class="chip-list" aria-label="Tags">
-                {tags.map((tag) => (
-                  <li>
-                    <a class="chip" href={tagUrl(tag)}>
-                      {tag}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )
-          }
-          <div class="actions">
-            <Share url={url} title={title} />
+      </header>
+
+      <figure class="column hero">
+        <Picture
+          src={image}
+          formats={["avif"]}
+          fallbackFormat="webp"
+          alt=""
+          widths={[640, 960, 1280, 1600]}
+          sizes={`(min-width: 76rem) ${heroWidth}, 100vw`}
+          loading="eager"
+          fetchpriority="high"
+          data-morph={postUrl(post)}
+        />
+        <figcaption class="meta">
+          Image: <a href={imageCreditUrl}>{credit}</a>
+        </figcaption>
+      </figure>
+
+      <div class="column body" data-field-clear>
+        {withToc && <Toc headings={sections} variant="aside" minutes={readingMinutes(post)} />}
+        <div class="content">
+          {withToc && <Toc headings={sections} variant="inline" />}
+          <div class="prose" data-prose>
+            <Content />
+          </div>
+          <footer class="foot">
             {
-              tweet && (
-                <a class="discuss" href={tweet}>
-                  Discuss on X
-                  <Icon name="arrowUpRight" />
-                </a>
+              tags.length > 0 && (
+                <ul class="chip-list" aria-label="Tags">
+                  {tags.map((tag) => (
+                    <li>
+                      <a class="chip" href={tagUrl(tag)}>
+                        {tag}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               )
             }
-          </div>
-        </footer>
+            <div class="actions">
+              <Share url={url} title={title} />
+              {
+                tweet && (
+                  <a class="discuss" href={tweet}>
+                    Discuss on X
+                    <Icon name="arrowUpRight" />
+                  </a>
+                )
+              }
+            </div>
+          </footer>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
 
-  {
-    related.length > 0 && (
-      <section class="wrap related" aria-labelledby="related">
-        <div class="section-head">
-          <h2 id="related">Keep reading</h2>
-          <a class="text-link" href="/blog">
-            All writing
-          </a>
-        </div>
-        <div class="grid">
-          {related.map((entry) => (
-            <PostCard post={entry} />
-          ))}
-        </div>
-      </section>
-    )
-  }
+    {
+      related.length > 0 && (
+        <section class="column related" aria-labelledby="related">
+          <div class="section-head">
+            <h2 id="related">Keep reading</h2>
+            <a class="text-link" href="/blog">
+              All writing
+            </a>
+          </div>
+          <div class="grid">
+            {related.map((entry) => (
+              <PostCard post={entry} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
 </Base>
 
 <script>
   import { svg } from "~/lib/icons";
 
-  for (const pre of document.querySelectorAll("[data-prose] pre")) {
+  const unlabelled = new Set(["plaintext", "text", "txt"]);
+
+  for (const pre of document.querySelectorAll<HTMLPreElement>("[data-prose] pre")) {
     const block = document.createElement("div");
     block.className = "code-block";
     pre.replaceWith(block);
     block.append(pre);
+    const language = pre.dataset.language;
+    if (language && !unlabelled.has(language)) {
+      block.dataset.language = language;
+      const label = document.createElement("span");
+      label.className = "lang";
+      label.setAttribute("aria-hidden", "true");
+      label.textContent = language;
+      block.append(label);
+    }
     const button = document.createElement("button");
     button.type = "button";
     button.className = "copy";
@@ -158,12 +173,61 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
     block.append(button);
   }
 
+  for (const heading of document.querySelectorAll<HTMLHeadingElement>(
+    "[data-prose] :is(h2, h3, h4)[id]",
+  )) {
+    const anchor = document.createElement("a");
+    anchor.className = "anchor";
+    anchor.href = `#${heading.id}`;
+    anchor.setAttribute("aria-hidden", "true");
+    anchor.tabIndex = -1;
+    anchor.textContent = "#";
+    heading.append(anchor);
+  }
+
   const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-toc] a")];
   const targets = [
     ...new Set(links.map((link) => decodeURIComponent(link.hash.slice(1)))),
   ]
     .map((id) => document.getElementById(id))
     .filter((target) => target !== null);
+
+  // The contents rail counts down the minutes left in the article, from
+  // how much of the prose is still below the fold.
+  const left = document.querySelector<HTMLElement>("[data-toc-left]");
+  const prose = document.querySelector<HTMLElement>("[data-prose]");
+  const minutes = Number(left?.dataset.minutes ?? 0);
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let shown = left?.textContent?.trim() ?? "";
+  let swap = 0;
+  const remaining = () => {
+    if (!prose) return shown;
+    const rect = prose.getBoundingClientRect();
+    const fraction = Math.min(
+      1,
+      Math.max(0, (rect.bottom - window.innerHeight) / rect.height),
+    );
+    if (fraction <= 0) return "Thanks for reading";
+    const ahead = fraction * minutes;
+    if (ahead < 1) return "Under a minute left";
+    return `${Math.ceil(ahead)} min left`;
+  };
+  const countdown = () => {
+    if (!left) return;
+    const text = remaining();
+    if (text === shown) return;
+    shown = text;
+    if (still) {
+      left.textContent = text;
+      return;
+    }
+    left.dataset.swapping = "";
+    clearTimeout(swap);
+    swap = window.setTimeout(() => {
+      left.textContent = shown;
+      delete left.dataset.swapping;
+    }, 160);
+  };
 
   if (targets.length > 0) {
     let pending = false;
@@ -181,6 +245,7 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
           link.removeAttribute("aria-current");
         }
       }
+      countdown();
     };
     window.addEventListener(
       "scroll",
@@ -197,8 +262,17 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
 </script>
 
 <style>
+  /*
+   * One column carries the whole article: title, hero, contents rail and
+   * body share a left edge, and media shares the hero's right edge.
+   */
+  .post {
+    --column: var(--wide);
+    --column-full: calc(var(--rail) + var(--rail-gap) + var(--wide));
+  }
+
   .column {
-    width: min(100% - 2 * var(--gutter), 62rem);
+    width: min(100% - 2 * var(--gutter), var(--column));
     margin-inline: auto;
   }
 
@@ -213,20 +287,20 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
 
   h1 {
     max-width: 22ch;
-    font-size: clamp(2.375rem, 5.6vw, 4.25rem);
+    font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.75rem);
     font-weight: 560;
-    letter-spacing: -0.035em;
-    line-height: 1.02;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
   }
 
   .lede {
-    max-width: 40rem;
+    max-width: var(--measure);
     font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
     color: var(--fg-muted);
   }
 
   .hero {
-    margin: 0 auto;
+    margin-block: 0;
   }
 
   .hero img {
@@ -241,7 +315,6 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
 
   figcaption {
     margin-top: 0.75rem;
-    text-align: right;
   }
 
   figcaption a {
@@ -253,12 +326,12 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   }
 
   .content {
-    max-width: var(--measure);
-    margin-inline: auto;
+    min-width: 0;
   }
 
-  .with-toc .content {
-    margin-inline: 0;
+  .content > :global(.inline),
+  .foot {
+    max-width: var(--measure);
   }
 
   .body > :global(.aside) {
@@ -266,20 +339,29 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   }
 
   @media (min-width: 68rem) {
-    .with-toc {
+    .has-toc {
+      --column: var(--column-full);
+    }
+
+    .has-toc .body {
       display: grid;
-      grid-template-columns: 12.5rem minmax(0, var(--measure));
-      justify-content: space-between;
-      gap: 4rem;
+      grid-template-columns: var(--rail) minmax(0, 1fr);
+      gap: var(--rail-gap);
       align-items: start;
     }
 
-    .body > :global(.aside) {
+    .has-toc .body > :global(.aside) {
       display: block;
     }
 
-    .content > :global(.inline) {
+    .has-toc .content > :global(.inline) {
       display: none;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .hero img {
+      border-radius: var(--radius-media);
     }
   }
 
@@ -326,6 +408,7 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   }
 
   .related {
+    --column: var(--column-full);
     margin-top: clamp(5rem, 11vw, 8rem);
   }
 

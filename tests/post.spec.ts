@@ -39,6 +39,46 @@ test("code blocks get a copy button", async ({
   expect(copied).toContain("CommandData");
 });
 
+test("code blocks name their language and run wider than the text", async ({
+  page,
+}) => {
+  await page.goto("/post/zvm");
+  const block = page.locator(".code-block").first();
+  await expect(block).toHaveAttribute("data-language", "zig");
+  await expect(block.locator(".lang")).toHaveText("zig");
+  const width = (selector: string) =>
+    page
+      .locator(selector)
+      .first()
+      .evaluate((element) => element.getBoundingClientRect().width);
+  expect(await width(".code-block")).toBeGreaterThan(
+    await width("[data-prose] > p"),
+  );
+});
+
+test("the contents rail counts down the minutes left", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "the rail only shows beside the article");
+  await page.goto("/post/cloudflare-2025-review");
+  const left = page.locator("[data-toc-left]");
+  await expect(left).toHaveText(/^\d+ min left$/);
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, document.documentElement.scrollHeight);
+  });
+  await expect(left).toHaveText("Thanks for reading");
+});
+
+test("section headings link to themselves", async ({ page }) => {
+  await page.goto("/post/cloudflare-2025-review");
+  const heading = page.locator("[data-prose] h2").first();
+  const id = await heading.getAttribute("id");
+  expect(id).toBeTruthy();
+  await expect(heading.locator("a.anchor")).toHaveAttribute("href", `#${id}`);
+});
+
 test("charts render without client libraries", async ({ page }) => {
   await page.goto("/post/software-engineering-hamburg-2024");
   await expect(page.locator("[data-chart]")).toHaveCount(6);

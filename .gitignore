@@ -26,3 +26,8 @@ pnpm-lock.yaml
 playwright-report
 test-results
 .astro/
+
+# impeccable live-mode session state (machine specific)
+.impeccable/live/sessions/
+.impeccable/live/roots.json
+.impeccable/live/inject-journal.json

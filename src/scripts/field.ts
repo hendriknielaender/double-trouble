@@ -3,6 +3,9 @@ const NOISE = "#%&*+=-:<>/\\|01";
 const DUST = ".:+'`";
 const SLOT = 7;
 const FRAME_MS = 50;
+const GLITCH_MS = 100;
+const IDLE_MS = 200;
+const LIVELY_MS = 400;
 
 type Rect = { left: number; right: number; top: number; bottom: number };
 type Glitch = { until: number; swap: number; glyphs: string[] };
@@ -63,6 +66,8 @@ export function startField(canvas: HTMLCanvasElement, epoch: number) {
   const quietElements = [...document.querySelectorAll("[data-field-quiet]")];
   const glitches = new Map<number, Glitch>();
   const pointer = { x: -1e4, y: -1e4 };
+  let pointerAt = Number.NEGATIVE_INFINITY;
+  let scrollAt = Number.NEGATIVE_INFINITY;
   let ripple: { x: number; y: number; start: number } | null = null;
   let width = 0;
   let height = 0;
@@ -133,8 +138,14 @@ export function startField(canvas: HTMLCanvasElement, epoch: number) {
     return created;
   };
 
-  const draw = (now: number) => {
+  const draw = (now: number, elapsed: number) => {
     const time = reduced ? 0 : (performance.timeOrigin + now - epoch) / 1000;
+    for (const [key, state] of glitches) {
+      if (state.until <= now) glitches.delete(key);
+    }
+    // Glitches are rolled per frame; keep their rate per second stable
+    // when the field idles at a slower cadence.
+    const roll = elapsed / FRAME_MS;
     const hero = toRect(heroElement);
     const area = toRect(clearElement);
     const clear = area && area.left > 48 ? area : null;
@@ -213,13 +224,12 @@ export function startField(canvas: HTMLCanvasElement, epoch: number) {
                     1 - Math.hypot(cx - pointer.x, cy - pointer.y) / 140,
                   )
                 : 0;
-              if (Math.random() < 0.0012 + near * 0.18 + wave * 0.5) {
+              if (Math.random() < (0.0012 + near * 0.18 + wave * 0.5) * roll) {
                 glitch(key, now, word);
               }
             }
             const state = glitches.get(key);
-            if (state && state.until <= now) glitches.delete(key);
-            if (state && state.until > now) {
+            if (state) {
               if (now > state.swap) {
                 const settle = 1 - (state.until - now) / 480;
                 state.glyphs = [...word].map((glyph) =>
@@ -267,11 +277,24 @@ export function startField(canvas: HTMLCanvasElement, epoch: number) {
     return drawn > 0 || ripple !== null;
   };
 
+  // Only the ripple, a nearby pointer and scrolling need 20 fps; a glitch
+  // flickers fine at 10. The slow drift of the field is invisible at 5 fps,
+  // so the canvas idles there and stops committing frames nobody sees change.
   const tick = (now: number) => {
     frame = 0;
-    if (now - last >= FRAME_MS) {
+    const lively =
+      ripple !== null ||
+      now - pointerAt < LIVELY_MS ||
+      now - scrollAt < LIVELY_MS;
+    const interval = lively
+      ? FRAME_MS
+      : glitches.size > 0
+        ? GLITCH_MS
+        : IDLE_MS;
+    if (now - last >= interval) {
+      const elapsed = Math.min(now - last, IDLE_MS);
       last = now;
-      const busy = draw(now);
+      const busy = draw(now, elapsed);
       canvas.dataset.ready = "";
       if (!busy) return;
     }
@@ -303,13 +326,22 @@ export function startField(canvas: HTMLCanvasElement, epoch: number) {
     },
     { passive: true },
   );
-  window.addEventListener("scroll", reduced ? redraw : wake, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      scrollAt = performance.now();
+      if (reduced) redraw();
+      else wake();
+    },
+    { passive: true },
+  );
   if (finePointer && !reduced) {
     window.addEventListener(
       "pointermove",
       (event) => {
         pointer.x = event.clientX;
         pointer.y = event.clientY;
+        pointerAt = performance.now();
         wake();
       },
       { passive: true },

@@ -4,9 +4,10 @@ import type { MarkdownHeading } from "astro";
 interface Props {
   headings: MarkdownHeading[];
   variant: "aside" | "inline";
+  minutes?: number;
 }
 
-const { headings, variant } = Astro.props;
+const { headings, variant, minutes } = Astro.props;
 const list = headings.map((heading) => ({
   href: `#${heading.slug}`,
   text: heading.text,
@@ -24,6 +25,13 @@ const list = headings.map((heading) => ({
           </li>
         ))}
       </ol>
+      {minutes !== undefined && (
+        <p class="meta left">
+          <span data-toc-left data-minutes={minutes}>
+            {minutes} min left
+          </span>
+        </p>
+      )}
     </nav>
   ) : (
     <details class="toc inline">
@@ -80,6 +88,28 @@ const list = headings.map((heading) => ({
     color: var(--fg);
     font-weight: 560;
     border-bottom-color: var(--fg);
+  }
+
+  .left {
+    margin-top: 1.25rem;
+  }
+
+  .left span {
+    display: inline-block;
+    transition:
+      opacity 160ms ease,
+      filter 160ms ease;
+  }
+
+  .left span[data-swapping] {
+    opacity: 0;
+    filter: blur(2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .left span {
+      transition: none;
+    }
   }
 
   .inline {

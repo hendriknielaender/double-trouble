@@ -20,6 +20,10 @@
   --radius: 18px;
   --page: 76rem;
   --measure: 43rem;
+  --wide: 52rem;
+  --rail: 12.5rem;
+  --rail-gap: 4rem;
+  --radius-media: 14px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --header: 4rem;
   background: var(--bg);
@@ -256,37 +260,79 @@ button {
 
 .prose {
   font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.1875rem);
-  line-height: 1.72;
-  color: color-mix(in oklab, var(--fg) 90%, var(--bg));
+  line-height: 1.75;
+  color: color-mix(in oklab, var(--fg) 92%, var(--bg));
   overflow-wrap: break-word;
 }
 
+/* Text sits on a comfortable measure; media may run the full column. */
+.prose > * {
+  max-width: var(--measure);
+}
+
+.prose > :is(pre, .code-block, figure, table, .ranking, .twitter-tweet),
+.prose > p:has(> :is(img, iframe, video):only-child) {
+  max-width: none;
+}
+
 .prose > * + * {
-  margin-top: 1.25em;
+  margin-top: 1.35em;
 }
 
 .prose :is(h2, h3, h4) {
+  position: relative;
   color: var(--fg);
   scroll-margin-top: calc(var(--header) + 1.5rem);
 }
 
 .prose h2 {
-  margin-top: 2.6em;
-  font-size: 1.55em;
+  margin-top: 3em;
+  font-size: 1.7em;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 .prose h3 {
-  margin-top: 2.1em;
-  font-size: 1.22em;
+  margin-top: 2.2em;
+  font-size: 1.25em;
+  line-height: 1.3;
 }
 
 .prose h4 {
   margin-top: 1.8em;
   font-size: 1.05em;
+  line-height: 1.4;
 }
 
 .prose :is(h2, h3, h4) + * {
-  margin-top: 0.75em;
+  margin-top: 0.85em;
+}
+
+.prose .anchor {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  height: 1lh;
+  display: grid;
+  place-items: center;
+  padding-inline: 0.25em 0.5em;
+  color: var(--fg-faint);
+  font: 400 0.75em / 1 var(--mono);
+  text-decoration: none;
+  opacity: 0;
+  transition:
+    opacity 160ms ease,
+    color 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .prose :is(h2, h3, h4):hover .anchor {
+    opacity: 1;
+  }
+
+  .prose .anchor:hover {
+    color: var(--fg);
+  }
 }
 
 .prose a {
@@ -309,7 +355,7 @@ button {
 }
 
 .prose li + li {
-  margin-top: 0.45em;
+  margin-top: 0.5em;
 }
 
 .prose li::marker {
@@ -318,21 +364,20 @@ button {
 
 .prose blockquote {
   margin-inline: 0;
-  padding-left: 1.25em;
+  padding-left: 1.4em;
   border-left: 2px solid var(--right);
   color: var(--fg-muted);
 }
 
 .prose hr {
   height: 1px;
-  margin-block: 3em;
+  margin-block: 3.5em;
   border: 0;
   background: var(--line);
 }
 
 .prose img {
-  margin-inline: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-media);
 }
 
 .prose iframe {
@@ -340,7 +385,7 @@ button {
   max-width: 100%;
   margin-inline: auto;
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--radius-media);
 }
 
 .prose iframe[width="560"] {
@@ -352,6 +397,34 @@ button {
 .prose iframe[width="315"] {
   height: auto;
   aspect-ratio: 9 / 16;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.prose :is(th, td) {
+  padding: 0.65em 0.9em;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.prose :is(th, td):first-child {
+  padding-left: 0;
+}
+
+.prose :is(th, td):last-child {
+  padding-right: 0;
 }
 
 .prose :not(pre) > code {
@@ -369,10 +442,12 @@ button {
   padding: 1.1rem 1.25rem;
   overflow-x: auto;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--radius-media);
   background: var(--bg-sunken);
   font: 0.84rem / 1.7 var(--code);
   tab-size: 2;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
 }
 
 .prose pre code {
@@ -389,7 +464,8 @@ button {
   margin-right: 1.25rem;
   text-align: right;
   color: var(--fg-faint);
-  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.5;
   user-select: none;
 }
 
@@ -398,9 +474,37 @@ button {
   color: light-dark(var(--shiki-light), var(--shiki-dark));
 }
 
+.prose .code-block {
+  position: relative;
+  margin-block: 1.75em;
+}
+
+.prose .code-block > pre {
+  margin: 0;
+}
+
+.prose .code-block[data-language] > pre {
+  padding-top: 2.9rem;
+}
+
+.prose .lang {
+  position: absolute;
+  top: 0.55rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  height: 2.25rem;
+  color: var(--fg-faint);
+  font: 400 0.6875rem / 1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
 .prose .copy {
   position: absolute;
-  top: 0.6rem;
+  top: 0.55rem;
   right: 0.6rem;
   display: grid;
   place-items: center;
@@ -417,15 +521,6 @@ button {
     opacity 160ms ease,
     transform 120ms var(--ease-out),
     color 160ms ease;
-}
-
-.prose .code-block {
-  position: relative;
-  margin-block: 1.75em;
-}
-
-.prose .code-block > pre {
-  margin: 0;
 }
 
 .prose .code-block:hover .copy,
@@ -468,6 +563,27 @@ button {
   color: var(--left);
 }
 
+/* On phones, code runs edge to edge so more columns fit before scrolling. */
+@media (max-width: 40rem) {
+  .prose > :is(pre, .code-block) {
+    margin-inline: calc(-1 * var(--gutter));
+  }
+
+  .prose pre {
+    padding-inline: var(--gutter);
+    border-inline: 0;
+    border-radius: 0;
+  }
+
+  .prose .lang {
+    left: var(--gutter);
+  }
+
+  .prose .copy {
+    right: var(--gutter);
+  }
+}
+
 .prose .footnotes {
   margin-top: 4em;
   padding-top: 1.5em;
@@ -487,6 +603,6 @@ button {
 .prose .twitter-tweet {
   padding: 1.25em 1.5em;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--radius-media);
   background: var(--bg-raised);
 }
