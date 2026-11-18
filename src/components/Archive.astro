@@ -1,6 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import { formatDate, groupByYear, type Post, postUrl } from "~/lib/posts";
+import {
+  formatDate,
+  groupByYear,
+  type Post,
+  postUrl,
+  slugify,
+} from "~/lib/posts";
 
 interface Props {
   posts: Post[];
@@ -18,7 +24,7 @@ const years = groupByYear(posts);
         <Heading class="label meta">{year}</Heading>
         <ol>
           {entries.map((post) => (
-            <li>
+            <li data-tags={post.data.tags.map(slugify).join(" ")}>
               <a href={postUrl(post)}>
                 <Image
                   class="thumb"
@@ -49,8 +55,13 @@ const years = groupByYear(posts);
     border-top: 1px solid var(--line);
   }
 
-  .year:last-child {
+  .archive {
     border-bottom: 1px solid var(--line);
+  }
+
+  .year[hidden],
+  li[hidden] {
+    display: none;
   }
 
   .label {
@@ -65,7 +76,7 @@ const years = groupByYear(posts);
     list-style: none;
   }
 
-  li + li {
+  li:not([hidden]) ~ li:not([hidden]) {
     border-top: 1px solid var(--line);
   }
 
