@@ -16,12 +16,11 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
   <section class="hero" data-field-hero>
     <div class="wrap inner">
       <div class="copy" data-field-quiet>
-        <p class="eyebrow">Hendrik &amp; Felix · writing since {site.since}</p>
+        <p class="eyebrow">Hendrik &amp; Felix</p>
         <h1>
           Twice the fun, <span class="double" data-text="double">double</span> the
           trouble.
         </h1>
-        <p class="lede">{site.description}</p>
       </div>
       <div class="bump" aria-hidden="true" data-field-quiet>
         <span class="fist left" data-bump><span>🤜</span></span>
@@ -54,8 +53,8 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
 <style>
   .hero {
     display: grid;
-    min-height: min(86svh, 54rem);
-    padding-block: clamp(3rem, 8vw, 6rem) 2rem;
+    min-height: min(79svh, 50rem);
+    padding-block: clamp(2.75rem, 7vw, 5.5rem) 1.75rem;
   }
 
   .inner {
@@ -107,12 +106,6 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
     mix-blend-mode: normal;
   }
 
-  .lede {
-    max-width: 34rem;
-    font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
-    color: var(--fg-muted);
-  }
-
   .bump {
     display: flex;
     font-size: clamp(3rem, 7vw, 4.75rem);
@@ -126,6 +119,10 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
 
   .fist > span {
     display: inline-block;
+  }
+
+  .fist + .fist {
+    margin-left: -0.03em;
   }
 
   .left {
@@ -189,12 +186,6 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
     .fist > span {
       animation: none;
     }
-  }
-
-  :global([data-intro="seen"]) .double::after,
-  :global([data-intro="seen"]) .fist,
-  :global([data-intro="seen"]) .fist > span {
-    animation: none;
   }
 
   .sections {

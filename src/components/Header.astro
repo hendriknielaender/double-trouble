@@ -1,5 +1,6 @@
 ---
 import { site } from "~/site";
+import Fists from "./Fists.astro";
 import Icon from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
@@ -19,7 +20,7 @@ const state = (href: string) => {
 <header class="header">
   <div class="wrap bar">
     <a class="brand" href="/" aria-label={`${site.name}, home`}>
-      <span class="mark" aria-hidden="true"><i></i><i></i></span>
+      <Fists class="mark" />
       <span class="name">{site.name}</span>
     </a>
     <nav aria-label="Main">
@@ -74,35 +75,13 @@ const state = (href: string) => {
     white-space: nowrap;
   }
 
-  .mark {
-    display: inline-flex;
-  }
-
-  .mark i {
-    width: 0.9rem;
-    height: 0.9rem;
-    border-radius: 50%;
-    background: var(--left);
-    transition: transform 240ms var(--ease-out);
-  }
-
-  .mark i + i {
-    margin-left: -0.35rem;
-    background: var(--right);
-    mix-blend-mode: screen;
-  }
-
-  :global([data-theme="light"]) .mark i + i {
-    mix-blend-mode: multiply;
-  }
-
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .brand:hover .mark i:first-child {
-      transform: translateX(-2px);
+    .brand:hover :global(.mark .left) {
+      transform: translateX(-3px);
     }
 
-    .brand:hover .mark i + i {
-      transform: translateX(2px);
+    .brand:hover :global(.mark .right) {
+      transform: translateX(3px);
     }
   }
 

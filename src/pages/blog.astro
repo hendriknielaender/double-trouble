@@ -18,7 +18,7 @@ const tags = getTags(posts).filter((tag) => tag.posts.length > 1);
       {
         tags.map((tag) => (
           <li>
-            <a class="chip" href={tagUrl(tag.name)}>
+            <a class="chip" href={tagUrl(tag.name)} data-filter={tag.slug}>
               {tag.name}
               <span class="count">{tag.posts.length}</span>
             </a>
@@ -26,15 +26,72 @@ const tags = getTags(posts).filter((tag) => tag.posts.length > 1);
         ))
       }
     </ul>
+    <p class="meta status" role="status" data-filter-status></p>
   </PageHead>
   <div class="wrap" data-field-clear>
     <Archive posts={posts} />
   </div>
 </Base>
 
+<script>
+  const chips = [...document.querySelectorAll<HTMLAnchorElement>("[data-filter]")];
+  const rows = [...document.querySelectorAll<HTMLLIElement>(".archive li[data-tags]")];
+  const years = [...document.querySelectorAll<HTMLElement>(".archive .year")];
+  const status = document.querySelector<HTMLElement>("[data-filter-status]");
+
+  const apply = (slug: string | null) => {
+    const chip = chips.find((candidate) => candidate.dataset.filter === slug);
+    const active = chip ? slug : null;
+    for (const candidate of chips) {
+      candidate.setAttribute("aria-pressed", String(candidate === chip));
+    }
+    let shown = 0;
+    for (const row of rows) {
+      const match = !active || (row.dataset.tags ?? "").split(" ").includes(active);
+      row.hidden = !match;
+      if (match) shown += 1;
+    }
+    for (const year of years) {
+      year.hidden = !year.querySelector("li:not([hidden])");
+    }
+    if (status) {
+      status.textContent = chip
+        ? `${shown} ${shown === 1 ? "post" : "posts"} tagged ${chip.firstChild?.textContent?.trim()} · click again to clear`
+        : "";
+    }
+    const url = new URL(location.href);
+    if (active) url.searchParams.set("tag", active);
+    else url.searchParams.delete("tag");
+    history.replaceState(history.state, "", url);
+  };
+
+  for (const chip of chips) {
+    chip.setAttribute("role", "button");
+    chip.addEventListener("click", (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const pressed = chip.getAttribute("aria-pressed") === "true";
+      apply(pressed ? null : (chip.dataset.filter ?? null));
+    });
+  }
+
+  apply(new URL(location.href).searchParams.get("tag"));
+</script>
+
 <style>
   .tags {
     margin-top: 2rem;
+  }
+
+  .chip[aria-pressed="true"] {
+    color: var(--fg);
+    border-color: var(--left);
+    background: color-mix(in oklab, var(--left) 14%, transparent);
+  }
+
+  .status {
+    min-height: 1.5em;
+    margin-top: 1rem;
   }
 
   .count {

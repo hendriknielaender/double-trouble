@@ -1,0 +1,28 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<span class:list={["fists", className]} aria-hidden="true">
+  <span class="left">🤜</span><span class="right">🤛</span>
+</span>
+
+<style>
+  .fists {
+    display: inline-flex;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  span > span {
+    display: inline-block;
+    transition: transform 240ms var(--ease-out);
+  }
+
+  .right {
+    margin-left: -0.02em;
+  }
+</style>

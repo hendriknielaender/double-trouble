@@ -18,7 +18,7 @@ export const site = {
     "howto-htmx-astrodb-astrossr",
   ],
   nav: [
-    { href: "/blog", label: "Writing" },
+    { href: "/blog", label: "Archive" },
     { href: "/about", label: "About" },
   ],
 } as const;

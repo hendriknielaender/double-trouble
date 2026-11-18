@@ -88,11 +88,6 @@ const structured = article
         const root = document.documentElement;
         try {
           if (sessionStorage.getItem("field-epoch")) root.dataset.fieldResume = "";
-          if (sessionStorage.getItem("intro")) {
-            root.dataset.intro = "seen";
-          } else if (location.pathname === "/") {
-            sessionStorage.setItem("intro", "seen");
-          }
         } catch {}
         const still = matchMedia("(prefers-reduced-motion: reduce)");
         const path = (url) => (url ? new URL(url).pathname : null);

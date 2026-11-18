@@ -3,7 +3,7 @@ import { site } from "~/site";
 
 const year = new Date().getFullYear();
 const links = [
-  { href: "/blog", label: "Writing" },
+  { href: "/blog", label: "Archive" },
   { href: "/about", label: "About" },
   { href: "/rss.xml", label: "RSS" },
   { href: site.repo, label: "GitHub" },
@@ -31,8 +31,7 @@ const links = [
   </div>
   <div class="wrap base">
     <p class="meta">
-      © {site.since}–{year}
-      {site.authors.join(" & ")}
+      {`© ${site.since}–${year} ${site.authors.join(" & ")}`}
     </p>
     <p class="meta legal">
       <a href="/legal">Legal notice</a>

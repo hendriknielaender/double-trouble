@@ -84,7 +84,7 @@ test("the background stays lit across navigations", async ({ page }) => {
   });
 });
 
-test("the home intro plays once per session", async ({ page }) => {
+test("the home intro plays on every visit", async ({ page }) => {
   await page.goto("/");
   const fist = page.locator("[data-bump]").first();
   expect(
@@ -92,7 +92,7 @@ test("the home intro plays once per session", async ({ page }) => {
   ).toBeGreaterThan(0);
   await page.goto("/about");
   await page.goto("/");
-  expect(await fist.evaluate((element) => element.getAnimations().length)).toBe(
-    0,
-  );
+  expect(
+    await fist.evaluate((element) => element.getAnimations().length),
+  ).toBeGreaterThan(0);
 });

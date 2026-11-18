@@ -4,7 +4,6 @@ import { render } from "astro:content";
 import Icon from "~/components/Icon.astro";
 import PostCard from "~/components/PostCard.astro";
 import Share from "~/components/Share.astro";
-import Toc from "~/components/Toc.astro";
 import Base from "~/layouts/Base.astro";
 import {
   formatDate,
@@ -32,9 +31,7 @@ interface Props {
 const { post, posts } = Astro.props;
 const { title, description, image, imageCreditUrl, publishDate, tags, tweet } =
   post.data;
-const { Content, headings } = await render(post);
-const sections = headings.filter((heading) => heading.depth === 2);
-const withToc = sections.length >= 3;
+const { Content } = await render(post);
 const related = relatedPosts(post, posts);
 const url = new URL(postUrl(post), Astro.site).href;
 const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
@@ -76,10 +73,8 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
       </figcaption>
     </figure>
 
-    <div class:list={["column", "body", { "with-toc": withToc }]} data-field-clear>
-      {withToc && <Toc headings={sections} variant="aside" />}
+    <div class="column body" data-field-clear>
       <div class="content">
-        {withToc && <Toc headings={sections} variant="inline" />}
         <div class="prose" data-prose>
           <Content />
         </div>
@@ -157,48 +152,11 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
     });
     block.append(button);
   }
-
-  const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-toc] a")];
-  const targets = [
-    ...new Set(links.map((link) => decodeURIComponent(link.hash.slice(1)))),
-  ]
-    .map((id) => document.getElementById(id))
-    .filter((target) => target !== null);
-
-  if (targets.length > 0) {
-    let pending = false;
-    const update = () => {
-      pending = false;
-      const line = window.innerHeight * 0.3;
-      let active = targets[0].id;
-      for (const target of targets) {
-        if (target.getBoundingClientRect().top <= line) active = target.id;
-      }
-      for (const link of links) {
-        if (decodeURIComponent(link.hash.slice(1)) === active) {
-          link.setAttribute("aria-current", "true");
-        } else {
-          link.removeAttribute("aria-current");
-        }
-      }
-    };
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!pending) {
-          pending = true;
-          requestAnimationFrame(update);
-        }
-      },
-      { passive: true },
-    );
-    update();
-  }
 </script>
 
 <style>
   .column {
-    width: min(100% - 2 * var(--gutter), 62rem);
+    width: min(100% - 2 * var(--gutter), var(--measure));
     margin-inline: auto;
   }
 
@@ -212,15 +170,14 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   }
 
   h1 {
-    max-width: 22ch;
-    font-size: clamp(2.375rem, 5.6vw, 4.25rem);
+    text-wrap: balance;
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
     font-weight: 560;
     letter-spacing: -0.035em;
     line-height: 1.02;
   }
 
   .lede {
-    max-width: 40rem;
     font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
     color: var(--fg-muted);
   }
@@ -255,32 +212,6 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   .content {
     max-width: var(--measure);
     margin-inline: auto;
-  }
-
-  .with-toc .content {
-    margin-inline: 0;
-  }
-
-  .body > :global(.aside) {
-    display: none;
-  }
-
-  @media (min-width: 68rem) {
-    .with-toc {
-      display: grid;
-      grid-template-columns: 12.5rem minmax(0, var(--measure));
-      justify-content: space-between;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .body > :global(.aside) {
-      display: block;
-    }
-
-    .content > :global(.inline) {
-      display: none;
-    }
   }
 
   .foot {

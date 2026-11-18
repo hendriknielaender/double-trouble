@@ -1,19 +1,13 @@
 import { expect, test } from "@playwright/test";
 
-test("post shows hero image, contents and sharing", async ({
-  page,
-  isMobile,
-}) => {
+test("post shows hero image and sharing", async ({ page }) => {
   await page.goto("/post/cloudflare-2025-review");
   const hero = page.locator("figure img").first();
   await expect(hero).toBeVisible();
   expect(
     await hero.evaluate((img: HTMLImageElement) => img.naturalWidth),
   ).toBeGreaterThan(0);
-  const toc = isMobile
-    ? page.locator("details.toc")
-    : page.locator("nav.toc.aside");
-  await expect(toc).toBeVisible();
+  await expect(page.locator(".toc")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Copy link" })).toBeVisible();
   await expect(page.locator("[data-prose] img").first()).toHaveAttribute(
     "loading",
