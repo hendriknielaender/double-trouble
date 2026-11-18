@@ -21,7 +21,6 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
           Twice the fun, <span class="double" data-text="double">double</span> the
           trouble.
         </h1>
-        <p class="lede">{site.description}</p>
       </div>
       <div class="bump" aria-hidden="true" data-field-quiet>
         <span class="fist left" data-bump><span>🤜</span></span>
@@ -105,12 +104,6 @@ const latest = posts.filter((post) => !featured.includes(post)).slice(0, 6);
     z-index: -1;
     color: color-mix(in oklab, var(--right) 45%, var(--bg));
     mix-blend-mode: normal;
-  }
-
-  .lede {
-    max-width: 34rem;
-    font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
-    color: var(--fg-muted);
   }
 
   .bump {
