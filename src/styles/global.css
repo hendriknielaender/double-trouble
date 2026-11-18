@@ -9,8 +9,8 @@
   --fg: light-dark(#11131a, #ecebe6);
   --fg-muted: light-dark(#4b5162, #a6abba);
   --fg-faint: light-dark(#5f6576, #7f8598);
-  --left: light-dark(#2f50e0, #8ea3ff);
-  --right: light-dark(#985600, #ffc062);
+  --left: light-dark(#2448ff, #6f8cff);
+  --right: light-dark(#e8590c, #ff9a2e);
   --sans: var(--font-sans), system-ui, sans-serif;
   --mono: var(--font-mono), ui-monospace, monospace;
   --code:
