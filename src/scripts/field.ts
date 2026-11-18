@@ -330,7 +330,7 @@ export function startField(canvas: HTMLCanvasElement, epoch: number) {
 
   const fists = [...document.querySelectorAll("[data-bump]")];
   const pair = fists[0]?.parentElement;
-  if (pair && !reduced && root.dataset.intro !== "seen") {
+  if (pair && !reduced) {
     Promise.all(
       fists.flatMap((fist) =>
         fist.getAnimations().map((animation) => animation.finished),
