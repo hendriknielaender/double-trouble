@@ -20,7 +20,7 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --radius: 18px;
   --page: 76rem;
-  --measure: 43rem;
+  --measure: 54rem;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --header: 4rem;
   background: var(--bg);

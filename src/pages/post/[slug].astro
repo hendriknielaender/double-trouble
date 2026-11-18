@@ -156,7 +156,7 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
 
 <style>
   .column {
-    width: min(100% - 2 * var(--gutter), 62rem);
+    width: min(100% - 2 * var(--gutter), var(--measure));
     margin-inline: auto;
   }
 
@@ -170,15 +170,14 @@ const credit = new URL(imageCreditUrl).hostname.replace(/^www\./, "");
   }
 
   h1 {
-    max-width: 22ch;
-    font-size: clamp(2.375rem, 5.6vw, 4.25rem);
+    text-wrap: balance;
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
     font-weight: 560;
     letter-spacing: -0.035em;
     line-height: 1.02;
   }
 
   .lede {
-    max-width: 40rem;
     font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
     color: var(--fg-muted);
   }
