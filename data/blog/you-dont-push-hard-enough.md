@@ -25,6 +25,8 @@ approach.
 
 - Use it early, right at the top
 - Keep the intro short: meme + 2 short paragraphs max
+- Teaser at the end of the intro: this is not just a rant - we also talk about solutions
+  (e.g. _"…and what we can do about it: drawing a new line of control."_)
 
 ## 2. The problem
 
@@ -88,6 +90,24 @@ reflected. Faster shipping makes the gap bigger.
 
 > 🚧 **UNDER CONSTRUCTION** - solutions need more work
 
+- **Key solution: draw the line of control - and match the review to it**
+  - Reference our own earlier post:
+    [Agile Roadmaps - Line of Control](/post/agile-roadmaps-release#what-is-the-line-of-control)
+    - Hypotheses instead of epics → leadership can choose _where_ to draw the line: only KPIs?
+      KPIs + hypotheses? + sprint goals? + iterations?
+    - Less control from the top → more room to experiment below the line
+  - Same idea, applied to review: not every PR, project or product needs the full review
+    - If the goal is to verify a hypothesis or idea, we don't need to review the UX
+      implementation in detail
+    - Review effort should match the risk and the goal of the change
+  - Reference: Will Larson,
+    [Speeding up code review with `small-change`](https://lethain.com/small-changes/)
+    (Oct 2026)
+    - CI decides which PRs are "small changes" (size, author experience, scope; sensitive areas
+      like money movement excluded) → fast approval instead of full human review
+    - Errors are treated as a gap in automated verification, not a reason for more human review
+    - > "We believe we move fast by finding narrow, contained ways to validate new practices"
+  - Link to the problem: the line of control is a process lever, not a model lever
 - **Plan less, learn more:** planning must get smaller to become dynamic → hypothesis-driven work
   (hypothesis → smallest experiment → learn → next step)
 - **Build bespoke tools:** automate internal processes, make experiments cheap
