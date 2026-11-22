@@ -14,16 +14,29 @@ haven't changed our approach.
 
 <img src="https://pamgrout.com/wp-content/uploads/2018/02/flintstonescar.jpg" />
 
-Much like the flintstones, who have the modern car, but still pedal it on with their feet. Who
+Much like the Flintstones, who have the modern car, but still pedal it on with their feet. Who
 have TVs, machinery and more, but act in a setting, which still fits a completely different age.
 
-Still living and acting according to these outdated times, we have hit a new plateau. As new
-models continue to be available, it's clear they can't break this barrier. More than a better
-model, we need better processes.
+Still living and acting according to these outdated times, we have **hit a new plateau**. As new
+models continue to be available, it's not clear they help us break this barrier. More than a
+better model, we need a better process.
 
-## 2. The problem
+## The plateau is here
 
-> 🚧 **UNDER CONSTRUCTION** - problem statement needs more work
+> 🚧 **UNDER CONSTRUCTION** - pick the right kind of references to paint the complete picture
+
+Thorsten Ball, co-founder of Amp, and contributor to Zed, has been writing about this clearly. In
+his post [Joy & Curiosity #105](https://registerspill.thorstenball.com/p/joy-and-curiosity-105)
+(Nov 2026)
+
+The data backs him up here. Data for "initial bump, then it flattened out" - Fiona Chen & James
+Stratton (Harvard), [Artificial Intelligence in the Firm: Bottlenecks in Software
+Production](https://fion.ac/jellyfish.pdf) (working paper, via
+[ComplexDiscovery](https://complexdiscovery.com/harvard-researchers-find-ai-coding-agents-shifted-the-bottleneck-to-code-review/),
+Oct 2026).
+
+<img
+src="https://m.media-amazon.com/images/S/pv-target-images/ca45155a3ac702f1e8e4cf61ad655b32e60546ca98897284f32a7864c1a0e14c.jpg" />
 
 **Core idea:** Innovation has hit a plateau - not because of the tools, but because of the
 process around them. **The leverage of a better process is now much higher than the leverage of a
@@ -44,7 +57,6 @@ slightly better model or slightly better AI usage.**
   > - Thorsten Ball, [Joy & Curiosity #72](https://registerspill.thorstenball.com/p/joy-and-curiosity-72)
   - His context: he's talking about the _models_ (see for yourself what they can and can't do)
   - Our twist: the same applies to our _workflows_
-- Open: what did the friend find on Twitter? Maybe a better / more ranty quote
 
 > 📝 **REVIEW NOTES** - research for this section
 
@@ -112,11 +124,7 @@ reflected. Faster shipping makes the gap bigger.
 
 - Weaker / more annoying than the others - keep it as #3
 
-### 3.x More examples?
-
-- ?
-
-## 4. Possible solutions
+## Solutions
 
 > 🚧 **UNDER CONSTRUCTION** - solutions need more work
 
@@ -153,4 +161,5 @@ reflected. Faster shipping makes the gap bigger.
 > 🚧 **UNDER CONSTRUCTION** - conclusion needs more work
 
 - Back to the Flintstones: take the feet off the ground
-- ?
+
+<img src="https://i.pinimg.com/736x/c5/7d/f9/c57df9f3775240d7ebda766d7f7c7034.jpg" />
