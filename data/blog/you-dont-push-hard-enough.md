@@ -7,26 +7,19 @@ imageCreditUrl: https://labs.openai.com/
 tags: [ai, agents, productivity, workflows, engineering]
 ---
 
-<!-- TODO: replace the thumbnail above with the Flintstones-style meme / a dedicated cover image -->
+Besides the weekly model releases, security incidents and major outages, we have noticed one
+thing: Models improve everyday, but processes rarely change. AI Capabilities today are at truly
+solid levels. But while we have conveniences at hand, which we've never seen before, we
+haven't changed our approach.
 
-> **Status: idea mapping.** Building blocks for the argument, not prose yet.
->
-> **Meta rule:** no ranting about our own work, in any way. Patterns we all share across the
-> industry, framed as an opportunity ("more is possible"), not as a complaint.
+<img src="https://pamgrout.com/wp-content/uploads/2018/02/flintstonescar.jpg" />
 
-## 1. Opening: the meme
+Much like the flintstones, who have the modern car, but still pedal it on with their feet. Who
+have TVs, machinery and more, but act in a setting, which still fits a completely different age.
 
-**Core idea:** Flintstones - modern conveniences, stone age power source. Modern tools, old
-approach.
-
-> 🖼️ **MEME PLACEHOLDER** - Fred at a stone "workstation", an AI agent humming on the screen,
-> while he still chisels the ticket into a stone tablet. Caption idea: _"Modern tools. Stone age
-> workflows."_
-
-- Use it early, right at the top
-- Keep the intro short: meme + 2 short paragraphs max
-- Teaser at the end of the intro: this is not just a rant - we also talk about solutions
-  (e.g. _"…and what we can do about it: drawing a new line of control."_)
+Still living and acting according to these outdated times, we have hit a new plateau. As new
+models continue to be available, it's clear they can't break this barrier. More than a better
+model, we need better processes.
 
 ## 2. The problem
 
